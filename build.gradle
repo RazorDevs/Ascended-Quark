@@ -113,6 +113,7 @@ repositories {
     flatDir {
         dir 'libs'
     }
+    maven { url = "https://www.cursemaven.com" }
 }
 
 dependencies {
@@ -124,6 +125,8 @@ dependencies {
 
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
     implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
+    implementation fg.deobf("curse.maven:quark-243121:${project.quark_version}")
+    implementation fg.deobf("curse.maven:autoreglib-250363:${project.autoreglib_version}")
 }
 
 jar {

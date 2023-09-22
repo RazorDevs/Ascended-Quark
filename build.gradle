@@ -4,9 +4,11 @@ buildscript {
             name 'Gradle'
             url "https://plugins.gradle.org/m2/"
         }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
     }
     dependencies {
         classpath group: 'io.github.0ffz', name: 'gpr-for-gradle', version: '1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 
@@ -19,10 +21,10 @@ plugins {
 }
 
 apply plugin: 'io.github.0ffz.github-packages'
-
+apply plugin: 'org.spongepowered.mixin'
 
 version = '1.0'
-group = 'com.razordevs.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.razordevs.quark_aether' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = project.modid
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
@@ -34,70 +36,38 @@ minecraft {
     mappings channel: 'official', version: '1.19.2'
 
     runs {
-        client {
+        configureEach {
             workingDirectory project.file('run')
 
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property "${modid}.iside", 'true'
+//            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'info' // info is the default for production
 
             mods {
-                examplemod {
+                "${modid}" {
                     source sourceSets.main
                 }
             }
+        }
+
+        client {
+            property 'forge.enabledGameTestNamespaces', modid
         }
 
         server {
-            workingDirectory project.file('run')
+            property 'forge.enabledGameTestNamespaces', modid
 
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
+            args '--nogui'
         }
 
         gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
+            property 'forge.enabledGameTestNamespaces', modid
         }
 
         data {
-            workingDirectory project.file('run')
+            args '--mod', modid, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing', file('src/generated/resources/'), '--existing-mod', 'nitrogen_internals', '--existing-mod', 'cumulus_menus'
 
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
+            environment 'target', 'fmluserdevdata'
         }
     }
 }
@@ -114,6 +84,9 @@ repositories {
         dir 'libs'
     }
     maven { url = "https://www.cursemaven.com" }
+    maven {
+        url = "https://maven.blamejared.com/"
+    }
 }
 
 dependencies {
@@ -125,8 +98,8 @@ dependencies {
 
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
     implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
-    implementation fg.deobf("curse.maven:quark-243121:${project.quark_version}")
-    implementation fg.deobf("curse.maven:autoreglib-250363:${project.autoreglib_version}")
+    implementation fg.deobf("vazkii.quark:Quark:${quark_version}")
+    implementation fg.deobf("vazkii.autoreglib:AutoRegLib:${autoreglib_version}")
 }
 
 jar {
@@ -164,4 +137,10 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+
+mixin {
+    config "${project.modid}.mixins.json"
+    add sourceSets.main, "${project.modid}.refmap.json"
 }

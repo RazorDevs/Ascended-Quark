@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.razordevs.quark_aether.blocks.QABlocks;
 import com.razordevs.quark_aether.datagen.QABlockstateData;
 import com.razordevs.quark_aether.datagen.QAItemModelData;
+import com.razordevs.quark_aether.datagen.QALangData;
 import com.razordevs.quark_aether.items.QAItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -43,6 +44,7 @@ public class QuarkAetherMod
         generator.addProvider(event.includeClient(), new QABlockstateData(event.getGenerator(), fileHelper));
         generator.addProvider(event.includeClient(), new QAItemModelData(event.getGenerator(), fileHelper));
 
+        generator.addProvider(event.includeClient(), new QALangData(event.getGenerator()));
         // Server Data
         //generator.addProvider(event.includeServer(), new DAWorldGenData(packOutput, lookupProvider));
         //generator.addProvider(event.includeServer(), new DARecipeData(packOutput));

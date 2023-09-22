@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "package": "com.razordevs.quark_aether.mixin",
+  "refmap": "quark_aether.refmap.json",
+  "mixins": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

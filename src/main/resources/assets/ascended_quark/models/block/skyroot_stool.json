@@ -1,0 +1,6 @@
+{
+  "parent": "quark:block/stool",
+  "textures": {
+    "main": "ascended_quark:block/skyroot_stool"
+  }
+}

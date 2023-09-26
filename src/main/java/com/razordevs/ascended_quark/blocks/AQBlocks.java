@@ -4,6 +4,7 @@ import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -12,7 +13,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vazkii.quark.base.block.QuarkBlock;
 import vazkii.quark.content.building.block.QuarkVerticalSlabBlock;
+import vazkii.quark.content.building.block.StoolBlock;
 import vazkii.quark.content.building.block.VerticalSlabBlock;
+import vazkii.quark.content.building.module.StoolsModule;
 import vazkii.quark.content.building.module.VerticalSlabsModule;
 
 import java.util.function.Supplier;
@@ -30,7 +33,7 @@ public class AQBlocks {
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_WALL = registerBlock("aether_dirt_brick_wall", () -> new WallBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_VERTICAL_SLAB = registerBlock("aether_dirt_brick_vertical_slab", () -> new VerticalSlabBlock(AETHER_DIRT_BRICKS, Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
 
-
+    public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AetherStoolBlock::new);
 
 
 

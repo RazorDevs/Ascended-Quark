@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "big=true": { "model": "ascended_quark:block/skyroot_big_stool" },
+    "big=false": { "model": "ascended_quark:block/skyroot_stool" }
+  }
+}

@@ -24,7 +24,7 @@ apply plugin: 'io.github.0ffz.github-packages'
 apply plugin: 'org.spongepowered.mixin'
 
 version = '1.0'
-group = 'com.razordevs.quark_aether' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.razordevs.ascended_quark' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = project.modid
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
@@ -105,7 +105,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "quar_aether",
+                "Specification-Title"     : "ascended_quark",
                 "Specification-Vendor"    : "teamrazor",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,

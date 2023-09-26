@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ascended_quark:block/aether_dirt_brick_slab"
+    },
+    "type=double": {
+      "model": "ascended_quark:block/aether_dirt_bricks"
+    },
+    "type=top": {
+      "model": "ascended_quark:block/aether_dirt_brick_slab_top"
+    }
+  }
+}

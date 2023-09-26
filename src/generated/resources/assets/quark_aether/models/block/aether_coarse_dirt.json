@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "quark_aether:block/aether_coarse_dirt"
-  }
-}

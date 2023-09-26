@@ -1,5 +1,7 @@
 package com.razordevs.ascended_quark.blocks;
 
+import com.razordevs.ascended_quark.entity.block.AQEntityTypes;
+import com.razordevs.ascended_quark.entity.block.Stool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -33,11 +35,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import vazkii.quark.base.block.QuarkBlock;
-import vazkii.quark.base.module.QuarkModule;
-import vazkii.quark.content.building.block.StoolBlock;
-import vazkii.quark.content.building.entity.Stool;
 import vazkii.quark.content.building.module.StoolsModule;
 
 import javax.annotation.Nonnull;
@@ -93,7 +90,7 @@ public class AetherStoolBlock extends Block implements SimpleWaterloggedBlock {
                 return super.use(state, worldIn, pos, player, handIn, hit);
 
             if(!worldIn.isClientSide) {
-                Stool entity = new Stool(StoolsModule.stoolEntity, worldIn);
+                Stool entity = new Stool(AQEntityTypes.STOOL.get(), worldIn);
                 entity.setPos(pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5);
 
                 worldIn.addFreshEntity(entity);

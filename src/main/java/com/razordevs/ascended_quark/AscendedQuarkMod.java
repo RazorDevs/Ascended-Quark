@@ -3,6 +3,7 @@ package com.razordevs.ascended_quark;
 import com.mojang.logging.LogUtils;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import com.razordevs.ascended_quark.datagen.*;
+import com.razordevs.ascended_quark.entity.block.AQEntityTypes;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.MinecraftForge;
@@ -27,6 +28,7 @@ public class AscendedQuarkMod
 
         AQBlocks.BLOCKS.register(modEventBus);
         AQItems.ITEMS.register(modEventBus);
+        AQEntityTypes.ENTITY_TYPES.register(modEventBus);
     }
 
 

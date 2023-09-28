@@ -1,23 +1,22 @@
 package com.razordevs.ascended_quark.blocks;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
+import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
+import com.razordevs.ascended_quark.entity.block.SkyrootChestBlockEntity;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import vazkii.quark.base.block.QuarkBlock;
-import vazkii.quark.content.building.block.QuarkVerticalSlabBlock;
-import vazkii.quark.content.building.block.StoolBlock;
-import vazkii.quark.content.building.block.VerticalSlabBlock;
-import vazkii.quark.content.building.module.StoolsModule;
-import vazkii.quark.content.building.module.VerticalSlabsModule;
+import vazkii.quark.content.building.block.*;
 
+import java.util.Objects;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class AQBlocks {
@@ -34,16 +33,31 @@ public class AQBlocks {
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_VERTICAL_SLAB = registerBlock("aether_dirt_brick_vertical_slab", () -> new VerticalSlabBlock(AETHER_DIRT_BRICKS, Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AetherStoolBlock::new);
+    public static final RegistryObject<Block> SKYROOT_CHEST = registerBlock("skyroot_chest", () -> new AQChestBlock(BlockBehaviour.Properties.copy(Blocks.CHEST), AQBlockEntityTypes.SKYROOT_CHEST::get));
+    //public static final RegistryObject<Block> SKYROOT_HEDGE = registerBlock("skyroot_hedge", () -> new HedgeBlock(AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
 
 
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
+
+    private static <T extends Block> RegistryObject<T> register(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
+        RegistryObject<T> register = BLOCKS.register(name, block);
+        AQItems.ITEMS.register(name, item.apply(register));
+        return register;
     }
 
-    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return AQItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS)));
+    @SuppressWarnings("unchecked")
+    private static <B extends Block> RegistryObject<B> registerBlock(String name, Supplier<? extends Block> block) {
+        return (RegistryObject<B>) register(name, block, AQBlocks::registerBlockItem);
+    }
+
+    private static <B extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<B> blockRegistryObject) {
+        return () -> {
+            B block = Objects.requireNonNull(blockRegistryObject.get());
+            if (block == SKYROOT_CHEST.get()) {
+           return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+            }
+            else return  new BlockItem(block, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+    };
     }
 }
+

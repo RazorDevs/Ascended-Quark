@@ -1,4 +1,4 @@
-package com.razordevs.ascended_quark.entity.block;
+package com.razordevs.ascended_quark.entity;
 
 import com.razordevs.ascended_quark.blocks.AetherStoolBlock;
 import net.minecraft.core.BlockPos;

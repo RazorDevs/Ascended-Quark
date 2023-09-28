@@ -36,5 +36,5 @@ A mod that adds compatability between Aether and Quark
     modId="aether"
     mandatory=true
     versionRange="[0,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"

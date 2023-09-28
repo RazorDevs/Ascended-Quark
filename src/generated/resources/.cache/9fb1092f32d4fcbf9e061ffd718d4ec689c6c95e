@@ -1,7 +1,13 @@
-// 1.19.2	2023-09-26T14:25:19.8614941	Recipes
+// 1.19.2	2023-09-28T09:46:33.053603972	Recipes
 72acb19e52563cbed0e56888832ab94f329c00fc data/ascended_quark/advancements/recipes/aether.blocks/aether_dirt_brick_slab.json
 1118f7222c3913e94957f31d384e106840bdd9a6 data/ascended_quark/advancements/recipes/aether.blocks/aether_dirt_brick_stairs.json
 930c786ca977834a3ecd328f3bef9f3e4ae21970 data/ascended_quark/advancements/recipes/aether.blocks/aether_dirt_brick_wall.json
+9b20bdc4116132c941bb13f544fcbe079e9ad295 data/ascended_quark/advancements/recipes/aether.blocks/skyroot_chest.json
+7b9a60532991745c55fac670c79ec32dc701024c data/ascended_quark/advancements/recipes/aether.blocks/skyroot_stool.json
 ab56b837ca7db8829652b0ac5488995436a885a1 data/ascended_quark/recipes/aether_dirt_brick_slab.json
 1acc61789375769291a31243ae0eb7760d7c4903 data/ascended_quark/recipes/aether_dirt_brick_stairs.json
 5c77e88203c8df522817759bf27f99232e0d95d7 data/ascended_quark/recipes/aether_dirt_brick_wall.json
+c152322e9c4a32c395d6748823e664dad5ef10ea data/ascended_quark/recipes/skyroot_chest.json
+2f38bff7492b873902b98e0b68d3e950efc6f1e8 data/ascended_quark/recipes/skyroot_stool.json
+296b6138ff79781f8f483cf0e5e8fc1ece9bede0 data/minecraft/advancements/recipes/decorations/chest.json
+31e8fb564e479c86dfaced42b0eed334c475b053 data/minecraft/recipes/chest.json

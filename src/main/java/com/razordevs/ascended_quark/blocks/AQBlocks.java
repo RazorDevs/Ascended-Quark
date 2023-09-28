@@ -16,6 +16,7 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import vazkii.quark.base.handler.RenderLayerHandler;
 import vazkii.quark.content.building.block.*;
 import vazkii.quark.mixin.LadderBlockMixin;
 

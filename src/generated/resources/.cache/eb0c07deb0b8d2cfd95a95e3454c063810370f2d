@@ -1,4 +1,4 @@
-// 1.19.2	2023-09-28T10:31:10.409110079	Item Models: ascended_quark
+// 1.19.2	2023-09-28T10:44:15.895904369	Item Models: ascended_quark
 b79c8ebb9bd375121d5db86622e70c097b47dc1d assets/ascended_quark/models/item/aether_coarse_dirt.json
 272d105f9584075d80da3172954a3703128e781e assets/ascended_quark/models/item/aether_dirt_brick_slab.json
 a486f0b329a31d6d4ddd6c1cc48d97d05029b67f assets/ascended_quark/models/item/aether_dirt_brick_stairs.json
@@ -6,4 +6,5 @@ dc03693f6d2f89a52f55e3f6a05dbe652f8536c6 assets/ascended_quark/models/item/aethe
 787082928bee0583d5b962faffc93f3fdf931b56 assets/ascended_quark/models/item/aether_dirt_brick_wall.json
 865c07dce7c0bcdcd091057b1eceebe058ce1dfc assets/ascended_quark/models/item/aether_dirt_bricks.json
 5910318b44ff3686b1185159ff94fabc7019c6d6 assets/ascended_quark/models/item/hollow_skyroot_log.json
+08fbd1c08a2eb932d3bd9fc72d55e2cd917bbbbc assets/ascended_quark/models/item/skyroot_ladder.json
 fff34b5d7a22239f88c6b359eb34f5051698252c assets/ascended_quark/models/item/skyroot_leaf_carpet.json

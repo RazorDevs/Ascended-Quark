@@ -35,7 +35,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nonnull;
 
-public class AetherStoolBlock extends Block implements SimpleWaterloggedBlock {
+public class AQStoolBlock extends Block implements SimpleWaterloggedBlock {
         private static final VoxelShape SHAPE_TOP = Block.box(0F, 1F, 0F, 16F, 9F, 16F);
         private static final VoxelShape SHAPE_LEG = Block.box(0F, 0F, 0F, 4F, 1F, 4F);
 
@@ -56,7 +56,7 @@ public class AetherStoolBlock extends Block implements SimpleWaterloggedBlock {
         public static final BooleanProperty BIG = BooleanProperty.create("big");
         public static final BooleanProperty SAT_IN = BooleanProperty.create("sat_in");
 
-        public AetherStoolBlock() {
+        public AQStoolBlock() {
             super(
                     BlockBehaviour.Properties.of(Material.WOOL)
                             .sound(SoundType.WOOD)

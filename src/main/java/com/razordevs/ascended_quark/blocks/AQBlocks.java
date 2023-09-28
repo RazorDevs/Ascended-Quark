@@ -1,5 +1,6 @@
 package com.razordevs.ascended_quark.blocks;
 
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
@@ -32,9 +33,9 @@ public class AQBlocks {
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_WALL = registerBlock("aether_dirt_brick_wall", () -> new WallBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_VERTICAL_SLAB = registerBlock("aether_dirt_brick_vertical_slab", () -> new VerticalSlabBlock(AETHER_DIRT_BRICKS, Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
 
-    public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AetherStoolBlock::new);
+    public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AQStoolBlock::new);
     public static final RegistryObject<Block> SKYROOT_CHEST = registerBlock("skyroot_chest", () -> new AQChestBlock(BlockBehaviour.Properties.copy(Blocks.CHEST), AQBlockEntityTypes.SKYROOT_CHEST::get));
-    //public static final RegistryObject<Block> SKYROOT_HEDGE = registerBlock("skyroot_hedge", () -> new HedgeBlock(AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
+    public static final RegistryObject<Block> SKYROOT_HEDGE = registerBlock("skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
 
 
 

@@ -1,6 +1,6 @@
 package com.razordevs.ascended_quark.entity;
 
-import com.razordevs.ascended_quark.blocks.AetherStoolBlock;
+import com.razordevs.ascended_quark.blocks.AQStoolBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -34,18 +34,18 @@ public class Stool extends Entity {
         BlockState state = level.getBlockState(pos);
 
         if(!dead) {
-            if(!(state.getBlock() instanceof AetherStoolBlock)) {
+            if(!(state.getBlock() instanceof AQStoolBlock)) {
                 PistonMovingBlockEntity piston = null;
                 boolean didOffset = false;
 
                 BlockEntity tile = level.getBlockEntity(pos);
-                if(tile instanceof PistonMovingBlockEntity pistonBE && pistonBE.getMovedState().getBlock() instanceof AetherStoolBlock)
+                if(tile instanceof PistonMovingBlockEntity pistonBE && pistonBE.getMovedState().getBlock() instanceof AQStoolBlock)
                     piston = pistonBE;
                 else for(Direction d : Direction.values()) {
                     BlockPos offPos = pos.relative(d);
                     tile = level.getBlockEntity(offPos);
 
-                    if(tile instanceof PistonMovingBlockEntity pistonBE && pistonBE.getMovedState().getBlock() instanceof AetherStoolBlock) {
+                    if(tile instanceof PistonMovingBlockEntity pistonBE && pistonBE.getMovedState().getBlock() instanceof AQStoolBlock) {
                         piston = pistonBE;
                         break;
                     }
@@ -65,8 +65,8 @@ public class Stool extends Entity {
         if(dead && !level.isClientSide) {
             removeAfterChangingDimensions();
 
-            if(state.getBlock() instanceof AetherStoolBlock)
-                level.setBlockAndUpdate(pos, state.setValue(AetherStoolBlock.SAT_IN, false));
+            if(state.getBlock() instanceof AQStoolBlock)
+                level.setBlockAndUpdate(pos, state.setValue(AQStoolBlock.SAT_IN, false));
         }
     }
 

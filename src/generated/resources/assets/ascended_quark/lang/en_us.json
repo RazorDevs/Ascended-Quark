@@ -10,5 +10,7 @@
   "block.ascended_quark.skyroot_hedge": "Skyroot Hedge",
   "block.ascended_quark.skyroot_ladder": "Skyroot Ladder",
   "block.ascended_quark.skyroot_leaf_carpet": "Skyroot Leaf Carpet",
-  "block.ascended_quark.skyroot_stool": "Skyroot Stool"
+  "block.ascended_quark.skyroot_post": "Skyroot Post",
+  "block.ascended_quark.skyroot_stool": "Skyroot Stool",
+  "block.ascended_quark.stripped_skyroot_post": "Stripped Skyroot Post"
 }

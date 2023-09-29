@@ -1,0 +1,6 @@
+{
+  "parent": "quark:block/post",
+  "textures": {
+    "texture": "aether:block/natural/stripped_skyroot_log"
+  }
+}

@@ -18,6 +18,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vazkii.quark.base.handler.RenderLayerHandler;
 import vazkii.quark.content.building.block.*;
+import vazkii.quark.content.building.module.WoodenPostsModule;
 import vazkii.quark.mixin.LadderBlockMixin;
 
 import java.util.Objects;
@@ -47,6 +48,9 @@ public class AQBlocks {
 
     public static final RegistryObject<Block> HOLLOW_SKYROOT_LOG = registerBlock("hollow_skyroot_log", () -> new AQHollowLogBlock(BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_LOG.get())));
     public static final RegistryObject<Block> SKYROOT_LADDER = registerBlock("skyroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
+
+    public static final RegistryObject<Block> SKYROOT_POST = registerBlock("skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
+    public static final RegistryObject<Block> STRIPPED_SKYROOT_POST = registerBlock("stripped_skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);

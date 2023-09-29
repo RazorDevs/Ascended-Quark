@@ -3,6 +3,8 @@ package com.razordevs.ascended_quark;
 import com.mojang.logging.LogUtils;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import com.razordevs.ascended_quark.datagen.*;
+import com.razordevs.ascended_quark.datagen.tags.AQBlockTagData;
+import com.razordevs.ascended_quark.datagen.tags.AQItemTagData;
 import com.razordevs.ascended_quark.entity.AQEntityTypes;
 import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.items.AQItems;
@@ -48,11 +50,9 @@ public class AscendedQuarkMod
         //generator.addProvider(event.includeServer(), new DAWorldGenData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AQRecipeData(event.getGenerator()));
         //generator.addProvider(event.includeServer(), DALootTableData.create(packOutput));
-        //DABlockTagData blockTags = new DABlockTagData(packOutput, lookupProvider, fileHelper);
-        //generator.addProvider(event.includeServer(), blockTags);
-        //generator.addProvider(event.includeServer(), new DAItemTagData(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper));
-        //generator.addProvider(event.includeServer(), new DABiomeTagData(packOutput, lookupProvider, fileHelper));
-        //generator.addProvider(event.includeServer(), new DAEntityTagData(packOutput, lookupProvider, fileHelper));
+        AQBlockTagData blockTags = new AQBlockTagData(event.getGenerator(), fileHelper);
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new AQItemTagData(event.getGenerator(), blockTags, fileHelper));
     }
 
 

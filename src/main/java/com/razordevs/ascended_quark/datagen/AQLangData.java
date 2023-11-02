@@ -26,11 +26,6 @@ public class AQLangData extends NitrogenLanguageProvider {
         {
             this.add(block.get(), this.getName(block.getId().getPath()));
         }
-
-        //for (RegistryObject<Item> item : items)
-        //{
-        //    this.add(item.get(), this.getName(item.getId().getPath()));
-        //}
     }
 
     private String getName(String name) {

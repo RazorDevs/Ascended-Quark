@@ -3,6 +3,7 @@ package com.razordevs.ascended_quark;
 import com.mojang.logging.LogUtils;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import com.razordevs.ascended_quark.datagen.*;
+import com.razordevs.ascended_quark.datagen.loot.AQLootTableData;
 import com.razordevs.ascended_quark.datagen.tags.AQBlockTagData;
 import com.razordevs.ascended_quark.datagen.tags.AQItemTagData;
 import com.razordevs.ascended_quark.entity.AQEntityTypes;
@@ -21,7 +22,7 @@ import org.slf4j.Logger;
 public class AscendedQuarkMod
 {
     public static final String MODID = "ascended_quark";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     public AscendedQuarkMod()
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dataSetup);
@@ -49,7 +50,7 @@ public class AscendedQuarkMod
         // Server Data
         //generator.addProvider(event.includeServer(), new DAWorldGenData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AQRecipeData(event.getGenerator()));
-        //generator.addProvider(event.includeServer(), DALootTableData.create(packOutput));
+        generator.addProvider(event.includeServer(), new AQLootTableData(event.getGenerator()));
         AQBlockTagData blockTags = new AQBlockTagData(event.getGenerator(), fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new AQItemTagData(event.getGenerator(), blockTags, fileHelper));

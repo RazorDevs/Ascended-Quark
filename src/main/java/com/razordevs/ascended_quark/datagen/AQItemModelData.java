@@ -27,6 +27,7 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlock(AQBlocks.HOLLOW_SKYROOT_LOG.get());
         this.itemBlock(AQBlocks.SKYROOT_POST.get());
         this.itemBlockFlat(AQBlocks.SKYROOT_LADDER.get());
+        this.itemBlock(AQBlocks.HOLYSTONE_FURNACE.get());
         this.itemWallBlock(AQBlocks.AETHER_DIRT_BRICK_WALL.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
     }
 

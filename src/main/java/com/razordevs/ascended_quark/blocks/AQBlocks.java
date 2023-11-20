@@ -6,24 +6,26 @@ import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.entity.block.SkyrootChestBlockEntity;
+import com.razordevs.ascended_quark.entity.block.HolystoneFurnaceBlockEntity;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import vazkii.quark.base.handler.RenderLayerHandler;
 import vazkii.quark.content.building.block.*;
-import vazkii.quark.content.building.module.WoodenPostsModule;
-import vazkii.quark.mixin.LadderBlockMixin;
+import vazkii.quark.content.building.block.be.VariantFurnaceBlockEntity;
 
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
 public class AQBlocks {
 
@@ -52,6 +54,9 @@ public class AQBlocks {
     public static final RegistryObject<Block> SKYROOT_POST = registerBlock("skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<Block> STRIPPED_SKYROOT_POST = registerBlock("stripped_skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
 
+    public static final RegistryObject<Block> HOLYSTONE_FURNACE = registerBlock("holystone_furnace", () -> new AQFurnaceBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));
+
+
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
         RegistryObject<T> register = BLOCKS.register(name, block);
         AQItems.ITEMS.register(name, item.apply(register));
@@ -67,10 +72,16 @@ public class AQBlocks {
         return () -> {
             B block = Objects.requireNonNull(blockRegistryObject.get());
             if (block == SKYROOT_CHEST.get()) {
-           return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+                return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
             }
             else return  new BlockItem(block, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
     };
+    }
+
+    private static ToIntFunction<BlockState> litBlockEmission(int p_50760_) {
+        return (p_50763_) -> {
+            return p_50763_.getValue(BlockStateProperties.LIT) ? p_50760_ : 0;
+        };
     }
 }
 

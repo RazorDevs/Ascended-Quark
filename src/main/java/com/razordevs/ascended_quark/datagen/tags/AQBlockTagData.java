@@ -33,7 +33,7 @@ public class AQBlockTagData extends BlockTagsProvider {
     @Override
     protected void addTags() {
 
-        // Makes tool debuff work with all Deep Aether blocks. Commented code can be used to remove blocks if necessary
+        // Makes tool debuff work with all Ascended Quark blocks. Commented code can be used to remove blocks if necessary
         TagAppender<Block> tag = this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK);
         Collection<RegistryObject<Block>> blocks = AQBlocks.BLOCKS.getEntries();
         // blocks.remove(Blocks.DIRT);
@@ -48,6 +48,9 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.AETHER_DIRT_BRICK_WALL.get()
         );
 
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                AQBlocks.HOLYSTONE_FURNACE.get()
+        );
 
         tag(BlockTags.MINEABLE_WITH_AXE).add(
                 AQBlocks.SKYROOT_HEDGE.get(),

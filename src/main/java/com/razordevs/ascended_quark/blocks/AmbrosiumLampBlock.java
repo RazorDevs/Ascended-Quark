@@ -45,14 +45,14 @@ public class AmbrosiumLampBlock extends Block {
                 itemstack.shrink(1);
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
-        } else if (!isRespawnFuel(itemstack)) {
+        } else if (!isRespawnFuel(itemstack) && isOn(blockState)) {
             deplete(level, blockPos, blockState);
             if (!player.getAbilities().instabuild) {
                 player.addItem(new ItemStack(AetherBlocks.AMBROSIUM_BLOCK.get().asItem()));
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
-        return InteractionResult.CONSUME;
+        return InteractionResult.PASS;
     }
 
     private static boolean isRespawnFuel(ItemStack itemStack) {
@@ -78,7 +78,11 @@ public class AmbrosiumLampBlock extends Block {
         add.add(LIGHT);
     }
 
-    public static int getScaledChargeLevel(BlockState p_55862_, int p_55863_) {
-        return Mth.floor((float)(p_55862_.getValue(LIGHT)) / 4.0F * (float)p_55863_);
+    private static boolean isOn(BlockState value) {
+        return value.getValue(LIGHT) > 0;
+    }
+
+    public static int getScaledChargeLevel(BlockState blockState, int i) {
+        return Mth.floor((float)(blockState.getValue(LIGHT)) / 4.0F * (float)i);
     }
 }

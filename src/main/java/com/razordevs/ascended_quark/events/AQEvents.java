@@ -1,6 +1,9 @@
 package com.razordevs.ascended_quark.events;
 
 
+import com.aetherteam.aether.effect.AetherEffects;
+import com.aetherteam.aether.entity.AetherEntityTypes;
+import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherItems;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.blocks.AQStoolBlock;
@@ -48,8 +51,13 @@ public class AQEvents {
 
             if(event.getTarget().getType() == EntityType.SLIME && ((Slime) event.getTarget()).getSize() == 1) {
                 slime = EntityType.SLIME;
+            }else
+            if(event.getTarget().getType() == AetherEntityTypes.BLUE_SWET.get() && ((Swet) event.getTarget()).getSize() == 1) {
+                slime = AetherEntityTypes.BLUE_SWET.get();
+            }else
+            if(event.getTarget().getType() == AetherEntityTypes.GOLDEN_SWET.get() && ((Swet) event.getTarget()).getSize() == 1) {
+                slime = AetherEntityTypes.GOLDEN_SWET.get();
             }
-
             else {
                 return;
             }
@@ -78,6 +86,41 @@ public class AQEvents {
                         bucket = AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get();
                 } else return;
 
+                if (stack.getItem() == Items.BUCKET) {
+                    if (slime == AetherEntityTypes.BLUE_SWET.get())
+                        bucket = AQItems.SWET_IN_A_BUCKET_ITEM.get();
+
+                } else if (stack.getItem() == AetherItems.SKYROOT_BUCKET.get()) {
+                    if (slime == AetherEntityTypes.BLUE_SWET.get())
+                        bucket = AQItems.SWET_IN_A_SKYROOT_BUCKET_ITEM.get();
+
+                } else if (player.getOffhandItem().getItem() == Items.BUCKET) {
+                    hand = InteractionHand.OFF_HAND;
+                    if (slime == AetherEntityTypes.BLUE_SWET.get())
+                        bucket = AQItems.SWET_IN_A_BUCKET_ITEM.get();
+                } else if (player.getOffhandItem().getItem() == AetherItems.SKYROOT_BUCKET.get()) {
+                    hand = InteractionHand.OFF_HAND;
+                    if (slime == AetherEntityTypes.BLUE_SWET.get())
+                        bucket = AQItems.SWET_IN_A_SKYROOT_BUCKET_ITEM.get();
+                } else return;
+
+                if (stack.getItem() == Items.BUCKET) {
+                    if (slime == AetherEntityTypes.GOLDEN_SWET.get())
+                        bucket = AQItems.GOLDEN_SWET_IN_A_BUCKET_ITEM.get();
+
+                } else if (stack.getItem() == AetherItems.SKYROOT_BUCKET.get()) {
+                    if (slime == AetherEntityTypes.GOLDEN_SWET.get())
+                        bucket = AQItems.GOLDEN_SWET_IN_A_SKYROOT_BUCKET_ITEM.get();
+
+                } else if (player.getOffhandItem().getItem() == Items.BUCKET) {
+                    hand = InteractionHand.OFF_HAND;
+                    if (slime == AetherEntityTypes.GOLDEN_SWET.get())
+                        bucket = AQItems.GOLDEN_SWET_IN_A_BUCKET_ITEM.get();
+                } else if (player.getOffhandItem().getItem() == AetherItems.SKYROOT_BUCKET.get()) {
+                    hand = InteractionHand.OFF_HAND;
+                    if (slime == AetherEntityTypes.GOLDEN_SWET.get())
+                        bucket = AQItems.GOLDEN_SWET_IN_A_SKYROOT_BUCKET_ITEM.get();
+                } else return;
 
                 if (!event.getLevel().isClientSide) {
                     ItemStack outStack = new ItemStack(bucket);
@@ -107,5 +150,26 @@ public class AQEvents {
 
     public void CheckBucket() {
 
+    }
+
+    public void checkEntity(Player player, InteractionHand hand, ItemStack stack, EntityType slime, Item bucket, EntityType test){
+        if (stack.getItem() == Items.BUCKET) {
+            if (slime == test)
+                return;
+            else return;
+        } else if (stack.getItem() == AetherItems.SKYROOT_BUCKET.get()) {
+            if (slime == EntityType.SLIME) {
+                bucket = AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get();
+            }
+        } else if (player.getOffhandItem().getItem() == Items.BUCKET) {
+            hand = InteractionHand.OFF_HAND;
+            if (slime == test)
+                return;
+            else return;
+        } else if (player.getOffhandItem().getItem() == AetherItems.SKYROOT_BUCKET.get()) {
+            hand = InteractionHand.OFF_HAND;
+            if (slime == test)
+                bucket = AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get();
+        } else return;
     }
 }

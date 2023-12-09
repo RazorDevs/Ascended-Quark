@@ -1,5 +1,6 @@
 package com.razordevs.ascended_quark.items;
 
+import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,7 +14,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
@@ -28,33 +28,16 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.phys.Vec3;
 import vazkii.arl.util.ItemNBTHelper;
-import vazkii.quark.base.item.QuarkItem;
-import vazkii.quark.base.module.QuarkModule;
 
 import javax.annotation.Nonnull;
 
-public class AQSlimeInABucketItem extends Item {
-    public static final String TAG_ENTITY_DATA = "slime_nbt";
-    public static final String TAG_EXCITED = "excited";
-
+public class AQSwetInABucketItem extends Item {
+    public static final String TAG_ENTITY_DATA = "swet_nbt";
     EntityType bucketEntity;
 
-    public AQSlimeInABucketItem(EntityType bucketEntity) {
-        super(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC).craftRemainder(AetherItems.SKYROOT_BUCKET.get()));
+    public AQSwetInABucketItem(EntityType bucketEntity) {
+        super(new Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC).craftRemainder(AetherItems.SKYROOT_BUCKET.get()));
         this.bucketEntity = bucketEntity;
-    }
-
-    @Override
-    public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level world, @Nonnull Entity entity, int itemSlot, boolean isSelected) {
-        if(world instanceof ServerLevel serverLevel) {
-            Vec3 pos = entity.position();
-            int x = Mth.floor(pos.x);
-            int z = Mth.floor(pos.z);
-            boolean slime = isSlimeChunk(serverLevel, x, z);
-            boolean excited = ItemNBTHelper.getBoolean(stack, TAG_EXCITED, false);
-            if(excited != slime)
-                ItemNBTHelper.setBoolean(stack, TAG_EXCITED, slime);
-        }
     }
 
     @Nonnull
@@ -71,21 +54,21 @@ public class AQSlimeInABucketItem extends Item {
         double z = pos.getZ() + 0.5 + facing.getStepZ();
 
         if(!worldIn.isClientSide) {
-            Slime slime = new Slime(bucketEntity, worldIn);
+            Swet swet = new Swet(bucketEntity, worldIn);
 
             CompoundTag data = ItemNBTHelper.getCompound(playerIn.getItemInHand(hand), TAG_ENTITY_DATA, true);
             if(data != null)
-                slime.load(data);
+                swet.load(data);
             else {
-                slime.getAttribute(Attributes.MAX_HEALTH).setBaseValue(1.0);
-                slime.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
-                slime.setHealth(slime.getMaxHealth());
+                swet.getAttribute(Attributes.MAX_HEALTH).setBaseValue(1.0);
+                swet.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
+                swet.setHealth(swet.getMaxHealth());
             }
 
-            slime.setPos(x, y, z);
+            swet.setPos(x, y, z);
 
-            worldIn.gameEvent(playerIn, GameEvent.ENTITY_PLACE, slime.position());
-            worldIn.addFreshEntity(slime);
+            worldIn.gameEvent(playerIn, GameEvent.ENTITY_PLACE, swet.position());
+            worldIn.addFreshEntity(swet);
             playerIn.swing(hand);
         }
 
@@ -110,10 +93,4 @@ public class AQSlimeInABucketItem extends Item {
 
         return super.getName(stack);
     }
-
-    public static boolean isSlimeChunk(ServerLevel world, int x, int z) {
-        ChunkPos chunkpos = new ChunkPos(new BlockPos(x, 0, z));
-        return WorldgenRandom.seedSlimeChunk(chunkpos.x, chunkpos.z, world.getSeed(), 987234911L).nextInt(10) == 0;
-    }
-
 }

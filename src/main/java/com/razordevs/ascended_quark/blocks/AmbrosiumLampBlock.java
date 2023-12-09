@@ -13,9 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.AbstractCandleBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RedstoneLampBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -30,12 +28,10 @@ public class AmbrosiumLampBlock extends Block {
     public static final int MIN_LEVEL = 0;
     public static final int MAX_LEVEL = 4;
     public static final IntegerProperty LIGHT = BlockStateProperties.RESPAWN_ANCHOR_CHARGES;
-    public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
-    public static final ToIntFunction<BlockState> LIGHT_EMISSION = (blockState) -> blockState.getValue(LIT) ? 4 * blockState.getValue(LIGHT) : 0;
 
     public AmbrosiumLampBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT, Integer.valueOf(0)).setValue(LIT, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT, Integer.valueOf(0)));
     }
 
 
@@ -48,18 +44,15 @@ public class AmbrosiumLampBlock extends Block {
             if (!player.getAbilities().instabuild) {
                 itemstack.shrink(1);
             }
-
             return InteractionResult.sidedSuccess(level.isClientSide);
-        } else if (blockState.getValue(LIGHT) == 0) {
-            return InteractionResult.PASS;
-        } else {
+        } else if (!isRespawnFuel(itemstack)) {
             deplete(level, blockPos, blockState);
             if (!player.getAbilities().instabuild) {
                 player.addItem(new ItemStack(AetherBlocks.AMBROSIUM_BLOCK.get().asItem()));
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
-        //return InteractionResult.CONSUME;
+        return InteractionResult.CONSUME;
     }
 
     private static boolean isRespawnFuel(ItemStack itemStack) {
@@ -72,27 +65,20 @@ public class AmbrosiumLampBlock extends Block {
 
     public static void charge(Level level, BlockPos blockPos, BlockState blockState) {
         level.setBlock(blockPos, blockState.setValue(LIGHT, Integer.valueOf(blockState.getValue(LIGHT) + 1)), 3);
-        level.setBlock(blockPos, blockState.setValue(LIT, Boolean.valueOf(true)), 1);
         level.playSound((Player)null, (double)blockPos.getX() + 0.5D, (double)blockPos.getY() + 0.5D, (double)blockPos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
     public static void deplete(Level level, BlockPos blockPos, BlockState blockState) {
-        level.setBlock(blockPos, blockState.setValue(LIGHT, Integer.valueOf(blockState.getValue(LIGHT) - 1)), 3);
-        if(blockState.getValue(LIGHT).equals(0)){
-            level.setBlock(blockPos, blockState.setValue(LIT, Boolean.valueOf(false)), 3);
-        }
+        if(blockState.getValue(LIGHT) > 0)
+            level.setBlock(blockPos, blockState.setValue(LIGHT, Integer.valueOf(blockState.getValue(LIGHT) - 1)), 3);
         level.playSound((Player)null, (double)blockPos.getX() + 0.5D, (double)blockPos.getY() + 0.5D, (double)blockPos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> add) {
-        add.add(LIGHT, LIT);
+        add.add(LIGHT);
     }
 
-    protected boolean canBeLit(BlockState blockState) {
-        return !blockState.getValue(LIT);
-    }
-
-    public boolean isFullyCharged(BlockState value){
-        return value.getValue(LIGHT).equals(MAX_LEVEL);
+    public static int getScaledChargeLevel(BlockState p_55862_, int p_55863_) {
+        return Mth.floor((float)(p_55862_.getValue(LIGHT)) / 4.0F * (float)p_55863_);
     }
 }

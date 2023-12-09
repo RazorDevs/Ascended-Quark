@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ascended_quark:block/zanite_bars"
+  }
+}

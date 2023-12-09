@@ -1,5 +1,5 @@
-// 1.19.2	2023-12-09T13:48:30.572644	Ascended Quark Item Tags
-831239cca4e80bcbf0e724f72cf1857c289080ef data/aether/tags/items/treated_as_aether_item.json
+// 1.19.2	2023-12-09T14:42:31.03339567	Ascended Quark Item Tags
+aae97a49a7889efa837a92c7334ec3a7d4f21066 data/aether/tags/items/treated_as_aether_item.json
 089ae256b4e6eab481e02b9b2dc6d693afcaab62 data/forge/tags/items/chests/wooden.json
 119c832e848b261dcfaad11931c85349a7404a60 data/minecraft/tags/items/slabs.json
 afcca0b61f3cfba04d1cd2ddc3296d6d57a53252 data/minecraft/tags/items/stairs.json

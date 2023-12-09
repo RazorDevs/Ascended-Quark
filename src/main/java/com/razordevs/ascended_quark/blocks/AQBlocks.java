@@ -52,9 +52,12 @@ public class AQBlocks {
     public static final RegistryObject<Block> SKYROOT_POST = registerBlock("skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<Block> STRIPPED_SKYROOT_POST = registerBlock("stripped_skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
 
+
     public static final RegistryObject<Block> HOLYSTONE_FURNACE = registerBlock("holystone_furnace", () -> new AQFurnaceBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));
 
     public static final RegistryObject<Block> AMBROSIUM_LAMP = registerBlock("ambrosium_lamp", () -> new AmbrosiumLampBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));
+
+    public static final RegistryObject<Block> ZANITE_BARS = registerBlock("zanite_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
 
 
     // VANILLA AETHER VERTICAL SLABS

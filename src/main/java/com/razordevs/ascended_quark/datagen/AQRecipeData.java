@@ -38,6 +38,14 @@ public class AQRecipeData extends RecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(Blocks.CHEST).requires(AQBlocks.SKYROOT_CHEST.get()).
             unlockedBy(getHasName(AetherBlocks.SKYROOT_PLANKS.get()), has(AetherBlocks.SKYROOT_PLANKS.get())).save(consumer);
+
+        veticalSlab(AQBlocks.ANGELIC_VERTICAL_SLAB.get(), AetherBlocks.ANGELIC_STONE.get(), consumer);
+        veticalSlab(AQBlocks.HELLFIRE_VERTICAL_SLAB.get(), AetherBlocks.HELLFIRE_STONE.get(), consumer);
+        veticalSlab(AQBlocks.HOLYSTONE_VERTICAL_SLAB.get(), AetherBlocks.HOLYSTONE.get(), consumer);
+        veticalSlab(AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get(), AetherBlocks.MOSSY_HOLYSTONE.get(), consumer);
+        veticalSlab(AQBlocks.ICESTONE_VERTICAL_SLAB.get(), AetherBlocks.ICESTONE.get(), consumer);
+        veticalSlab(AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get(), AetherBlocks.HOLYSTONE_BRICKS.get(), consumer);
+        veticalSlab(AQBlocks.AEROGEL_VERTICAL_SLAB.get(), AetherBlocks.AEROGEL.get(), consumer);
     }
 
 
@@ -49,12 +57,21 @@ public class AQRecipeData extends RecipeProvider {
         verticalSlabBuilder(slab, Ingredient.of(texture)).unlockedBy(getHasName(texture), has(texture)).save(consumer);
     }
 
-    protected static RecipeBuilder verticalSlabBuilder(ItemLike p_176705_, Ingredient p_176706_) {
-        return ShapedRecipeBuilder.shaped(p_176705_, 6).define('#', p_176706_)
+    protected static RecipeBuilder verticalSlabBuilder(ItemLike itemLike, Ingredient ingredient) {
+        return ShapedRecipeBuilder.shaped(itemLike, 3).define('#', ingredient)
                 .pattern("#")
                 .pattern("#")
                 .pattern("#");
     }
+
+    void veticalSlabRevert(Block slab, Block reverted, Consumer<FinishedRecipe> consumer) {
+        verticalSlabBuilder(slab, Ingredient.of(reverted)).unlockedBy(getHasName(reverted), has(reverted)).save(consumer);
+    }
+
+    protected static RecipeBuilder verticalSlabRevertBuilder(ItemLike itemLike, Ingredient ingredient) {
+        return ShapelessRecipeBuilder.shapeless(itemLike).requires(ingredient);
+    }
+
     void stairs(Block stairs, Block texture, Consumer<FinishedRecipe> consumer) {
         stairBuilder(stairs, Ingredient.of(texture)).unlockedBy(getHasName(texture), has(texture)).save(consumer);
     }

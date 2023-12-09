@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -30,10 +29,9 @@ public class AQBlocks {
 
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, AscendedQuarkMod.MODID);
-
     public static final RegistryObject<Block> AETHER_COARSE_DIRT = registerBlock("aether_coarse_dirt", () -> new AetherCoarseDirtBlock(Block.Properties.copy(Blocks.COARSE_DIRT)));
     public static final RegistryObject<Block> AETHER_DIRT_BRICKS = registerBlock("aether_dirt_bricks", () -> new Block(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> AETHER_DIRT_BRICK_SlAB = registerBlock("aether_dirt_brick_slab", () -> new SlabBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> AETHER_DIRT_BRICK_SLAB = registerBlock("aether_dirt_brick_slab", () -> new SlabBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_STAIRS = registerBlock("aether_dirt_brick_stairs", () -> new StairBlock(AETHER_DIRT_BRICKS.get().defaultBlockState(), Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_WALL = registerBlock("aether_dirt_brick_wall", () -> new WallBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_VERTICAL_SLAB = registerBlock("aether_dirt_brick_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.AETHER_DIRT_BRICKS, BlockBehaviour.Properties.copy(AQBlocks.AETHER_DIRT_BRICKS.get())));
@@ -45,18 +43,22 @@ public class AQBlocks {
                     MaterialColor.GRASS)
             .strength(0F)
             .sound(SoundType.GRASS).noOcclusion()));
-
     public static final RegistryObject<Block> HOLLOW_SKYROOT_LOG = registerBlock("hollow_skyroot_log", () -> new AQHollowLogBlock(BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_LOG.get())));
     public static final RegistryObject<Block> SKYROOT_LADDER = registerBlock("skyroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
-
     public static final RegistryObject<Block> SKYROOT_POST = registerBlock("skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<Block> STRIPPED_SKYROOT_POST = registerBlock("stripped_skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
 
 
+    public static final RegistryObject<Block> QUICKSOIL_BRICKS = registerBlock("quicksoil_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> QUICKSOIL_BRICK_SLAB = registerBlock("quicksoil_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> QUICKSOIL_BRICK_STAIRS = registerBlock("quicksoil_brick_stairs", () -> new StairBlock(QUICKSOIL_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> QUICKSOIL_BRICK_WALL = registerBlock("quicksoil_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> QUICKSOIL_BRICK_VERTICAL_SLAB = registerBlock("quicksoil_brick_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.QUICKSOIL_BRICKS, BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+
+
+
     public static final RegistryObject<Block> HOLYSTONE_FURNACE = registerBlock("holystone_furnace", () -> new AQFurnaceBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));
-
     public static final RegistryObject<Block> AMBROSIUM_LAMP = registerBlock("ambrosium_lamp", () -> new AmbrosiumLampBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));
-
     public static final RegistryObject<Block> ZANITE_BARS = registerBlock("zanite_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
 
 

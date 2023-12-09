@@ -21,8 +21,15 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlock(AQBlocks.AETHER_COARSE_DIRT.get());
         this.itemBlock(AQBlocks.AETHER_DIRT_BRICKS.get());
         this.itemBlock(AQBlocks.AETHER_DIRT_BRICK_STAIRS.get());
-        this.itemBlock(AQBlocks.AETHER_DIRT_BRICK_SlAB.get());
+        this.itemBlock(AQBlocks.AETHER_DIRT_BRICK_SLAB.get());
         this.itemBlock(AQBlocks.AETHER_DIRT_BRICK_VERTICAL_SLAB.get());
+
+        this.itemBlock(AQBlocks.QUICKSOIL_BRICKS.get());
+        this.itemBlock(AQBlocks.QUICKSOIL_BRICK_STAIRS.get());
+        this.itemWallBlock(AQBlocks.QUICKSOIL_BRICK_WALL.get(), AQBlocks.QUICKSOIL_BRICKS.get());
+        this.itemBlock(AQBlocks.QUICKSOIL_BRICK_SLAB.get());
+        this.itemBlock(AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get());
+
         this.itemBlock(AQBlocks.SKYROOT_LEAF_CARPET.get());
         this.itemBlock(AQBlocks.HOLLOW_SKYROOT_LOG.get());
         this.itemBlock(AQBlocks.SKYROOT_POST.get());

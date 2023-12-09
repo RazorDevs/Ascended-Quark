@@ -8,7 +8,6 @@ import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -43,7 +42,7 @@ public class AQBlockTagData extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 AQBlocks.AETHER_DIRT_BRICKS.get(),
-                AQBlocks.AETHER_DIRT_BRICK_SlAB.get(),
+                AQBlocks.AETHER_DIRT_BRICK_SLAB.get(),
                 AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(),
                 AQBlocks.AETHER_DIRT_BRICK_WALL.get()
         );
@@ -66,7 +65,7 @@ public class AQBlockTagData extends BlockTagsProvider {
         );
 
         tag(BlockTags.SLABS).add(
-                AQBlocks.AETHER_DIRT_BRICK_SlAB.get()
+                AQBlocks.AETHER_DIRT_BRICK_SLAB.get()
         );
 
         tag(BlockTags.STAIRS).add(

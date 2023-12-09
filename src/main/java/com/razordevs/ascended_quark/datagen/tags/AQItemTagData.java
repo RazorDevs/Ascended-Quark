@@ -10,7 +10,6 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -44,7 +43,7 @@ public class AQItemTagData extends ItemTagsProvider {
         }
 
         tag(ItemTags.SLABS).add(
-                AQBlocks.AETHER_DIRT_BRICK_SlAB.get().asItem()
+                AQBlocks.AETHER_DIRT_BRICK_SLAB.get().asItem()
         );
 
         tag(ItemTags.STAIRS).add(

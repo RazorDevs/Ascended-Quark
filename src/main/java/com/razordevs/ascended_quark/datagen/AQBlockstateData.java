@@ -1,26 +1,20 @@
 package com.razordevs.ascended_quark.datagen;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
-import com.aetherteam.aether.block.AetherBlocks;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
-import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import vazkii.quark.content.building.block.VerticalSlabBlock;
 
 
-import java.util.Collection;
 import java.util.Map;
 
 
@@ -33,9 +27,14 @@ public class AQBlockstateData extends BlockStateProvider {
     public void registerStatesAndModels() {
         this.block(AQBlocks.AETHER_COARSE_DIRT.get());
         this.block(AQBlocks.AETHER_DIRT_BRICKS.get());
-        this.slab(AQBlocks.AETHER_DIRT_BRICK_SlAB.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
+        this.slab(AQBlocks.AETHER_DIRT_BRICK_SLAB.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
         this.stairs(AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
         this.wallBlock(AQBlocks.AETHER_DIRT_BRICK_WALL.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
+
+        this.block(AQBlocks.QUICKSOIL_BRICKS.get());
+        this.slab(AQBlocks.QUICKSOIL_BRICK_SLAB.get(), AQBlocks.QUICKSOIL_BRICKS.get());
+        this.stairs(AQBlocks.QUICKSOIL_BRICK_STAIRS.get(), AQBlocks.QUICKSOIL_BRICKS.get());
+        this.wallBlock(AQBlocks.QUICKSOIL_BRICK_WALL.get(), AQBlocks.QUICKSOIL_BRICKS.get());
 
         /*
         this.slab(AQBlocks.ANGELIC_VERTICAL_SLAB.get(), AetherBlocks.ANGELIC_STONE.get());

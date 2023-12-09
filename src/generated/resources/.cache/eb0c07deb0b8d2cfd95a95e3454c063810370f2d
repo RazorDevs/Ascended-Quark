@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-09T14:15:18.109208294	Item Models: ascended_quark
+// 1.19.2	2023-12-09T16:28:01.290641443	Item Models: ascended_quark
 ac6cc442ad1688515a1e6ecea181ad01d1b15ef2 assets/ascended_quark/models/item/aerogel_vertical_slab.json
 b79c8ebb9bd375121d5db86622e70c097b47dc1d assets/ascended_quark/models/item/aether_coarse_dirt.json
 272d105f9584075d80da3172954a3703128e781e assets/ascended_quark/models/item/aether_dirt_brick_slab.json
@@ -14,6 +14,11 @@ dc03693f6d2f89a52f55e3f6a05dbe652f8536c6 assets/ascended_quark/models/item/aethe
 1797b740a8df2ee4f2dc0a0ca08d248c09164f3e assets/ascended_quark/models/item/holystone_vertical_slab.json
 d90229f04e35110ff84d7c3394911f94c7c447f3 assets/ascended_quark/models/item/icestone_vertical_slab.json
 63d38fc82fc9336efacdda87957f563a40a381f4 assets/ascended_quark/models/item/mossy_holystone_vertical_slab.json
+116759ed4f9beb1ed9afb2784b0f0f3f5a536493 assets/ascended_quark/models/item/quicksoil_brick_slab.json
+317ce5cd16760b09b890a5876a4774864f5f2d2f assets/ascended_quark/models/item/quicksoil_brick_stairs.json
+3f6361fd45a38964dd03c3435e3aed160cd409bc assets/ascended_quark/models/item/quicksoil_brick_vertical_slab.json
+467c931b7017d91401b559decbe61ef4f64fd44f assets/ascended_quark/models/item/quicksoil_brick_wall.json
+f15ac2fe67309b423b86d1ec60295fea2c511395 assets/ascended_quark/models/item/quicksoil_bricks.json
 08fbd1c08a2eb932d3bd9fc72d55e2cd917bbbbc assets/ascended_quark/models/item/skyroot_ladder.json
 fff34b5d7a22239f88c6b359eb34f5051698252c assets/ascended_quark/models/item/skyroot_leaf_carpet.json
 a3c6ef8bbb8557ff62cdedb4ab1af484e28053d8 assets/ascended_quark/models/item/skyroot_post.json

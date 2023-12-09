@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "ascended_quark:block/quicksoil_bricks",
+    "side": "ascended_quark:block/quicksoil_bricks",
+    "top": "ascended_quark:block/quicksoil_bricks"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side_tall",
+  "textures": {
+    "wall": "ascended_quark:block/quicksoil_bricks"
+  }
+}

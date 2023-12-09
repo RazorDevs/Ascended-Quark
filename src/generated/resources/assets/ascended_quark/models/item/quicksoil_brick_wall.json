@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "ascended_quark:block/quicksoil_bricks"
+  }
+}

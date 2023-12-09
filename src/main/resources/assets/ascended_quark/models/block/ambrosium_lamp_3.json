@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "ascended_quark:block/ambrosium_lamp_3"
+  }
+}

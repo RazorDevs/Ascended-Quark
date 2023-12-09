@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "charges=0": {
+      "model": "ascended_quark:block/ambrosium_lamp_0"
+    },
+    "charges=1": {
+      "model": "ascended_quark:block/ambrosium_lamp_1"
+    },
+    "charges=2": {
+      "model": "ascended_quark:block/ambrosium_lamp_2"
+    },
+    "charges=3": {
+      "model": "ascended_quark:block/ambrosium_lamp_3"
+    },
+    "charges=4": {
+      "model": "ascended_quark:block/ambrosium_lamp_4"
+    }
+  }
+}

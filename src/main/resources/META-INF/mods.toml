@@ -11,7 +11,7 @@ logoFile="ascended_quark.png"
 credits="A special thanks goes to the creators behind Quark and Aether"
 authors="RazorDevs"
 description='''
-A mod that adds compatability between Aether and Quark
+A mod that adds compatibility between Aether and Quark.
 '''
 
 [[dependencies.ascended_quark]]

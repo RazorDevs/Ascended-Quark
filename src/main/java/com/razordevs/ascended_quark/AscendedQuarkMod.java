@@ -10,12 +10,16 @@ import com.razordevs.ascended_quark.entity.AQEntityTypes;
 import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.NewRegistryEvent;
+import net.minecraftforge.registries.RegisterEvent;
 import org.slf4j.Logger;
 
 @Mod(AscendedQuarkMod.MODID)
@@ -55,6 +59,4 @@ public class AscendedQuarkMod
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new AQItemTagData(event.getGenerator(), blockTags, fileHelper));
     }
-
-
 }

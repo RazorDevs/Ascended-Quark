@@ -6,7 +6,6 @@ import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.entity.block.SkyrootChestBlockEntity;
-import com.razordevs.ascended_quark.entity.block.HolystoneFurnaceBlockEntity;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -16,11 +15,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import vazkii.quark.content.building.block.*;
-import vazkii.quark.content.building.block.be.VariantFurnaceBlockEntity;
+import vazkii.quark.content.building.block.VerticalSlabBlock;
 
 import java.util.Objects;
 import java.util.function.Function;
@@ -32,13 +31,12 @@ public class AQBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, AscendedQuarkMod.MODID);
 
-
     public static final RegistryObject<Block> AETHER_COARSE_DIRT = registerBlock("aether_coarse_dirt", () -> new AetherCoarseDirtBlock(Block.Properties.copy(Blocks.COARSE_DIRT)));
     public static final RegistryObject<Block> AETHER_DIRT_BRICKS = registerBlock("aether_dirt_bricks", () -> new Block(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_SlAB = registerBlock("aether_dirt_brick_slab", () -> new SlabBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_STAIRS = registerBlock("aether_dirt_brick_stairs", () -> new StairBlock(AETHER_DIRT_BRICKS.get().defaultBlockState(), Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_WALL = registerBlock("aether_dirt_brick_wall", () -> new WallBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> AETHER_DIRT_BRICK_VERTICAL_SLAB = registerBlock("aether_dirt_brick_vertical_slab", () -> new VerticalSlabBlock(AETHER_DIRT_BRICKS, Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> AETHER_DIRT_BRICK_VERTICAL_SLAB = registerBlock("aether_dirt_brick_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.AETHER_DIRT_BRICKS, BlockBehaviour.Properties.copy(AQBlocks.AETHER_DIRT_BRICKS.get())));
 
     public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AQStoolBlock::new);
     public static final RegistryObject<Block> SKYROOT_CHEST = registerBlock("skyroot_chest", () -> new AQChestBlock(BlockBehaviour.Properties.copy(Blocks.CHEST), AQBlockEntityTypes.SKYROOT_CHEST::get));
@@ -55,6 +53,18 @@ public class AQBlocks {
     public static final RegistryObject<Block> STRIPPED_SKYROOT_POST = registerBlock("stripped_skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
 
     public static final RegistryObject<Block> HOLYSTONE_FURNACE = registerBlock("holystone_furnace", () -> new AQFurnaceBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));
+
+    public static final RegistryObject<Block> AMBROSIUM_LAMP = registerBlock("ambrosium_lamp", () -> new AmbrosiumLampBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));
+
+
+    // VANILLA AETHER VERTICAL SLABS
+    public static final RegistryObject<Block> ANGELIC_VERTICAL_SLAB = registerBlock("angelic_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.ANGELIC_STONE, BlockBehaviour.Properties.copy(AetherBlocks.ANGELIC_STONE.get())));
+    public static final RegistryObject<Block> HELLFIRE_VERTICAL_SLAB = registerBlock("hellfire_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.HELLFIRE_STONE, BlockBehaviour.Properties.copy(AetherBlocks.HELLFIRE_STONE.get())));
+    public static final RegistryObject<Block> HOLYSTONE_VERTICAL_SLAB = registerBlock("holystone_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.HOLYSTONE, BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get())));
+    public static final RegistryObject<Block> MOSSY_HOLYSTONE_VERTICAL_SLAB = registerBlock("mossy_holystone_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.MOSSY_HOLYSTONE, BlockBehaviour.Properties.copy(AetherBlocks.MOSSY_HOLYSTONE.get())));
+    public static final RegistryObject<Block> ICESTONE_VERTICAL_SLAB = registerBlock("icestone_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.ICESTONE, BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> HOLYSTONE_BRICK_VERTICAL_SLAB = registerBlock("holystone_brick_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.HOLYSTONE_BRICKS, BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE_BRICKS.get())));
+    public static final RegistryObject<Block> AEROGEL_VERTICAL_SLAB = registerBlock("aerogel_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.AEROGEL, BlockBehaviour.Properties.copy(AetherBlocks.AEROGEL.get())));
 
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
@@ -77,6 +87,10 @@ public class AQBlocks {
             else return  new BlockItem(block, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
     };
     }
+
+    /*public static RegistryObject<Block> createVerticalSlabBlock(String name, Block copyBlock){
+        return BLOCKS.register(name + "_vertical_slab", () -> new VerticalSlabBlock(copyBlock.defaultBlockState().getBlockHolder(), BlockBehaviour.Properties.copy(copyBlock).requiresCorrectToolForDrops()));
+    }*/
 
     private static ToIntFunction<BlockState> litBlockEmission(int p_50760_) {
         return (p_50763_) -> {

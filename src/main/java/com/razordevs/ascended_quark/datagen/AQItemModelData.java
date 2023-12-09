@@ -29,6 +29,14 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlockFlat(AQBlocks.SKYROOT_LADDER.get());
         this.itemBlock(AQBlocks.HOLYSTONE_FURNACE.get());
         this.itemWallBlock(AQBlocks.AETHER_DIRT_BRICK_WALL.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
+
+        this.itemBlock(AQBlocks.ANGELIC_VERTICAL_SLAB.get());
+        this.itemBlock(AQBlocks.HELLFIRE_VERTICAL_SLAB.get());
+        this.itemBlock(AQBlocks.HOLYSTONE_VERTICAL_SLAB.get());
+        this.itemBlock(AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get());
+        this.itemBlock(AQBlocks.ICESTONE_VERTICAL_SLAB.get());
+        this.itemBlock(AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get());
+        this.itemBlock(AQBlocks.AEROGEL_VERTICAL_SLAB.get());
     }
 
     public void handheldItem(Item item) {

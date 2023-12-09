@@ -93,12 +93,12 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.2.23'
 
-
     implementation fg.deobf("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
     implementation fg.deobf("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
 
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
-    implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
+    compileOnly fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
+    runtimeOnly fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
     implementation fg.deobf("vazkii.quark:Quark:${quark_version}")
     implementation fg.deobf("vazkii.autoreglib:AutoRegLib:${autoreglib_version}")
 }

@@ -1,6 +1,7 @@
 package com.razordevs.ascended_quark.datagen;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import com.razordevs.ascended_quark.items.AQItems;
@@ -35,6 +36,17 @@ public class AQBlockstateData extends BlockStateProvider {
         this.slab(AQBlocks.AETHER_DIRT_BRICK_SlAB.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
         this.stairs(AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
         this.wallBlock(AQBlocks.AETHER_DIRT_BRICK_WALL.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
+
+        /*
+        this.slab(AQBlocks.ANGELIC_VERTICAL_SLAB.get(), AetherBlocks.ANGELIC_STONE.get());
+        this.slab(AQBlocks.HELLFIRE_VERTICAL_SLAB.get(), AetherBlocks.HELLFIRE_STONE.get());
+        this.slab(AQBlocks.HOLYSTONE_VERTICAL_SLAB.get(), AetherBlocks.HOLYSTONE.get());
+        this.slab(AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get(), AetherBlocks.MOSSY_HOLYSTONE.get());
+        this.slab(AQBlocks.ICESTONE_VERTICAL_SLAB.get(), AetherBlocks.ICESTONE.get());
+        this.slab(AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+        this.slab(AQBlocks.AEROGEL_VERTICAL_SLAB.get(), AetherBlocks.AEROGEL.get());
+        */
+
     }
 
 
@@ -109,6 +121,20 @@ public class AQBlockstateData extends BlockStateProvider {
         this.slabBlock((SlabBlock) block, this.texture(this.name(baseBlock)), this.texture(this.name(baseBlock)));
     }
 
+    public void verticalSlabBlock(Block block, Block baseBlock) {
+        this.verticalSlabBlock((VerticalSlabBlock) block, this.texture(this.name(baseBlock)), this.texture(this.name(baseBlock)));
+    }
+
+    public void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation doubleslab, ResourceLocation texture) {
+        verticalSlabBlock(block, doubleslab, texture, texture, texture);
+    }
+
+    public void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation doubleslab, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        ModelFile vertical_slab = this.models().withExistingParent(this.name(block), new ResourceLocation("quark", "block/vertical_slab"))
+                .texture("bottom", bottom).texture("top", top).texture("side", side);
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(vertical_slab));
+    }
+
     public void wallBlock(Block block, Block baseBlock) {
         this.wallBlockInternal((WallBlock) block, this.name(block), this.texture(this.name(baseBlock)));
     }
@@ -121,6 +147,7 @@ public class AQBlockstateData extends BlockStateProvider {
                 models().wallSide(baseName + "_side", texture),
                 models().wallSideTall(baseName + "_side_tall", texture));
     }
+
     //GENESIS COMPAT
     protected BlockModelBuilder makeWallPostModel(int width, int height, String name) {
         return models().withExistingParent(name, this.mcLoc("block/block"))

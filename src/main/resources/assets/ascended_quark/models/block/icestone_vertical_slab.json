@@ -1,0 +1,8 @@
+{
+  "parent": "quark:block/vertical_slab",
+  "textures": {
+    "bottom": "aether:block/natural/icestone",
+    "top": "aether:block/natural/icestone",
+    "side": "aether:block/natural/icestone"
+  }
+}

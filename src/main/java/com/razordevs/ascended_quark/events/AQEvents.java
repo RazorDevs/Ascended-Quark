@@ -1,14 +1,30 @@
 package com.razordevs.ascended_quark.events;
 
 
+import com.aetherteam.aether.item.AetherItems;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.blocks.AQStoolBlock;
+import com.razordevs.ascended_quark.items.AQItems;
+import com.razordevs.ascended_quark.items.AQSlimeInABucketItem;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import vazkii.arl.util.ItemNBTHelper;
+import vazkii.quark.content.tools.item.SlimeInABucketItem;
 
 @Mod.EventBusSubscriber(modid = AscendedQuarkMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AQEvents {
@@ -20,5 +36,76 @@ public class AQEvents {
             if(state.getBlock() instanceof AQStoolBlock stool)
                 stool.blockClicked(event.getLevel(), event.getPos());
         }
+    }
+
+
+    @SubscribeEvent
+    public void entityInteract(PlayerInteractEvent.EntityInteract event) {
+        if(event.getTarget() != null) {
+
+            Item bucket = Items.BUCKET;
+            EntityType slime;
+
+            if(event.getTarget().getType() == EntityType.SLIME && ((Slime) event.getTarget()).getSize() == 1) {
+                slime = EntityType.SLIME;
+            }
+
+            else {
+                return;
+            }
+
+            if(event.getTarget().isAlive()) {
+                Player player = event.getEntity();
+                InteractionHand hand = InteractionHand.MAIN_HAND;
+                ItemStack stack = player.getMainHandItem();
+
+                if (stack.getItem() == Items.BUCKET) {
+                    if (slime == EntityType.SLIME)
+                        return;
+                    else return;
+                } else if (stack.getItem() == AetherItems.SKYROOT_BUCKET.get()) {
+                    if (slime == EntityType.SLIME) {
+                        bucket = AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get();
+                    }
+                } else if (player.getOffhandItem().getItem() == Items.BUCKET) {
+                    hand = InteractionHand.OFF_HAND;
+                    if (slime == EntityType.SLIME)
+                        return;
+                    else return;
+                } else if (player.getOffhandItem().getItem() == AetherItems.SKYROOT_BUCKET.get()) {
+                    hand = InteractionHand.OFF_HAND;
+                    if (slime == EntityType.SLIME)
+                        bucket = AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get();
+                } else return;
+
+
+                if (!event.getLevel().isClientSide) {
+                    ItemStack outStack = new ItemStack(bucket);
+                    CompoundTag cmp = event.getTarget().serializeNBT();
+                    ItemNBTHelper.setCompound(outStack, AQSlimeInABucketItem.TAG_ENTITY_DATA, cmp);
+
+                    if (stack.getCount() == 1)
+                        player.setItemInHand(hand, outStack);
+                    else {
+                        stack.shrink(1);
+                        if (stack.getCount() == 0)
+                            player.setItemInHand(hand, outStack);
+                        else if (!player.getInventory().add(outStack))
+                            player.drop(outStack, false);
+                    }
+
+                    event.getLevel().gameEvent(player, GameEvent.ENTITY_INTERACT, event.getTarget().position());
+                    event.getTarget().discard();
+                } else player.swing(hand);
+
+                event.setCanceled(true);
+                event.setCancellationResult(InteractionResult.SUCCESS);
+
+            }
+        }
+    }
+
+    public void CheckBucket() {
+
     }
 }

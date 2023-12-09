@@ -7,9 +7,12 @@ import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class AQLangData extends NitrogenLanguageProvider {
 
@@ -20,11 +23,23 @@ public class AQLangData extends NitrogenLanguageProvider {
     @Override
     protected void addTranslations() {
         Collection<RegistryObject<Block>> blocks = AQBlocks.BLOCKS.getEntries();
-        Collection<RegistryObject<Item>> items = AQItems.ITEMS.getEntries();
+        Collection<RegistryObject<Item>> itemsTemp = AQItems.ITEMS.getEntries();
+        List<Item> items = new ArrayList<>();
+
+        for (RegistryObject<Item> item : itemsTemp) {
+            items.add(item.get());
+        }
         // blocks.remove(Blocks.DIRT);
-        for (RegistryObject<Block> block : blocks)
-        {
+        for (RegistryObject<Block> block : blocks) {
             this.add(block.get(), this.getName(block.getId().getPath()));
+
+            items.remove(block.get().asItem());
+        }
+
+
+        for (Item item : items)
+        {
+            this.add(item, this.getName(item.toString()));
         }
     }
 

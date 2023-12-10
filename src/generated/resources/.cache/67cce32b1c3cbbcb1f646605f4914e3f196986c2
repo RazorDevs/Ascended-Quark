@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-09T16:24:05.929502885	LootTables
+// 1.19.2	2023-12-10T13:50:16.135285376	LootTables
 9b0c423cf17537b8ef84ff49fcc8fdebe5831348 data/ascended_quark/loot_tables/blocks/aerogel_vertical_slab.json
 b3e305e153a291fa552d489c279036f1e604cb94 data/ascended_quark/loot_tables/blocks/aether_coarse_dirt.json
 75c87ba3df784c0577917f820c9cc501066d97ac data/ascended_quark/loot_tables/blocks/aether_dirt_brick_slab.json
@@ -20,6 +20,8 @@ c3ab0ed73fa0d9c979d85788963c44b698662245 data/ascended_quark/loot_tables/blocks/
 f7b4c48d43ecec2761c7054d085f6f71b2971e59 data/ascended_quark/loot_tables/blocks/quicksoil_brick_vertical_slab.json
 47f6cc0bc425733fdfcb13b71a91864cc6a69dff data/ascended_quark/loot_tables/blocks/quicksoil_brick_wall.json
 7df001cd70d63fc26da5933fd492edd55f34bcec data/ascended_quark/loot_tables/blocks/quicksoil_bricks.json
+1bdd1f5fcf289987f501bfa146a7c2f49393c345 data/ascended_quark/loot_tables/blocks/quicksoil_framed_glass.json
+76d6beefbd2c6a3d6c499a9a8763c0a7c4cb3fff data/ascended_quark/loot_tables/blocks/quicksoil_framed_glass_pane.json
 129586936f1de2aa459453ed72533d5b1858af77 data/ascended_quark/loot_tables/blocks/skyroot_chest.json
 fa11e8b095d191a2192b115aad10a59f1553525f data/ascended_quark/loot_tables/blocks/skyroot_hedge.json
 e9ae01031231aca2c572004d0c9d259523bf64cd data/ascended_quark/loot_tables/blocks/skyroot_ladder.json

@@ -45,6 +45,9 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlock(AQBlocks.ICESTONE_VERTICAL_SLAB.get());
         this.itemBlock(AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get());
         this.itemBlock(AQBlocks.AEROGEL_VERTICAL_SLAB.get());
+
+        this.itemBlock(AQBlocks.QUICKSOIL_FRAMED_GLASS.get());
+        this.itemBlockFlatName(AQBlocks.QUICKSOIL_FRAMED_GLASS_PANE.get(), this.blockName(AQBlocks.QUICKSOIL_FRAMED_GLASS.get()));
     }
 
     public void handheldItem(Item item) {

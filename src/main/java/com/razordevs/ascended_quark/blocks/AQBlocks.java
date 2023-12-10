@@ -1,6 +1,8 @@
 package com.razordevs.ascended_quark.blocks;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.block.construction.QuicksoilGlassBlock;
+import com.aetherteam.aether.block.construction.QuicksoilGlassPaneBlock;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
@@ -62,6 +64,8 @@ public class AQBlocks {
         return AmbrosiumLampBlock.getScaledChargeLevel(blockState, 16);
     })));
     public static final RegistryObject<Block> ZANITE_BARS = registerBlock("zanite_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
+    public static final RegistryObject<Block> QUICKSOIL_FRAMED_GLASS = registerBlock("quicksoil_framed_glass", () -> new QuicksoilGlassBlock(BlockBehaviour.Properties.copy(AetherBlocks.QUICKSOIL_GLASS.get())));
+    public static final RegistryObject<Block> QUICKSOIL_FRAMED_GLASS_PANE = registerBlock("quicksoil_framed_glass_pane", () -> new QuicksoilGlassPaneBlock(BlockBehaviour.Properties.copy(AetherBlocks.QUICKSOIL_GLASS_PANE.get())));
 
 
     // VANILLA AETHER VERTICAL SLABS

@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_glass_pane_noside_alt",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "pane": "ascended_quark:block/quicksoil_framed_glass"
+  }
+}

@@ -1,7 +1,6 @@
 package com.razordevs.ascended_quark.entity;
 
 import com.razordevs.ascended_quark.AscendedQuarkMod;
-import com.razordevs.ascended_quark.items.AmbrosiumTorchArrow;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;

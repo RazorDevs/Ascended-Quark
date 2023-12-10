@@ -1,8 +1,7 @@
-package com.razordevs.ascended_quark.items;
+package com.razordevs.ascended_quark.entity;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.client.particle.AetherParticleTypes;
-import com.razordevs.ascended_quark.entity.AQEntityTypes;
+import com.razordevs.ascended_quark.items.AQItems;
 import com.razordevs.ascended_quark.particle.AQParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,7 +17,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import vazkii.quark.content.tools.client.render.entity.TorchArrowRenderer;
 import vazkii.quark.content.tools.module.TorchArrowModule;
 import vazkii.quark.integration.claim.IClaimIntegration;
 

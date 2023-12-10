@@ -45,7 +45,7 @@ public class AmbrosiumLampBlock extends Block {
                 itemstack.shrink(1);
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
-        } else if (!isRespawnFuel(itemstack) && isOn(blockState)) {
+        } else if (!isRespawnFuel(itemstack) && isOn(blockState) && itemstack.isEmpty()) {
             deplete(level, blockPos, blockState);
             if (!player.getAbilities().instabuild) {
                 player.addItem(new ItemStack(AetherBlocks.AMBROSIUM_BLOCK.get().asItem()));

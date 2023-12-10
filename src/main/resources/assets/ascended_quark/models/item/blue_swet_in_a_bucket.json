@@ -1,14 +1,14 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "ascended_quark:item/golden_swet_in_a_bucket"
+    "layer0": "ascended_quark:item/blue_swet_in_a_bucket"
   },
   "overrides": [
     {
       "predicate": {
         "excited": 1
       },
-      "model": "ascended_quark:item/golden_swet_in_a_bucket_excited"
+      "model": "ascended_quark:item/blue_swet_in_a_bucket_excited"
     }
   ]
 }

@@ -16,13 +16,13 @@ public class AQItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, AscendedQuarkMod.MODID);
 
 
-    public static final RegistryObject<AQSlimeInABucketItem> SLIME_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("slime_in_a_skyroot_bucket", ()-> new AQSlimeInABucketItem(EntityType.SLIME));
+    public static final RegistryObject<AQSlimeInABucketItem> SLIME_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("slime_in_a_skyroot_bucket", ()-> new AQSlimeInABucketItem(EntityType.SLIME, true));
 
-    public static final RegistryObject<AQSwetInABucketItem> SWET_IN_A_BUCKET_ITEM = ITEMS.register("swet_in_a_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.BLUE_SWET.get()));
-    public static final RegistryObject<AQSwetInABucketItem> SWET_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("swet_in_a_skyroot_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.BLUE_SWET.get()));
+    public static final RegistryObject<AQSwetInABucketItem> BLUE_SWET_IN_A_BUCKET_ITEM = ITEMS.register("blue_swet_in_a_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.BLUE_SWET.get(), false));
+    public static final RegistryObject<AQSwetInABucketItem> BLUE_SWET_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("blue_swet_in_a_skyroot_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.BLUE_SWET.get(), true));
 
-    public static final RegistryObject<AQSwetInABucketItem> GOLDEN_SWET_IN_A_BUCKET_ITEM = ITEMS.register("golden_swet_in_a_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.GOLDEN_SWET.get()));
-    public static final RegistryObject<AQSwetInABucketItem> GOLDEN_SWET_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("golden_swet_in_a_skyroot_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.GOLDEN_SWET.get()));
+    public static final RegistryObject<AQSwetInABucketItem> GOLDEN_SWET_IN_A_BUCKET_ITEM = ITEMS.register("golden_swet_in_a_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.GOLDEN_SWET.get(), false));
+    public static final RegistryObject<AQSwetInABucketItem> GOLDEN_SWET_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("golden_swet_in_a_skyroot_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.GOLDEN_SWET.get(), true));
 
 
 }

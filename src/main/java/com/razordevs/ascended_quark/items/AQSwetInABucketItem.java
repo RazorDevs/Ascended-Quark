@@ -2,10 +2,13 @@ package com.razordevs.ascended_quark.items;
 
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherItems;
+import com.razordevs.ascended_quark.AscendedQuarkMod;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -27,17 +30,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import vazkii.arl.util.ItemNBTHelper;
 
 import javax.annotation.Nonnull;
+public class AQSwetInABucketItem extends AQEntityInABucketItem {
 
-public class AQSwetInABucketItem extends Item {
-    public static final String TAG_ENTITY_DATA = "swet_nbt";
-    EntityType bucketEntity;
-
-    public AQSwetInABucketItem(EntityType bucketEntity) {
-        super(new Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC).craftRemainder(AetherItems.SKYROOT_BUCKET.get()));
-        this.bucketEntity = bucketEntity;
+    public AQSwetInABucketItem(EntityType<Swet> bucketEntity, boolean isSkyroot) {
+        super(bucketEntity, isSkyroot);
     }
 
     @Nonnull
@@ -54,7 +58,7 @@ public class AQSwetInABucketItem extends Item {
         double z = pos.getZ() + 0.5 + facing.getStepZ();
 
         if(!worldIn.isClientSide) {
-            Swet swet = new Swet(bucketEntity, worldIn);
+            Swet swet = new Swet(this.getBucketEntity(), worldIn);
 
             CompoundTag data = ItemNBTHelper.getCompound(playerIn.getItemInHand(hand), TAG_ENTITY_DATA, true);
             if(data != null)
@@ -78,19 +82,5 @@ public class AQSwetInABucketItem extends Item {
             playerIn.setItemInHand(hand, new ItemStack(Items.BUCKET));
 
         return InteractionResult.SUCCESS;
-    }
-
-    @Nonnull
-    @Override
-    public Component getName(@Nonnull ItemStack stack) {
-        if(stack.hasTag()) {
-            CompoundTag cmp = ItemNBTHelper.getCompound(stack, TAG_ENTITY_DATA, false);
-            if(cmp != null && cmp.contains("CustomName")) {
-                Component custom = Component.Serializer.fromJson(cmp.getString("CustomName"));
-                return Component.translatable("item.quark.slime_in_a_bucket.named", custom);
-            }
-        }
-
-        return super.getName(stack);
     }
 }

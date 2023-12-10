@@ -28,9 +28,9 @@
   "block.ascended_quark.skyroot_stool": "Skyroot Stool",
   "block.ascended_quark.stripped_skyroot_post": "Stripped Skyroot Post",
   "block.ascended_quark.zanite_bars": "Zanite Bars",
+  "item.ascended_quark.blue_swet_in_a_bucket": "Blue Swet In A Bucket",
+  "item.ascended_quark.blue_swet_in_a_skyroot_bucket": "Blue Swet In A Skyroot Bucket",
   "item.ascended_quark.golden_swet_in_a_bucket": "Golden Swet In A Bucket",
   "item.ascended_quark.golden_swet_in_a_skyroot_bucket": "Golden Swet In A Skyroot Bucket",
-  "item.ascended_quark.slime_in_a_skyroot_bucket": "Slime In A Skyroot Bucket",
-  "item.ascended_quark.swet_in_a_bucket": "Swet In A Bucket",
-  "item.ascended_quark.swet_in_a_skyroot_bucket": "Swet In A Skyroot Bucket"
+  "item.ascended_quark.slime_in_a_skyroot_bucket": "Slime In A Skyroot Bucket"
 }

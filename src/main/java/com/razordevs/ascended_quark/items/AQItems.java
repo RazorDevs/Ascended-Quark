@@ -15,7 +15,6 @@ public class AQItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, AscendedQuarkMod.MODID);
 
-
     public static final RegistryObject<AQSlimeInABucketItem> SLIME_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("slime_in_a_skyroot_bucket", ()-> new AQSlimeInABucketItem(EntityType.SLIME, true));
 
     public static final RegistryObject<AQSwetInABucketItem> BLUE_SWET_IN_A_BUCKET_ITEM = ITEMS.register("blue_swet_in_a_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.BLUE_SWET.get(), false));

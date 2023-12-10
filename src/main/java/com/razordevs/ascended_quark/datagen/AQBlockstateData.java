@@ -37,17 +37,6 @@ public class AQBlockstateData extends BlockStateProvider {
         this.wallBlock(AQBlocks.QUICKSOIL_BRICK_WALL.get(), AQBlocks.QUICKSOIL_BRICKS.get());
 
         this.translucentBlock(AQBlocks.QUICKSOIL_FRAMED_GLASS.get());
-
-        /*
-        this.slab(AQBlocks.ANGELIC_VERTICAL_SLAB.get(), AetherBlocks.ANGELIC_STONE.get());
-        this.slab(AQBlocks.HELLFIRE_VERTICAL_SLAB.get(), AetherBlocks.HELLFIRE_STONE.get());
-        this.slab(AQBlocks.HOLYSTONE_VERTICAL_SLAB.get(), AetherBlocks.HOLYSTONE.get());
-        this.slab(AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get(), AetherBlocks.MOSSY_HOLYSTONE.get());
-        this.slab(AQBlocks.ICESTONE_VERTICAL_SLAB.get(), AetherBlocks.ICESTONE.get());
-        this.slab(AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
-        this.slab(AQBlocks.AEROGEL_VERTICAL_SLAB.get(), AetherBlocks.AEROGEL.get());
-        */
-
     }
 
 

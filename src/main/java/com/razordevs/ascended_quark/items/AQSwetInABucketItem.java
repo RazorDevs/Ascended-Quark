@@ -1,5 +1,6 @@
 package com.razordevs.ascended_quark.items;
 
+import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherItems;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
@@ -82,5 +83,15 @@ public class AQSwetInABucketItem extends AQEntityInABucketItem {
             playerIn.setItemInHand(hand, new ItemStack(Items.BUCKET));
 
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level world, @Nonnull Entity entity, int itemSlot, boolean isSelected) {
+        if (world instanceof ServerLevel) {
+            boolean slime = world.dimensionTypeId() == AetherDimensions.AETHER_DIMENSION_TYPE;
+            boolean excited = ItemNBTHelper.getBoolean(stack, TAG_EXCITED, false);
+            if (excited != slime)
+                ItemNBTHelper.setBoolean(stack, TAG_EXCITED, slime);
+        }
     }
 }

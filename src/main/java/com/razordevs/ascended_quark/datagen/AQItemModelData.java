@@ -2,6 +2,7 @@ package com.razordevs.ascended_quark.datagen;
 
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
+import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -45,6 +46,8 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlock(AQBlocks.ICESTONE_VERTICAL_SLAB.get());
         this.itemBlock(AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get());
         this.itemBlock(AQBlocks.AEROGEL_VERTICAL_SLAB.get());
+
+        this.item(AQItems.AMBROSIUM_TORCH_ARROW.get());
 
         this.itemBlock(AQBlocks.QUICKSOIL_FRAMED_GLASS.get());
         this.itemBlockFlatName(AQBlocks.QUICKSOIL_FRAMED_GLASS_PANE.get(), this.blockName(AQBlocks.QUICKSOIL_FRAMED_GLASS.get()));

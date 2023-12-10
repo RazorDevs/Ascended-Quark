@@ -17,6 +17,7 @@ import vazkii.quark.base.Quark;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.swing.text.html.HTML;
 import java.util.Collection;
 
 public class AQItemTagData extends ItemTagsProvider {
@@ -77,6 +78,10 @@ public class AQItemTagData extends ItemTagsProvider {
 
         tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "ladders"))).add(
                 AQBlocks.SKYROOT_LADDER.get().asItem()
+        );
+
+        tag(ItemTags.ARROWS).add(
+                AQItems.AMBROSIUM_TORCH_ARROW.get()
         );
     }
 }

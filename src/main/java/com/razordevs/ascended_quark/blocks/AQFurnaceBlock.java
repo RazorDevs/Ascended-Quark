@@ -2,6 +2,7 @@ package com.razordevs.ascended_quark.blocks;
 
 import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.entity.block.HolystoneFurnaceBlockEntity;
+import com.razordevs.ascended_quark.particle.AQParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -66,7 +67,7 @@ public class AQFurnaceBlock extends AbstractFurnaceBlock {
             double d6 = randomSource.nextDouble() * 6.0D / 16.0D;
             double d7 = direction$axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52D : d4;
             level.addParticle(ParticleTypes.SMOKE, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
-            level.addParticle(ParticleTypes.FLAME, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
+            level.addParticle(AQParticles.AMBROSIUM_SHARD_PARTICLE.get(), d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
         }
     }
 }

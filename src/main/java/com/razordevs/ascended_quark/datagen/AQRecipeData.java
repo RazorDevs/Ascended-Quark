@@ -39,6 +39,8 @@ public class AQRecipeData extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(Blocks.CHEST).requires(AQBlocks.SKYROOT_CHEST.get()).
             unlockedBy(getHasName(AetherBlocks.SKYROOT_PLANKS.get()), has(AetherBlocks.SKYROOT_PLANKS.get())).save(consumer);
 
+        //ShapelessRecipeBuilder.shapeless()
+
         veticalSlab(AQBlocks.ANGELIC_VERTICAL_SLAB.get(), AetherBlocks.ANGELIC_STONE.get(), consumer);
         veticalSlab(AQBlocks.HELLFIRE_VERTICAL_SLAB.get(), AetherBlocks.HELLFIRE_STONE.get(), consumer);
         veticalSlab(AQBlocks.HOLYSTONE_VERTICAL_SLAB.get(), AetherBlocks.HOLYSTONE.get(), consumer);

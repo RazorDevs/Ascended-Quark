@@ -14,11 +14,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class AQEntityRenderers {
 
-
 	@SubscribeEvent
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(AQEntityTypes.STOOL.get(), StoolEntityRender::new);
 		event.registerBlockEntityRenderer(AQBlockEntityTypes.SKYROOT_CHEST.get(), SkyrootChestRender::new);
+		event.registerEntityRenderer(AQEntityTypes.AMBROSIUM_TORCH_ARROW.get(), AmbrosiumTorchArrowRenderer::new);
 	}
 
 	@SubscribeEvent

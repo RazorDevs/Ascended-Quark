@@ -9,6 +9,7 @@ import com.razordevs.ascended_quark.datagen.tags.AQItemTagData;
 import com.razordevs.ascended_quark.entity.AQEntityTypes;
 import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.items.AQItems;
+import com.razordevs.ascended_quark.particle.AQParticles;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,6 +39,7 @@ public class AscendedQuarkMod
         AQItems.ITEMS.register(modEventBus);
         AQEntityTypes.ENTITY_TYPES.register(modEventBus);
         AQBlockEntityTypes.ENTITY_TYPES.register(modEventBus);
+        AQParticles.PARTICLE_TYPES.register(modEventBus);
     }
 
 

@@ -5,7 +5,7 @@
   "package": "com.razordevs.ascended_quark.mixin",
   "refmap": "quark_aether.refmap.json",
   "mixins": [
-
+    "SlimeInABucketModuleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

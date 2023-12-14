@@ -31,6 +31,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import vazkii.arl.util.ItemNBTHelper;
 import vazkii.quark.content.tools.item.SlimeInABucketItem;
+import vazkii.quark.content.tools.module.SlimeInABucketModule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +40,10 @@ import java.util.List;
 public class AQEvents {
     public static List<Pair<EntityType, AQEntityInABucketItem>> SLIME_WITH_BUCKET_ITEM = new ArrayList<>();
     public static List<Pair<EntityType, AQEntityInABucketItem>> SLIME_WITH_BUCKET_ITEM_SKYROOT = new ArrayList<>();
+    public static boolean isSlimeInABucketModuleEnabled = false;
     @SubscribeEvent
     public static void entityInteract(PlayerInteractEvent.EntityInteract event) {
-        System.out.println("Hello");
-        if(event.getTarget() != null) {
+        if(event.getTarget() != null && isSlimeInABucketModuleEnabled) {
             if(event.getTarget().isAlive()) {
                 Player player = event.getEntity();
                 ItemStack stack = player.getMainHandItem();

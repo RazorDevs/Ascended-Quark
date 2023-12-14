@@ -73,7 +73,8 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.STRIPPED_SKYROOT_POST.get(),
                 AQBlocks.SKYROOT_CHEST.get(),
                 AQBlocks.SKYROOT_LADDER.get(),
-                AQBlocks.SKYROOT_STOOL.get()
+                AQBlocks.SKYROOT_STOOL.get(),
+                AQBlocks.BLUE_BERRY_CRATE.get()
         );
 
         tag(BlockTags.MINEABLE_WITH_HOE).add(
@@ -106,7 +107,7 @@ public class AQBlockTagData extends BlockTagsProvider {
         );
 
         tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "hedges"))).add(
-            AQBlocks.SKYROOT_HEDGE.get()
+                AQBlocks.SKYROOT_HEDGE.get()
         );
 
         tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "hollow_logs"))).add(
@@ -127,6 +128,18 @@ public class AQBlockTagData extends BlockTagsProvider {
 
         tag(BlockTags.CLIMBABLE).add(
                 AQBlocks.SKYROOT_LADDER.get()
+        );
+
+        tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "vertical_slabs"))).add(
+                AQBlocks.AEROGEL_VERTICAL_SLAB.get(),
+                AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get(),
+                AQBlocks.AETHER_DIRT_BRICK_VERTICAL_SLAB.get(),
+                AQBlocks.ANGELIC_VERTICAL_SLAB.get(),
+                AQBlocks.HELLFIRE_VERTICAL_SLAB.get(),
+                AQBlocks.ICESTONE_VERTICAL_SLAB.get(),
+                AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get(),
+                AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get(),
+                AQBlocks.HOLYSTONE_VERTICAL_SLAB.get()
         );
     }
 }

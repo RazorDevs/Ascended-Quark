@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-14T10:54:46.699449066	LootTables
+// 1.19.2	2023-12-14T12:34:14.672294989	LootTables
 9b0c423cf17537b8ef84ff49fcc8fdebe5831348 data/ascended_quark/loot_tables/blocks/aerogel_vertical_slab.json
 75c87ba3df784c0577917f820c9cc501066d97ac data/ascended_quark/loot_tables/blocks/aether_dirt_brick_slab.json
 327a2f29cc2508726fc2b0869008f690ca432c1a data/ascended_quark/loot_tables/blocks/aether_dirt_brick_stairs.json
@@ -7,6 +7,7 @@ ef68c759cda473930fdd389fc44a3be16729d640 data/ascended_quark/loot_tables/blocks/
 207cd754329e83a454e451968c8595cd3a0abece data/ascended_quark/loot_tables/blocks/aether_dirt_bricks.json
 4953208637ff53bc29823c6eae112a6883ce1d72 data/ascended_quark/loot_tables/blocks/ambrosium_lamp.json
 b4a6ef8d986cab601b721bbde080e29c04f7d026 data/ascended_quark/loot_tables/blocks/angelic_vertical_slab.json
+10f7bd77b96089d974112359636aa366b403bb69 data/ascended_quark/loot_tables/blocks/blue_berry_crate.json
 e87ba8c1d48609582c84f2b831e3a1a853aaa7ba data/ascended_quark/loot_tables/blocks/hellfire_vertical_slab.json
 1be98be13263f8fab922139a5ba2002ea68e402f data/ascended_quark/loot_tables/blocks/hollow_skyroot_log.json
 be4f6e25e03cde9d628ebb4f49144ef1663ced96 data/ascended_quark/loot_tables/blocks/holystone_brick_vertical_slab.json

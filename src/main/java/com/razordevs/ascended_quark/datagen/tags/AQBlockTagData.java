@@ -46,7 +46,6 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(),
                 AQBlocks.AETHER_DIRT_BRICK_WALL.get(),
                 AQBlocks.AETHER_DIRT_BRICK_VERTICAL_SLAB.get(),
-                AQBlocks.AETHER_COARSE_DIRT.get(),
                 AQBlocks.QUICKSOIL_BRICKS.get(),
                 AQBlocks.QUICKSOIL_BRICK_SLAB.get(),
                 AQBlocks.QUICKSOIL_BRICK_STAIRS.get(),

@@ -49,7 +49,6 @@ public class AQItemModelData extends ItemModelProvider {
         this.item(AQItems.AMBROSIUM_TORCH_ARROW.get());
 
         this.itemBlock(AQBlocks.QUICKSOIL_FRAMED_GLASS.get());
-        this.item(AQItems.QUICKSOIL_GLASS_SHARD.get());
     }
 
     public void handheldItem(Item item) {

@@ -11,5 +11,11 @@
   "result": {
     "count": 3,
     "item": "ascended_quark:crystal_leaf_carpet"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "leaf_carpet"
+    }
+  ]
 }

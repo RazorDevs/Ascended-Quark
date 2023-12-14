@@ -64,12 +64,14 @@ public class AQRecipeData extends RecipeProvider {
         skyrootHedge(AQBlocks.HOLIDAY_SKYROOT_HEDGE.get(), AetherBlocks.HOLIDAY_LEAVES.get(), consumer);
         skyrootHedge(AQBlocks.DECORATED_HOLIDAY_SKYROOT_HEDGE.get(), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
 
+        /*
         carpet(AQBlocks.SKYROOT_LEAF_CARPET.get(), AetherBlocks.SKYROOT_LEAVES.get(), consumer);
         carpet(AQBlocks.GOLDEN_OAK_LEAF_CARPET.get(), AetherBlocks.GOLDEN_OAK_LEAVES.get(), consumer);
         carpet(AQBlocks.CRYSTAL_LEAF_CARPET.get(), AetherBlocks.CRYSTAL_LEAVES.get(), consumer);
         carpet(AQBlocks.CRYSTAL_FRUIT_LEAF_CARPET.get(), AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), consumer);
         carpet(AQBlocks.HOLIDAY_LEAF_CARPET.get(), AetherBlocks.HOLIDAY_LEAVES.get(), consumer);
         carpet(AQBlocks.DECORATED_HOLIDAY_LEAF_CARPET.get(), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
+        */
 
         ShapedRecipeBuilder.shaped(AQBlocks.HOLLOW_SKYROOT_LOG.get(), 4).define('A', AetherBlocks.SKYROOT_LOG.get())
                 .pattern(" A ")

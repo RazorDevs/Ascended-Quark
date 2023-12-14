@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "tag": "aether:skyroot_logs"
+    },
+    "B": {
+      "item": "aether:decorated_holiday_leaves"
+    }
+  },
+  "pattern": [
+    "B",
+    "A"
+  ],
+  "result": {
+    "count": 2,
+    "item": "ascended_quark:decorated_holiday_skyroot_hedge"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "hedges"
+    }
+  ]
+}

@@ -16,5 +16,11 @@
   "result": {
     "count": 4,
     "item": "ascended_quark:skyroot_ladder"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "variant_ladders"
+    }
+  ]
 }

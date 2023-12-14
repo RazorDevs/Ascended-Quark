@@ -22,6 +22,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.NewRegistryEvent;
 import net.minecraftforge.registries.RegisterEvent;
 import org.slf4j.Logger;
+import vazkii.quark.base.module.config.ConfigFlagManager;
 
 @Mod(AscendedQuarkMod.MODID)
 public class AscendedQuarkMod
@@ -40,8 +41,9 @@ public class AscendedQuarkMod
         AQEntityTypes.ENTITY_TYPES.register(modEventBus);
         AQBlockEntityTypes.ENTITY_TYPES.register(modEventBus);
         AQParticles.PARTICLE_TYPES.register(modEventBus);
-    }
 
+
+    }
 
     public void dataSetup(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();

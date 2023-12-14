@@ -12,5 +12,11 @@
   "result": {
     "count": 16,
     "item": "ascended_quark:quicksoil_framed_glass_pane"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "framed_glass"
+    }
+  ]
 }

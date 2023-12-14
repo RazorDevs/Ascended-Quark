@@ -37,7 +37,6 @@ public class LeafCarpetWithParticlesBlock extends AQLeafCarpetBlock  {
 
     public LeafCarpetWithParticlesBlock(Supplier<? extends ParticleOptions> particle, Block base, BlockBehaviour.Properties properties) {
         super(base, properties);
-        this.registerDefaultState((BlockState)this.defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, false));
         this.particle = particle;
     }
 
@@ -51,7 +50,7 @@ public class LeafCarpetWithParticlesBlock extends AQLeafCarpetBlock  {
                 double dx = ((double)random.nextFloat() - 0.5) * 0.5;
                 double dy = ((double)random.nextFloat() - 0.5) * 0.5;
                 double dz = ((double)random.nextFloat() - 0.5) * 0.5;
-                level.addParticle((ParticleOptions)this.particle.get(), x, y, z, dx, dy, dz);
+                level.addParticle(this.particle.get(), x, y, z, dx, dy, dz);
             }
         }
     }

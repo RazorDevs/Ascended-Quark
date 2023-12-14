@@ -12,5 +12,11 @@
   "result": {
     "count": 16,
     "item": "ascended_quark:zanite_bars"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "gold_bars"
+    }
+  ]
 }

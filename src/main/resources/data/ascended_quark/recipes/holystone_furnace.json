@@ -12,5 +12,11 @@
   ],
   "result": {
     "item": "ascended_quark:holystone_furnace"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "variant_furnaces"
+    }
+  ]
 }

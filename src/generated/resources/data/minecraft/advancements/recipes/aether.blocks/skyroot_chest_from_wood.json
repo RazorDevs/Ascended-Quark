@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_skyroot_leaves": {
+    "has_skyroot_log": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether:skyroot_leaves"
+              "aether:skyroot_log"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "ascended_quark:skyroot_leaf_carpet"
+        "recipe": "minecraft:skyroot_chest_from_wood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_skyroot_leaves",
+      "has_skyroot_log",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "ascended_quark:skyroot_leaf_carpet"
+      "minecraft:skyroot_chest_from_wood"
     ]
   }
 }

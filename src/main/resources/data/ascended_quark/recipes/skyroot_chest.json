@@ -12,5 +12,11 @@
   ],
   "result": {
     "item": "ascended_quark:skyroot_chest"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "variant_chests"
+    }
+  ]
 }

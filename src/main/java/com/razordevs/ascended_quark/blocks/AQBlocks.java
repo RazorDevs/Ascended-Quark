@@ -109,14 +109,9 @@ public class AQBlocks {
             B block = Objects.requireNonNull(blockRegistryObject.get());
             if (block == SKYROOT_CHEST.get()) {
                 return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
-            }
-            else return  new BlockItem(block, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
-    };
+            } else return new BlockItem(block, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+        };
     }
-
-    /*public static RegistryObject<Block> createVerticalSlabBlock(String name, Block copyBlock){
-        return BLOCKS.register(name + "_vertical_slab", () -> new VerticalSlabBlock(copyBlock.defaultBlockState().getBlockHolder(), BlockBehaviour.Properties.copy(copyBlock).requiresCorrectToolForDrops()));
-    }*/
 
     private static ToIntFunction<BlockState> litBlockEmission(int p_50760_) {
         return (p_50763_) -> {

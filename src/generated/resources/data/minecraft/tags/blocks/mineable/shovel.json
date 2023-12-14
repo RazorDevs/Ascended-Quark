@@ -3,6 +3,13 @@
     "ascended_quark:aether_dirt_bricks",
     "ascended_quark:aether_dirt_brick_slab",
     "ascended_quark:aether_dirt_brick_stairs",
-    "ascended_quark:aether_dirt_brick_wall"
+    "ascended_quark:aether_dirt_brick_wall",
+    "ascended_quark:aether_dirt_brick_vertical_slab",
+    "ascended_quark:aether_coarse_dirt",
+    "ascended_quark:quicksoil_bricks",
+    "ascended_quark:quicksoil_brick_slab",
+    "ascended_quark:quicksoil_brick_stairs",
+    "ascended_quark:quicksoil_brick_wall",
+    "ascended_quark:quicksoil_brick_vertical_slab"
   ]
 }

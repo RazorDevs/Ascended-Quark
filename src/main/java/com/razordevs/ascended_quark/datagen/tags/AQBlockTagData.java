@@ -44,11 +44,27 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.AETHER_DIRT_BRICKS.get(),
                 AQBlocks.AETHER_DIRT_BRICK_SLAB.get(),
                 AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(),
-                AQBlocks.AETHER_DIRT_BRICK_WALL.get()
+                AQBlocks.AETHER_DIRT_BRICK_WALL.get(),
+                AQBlocks.AETHER_DIRT_BRICK_VERTICAL_SLAB.get(),
+                AQBlocks.AETHER_COARSE_DIRT.get(),
+                AQBlocks.QUICKSOIL_BRICKS.get(),
+                AQBlocks.QUICKSOIL_BRICK_SLAB.get(),
+                AQBlocks.QUICKSOIL_BRICK_STAIRS.get(),
+                AQBlocks.QUICKSOIL_BRICK_WALL.get(),
+                AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get()
         );
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                AQBlocks.HOLYSTONE_FURNACE.get()
+                AQBlocks.HOLYSTONE_FURNACE.get(),
+                AQBlocks.AMBROSIUM_LAMP.get(),
+                AQBlocks.ZANITE_BARS.get(),
+                AQBlocks.ANGELIC_VERTICAL_SLAB.get(),
+                AQBlocks.HELLFIRE_VERTICAL_SLAB.get(),
+                AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get(),
+                AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get(),
+                AQBlocks.ICESTONE_VERTICAL_SLAB.get(),
+                AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get(),
+                AQBlocks.AEROGEL_VERTICAL_SLAB.get()
         );
 
         tag(BlockTags.MINEABLE_WITH_AXE).add(
@@ -57,7 +73,8 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.SKYROOT_POST.get(),
                 AQBlocks.STRIPPED_SKYROOT_POST.get(),
                 AQBlocks.SKYROOT_CHEST.get(),
-                AQBlocks.SKYROOT_LADDER.get()
+                AQBlocks.SKYROOT_LADDER.get(),
+                AQBlocks.SKYROOT_STOOL.get()
         );
 
         tag(BlockTags.MINEABLE_WITH_HOE).add(
@@ -65,15 +82,18 @@ public class AQBlockTagData extends BlockTagsProvider {
         );
 
         tag(BlockTags.SLABS).add(
-                AQBlocks.AETHER_DIRT_BRICK_SLAB.get()
+                AQBlocks.AETHER_DIRT_BRICK_SLAB.get(),
+                AQBlocks.QUICKSOIL_BRICK_SLAB.get()
         );
 
         tag(BlockTags.STAIRS).add(
-                AQBlocks.AETHER_DIRT_BRICK_STAIRS.get()
+                AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(),
+                AQBlocks.QUICKSOIL_BRICK_STAIRS.get()
         );
 
         tag(BlockTags.WALLS).add(
-                AQBlocks.AETHER_DIRT_BRICKS.get()
+                AQBlocks.AETHER_DIRT_BRICKS.get(),
+                AQBlocks.QUICKSOIL_BRICK_WALL.get()
         );
 
         tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "posts"))).add(

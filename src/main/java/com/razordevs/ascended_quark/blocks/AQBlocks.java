@@ -3,6 +3,7 @@ package com.razordevs.ascended_quark.blocks;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.block.construction.QuicksoilGlassBlock;
 import com.aetherteam.aether.block.construction.QuicksoilGlassPaneBlock;
+import com.aetherteam.aether.client.particle.AetherParticleTypes;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
@@ -52,11 +53,11 @@ public class AQBlocks {
             .strength(0F)
             .sound(SoundType.GRASS).noOcclusion()));
 
-    public static final RegistryObject<Block> GOLDEN_OAK_LEAF_CARPET = registerBlock("golden_oak_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.GOLDEN_OAK_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
-    public static final RegistryObject<Block> CRYSTAL_LEAF_CARPET = registerBlock("crystal_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.CRYSTAL_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
-    public static final RegistryObject<Block> CRYSTAL_FRUIT_LEAF_CARPET = registerBlock("crystal_fruit_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
-    public static final RegistryObject<Block> HOLIDAY_LEAF_CARPET = registerBlock("holiday_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.HOLIDAY_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
-    public static final RegistryObject<Block> DECORATED_HOLIDAY_LEAF_CARPET = registerBlock("decorated_holiday_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
+    public static final RegistryObject<Block> GOLDEN_OAK_LEAF_CARPET = registerBlock("golden_oak_leaf_carpet", () -> new LeafCarpetWithParticlesBlock(AetherParticleTypes.GOLDEN_OAK_LEAVES, AetherBlocks.GOLDEN_OAK_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
+    public static final RegistryObject<Block> CRYSTAL_LEAF_CARPET = registerBlock("crystal_leaf_carpet", () -> new LeafCarpetWithParticlesBlock(AetherParticleTypes.CRYSTAL_LEAVES, AetherBlocks.CRYSTAL_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
+    public static final RegistryObject<Block> CRYSTAL_FRUIT_LEAF_CARPET = registerBlock("crystal_fruit_leaf_carpet", () -> new LeafCarpetWithParticlesBlock(AetherParticleTypes.CRYSTAL_LEAVES, AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
+    public static final RegistryObject<Block> HOLIDAY_LEAF_CARPET = registerBlock("holiday_leaf_carpet", () -> new LeafCarpetWithParticlesBlock(AetherParticleTypes.HOLIDAY_LEAVES, AetherBlocks.HOLIDAY_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
+    public static final RegistryObject<Block> DECORATED_HOLIDAY_LEAF_CARPET = registerBlock("decorated_holiday_leaf_carpet", () -> new LeafCarpetWithParticlesBlock(AetherParticleTypes.HOLIDAY_LEAVES, AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), BlockBehaviour.Properties.copy(AQBlocks.SKYROOT_LEAF_CARPET.get())));
 
     public static final RegistryObject<Block> HOLLOW_SKYROOT_LOG = registerBlock("hollow_skyroot_log", () -> new AQHollowLogBlock(BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_LOG.get())));
     public static final RegistryObject<Block> SKYROOT_LADDER = registerBlock("skyroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));

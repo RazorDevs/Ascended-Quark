@@ -1,0 +1,6 @@
+{
+  "parent": "quark:block/leaf_carpet",
+  "textures": {
+    "all": "aether:block/natural/holiday_leaves"
+  }
+}

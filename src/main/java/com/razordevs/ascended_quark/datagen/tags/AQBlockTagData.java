@@ -84,7 +84,12 @@ public class AQBlockTagData extends BlockTagsProvider {
         );
 
         tag(BlockTags.MINEABLE_WITH_HOE).add(
-                AQBlocks.SKYROOT_LEAF_CARPET.get()
+                AQBlocks.SKYROOT_LEAF_CARPET.get(),
+                AQBlocks.GOLDEN_OAK_LEAF_CARPET.get(),
+                AQBlocks.HOLIDAY_LEAF_CARPET.get(),
+                AQBlocks.DECORATED_HOLIDAY_LEAF_CARPET.get(),
+                AQBlocks.CRYSTAL_FRUIT_LEAF_CARPET.get(),
+                AQBlocks.CRYSTAL_LEAF_CARPET.get()
         );
 
         tag(BlockTags.SLABS).add(

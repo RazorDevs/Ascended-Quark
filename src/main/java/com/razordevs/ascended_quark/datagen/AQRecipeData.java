@@ -64,8 +64,12 @@ public class AQRecipeData extends RecipeProvider {
         skyrootHedge(AQBlocks.HOLIDAY_SKYROOT_HEDGE.get(), AetherBlocks.HOLIDAY_LEAVES.get(), consumer);
         skyrootHedge(AQBlocks.DECORATED_HOLIDAY_SKYROOT_HEDGE.get(), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
 
-        ShapedRecipeBuilder.shaped(AQBlocks.SKYROOT_LEAF_CARPET.get(), 3).define('A', AetherBlocks.SKYROOT_LEAVES.get())
-                .pattern("AA").unlockedBy(getHasName(AetherBlocks.SKYROOT_LEAVES.get()), has(AetherBlocks.SKYROOT_LEAVES.get())).save(consumer);
+        carpet(AQBlocks.SKYROOT_LEAF_CARPET.get(), AetherBlocks.SKYROOT_LEAVES.get(), consumer);
+        carpet(AQBlocks.GOLDEN_OAK_LEAF_CARPET.get(), AetherBlocks.GOLDEN_OAK_LEAVES.get(), consumer);
+        carpet(AQBlocks.CRYSTAL_LEAF_CARPET.get(), AetherBlocks.CRYSTAL_LEAVES.get(), consumer);
+        carpet(AQBlocks.CRYSTAL_FRUIT_LEAF_CARPET.get(), AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), consumer);
+        carpet(AQBlocks.HOLIDAY_LEAF_CARPET.get(), AetherBlocks.HOLIDAY_LEAVES.get(), consumer);
+        carpet(AQBlocks.DECORATED_HOLIDAY_LEAF_CARPET.get(), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
 
         ShapedRecipeBuilder.shaped(AQBlocks.HOLLOW_SKYROOT_LOG.get(), 4).define('A', AetherBlocks.SKYROOT_LOG.get())
                 .pattern(" A ")
@@ -184,6 +188,11 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("#")
                 .pattern("#")
                 .pattern("#");
+    }
+
+    void carpet(ItemLike carpet, ItemLike leaf, Consumer<FinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(carpet, 3).define('A', leaf)
+                .pattern("AA").unlockedBy(getHasName(leaf), has(leaf)).save(consumer);
     }
 
     void veticalSlabRevert(Block slab, Block reverted, Consumer<FinishedRecipe> consumer) {

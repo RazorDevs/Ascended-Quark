@@ -1,0 +1,6 @@
+{
+  "parent": "quark:block/leaf_carpet",
+  "textures": {
+    "all": "aether:block/natural/golden_oak_fruit_leaves"
+  }
+}

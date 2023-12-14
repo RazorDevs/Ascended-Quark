@@ -31,6 +31,12 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlock(AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get());
 
         this.itemBlock(AQBlocks.SKYROOT_LEAF_CARPET.get());
+        this.itemBlock(AQBlocks.GOLDEN_OAK_LEAF_CARPET.get());
+        this.itemBlock(AQBlocks.CRYSTAL_LEAF_CARPET.get());
+        this.itemBlock(AQBlocks.CRYSTAL_FRUIT_LEAF_CARPET.get());
+        this.itemBlock(AQBlocks.HOLIDAY_LEAF_CARPET.get());
+        this.itemBlock(AQBlocks.DECORATED_HOLIDAY_LEAF_CARPET.get());
+
         this.itemBlock(AQBlocks.HOLLOW_SKYROOT_LOG.get());
         this.itemBlock(AQBlocks.SKYROOT_POST.get());
         this.itemBlock(AQBlocks.STRIPPED_SKYROOT_POST.get());

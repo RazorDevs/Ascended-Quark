@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-14T13:34:54.051322989	Item Models: ascended_quark
+// 1.19.2	2023-12-14T14:20:04.662613593	Item Models: ascended_quark
 ac6cc442ad1688515a1e6ecea181ad01d1b15ef2 assets/ascended_quark/models/item/aerogel_vertical_slab.json
 272d105f9584075d80da3172954a3703128e781e assets/ascended_quark/models/item/aether_dirt_brick_slab.json
 a486f0b329a31d6d4ddd6c1cc48d97d05029b67f assets/ascended_quark/models/item/aether_dirt_brick_stairs.json
@@ -8,7 +8,12 @@ dc03693f6d2f89a52f55e3f6a05dbe652f8536c6 assets/ascended_quark/models/item/aethe
 f50a30bbc08586a10dc41a350de4c57f098b24b3 assets/ascended_quark/models/item/ambrosium_torch_arrow.json
 5bba8c92c3bb72a339e500f9fb6ee269394f74b3 assets/ascended_quark/models/item/angelic_vertical_slab.json
 258cf7137389675dae0dd5e8f49180c581b442f5 assets/ascended_quark/models/item/blue_berry_crate.json
+1f7defc573676c4c2ab8eb76100464d98c934d99 assets/ascended_quark/models/item/crystal_fruit_leaf_carpet.json
+cafc51be39dcdfcc280daef631b28d2bd838c4cf assets/ascended_quark/models/item/crystal_leaf_carpet.json
+9ce20cd29dcca1650b38bc159f11fe4a24c0d9ff assets/ascended_quark/models/item/decorated_holiday_leaf_carpet.json
+f74c475de7e2284dd8a285506538248454644f3f assets/ascended_quark/models/item/golden_oak_leaf_carpet.json
 3f7022774ab5efc0b021f8a45d47fc8b0f10f4df assets/ascended_quark/models/item/hellfire_vertical_slab.json
+7b8100e6bd0b497c2614fb5329053bec038806f3 assets/ascended_quark/models/item/holiday_leaf_carpet.json
 5910318b44ff3686b1185159ff94fabc7019c6d6 assets/ascended_quark/models/item/hollow_skyroot_log.json
 2ea3faf534bdc7a5909fd492c82ebbc39bf382f7 assets/ascended_quark/models/item/holystone_brick_vertical_slab.json
 6e7d99d8773da3f48004595722b753c992e7c6e2 assets/ascended_quark/models/item/holystone_furnace.json

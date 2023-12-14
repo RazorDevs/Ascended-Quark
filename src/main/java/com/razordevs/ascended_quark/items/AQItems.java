@@ -3,6 +3,7 @@ package com.razordevs.ascended_quark.items;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.entity.AmbrosiumTorchArrow;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -25,4 +26,6 @@ public class AQItems {
     public static final RegistryObject<AQSwetInABucketItem> GOLDEN_SWET_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("golden_swet_in_a_skyroot_bucket", ()-> new AQSwetInABucketItem(AetherEntityTypes.GOLDEN_SWET.get(), true));
 
     public static final RegistryObject<Item> AMBROSIUM_TORCH_ARROW = ITEMS.register("ambrosium_torch_arrow", () -> new QuarkArrowItem.Impl("ambrosium_torch_arrow", new TorchArrowModule(), (level, stack, living) -> new AmbrosiumTorchArrow(level, living)));
+    public static final RegistryObject<Item> QUICKSOIL_GLASS_SHARD = ITEMS.register("quicksoil_glass_shard", () -> new Item(new Item.Properties()));
+
 }

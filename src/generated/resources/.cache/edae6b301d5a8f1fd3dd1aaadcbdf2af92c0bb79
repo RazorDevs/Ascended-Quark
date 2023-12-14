@@ -1,5 +1,4 @@
-// 1.19.2	2023-12-10T13:52:47.463183195	Block States: ascended_quark
-5babc2a390640a7f859ff3c1fe45312064858ecc assets/ascended_quark/blockstates/aether_coarse_dirt.json
+// 1.19.2	2023-12-14T10:54:46.699233922	Block States: ascended_quark
 ca02108696af86c6351916de6fc080424abe4857 assets/ascended_quark/blockstates/aether_dirt_brick_slab.json
 4b12f000708ea4c1c1392ce610b31df6e226bf29 assets/ascended_quark/blockstates/aether_dirt_brick_stairs.json
 c880fc892d866cb5533dd09a99f0bec38c667a40 assets/ascended_quark/blockstates/aether_dirt_brick_wall.json
@@ -9,7 +8,6 @@ be0746de24256444b8ab50de54743677035927b1 assets/ascended_quark/blockstates/quick
 329b0f1be97bf4a87bbba650a8027c214c8aa2cf assets/ascended_quark/blockstates/quicksoil_brick_wall.json
 e8723cfe65ba770614d536fb4e78cfdfe5bb0bac assets/ascended_quark/blockstates/quicksoil_bricks.json
 0c562eebd8505debe7deb4748a21a86a11e00935 assets/ascended_quark/blockstates/quicksoil_framed_glass.json
-2791dd82b6c557aaa47eb2c2eb149d67e2b159ed assets/ascended_quark/models/block/aether_coarse_dirt.json
 a01bb4c514fb62e6a61943edc5e3046cdd976d0a assets/ascended_quark/models/block/aether_dirt_brick_slab.json
 2c555162f290934eabca2523c62659ff15c672ae assets/ascended_quark/models/block/aether_dirt_brick_slab_top.json
 bc32ce0be0c3510364933d218f7c0deff08c7259 assets/ascended_quark/models/block/aether_dirt_brick_stairs.json

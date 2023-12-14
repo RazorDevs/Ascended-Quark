@@ -1,6 +1,5 @@
 {
   "block.ascended_quark.aerogel_vertical_slab": "Aerogel Vertical Slab",
-  "block.ascended_quark.aether_coarse_dirt": "Aether Coarse Dirt",
   "block.ascended_quark.aether_dirt_brick_slab": "Aether Dirt Brick Slab",
   "block.ascended_quark.aether_dirt_brick_stairs": "Aether Dirt Brick Stairs",
   "block.ascended_quark.aether_dirt_brick_vertical_slab": "Aether Dirt Brick Vertical Slab",
@@ -35,5 +34,6 @@
   "item.ascended_quark.blue_swet_in_a_skyroot_bucket": "Blue Swet In A Skyroot Bucket",
   "item.ascended_quark.golden_swet_in_a_bucket": "Golden Swet In A Bucket",
   "item.ascended_quark.golden_swet_in_a_skyroot_bucket": "Golden Swet In A Skyroot Bucket",
+  "item.ascended_quark.quicksoil_glass_shard": "Quicksoil Glass Shard",
   "item.ascended_quark.slime_in_a_skyroot_bucket": "Slime In A Skyroot Bucket"
 }

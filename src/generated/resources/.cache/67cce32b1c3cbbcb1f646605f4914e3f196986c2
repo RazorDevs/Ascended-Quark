@@ -1,6 +1,5 @@
-// 1.19.2	2023-12-10T13:50:16.135285376	LootTables
+// 1.19.2	2023-12-14T10:54:46.699449066	LootTables
 9b0c423cf17537b8ef84ff49fcc8fdebe5831348 data/ascended_quark/loot_tables/blocks/aerogel_vertical_slab.json
-b3e305e153a291fa552d489c279036f1e604cb94 data/ascended_quark/loot_tables/blocks/aether_coarse_dirt.json
 75c87ba3df784c0577917f820c9cc501066d97ac data/ascended_quark/loot_tables/blocks/aether_dirt_brick_slab.json
 327a2f29cc2508726fc2b0869008f690ca432c1a data/ascended_quark/loot_tables/blocks/aether_dirt_brick_stairs.json
 ef68c759cda473930fdd389fc44a3be16729d640 data/ascended_quark/loot_tables/blocks/aether_dirt_brick_vertical_slab.json

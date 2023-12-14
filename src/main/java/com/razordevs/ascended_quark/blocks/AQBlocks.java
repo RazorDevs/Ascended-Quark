@@ -41,6 +41,12 @@ public class AQBlocks {
     public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AQStoolBlock::new);
     public static final RegistryObject<Block> SKYROOT_CHEST = registerBlock("skyroot_chest", () -> new AQChestBlock(BlockBehaviour.Properties.copy(Blocks.CHEST), AQBlockEntityTypes.SKYROOT_CHEST::get));
     public static final RegistryObject<Block> SKYROOT_HEDGE = registerBlock("skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
+    public static final RegistryObject<Block> GOLDEN_SKYROOT_HEDGE = registerBlock("golden_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
+    public static final RegistryObject<Block> CRYSTAL_SKYROOT_HEDGE = registerBlock("crystal_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.CRYSTAL_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
+    public static final RegistryObject<Block> CRYSTAL_FRUIT_SKYROOT_HEDGE = registerBlock("crystal_fruit_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
+    public static final RegistryObject<Block> HOLIDAY_SKYROOT_HEDGE = registerBlock("holiday_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.HOLIDAY_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
+    public static final RegistryObject<Block> DECORATED_HOLIDAY_SKYROOT_HEDGE = registerBlock("decorated_holiday_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
+
     public static final RegistryObject<Block> SKYROOT_LEAF_CARPET = registerBlock("skyroot_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.SKYROOT_LEAVES.get(), BlockBehaviour.Properties.of(Material.CLOTH_DECORATION,
                     MaterialColor.GRASS)
             .strength(0F)

@@ -1,5 +1,5 @@
-// 1.19.2	2023-12-14T13:36:46.069203418	Ascended Quark Block Tags
-18f367ba97a69c8ee7843eabd3a62ad846fe9b71 data/aether/tags/blocks/treated_as_aether_block.json
+// 1.19.2	2023-12-14T13:54:17.703832852	Ascended Quark Block Tags
+c5ebcdfe7cb3d726479645d9a95e71f97022c8f6 data/aether/tags/blocks/treated_as_aether_block.json
 089ae256b4e6eab481e02b9b2dc6d693afcaab62 data/forge/tags/blocks/chests/wooden.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/minecraft/tags/blocks/climbable.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/minecraft/tags/blocks/fall_damage_resetting.json
@@ -10,7 +10,7 @@ e55d821a2285647260acf47f3dce64e12ca6f70a data/minecraft/tags/blocks/mineable/axe
 473e98b349e01f5008bb38cbd960b457617e2ad9 data/minecraft/tags/blocks/slabs.json
 e9428b5dd0b167e6e5d6199f38bc7f4b89375809 data/minecraft/tags/blocks/stairs.json
 b38e354309299615b23fd301a5dbf3cb3fcfa4a0 data/minecraft/tags/blocks/walls.json
-03761ab9d63aaecc5e66cc5e3c234a2f0c6971e0 data/quark/tags/blocks/hedges.json
+7a45f94718459f732950aa308e5e03c3e13c0242 data/quark/tags/blocks/hedges.json
 b23f2aa8c33badeff892cfefeabbb5481e9f8340 data/quark/tags/blocks/hollow_logs.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/quark/tags/blocks/ladders.json
 4f89e9cc905e5c64fb602133083b080ad57f27c3 data/quark/tags/blocks/posts.json

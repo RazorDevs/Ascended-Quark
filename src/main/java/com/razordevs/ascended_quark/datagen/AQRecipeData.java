@@ -10,6 +10,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -56,10 +57,12 @@ public class AQRecipeData extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(Blocks.CHEST).requires(AQBlocks.SKYROOT_CHEST.get()).
             unlockedBy(getHasName(AetherBlocks.SKYROOT_PLANKS.get()), has(AetherBlocks.SKYROOT_PLANKS.get())).save(consumer);
 
-        ShapedRecipeBuilder.shaped(AQBlocks.SKYROOT_HEDGE.get(),2).define('A', AetherTags.Items.SKYROOT_LOGS)
-                .define('B', AetherBlocks.SKYROOT_LEAVES.get())
-                .pattern("B")
-                .pattern("A").unlockedBy(getHasName(AetherBlocks.SKYROOT_LEAVES.get()), has(AetherBlocks.SKYROOT_LEAVES.get())).save(consumer);
+        skyrootHedge(AQBlocks.SKYROOT_HEDGE.get(), AetherBlocks.SKYROOT_LEAVES.get(), consumer);
+        skyrootHedge(AQBlocks.GOLDEN_SKYROOT_HEDGE.get(), AetherBlocks.GOLDEN_OAK_LEAVES.get(), consumer);
+        skyrootHedge(AQBlocks.CRYSTAL_SKYROOT_HEDGE.get(), AetherBlocks.CRYSTAL_LEAVES.get(), consumer);
+        skyrootHedge(AQBlocks.CRYSTAL_FRUIT_SKYROOT_HEDGE.get(), AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), consumer);
+        skyrootHedge(AQBlocks.HOLIDAY_SKYROOT_HEDGE.get(), AetherBlocks.HOLIDAY_LEAVES.get(), consumer);
+        skyrootHedge(AQBlocks.DECORATED_HOLIDAY_SKYROOT_HEDGE.get(), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
 
         ShapedRecipeBuilder.shaped(AQBlocks.SKYROOT_LEAF_CARPET.get(), 3).define('A', AetherBlocks.SKYROOT_LEAVES.get())
                 .pattern("AA").unlockedBy(getHasName(AetherBlocks.SKYROOT_LEAVES.get()), has(AetherBlocks.SKYROOT_LEAVES.get())).save(consumer);
@@ -187,6 +190,23 @@ public class AQRecipeData extends RecipeProvider {
         verticalSlabRevertBuilder(reverted, Ingredient.of(slab)).unlockedBy(getHasName(slab), has(slab)).save(consumer, getItemName(reverted) + "_from_" + getItemName(slab));
     }
 
+    void hedge(ItemLike hedge, ItemLike leaves, TagKey<Item> stem, Consumer<FinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(hedge,2).define('A', stem)
+                .define('B', leaves)
+                .pattern("B")
+                .pattern("A").unlockedBy(getHasName(leaves), has(leaves)).save(consumer);
+    }
+
+    void hedge(ItemLike hedge, ItemLike leaves, ItemLike stem, Consumer<FinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(hedge,2).define('A', stem)
+                .define('B', leaves)
+                .pattern("B")
+                .pattern("A").unlockedBy(getHasName(leaves), has(leaves)).save(consumer);
+    }
+
+    void skyrootHedge(ItemLike hedge, ItemLike leaves, Consumer<FinishedRecipe> consumer) {
+        hedge(hedge, leaves, AetherTags.Items.SKYROOT_LOGS, consumer);
+    }
     protected static RecipeBuilder verticalSlabRevertBuilder(ItemLike itemLike, Ingredient ingredient) {
         return ShapelessRecipeBuilder.shapeless(itemLike).requires(ingredient);
     }

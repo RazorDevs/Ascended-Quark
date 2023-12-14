@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "tag": "aether:skyroot_logs"
+    },
+    "B": {
+      "item": "aether:golden_oak_leaves"
+    }
+  },
+  "pattern": [
+    "B",
+    "A"
+  ],
+  "result": {
+    "count": 2,
+    "item": "ascended_quark:golden_skyroot_hedge"
+  }
+}

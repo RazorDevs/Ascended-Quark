@@ -68,6 +68,11 @@ public class AQBlockTagData extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_AXE).add(
                 AQBlocks.SKYROOT_HEDGE.get(),
+                AQBlocks.GOLDEN_SKYROOT_HEDGE.get(),
+                AQBlocks.CRYSTAL_SKYROOT_HEDGE.get(),
+                AQBlocks.CRYSTAL_FRUIT_SKYROOT_HEDGE.get(),
+                AQBlocks.HOLIDAY_SKYROOT_HEDGE.get(),
+                AQBlocks.DECORATED_HOLIDAY_SKYROOT_HEDGE.get(),
                 AQBlocks.HOLLOW_SKYROOT_LOG.get(),
                 AQBlocks.SKYROOT_POST.get(),
                 AQBlocks.STRIPPED_SKYROOT_POST.get(),
@@ -108,7 +113,12 @@ public class AQBlockTagData extends BlockTagsProvider {
         );
 
         tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "hedges"))).add(
-                AQBlocks.SKYROOT_HEDGE.get()
+                AQBlocks.SKYROOT_HEDGE.get(),
+                AQBlocks.GOLDEN_SKYROOT_HEDGE.get(),
+                AQBlocks.CRYSTAL_SKYROOT_HEDGE.get(),
+                AQBlocks.CRYSTAL_FRUIT_SKYROOT_HEDGE.get(),
+                AQBlocks.HOLIDAY_SKYROOT_HEDGE.get(),
+                AQBlocks.DECORATED_HOLIDAY_SKYROOT_HEDGE.get()
         );
 
         tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "hollow_logs"))).add(

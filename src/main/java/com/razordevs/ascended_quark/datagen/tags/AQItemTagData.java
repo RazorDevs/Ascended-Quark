@@ -8,11 +8,13 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
+import org.lwjgl.opengl.INTELMapTexture;
 import vazkii.quark.base.Quark;
 
 import javax.annotation.Nonnull;
@@ -82,6 +84,18 @@ public class AQItemTagData extends ItemTagsProvider {
 
         tag(ItemTags.ARROWS).add(
                 AQItems.AMBROSIUM_TORCH_ARROW.get()
+        );
+        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "vertical_slabs"))).add(
+                AQBlocks.AEROGEL_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.AETHER_DIRT_BRICK_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.ANGELIC_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.HELLFIRE_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.ICESTONE_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.HOLYSTONE_VERTICAL_SLAB.get().asItem(),
+                AQBlocks.SKYROOT_VERTICAL_SLAB.get().asItem()
         );
     }
 }

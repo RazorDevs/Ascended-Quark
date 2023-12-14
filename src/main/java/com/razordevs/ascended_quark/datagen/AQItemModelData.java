@@ -19,7 +19,6 @@ public class AQItemModelData extends ItemModelProvider {
     
     @Override
     protected void registerModels() {
-        this.itemBlock(AQBlocks.AETHER_COARSE_DIRT.get());
         this.itemBlock(AQBlocks.AETHER_DIRT_BRICKS.get());
         this.itemBlock(AQBlocks.AETHER_DIRT_BRICK_STAIRS.get());
         this.itemBlock(AQBlocks.AETHER_DIRT_BRICK_SLAB.get());

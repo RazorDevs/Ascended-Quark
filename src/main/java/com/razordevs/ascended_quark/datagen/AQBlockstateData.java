@@ -25,7 +25,6 @@ public class AQBlockstateData extends BlockStateProvider {
 
     @Override
     public void registerStatesAndModels() {
-        this.block(AQBlocks.AETHER_COARSE_DIRT.get());
         this.block(AQBlocks.AETHER_DIRT_BRICKS.get());
         this.slab(AQBlocks.AETHER_DIRT_BRICK_SLAB.get(), AQBlocks.AETHER_DIRT_BRICKS.get());
         this.stairs(AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(), AQBlocks.AETHER_DIRT_BRICKS.get());

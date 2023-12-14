@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "aether:skyroot_log"
+    }
+  },
+  "pattern": [
+    " A ",
+    "A A",
+    " A "
+  ],
+  "result": {
+    "count": 4,
+    "item": "ascended_quark:hollow_skyroot_log"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "hollow_logs"
+    }
+  ]
+}

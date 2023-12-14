@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ascended_quark:mossy_holystone_vertical_slab"
+    }
+  ],
+  "result": {
+    "item": "aether:mossy_holystone_slab"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "vertical_slabs"
+    }
+  ]
+}

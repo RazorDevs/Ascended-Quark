@@ -44,14 +44,11 @@ public class AQRecipeData extends RecipeProvider {
         stonecuttingRecipe(AQBlocks.AETHER_DIRT_BRICK_WALL.get(), AQBlocks.AETHER_DIRT_BRICKS.get(), consumer);
         stonecuttingRecipe(AQBlocks.AETHER_DIRT_BRICK_VERTICAL_SLAB.get(), AQBlocks.AETHER_DIRT_BRICKS.get(),2, consumer);
 
-         */
-
-
         ShapedRecipeBuilder.shaped(AQBlocks.SKYROOT_STOOL.get()).define('A', AetherBlocks.SKYROOT_SLAB.get()
                 ).define('B', ItemTags.WOOL)
                 .pattern("BBB")
                 .pattern("AAA").unlockedBy(getHasName(AQBlocks.SKYROOT_STOOL.get()), has(AQBlocks.SKYROOT_STOOL.get())).save(consumer);
-        /*
+
         ShapedRecipeBuilder.shaped(AQBlocks.SKYROOT_CHEST.get()).define('A', AetherBlocks.SKYROOT_PLANKS.get())
                 .pattern("AAA")
                 .pattern("A A")
@@ -62,12 +59,9 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("A A")
                 .pattern("AAA").unlockedBy(getHasName(AetherBlocks.SKYROOT_LOG.get()), has(AetherBlocks.SKYROOT_LOG.get())).save(consumer, "skyroot_chest_from_wood");
 
-
-         */
         ShapelessRecipeBuilder.shapeless(Blocks.CHEST).requires(AQBlocks.SKYROOT_CHEST.get()).
             unlockedBy(getHasName(AetherBlocks.SKYROOT_PLANKS.get()), has(AetherBlocks.SKYROOT_PLANKS.get())).save(consumer);
 
-        /*
         skyrootHedge(AQBlocks.SKYROOT_HEDGE.get(), AetherBlocks.SKYROOT_LEAVES.get(), consumer);
         skyrootHedge(AQBlocks.GOLDEN_SKYROOT_HEDGE.get(), AetherBlocks.GOLDEN_OAK_LEAVES.get(), consumer);
         skyrootHedge(AQBlocks.CRYSTAL_SKYROOT_HEDGE.get(), AetherBlocks.CRYSTAL_LEAVES.get(), consumer);
@@ -82,7 +76,6 @@ public class AQRecipeData extends RecipeProvider {
         carpet(AQBlocks.CRYSTAL_FRUIT_LEAF_CARPET.get(), AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), consumer);
         carpet(AQBlocks.HOLIDAY_LEAF_CARPET.get(), AetherBlocks.HOLIDAY_LEAVES.get(), consumer);
         carpet(AQBlocks.DECORATED_HOLIDAY_LEAF_CARPET.get(), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
-        */
 
         ShapedRecipeBuilder.shaped(AQBlocks.HOLLOW_SKYROOT_LOG.get(), 4).define('A', AetherBlocks.SKYROOT_LOG.get())
                 .pattern(" A ")
@@ -90,7 +83,6 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern(" A ")
                 .unlockedBy(getHasName(AetherBlocks.SKYROOT_LOG.get()), has(AetherBlocks.SKYROOT_LOG.get())).save(consumer);
 
-        /*
         ShapedRecipeBuilder.shaped(AQBlocks.SKYROOT_LADDER.get(), 4)
                 .define('A', AetherBlocks.SKYROOT_PLANKS.get())
                 .define('B', Items.STICK)
@@ -113,7 +105,6 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("A")
                 .pattern("A")
                 .unlockedBy(getHasName(AetherBlocks.STRIPPED_SKYROOT_WOOD.get()), has(AetherBlocks.STRIPPED_SKYROOT_WOOD.get())).save(consumer);
-         */
 
         ShapedRecipeBuilder.shaped(AQBlocks.BLUE_BERRY_CRATE.get())
                 .define('A', AetherItems.BLUE_BERRY.get())
@@ -122,7 +113,6 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("AAA")
                 .unlockedBy(getHasName(AetherItems.BLUE_BERRY.get()), has(AetherItems.BLUE_BERRY.get())).save(consumer);
 
-        /*
         ShapedRecipeBuilder.shaped(AQBlocks.QUICKSOIL_BRICKS.get(),2).define('A', AetherBlocks.QUICKSOIL.get())
                 .pattern("AA")
                 .pattern("AA").unlockedBy(getHasName(AetherBlocks.QUICKSOIL.get()), has(AetherBlocks.QUICKSOIL.get())).save(consumer);
@@ -141,7 +131,6 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("AAA")
                 .pattern("A A")
                 .pattern("AAA").unlockedBy(getHasName(AetherBlocks.HOLYSTONE.get()), has(AetherBlocks.HOLYSTONE.get())).save(consumer);
-         */
 
         ShapedRecipeBuilder.shaped(AQBlocks.AMBROSIUM_LAMP.get())
                 .define('A', AetherBlocks.HOLYSTONE_BRICKS.get())
@@ -151,7 +140,6 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("BCB")
                 .pattern("AAA").unlockedBy(getHasName(AetherBlocks.HOLYSTONE_BRICKS.get()), has(AetherBlocks.HOLYSTONE_BRICKS.get())).save(consumer);
 
-        /*
         ShapedRecipeBuilder.shaped(AQBlocks.ZANITE_BARS.get(), 16)
                 .define('A', AetherItems.ZANITE_GEMSTONE.get())
                 .pattern("AAA")
@@ -171,12 +159,12 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("AAA")
                 .pattern("AAA")
                 .unlockedBy(getHasName(AetherBlocks.QUICKSOIL_GLASS.get()), has(AetherBlocks.QUICKSOIL_GLASS.get())).save(consumer);
-         */
+
 
         ShapelessRecipeBuilder.shapeless(AQItems.AMBROSIUM_TORCH_ARROW.get())
                 .requires(Items.ARROW).requires(AetherBlocks.AMBROSIUM_TORCH.get())
                 .unlockedBy(getHasName(AetherBlocks.AMBROSIUM_TORCH.get()), has(AetherBlocks.AMBROSIUM_TORCH.get())).save(consumer);
-
+x
         veticalSlab(AQBlocks.ANGELIC_VERTICAL_SLAB.get(), AetherBlocks.ANGELIC_SLAB.get(), consumer);
         veticalSlab(AQBlocks.HELLFIRE_VERTICAL_SLAB.get(), AetherBlocks.HELLFIRE_SLAB.get(), consumer);
         veticalSlab(AQBlocks.HOLYSTONE_VERTICAL_SLAB.get(), AetherBlocks.HOLYSTONE_SLAB.get(), consumer);
@@ -191,6 +179,7 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("AA")
                 .pattern("AA")
                 .unlockedBy(getHasName(AetherBlocks.QUICKSOIL_GLASS.get()), has(AetherBlocks.QUICKSOIL_GLASS.get())).save(consumer);
+         */
     }
 
 

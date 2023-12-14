@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "aether:holystone_bricks"
+    },
+    "B": {
+      "item": "minecraft:glass"
+    },
+    "C": {
+      "item": "aether:ambrosium_torch"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BCB",
+    "AAA"
+  ],
+  "result": {
+    "item": "ascended_quark:ambrosium_lamp"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "celebratory_lamps"
+    }
+  ]
+}

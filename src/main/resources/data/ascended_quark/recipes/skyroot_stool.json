@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "aether:skyroot_slab"
+    },
+    "B": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "AAA"
+  ],
+  "result": {
+    "item": "ascended_quark:skyroot_stool"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "stools"
+    }
+  ]
+}

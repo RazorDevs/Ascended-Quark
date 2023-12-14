@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ascended_quark:quicksoil_brick_vertical_slab"
+    }
+  ],
+  "result": {
+    "item": "ascended_quark:quicksoil_bricks"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "vertical_slabs"
+    }
+  ]
+}

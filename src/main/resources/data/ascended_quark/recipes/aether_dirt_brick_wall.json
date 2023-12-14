@@ -12,5 +12,11 @@
   "result": {
     "count": 6,
     "item": "ascended_quark:aether_dirt_brick_wall"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "dirt_bricks"
+    }
+  ]
 }

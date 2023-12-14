@@ -13,5 +13,11 @@
   "result": {
     "count": 8,
     "item": "ascended_quark:stripped_skyroot_post"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "wooden_posts"
+    }
+  ]
 }

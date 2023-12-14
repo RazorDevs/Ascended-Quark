@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "ascended_quark:aether_dirt_bricks"
+  },
+  "result": "ascended_quark:aether_dirt_brick_stairs",
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "dirt_bricks"
+    }
+  ]
+}

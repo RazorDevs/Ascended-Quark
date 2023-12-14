@@ -6,12 +6,16 @@
     }
   },
   "pattern": [
-    "#  ",
-    "## ",
     "###"
   ],
   "result": {
-    "count": 4,
-    "item": "ascended_quark:quicksoil_brick_stairs"
-  }
+    "count": 6,
+    "item": "ascended_quark:quicksoil_brick_slab"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "sandstone_bricks"
+    }
+  ]
 }

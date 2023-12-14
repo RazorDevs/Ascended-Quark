@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "ascended_quark:quicksoil_bricks"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "ascended_quark:quicksoil_brick_stairs"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "sandstone_bricks"
+    }
+  ]
+}

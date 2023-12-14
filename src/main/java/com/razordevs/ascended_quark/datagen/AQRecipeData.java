@@ -28,6 +28,7 @@ public class AQRecipeData extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+        /*
         ShapedRecipeBuilder.shaped(AQBlocks.AETHER_DIRT_BRICKS.get(), 4).define('A', AetherBlocks.AETHER_DIRT.get())
                 .define('B', AetherBlocks.HOLYSTONE.get())
                 .pattern("BA")
@@ -42,6 +43,8 @@ public class AQRecipeData extends RecipeProvider {
         stonecuttingRecipe(AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(), AQBlocks.AETHER_DIRT_BRICKS.get(), consumer);
         stonecuttingRecipe(AQBlocks.AETHER_DIRT_BRICK_WALL.get(), AQBlocks.AETHER_DIRT_BRICKS.get(), consumer);
         stonecuttingRecipe(AQBlocks.AETHER_DIRT_BRICK_VERTICAL_SLAB.get(), AQBlocks.AETHER_DIRT_BRICKS.get(),2, consumer);
+
+         */
 
 
         ShapedRecipeBuilder.shaped(AQBlocks.SKYROOT_STOOL.get()).define('A', AetherBlocks.SKYROOT_SLAB.get()
@@ -96,7 +99,6 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("B B")
                 .unlockedBy(getHasName(AetherBlocks.SKYROOT_PLANKS.get()), has(AetherBlocks.SKYROOT_PLANKS.get())).save(consumer);
 
-         */
 
         ShapedRecipeBuilder.shaped(AQBlocks.SKYROOT_POST.get(), 8)
                 .define('A', AetherBlocks.SKYROOT_WOOD.get())
@@ -111,6 +113,7 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("A")
                 .pattern("A")
                 .unlockedBy(getHasName(AetherBlocks.STRIPPED_SKYROOT_WOOD.get()), has(AetherBlocks.STRIPPED_SKYROOT_WOOD.get())).save(consumer);
+         */
 
         ShapedRecipeBuilder.shaped(AQBlocks.BLUE_BERRY_CRATE.get())
                 .define('A', AetherItems.BLUE_BERRY.get())
@@ -119,6 +122,7 @@ public class AQRecipeData extends RecipeProvider {
                 .pattern("AAA")
                 .unlockedBy(getHasName(AetherItems.BLUE_BERRY.get()), has(AetherItems.BLUE_BERRY.get())).save(consumer);
 
+        /*
         ShapedRecipeBuilder.shaped(AQBlocks.QUICKSOIL_BRICKS.get(),2).define('A', AetherBlocks.QUICKSOIL.get())
                 .pattern("AA")
                 .pattern("AA").unlockedBy(getHasName(AetherBlocks.QUICKSOIL.get()), has(AetherBlocks.QUICKSOIL.get())).save(consumer);
@@ -133,7 +137,6 @@ public class AQRecipeData extends RecipeProvider {
         stonecuttingRecipe(AQBlocks.QUICKSOIL_BRICK_WALL.get(), AQBlocks.AETHER_DIRT_BRICKS.get(), consumer);
         stonecuttingRecipe(AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get(), AQBlocks.AETHER_DIRT_BRICKS.get(),2, consumer);
 
-        /*
         ShapedRecipeBuilder.shaped(AQBlocks.HOLYSTONE_FURNACE.get()).define('A', AetherBlocks.HOLYSTONE.get())
                 .pattern("AAA")
                 .pattern("A A")

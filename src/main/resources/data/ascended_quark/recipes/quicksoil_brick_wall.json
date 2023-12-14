@@ -12,5 +12,11 @@
   "result": {
     "count": 6,
     "item": "ascended_quark:quicksoil_brick_wall"
-  }
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "sandstone_bricks"
+    }
+  ]
 }

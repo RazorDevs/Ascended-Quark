@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_aerogel": {
+    "has_aerogel_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether:aerogel"
+              "aether:aerogel_slab"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_aerogel",
+      "has_aerogel_slab",
       "has_the_recipe"
     ]
   ],

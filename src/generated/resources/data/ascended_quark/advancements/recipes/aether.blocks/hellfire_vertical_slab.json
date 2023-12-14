@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hellfire_stone": {
+    "has_hellfire_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether:hellfire_stone"
+              "aether:hellfire_slab"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_hellfire_stone",
+      "has_hellfire_slab",
       "has_the_recipe"
     ]
   ],

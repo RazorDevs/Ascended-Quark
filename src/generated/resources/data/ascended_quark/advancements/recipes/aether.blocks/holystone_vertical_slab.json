@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_holystone": {
+    "has_holystone_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether:holystone"
+              "aether:holystone_slab"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_holystone",
+      "has_holystone_slab",
       "has_the_recipe"
     ]
   ],

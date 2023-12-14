@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ascended_quark:aerogel_vertical_slab"
+    }
+  ],
+  "result": {
+    "item": "aether:aerogel_slab"
+  }
+}

@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-14T12:34:14.672294989	LootTables
+// 1.19.2	2023-12-14T13:34:54.050227844	LootTables
 9b0c423cf17537b8ef84ff49fcc8fdebe5831348 data/ascended_quark/loot_tables/blocks/aerogel_vertical_slab.json
 75c87ba3df784c0577917f820c9cc501066d97ac data/ascended_quark/loot_tables/blocks/aether_dirt_brick_slab.json
 327a2f29cc2508726fc2b0869008f690ca432c1a data/ascended_quark/loot_tables/blocks/aether_dirt_brick_stairs.json
@@ -28,5 +28,6 @@ e9ae01031231aca2c572004d0c9d259523bf64cd data/ascended_quark/loot_tables/blocks/
 627c3033ad868e0225671777121a0ab6e20d0c68 data/ascended_quark/loot_tables/blocks/skyroot_leaf_carpet.json
 fa36cf7047a5a3bfe6552c218c1e575730181c74 data/ascended_quark/loot_tables/blocks/skyroot_post.json
 ae1bd8f4ec1712f9a1d3020c82e18a7342eda9b9 data/ascended_quark/loot_tables/blocks/skyroot_stool.json
+a1165b4d4d79e9b20651dca345cb6aac6683ab2e data/ascended_quark/loot_tables/blocks/skyroot_vertical_slab.json
 cbf10549a9dc6a4cf93915e640be50353f7e954b data/ascended_quark/loot_tables/blocks/stripped_skyroot_post.json
 5b17045f3e79e46e72218ffc7be3ba4010859da0 data/ascended_quark/loot_tables/blocks/zanite_bars.json

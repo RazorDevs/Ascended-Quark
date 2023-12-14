@@ -49,6 +49,8 @@ public class AQBlocks {
     public static final RegistryObject<Block> SKYROOT_LADDER = registerBlock("skyroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
     public static final RegistryObject<Block> SKYROOT_POST = registerBlock("skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<Block> STRIPPED_SKYROOT_POST = registerBlock("stripped_skyroot_post", () -> new AQWoodenPostBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
+    public static final RegistryObject<Block> SKYROOT_VERTICAL_SLAB = registerBlock("skyroot_vertical_slab", ()-> new VerticalSlabBlock(AetherBlocks.SKYROOT_PLANKS, BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_PLANKS.get())));
+
     public static final RegistryObject<Block> BLUE_BERRY_CRATE = registerBlock("blue_berry_crate", () -> new FlammableBlock(150, Block.Properties.of(Material.WOOD, MaterialColor.COLOR_BLUE).strength(1.5F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> QUICKSOIL_BRICKS = registerBlock("quicksoil_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
     public static final RegistryObject<Block> QUICKSOIL_BRICK_SLAB = registerBlock("quicksoil_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));

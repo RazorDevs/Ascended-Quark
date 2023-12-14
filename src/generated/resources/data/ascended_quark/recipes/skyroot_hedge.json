@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "tag": "aether:skyroot_logs"
+    },
+    "B": {
+      "item": "aether:skyroot_leaves"
+    }
+  },
+  "pattern": [
+    "B",
+    "A"
+  ],
+  "result": {
+    "count": 2,
+    "item": "ascended_quark:skyroot_hedge"
+  }
+}

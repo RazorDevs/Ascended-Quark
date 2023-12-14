@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-14T12:34:14.671586779	Item Models: ascended_quark
+// 1.19.2	2023-12-14T13:34:54.051322989	Item Models: ascended_quark
 ac6cc442ad1688515a1e6ecea181ad01d1b15ef2 assets/ascended_quark/models/item/aerogel_vertical_slab.json
 272d105f9584075d80da3172954a3703128e781e assets/ascended_quark/models/item/aether_dirt_brick_slab.json
 a486f0b329a31d6d4ddd6c1cc48d97d05029b67f assets/ascended_quark/models/item/aether_dirt_brick_stairs.json
@@ -24,4 +24,5 @@ db3e87a2f7673d322205331450f28f28219412f5 assets/ascended_quark/models/item/quick
 08fbd1c08a2eb932d3bd9fc72d55e2cd917bbbbc assets/ascended_quark/models/item/skyroot_ladder.json
 fff34b5d7a22239f88c6b359eb34f5051698252c assets/ascended_quark/models/item/skyroot_leaf_carpet.json
 a3c6ef8bbb8557ff62cdedb4ab1af484e28053d8 assets/ascended_quark/models/item/skyroot_post.json
+496f386f0b149598e34a60e1ba4f6ff9fff80167 assets/ascended_quark/models/item/skyroot_vertical_slab.json
 33da2591ace87a9a01b5826f1c6b99a27a9d6545 assets/ascended_quark/models/item/stripped_skyroot_post.json

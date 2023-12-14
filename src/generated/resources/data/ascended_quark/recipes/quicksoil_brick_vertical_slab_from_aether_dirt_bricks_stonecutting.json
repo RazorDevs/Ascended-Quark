@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "ascended_quark:aether_dirt_bricks"
+  },
+  "result": "ascended_quark:quicksoil_brick_vertical_slab"
+}

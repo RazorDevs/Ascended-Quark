@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aether_dirt_brick_vertical_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "ascended_quark:aether_dirt_brick_vertical_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:aether_dirt_bricks_from_aether_dirt_brick_vertical_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_aether_dirt_brick_vertical_slab",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:aether_dirt_bricks_from_aether_dirt_brick_vertical_slab"
+    ]
+  }
+}

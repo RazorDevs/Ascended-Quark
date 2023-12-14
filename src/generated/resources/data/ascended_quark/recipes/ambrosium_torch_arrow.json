@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:arrow"
+    },
+    {
+      "item": "aether:ambrosium_torch"
+    }
+  ],
+  "result": {
+    "item": "ascended_quark:ambrosium_torch_arrow"
+  }
+}

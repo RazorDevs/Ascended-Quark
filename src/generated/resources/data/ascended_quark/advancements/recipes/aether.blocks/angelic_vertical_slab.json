@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_angelic_stone": {
+    "has_angelic_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether:angelic_stone"
+              "aether:angelic_slab"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_angelic_stone",
+      "has_angelic_slab",
       "has_the_recipe"
     ]
   ],

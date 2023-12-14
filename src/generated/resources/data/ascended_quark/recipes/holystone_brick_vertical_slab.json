@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "aether:holystone_bricks"
+      "item": "aether:holystone_brick_slab"
     }
   },
   "pattern": [

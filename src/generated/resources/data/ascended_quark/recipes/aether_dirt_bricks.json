@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "aether:aether_dirt"
+    },
+    "B": {
+      "item": "aether:holystone"
+    }
+  },
+  "pattern": [
+    "BA",
+    "AA"
+  ],
+  "result": {
+    "count": 4,
+    "item": "ascended_quark:aether_dirt_bricks"
+  }
+}

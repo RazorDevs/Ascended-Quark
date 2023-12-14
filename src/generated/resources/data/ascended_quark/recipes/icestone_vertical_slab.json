@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "aether:icestone"
+      "item": "aether:icestone_slab"
     }
   },
   "pattern": [

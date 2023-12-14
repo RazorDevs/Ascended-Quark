@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "aether:mossy_holystone"
+      "item": "aether:mossy_holystone_slab"
     }
   },
   "pattern": [

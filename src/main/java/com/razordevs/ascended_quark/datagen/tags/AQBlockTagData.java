@@ -74,7 +74,8 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.SKYROOT_CHEST.get(),
                 AQBlocks.SKYROOT_LADDER.get(),
                 AQBlocks.SKYROOT_STOOL.get(),
-                AQBlocks.BLUE_BERRY_CRATE.get()
+                AQBlocks.BLUE_BERRY_CRATE.get(),
+                AQBlocks.SKYROOT_VERTICAL_SLAB.get()
         );
 
         tag(BlockTags.MINEABLE_WITH_HOE).add(
@@ -139,7 +140,8 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.ICESTONE_VERTICAL_SLAB.get(),
                 AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get(),
                 AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get(),
-                AQBlocks.HOLYSTONE_VERTICAL_SLAB.get()
+                AQBlocks.HOLYSTONE_VERTICAL_SLAB.get(),
+                AQBlocks.SKYROOT_VERTICAL_SLAB.get()
         );
     }
 }

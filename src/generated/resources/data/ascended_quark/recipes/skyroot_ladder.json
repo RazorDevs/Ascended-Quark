@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "aether:skyroot_planks"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "B B",
+    "BAB",
+    "B B"
+  ],
+  "result": {
+    "count": 4,
+    "item": "ascended_quark:skyroot_ladder"
+  }
+}

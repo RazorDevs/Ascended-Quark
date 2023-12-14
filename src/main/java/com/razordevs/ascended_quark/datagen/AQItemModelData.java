@@ -45,6 +45,7 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlock(AQBlocks.ICESTONE_VERTICAL_SLAB.get());
         this.itemBlock(AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get());
         this.itemBlock(AQBlocks.AEROGEL_VERTICAL_SLAB.get());
+        this.itemBlock(AQBlocks.SKYROOT_VERTICAL_SLAB.get());
 
         this.item(AQItems.AMBROSIUM_TORCH_ARROW.get());
 

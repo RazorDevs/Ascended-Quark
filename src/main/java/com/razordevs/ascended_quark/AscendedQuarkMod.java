@@ -28,6 +28,7 @@ import vazkii.quark.base.module.config.ConfigFlagManager;
 public class AscendedQuarkMod
 {
     public static final String MODID = "ascended_quark";
+    public static final String DEEP_AETHER = "deep_aether";
     public static final Logger LOGGER = LogUtils.getLogger();
     public AscendedQuarkMod()
     {

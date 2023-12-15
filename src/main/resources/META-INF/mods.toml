@@ -30,11 +30,11 @@ A mod that adds compatibility between Aether and Quark.
     modId="quark"
     mandatory=true
     versionRange="[0,)"
-    ordering="NONE"
+    ordering="BEFORE"
     side="BOTH"
 [[dependencies.ascended_quark]]
     modId="aether"
     mandatory=true
     versionRange="[0,)"
-    ordering="AFTER"
+    ordering="BEFORE"
     side="BOTH"

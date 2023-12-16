@@ -16,8 +16,17 @@
   },
   "conditions": [
     {
-      "type": "quark:flag",
-      "flag": "wooden_posts"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "wooden_posts"
+        },
+        {
+          "type": "quark:flag",
+          "flag": "skyroot_quark_blocks"
+        }
+      ]
     }
   ]
 }

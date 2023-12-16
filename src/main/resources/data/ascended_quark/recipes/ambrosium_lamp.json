@@ -22,7 +22,7 @@
   "conditions": [
     {
       "type": "quark:flag",
-      "flag": "celebratory_lamps"
+      "flag": "ambrosium_lamp"
     }
   ]
 }

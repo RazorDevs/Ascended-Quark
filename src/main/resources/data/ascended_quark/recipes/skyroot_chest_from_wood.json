@@ -11,6 +11,7 @@
     "AAA"
   ],
   "result": {
+    "count": 4,
     "item": "ascended_quark:skyroot_chest"
   },
   "conditions": [
@@ -24,6 +25,10 @@
         {
           "type": "quark:flag",
           "flag": "variant_chests"
+        },
+        {
+          "type": "quark:flag",
+          "flag": "skyroot_quark_blocks"
         }
       ]
     }

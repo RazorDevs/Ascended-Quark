@@ -16,7 +16,7 @@
   "conditions": [
     {
       "type": "quark:flag",
-      "flag": "carrot_crate"
+      "flag": "blue_berry_crate"
     }
   ]
 }

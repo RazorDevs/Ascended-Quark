@@ -10,7 +10,6 @@ import net.minecraftforge.forgespi.language.ModFileScanData;
 import org.apache.commons.lang3.text.WordUtils;
 import org.objectweb.asm.Type;
 import org.spongepowered.asm.mixin.Unique;
-import vazkii.quark.base.Quark;
 import vazkii.quark.base.module.ModuleCategory;
 import vazkii.quark.base.module.QuarkModule;
 
@@ -18,7 +17,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 //Cursed Code
-//Mixin didn't like the type class idk
+//Mixin didn't like the Type class idk
 public class ModuleFinderHelper {
     private static final Pattern MODULE_CLASS_PATTERN = Pattern.compile("com.razordevs.ascended_quark.module.\\w+Module");
     Object finder;
@@ -50,7 +49,7 @@ public class ModuleFinderHelper {
 
             Map<String, Object> vals = target.annotationData();
             ModuleCategory category = getOrMakeCategory();
-            
+
             if(vals.containsKey("name"))
                 moduleObj.displayName = (String) vals.get("name");
             else

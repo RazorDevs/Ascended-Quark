@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "ascended_quark:quicksoil_bricks"
+      "item": "ascended_quark:quicksoil_brick_slab"
     }
   },
   "pattern": [

@@ -19,7 +19,7 @@ import vazkii.quark.base.client.config.screen.widgets.CheckboxButton;
 import vazkii.quark.base.client.config.screen.widgets.IconButton;
 
 //Based on https://gist.github.com/LlamaLad7/0b553d5ae04e4eb44d3a1e8558be9151
-@Mixin(value = QuarkConfigHomeScreen.class, remap = false)
+@Mixin(value = QuarkConfigHomeScreen.class)
 abstract class QuarkConfigHomeScreenMixin extends AbstractQScreen {
 
     public QuarkConfigHomeScreenMixin(Screen parent) {

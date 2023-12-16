@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "#": {
-      "item": "ascended_quark:aether_dirt_bricks"
+      "item": "ascended_quark:aether_dirt_brick_slab"
     }
   },
   "pattern": [

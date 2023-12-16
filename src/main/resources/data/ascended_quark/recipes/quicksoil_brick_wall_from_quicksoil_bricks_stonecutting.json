@@ -2,13 +2,13 @@
   "type": "minecraft:stonecutting",
   "count": 1,
   "ingredient": {
-    "item": "ascended_quark:aether_dirt_bricks"
+    "item": "ascended_quark:quicksoil_bricks"
   },
   "result": "ascended_quark:quicksoil_brick_wall",
   "conditions": [
     {
       "type": "quark:flag",
-      "flag": "sandstone_bricks"
+      "flag": "quicksoil_bricks"
     }
   ]
 }

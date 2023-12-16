@@ -16,7 +16,7 @@
   "conditions": [
     {
       "type": "quark:flag",
-      "flag": "sandstone_bricks"
+      "flag": "quicksoil_bricks"
     }
   ]
 }

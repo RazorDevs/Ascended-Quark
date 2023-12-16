@@ -18,8 +18,17 @@
   },
   "conditions": [
     {
-      "type": "quark:flag",
-      "flag": "hedges"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "hedges"
+        },
+        {
+          "type": "quark:flag",
+          "flag": "skyroot_quark_blocks"
+        }
+      ]
     }
   ]
 }

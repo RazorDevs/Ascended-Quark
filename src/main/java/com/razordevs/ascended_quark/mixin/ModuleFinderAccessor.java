@@ -8,7 +8,7 @@ import vazkii.quark.base.module.QuarkModule;
 
 import java.util.Map;
 
-@Mixin(ModuleFinder.class)
+@Mixin(value = ModuleFinder.class, remap = false)
 public interface ModuleFinderAccessor {
     @Accessor
     Map<Class<? extends QuarkModule>, QuarkModule> getFoundModules();

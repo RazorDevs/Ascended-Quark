@@ -19,8 +19,17 @@
   },
   "conditions": [
     {
-      "type": "quark:flag",
-      "flag": "variant_ladders"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "variant_ladders"
+        },
+        {
+          "type": "quark:flag",
+          "flag": "skyroot_quark_blocks"
+        }
+      ]
     }
   ]
 }

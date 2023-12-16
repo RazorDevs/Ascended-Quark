@@ -17,8 +17,17 @@
   },
   "conditions": [
     {
-      "type": "quark:flag",
-      "flag": "stools"
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "stools"
+        },
+        {
+          "type": "quark:flag",
+          "flag": "skyroot_stool"
+        }
+      ]
     }
   ]
 }

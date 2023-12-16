@@ -1,10 +1,7 @@
 package com.razordevs.ascended_quark.mixin;
 
-import com.aetherteam.aether.item.AetherItems;
-import com.aetherteam.aether.item.miscellaneous.AetherPortalItem;
-import com.razordevs.ascended_quark.AetherModuleCategory;
+import com.razordevs.ascended_quark.config.AetherModuleCategory;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;

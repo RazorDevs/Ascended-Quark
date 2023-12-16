@@ -1,5 +1,6 @@
 package com.razordevs.ascended_quark.mixin;
 
+import com.aetherteam.aether.item.AetherItems;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -21,97 +22,22 @@ import vazkii.quark.base.client.config.screen.widgets.IconButton;
 @Mixin(value = QuarkConfigHomeScreen.class, remap = false)
 abstract class QuarkConfigHomeScreenMixin extends AbstractQScreen {
 
-
-    @Shadow
-    private static Component componentFor(IConfigCategory c) {
-        return null;
-    }
-
-    @Shadow public abstract void commit(Button button);
-
     public QuarkConfigHomeScreenMixin(Screen parent) {
         super(parent);
     }
 
 
+    //Evil hack to not make the last config row shift to the left
     @ModifyVariable(method = "init", at = @At("STORE"), ordinal = 7)
     private int modify(int original) {
         return 1000;
     }
 
-/*
-
-    @Overwrite
-    protected void init() {
-        super.init();
-
-        final int perLine = 3;
-        boolean addExternal = ExternalConfigHandler.instance.hasAny();
-
-        int pad = 10;
-        int vpad = 23;
-        int bWidth = 120;
-        int left = width / 2 - ((bWidth + pad) * perLine / 2) + 4;
-        int vStart = 70;
-
-        int i = 0;
-        int catCount = ModuleCategory.values().length+1;
-        if(addExternal)
-            catCount++;
-
-        boolean shiftedLeft = false;
-        int useLeft = left;
-
-        for(ModuleCategory category : ModuleCategory.values()) {
-            if(!shiftedLeft && catCount - i < perLine && false) {
-                useLeft = width / 2 - ((bWidth + pad) * (catCount - i) / 2);
-                shiftedLeft = true;
-            }
-
-            int x = useLeft + (bWidth + pad) * (i % perLine);
-            int y = vStart + (i / perLine) * vpad;
-
-            IConfigCategory configCategory = IngameConfigHandler.INSTANCE.getConfigCategory(category);
-            Component comp = componentFor(configCategory);
-
-            Button icon = new IconButton(x, y, bWidth - 20, 20, comp, new ItemStack(category.item), categoryLink(configCategory));
-            Button checkbox = new CheckboxButton(x + bWidth - 20, y, IngameConfigHandler.INSTANCE.getCategoryEnabledObject(category));
-
-            addRenderableWidget(icon);
-            addRenderableWidget(checkbox);
-
-            System.out.println(category + " " + icon.x);
-            System.out.println(category + " " + icon.x);
-
-            if(category.requiredMod != null && !ModList.get().isLoaded(category.requiredMod)) {
-                icon.active = false;
-                checkbox.active = false;
-            }
-
-            i++;
+    @WrapOperation(method = "init", at = @At(value = "NEW", target = "(IIIILnet/minecraft/network/chat/Component;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/client/gui/components/Button$OnPress;)Lvazkii/quark/base/client/config/screen/widgets/IconButton;"))
+    private IconButton changeIconIfAether(int x, int y, int w, int h, Component text, ItemStack icon, Button.OnPress onClick, Operation<IconButton> original) {
+        if(text.getString().equals("The Aether")) {
+            return new IconButton(x, y, w, h, text, new ItemStack(AetherItems.AETHER_PORTAL_FRAME.get()), onClick);
         }
-
-        IConfigCategory cat = IngameConfigHandler.INSTANCE.getConfigCategory(null);
-        addRenderableWidget(new Button(useLeft + (bWidth + pad) * (i % perLine), vStart + (i / perLine) * vpad, bWidth, 20, componentFor(cat), categoryLink(cat)));
-        i++;
-
-        if(addExternal) {
-            cat = ExternalConfigHandler.instance.mockCategory;
-            addRenderableWidget(new Button(useLeft + (bWidth + pad) * (i % perLine), vStart + (i / perLine) * vpad, bWidth, 20, componentFor(cat), categoryLink(cat)));
-        }
-
-        bWidth = 200;
-        addRenderableWidget(new Button(width / 2 - bWidth / 2, height - 30, bWidth, 20, Component.translatable("quark.gui.config.save"), this::commit));
-
-        vStart = height - 55;
-        bWidth = 20;
-        pad = 5;
-        left = (width - (bWidth + pad) * 5) / 2;
-        addRenderableWidget(new SocialButton(left, vStart, Component.translatable("quark.gui.config.social.website"), 0x48ddbc, 0, webLink("https://quarkmod.net")));
-        addRenderableWidget(new SocialButton(left + bWidth + pad, vStart, Component.translatable("quark.gui.config.social.discord"), 0x7289da, 1, webLink("https://discord.gg/vm")));
-        addRenderableWidget(new SocialButton(left + (bWidth + pad) * 2, vStart, Component.translatable("quark.gui.config.social.patreon"), 0xf96854, 2, webLink("https://patreon.com/vazkii")));
-        addRenderableWidget(new SocialButton(left + (bWidth + pad) * 3, vStart, Component.translatable("quark.gui.config.social.reddit"), 0xff4400, 3, webLink("https://reddit.com/r/quarkmod")));
-        addRenderableWidget(new SocialButton(left + (bWidth + pad) * 4, vStart, Component.translatable("quark.gui.config.social.twitter"), 0x1da1f2, 4, webLink("https://twitter.com/VazkiiMods")));
+        else return original.call(x,y,w,h,text,icon,onClick);
     }
-*/
 }

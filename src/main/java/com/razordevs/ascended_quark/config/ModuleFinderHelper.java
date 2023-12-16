@@ -1,9 +1,8 @@
-package com.razordevs.ascended_quark;
+package com.razordevs.ascended_quark.config;
 
 import com.google.common.collect.Lists;
 import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.mixin.ModuleFinderAccessor;
-import com.razordevs.ascended_quark.mixin.ModuleFinderMixin;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.moddiscovery.ModAnnotation;
@@ -12,9 +11,7 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.objectweb.asm.Type;
 import org.spongepowered.asm.mixin.Unique;
 import vazkii.quark.base.Quark;
-import vazkii.quark.base.module.LoadModule;
 import vazkii.quark.base.module.ModuleCategory;
-import vazkii.quark.base.module.ModuleFinder;
 import vazkii.quark.base.module.QuarkModule;
 
 import java.util.*;
@@ -53,12 +50,7 @@ public class ModuleFinderHelper {
 
             Map<String, Object> vals = target.annotationData();
             ModuleCategory category = getOrMakeCategory();
-
-            //String categoryName = category.name;
-            //String packageName = m.group(1);
-            //if(!categoryName.equals(packageName))
-            //    throw new RuntimeException("Module " + name + " is defined in " + packageName + " but in category " + categoryName);
-
+            
             if(vals.containsKey("name"))
                 moduleObj.displayName = (String) vals.get("name");
             else

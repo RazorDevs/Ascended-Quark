@@ -1,4 +1,4 @@
-package com.razordevs.ascended_quark;
+package com.razordevs.ascended_quark.config;
 
 import net.minecraftforge.api.distmarker.Dist;
 import vazkii.quark.base.module.ModuleCategory;

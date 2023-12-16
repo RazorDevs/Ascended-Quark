@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
 //Cursed Code
 //Mixin didn't like the type class idk
 public class ModuleFinderHelper {
-    private static final Type LOAD_MODULE_TYPE = Type.getType(LoadModule.class);
     private static final Pattern MODULE_CLASS_PATTERN = Pattern.compile("com.razordevs.ascended_quark.module.\\w+Module");
     Object finder;
     public void start(Object o) {
@@ -32,7 +31,7 @@ public class ModuleFinderHelper {
         ModFileScanData scanData = ModList.get().getModFileById(AscendedQuarkMod.MODID).getFile().getScanResult();
 
         scanData.getAnnotations().stream()
-                .filter(annotationData -> Type.getType(LoadModule.class).equals(annotationData.annotationType()))
+                .filter(annotationData -> Type.getType(LoadModuleButWithoutCategory.class).equals(annotationData.annotationType()))
                 .sorted(Comparator.comparing(d -> d.getClass().getName()))
                 .forEach(this::loadModule);
     }
@@ -53,18 +52,12 @@ public class ModuleFinderHelper {
             QuarkModule moduleObj = (QuarkModule) clazz.getDeclaredConstructor().newInstance();
 
             Map<String, Object> vals = target.annotationData();
-            ModuleCategory category = getOrMakeCategory((ModAnnotation.EnumHolder) vals.get("category"));
+            ModuleCategory category = getOrMakeCategory();
 
             //String categoryName = category.name;
             //String packageName = m.group(1);
             //if(!categoryName.equals(packageName))
             //    throw new RuntimeException("Module " + name + " is defined in " + packageName + " but in category " + categoryName);
-
-            if(category.isAddon()) {
-                String mod = category.requiredMod;
-                if(mod != null && !mod.isEmpty() && !ModList.get().isLoaded(mod))
-                    moduleObj.missingDep = true;
-            }
 
             if(vals.containsKey("name"))
                 moduleObj.displayName = (String) vals.get("name");
@@ -97,13 +90,18 @@ public class ModuleFinderHelper {
             category.addModule(moduleObj);
             moduleObj.category = category;
 
-            ((ModuleFinderAccessor) finder).getFoundModules().put((Class<? extends QuarkModule>) clazz, moduleObj);
+
+            Map<Class<? extends QuarkModule>, QuarkModule> temp = ((ModuleFinderAccessor) finder).getFoundModules();
+            temp.put((Class<? extends QuarkModule>) clazz, moduleObj);
+
+            ((ModuleFinderAccessor) finder).setFoundModules(temp);
+
         } catch(ReflectiveOperationException e) {
             throw new RuntimeException("Failed to load Module " + target, e);
         }
     }
 
-    private ModuleCategory getOrMakeCategory(ModAnnotation.EnumHolder category) {
-        return ModuleCategory.valueOf(category.getValue());
+    private ModuleCategory getOrMakeCategory() {
+        return ModuleCategory.valueOf("THE_AETHER");
     }
 }

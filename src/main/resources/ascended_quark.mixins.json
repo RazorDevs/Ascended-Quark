@@ -8,6 +8,7 @@
     "ModuleCategoryMixin",
     "ModuleFinderAccessor",
     "ModuleFinderMixin",
+    "QuarkConfigHomeScreenMixin",
     "SlimeInABucketModuleMixin"
   ],
   "injectors": {

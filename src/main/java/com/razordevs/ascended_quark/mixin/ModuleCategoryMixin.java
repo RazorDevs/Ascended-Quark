@@ -5,6 +5,7 @@ import com.aetherteam.aether.item.miscellaneous.AetherPortalItem;
 import com.razordevs.ascended_quark.AetherModuleCategory;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -36,7 +37,7 @@ abstract class ModuleCategoryMixin {
     @Inject(method = "<clinit>", at = @At(value = "FIELD", opcode = Opcodes.PUTSTATIC, target = "Lvazkii/quark/base/module/ModuleCategory;$VALUES:[Lvazkii/quark/base/module/ModuleCategory;", shift = At.Shift.AFTER))
     private static void addCustomVariant(CallbackInfo ci) {
         var variants = new ArrayList<>(Arrays.asList(ModuleCategory.values()));
-        var aether = newVariant("THE_AETHER", variants.get(variants.size() - 1).ordinal() + 1, "the_aether", Items.ACACIA_BUTTON);
+        var aether = newVariant("THE_AETHER", variants.get(variants.size() - 1).ordinal() + 1, "the_aether", Blocks.GLOWSTONE.asItem());
         AetherModuleCategory.THE_AETHER = aether;
         variants.add(aether);
         $VALUES = variants.toArray(new ModuleCategory[0]);

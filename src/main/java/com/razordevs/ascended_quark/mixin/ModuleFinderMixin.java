@@ -18,18 +18,10 @@ import vazkii.quark.base.module.QuarkModule;
 
 import java.util.*;
 
-@Mixin(value = ModuleFinder.class)
+@Mixin(value = ModuleFinder.class, remap = false)
 public abstract class ModuleFinderMixin {
-
-    @Unique
-    ModuleFinderHelper quark_aether$helper = new ModuleFinderHelper();
-
-    @Shadow(remap = false) protected abstract ModuleCategory getOrMakeCategory(ModAnnotation.EnumHolder category);
-
-    @Shadow(remap = false) @Final private Map<Class<? extends QuarkModule>, QuarkModule> foundModules;
-
-    @Inject(at = @At("TAIL"), method = "findModules", remap = false, locals = LocalCapture.CAPTURE_FAILEXCEPTION)
+    @Inject(at = @At("TAIL"), method = "findModules")
     public void findModules(CallbackInfo ci) {
-        quark_aether$helper.start(this);
+        new ModuleFinderHelper().start(this);
     }
 }

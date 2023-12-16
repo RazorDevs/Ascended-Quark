@@ -36,11 +36,12 @@ public class AQLangData extends NitrogenLanguageProvider {
             items.remove(block.get().asItem());
         }
 
-
         for (Item item : items)
         {
             this.add(item, this.getName(item.toString()));
         }
+
+        this.add("quark.category.the_aether", "The Aether");
     }
 
     private String getName(String name) {

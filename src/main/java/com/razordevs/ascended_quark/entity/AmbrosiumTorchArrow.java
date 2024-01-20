@@ -90,7 +90,7 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
     @Override
     protected void onHitEntity(EntityHitResult result) {
             if(result.getEntity() instanceof LivingEntity entity) {
-                entity.heal(1.0F);
+                entity.heal(2.0F);
             }
             super.onHitEntity(result);
     }

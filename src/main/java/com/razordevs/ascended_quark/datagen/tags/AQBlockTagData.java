@@ -1,7 +1,7 @@
 package com.razordevs.ascended_quark.datagen.tags;
 
 import com.aetherteam.aether.AetherTags;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
+import com.razordevs.ascended_quark.AscendedQuark;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
@@ -20,7 +20,7 @@ import java.util.Collection;
 public class AQBlockTagData extends BlockTagsProvider {
 
     public AQBlockTagData(DataGenerator output,  @Nullable ExistingFileHelper helper) {
-        super(output, AscendedQuarkMod.MODID, helper);
+        super(output, AscendedQuark.MODID, helper);
     }
     @Nonnull
     @Override

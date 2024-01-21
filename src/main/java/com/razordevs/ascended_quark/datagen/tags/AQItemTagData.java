@@ -1,31 +1,28 @@
 package com.razordevs.ascended_quark.datagen.tags;
 
 import com.aetherteam.aether.AetherTags;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
+import com.razordevs.ascended_quark.AscendedQuark;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
-import org.lwjgl.opengl.INTELMapTexture;
 import vazkii.quark.base.Quark;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.swing.text.html.HTML;
 import java.util.Collection;
 
 public class AQItemTagData extends ItemTagsProvider {
 
     public AQItemTagData(DataGenerator output, BlockTagsProvider blocks, @Nullable ExistingFileHelper helper) {
-        super(output, blocks, AscendedQuarkMod.MODID, helper);
+        super(output, blocks, AscendedQuark.MODID, helper);
     }
     @Nonnull
     @Override

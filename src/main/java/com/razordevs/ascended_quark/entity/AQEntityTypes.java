@@ -1,6 +1,6 @@
 package com.razordevs.ascended_quark.entity;
 
-import com.razordevs.ascended_quark.AscendedQuarkMod;
+import com.razordevs.ascended_quark.AscendedQuark;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 
 public class AQEntityTypes {
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, AscendedQuarkMod.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, AscendedQuark.MODID);
 
 
     public static final RegistryObject<EntityType<Stool>> STOOL = ENTITY_TYPES.register("stool",

@@ -1,7 +1,7 @@
 package com.razordevs.ascended_quark.config;
 
 import com.google.common.collect.Lists;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
+import com.razordevs.ascended_quark.AscendedQuark;
 import com.razordevs.ascended_quark.mixin.ModuleFinderAccessor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.ModList;
@@ -24,7 +24,7 @@ public class ModuleFinderHelper {
     public void start(Object o) {
         this.finder = o;
 
-        ModFileScanData scanData = ModList.get().getModFileById(AscendedQuarkMod.MODID).getFile().getScanResult();
+        ModFileScanData scanData = ModList.get().getModFileById(AscendedQuark.MODID).getFile().getScanResult();
 
         scanData.getAnnotations().stream()
                 .filter(annotationData -> Type.getType(LoadModuleButWithoutCategory.class).equals(annotationData.annotationType()))
@@ -42,8 +42,8 @@ public class ModuleFinderHelper {
             if(!m.matches())
                 throw new RuntimeException("Invalid module name " + name);
 
-            Class<?> clazz = Class.forName(name, false, AscendedQuarkMod.class.getClassLoader());
-            AscendedQuarkMod.LOGGER.info("Found Ascended Quark module class " + name);
+            Class<?> clazz = Class.forName(name, false, AscendedQuark.class.getClassLoader());
+            AscendedQuark.LOGGER.info("Found Ascended Quark module class " + name);
 
             QuarkModule moduleObj = (QuarkModule) clazz.getDeclaredConstructor().newInstance();
 

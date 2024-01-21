@@ -1,7 +1,7 @@
 package com.razordevs.ascended_quark.datagen;
 
 import com.aetherteam.nitrogen.data.providers.NitrogenLanguageProvider;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
+import com.razordevs.ascended_quark.AscendedQuark;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.data.DataGenerator;
@@ -17,7 +17,7 @@ import java.util.List;
 public class AQLangData extends NitrogenLanguageProvider {
 
     public AQLangData(DataGenerator output) {
-        super(output, AscendedQuarkMod.MODID);
+        super(output, AscendedQuark.MODID);
     }
 
     @Override

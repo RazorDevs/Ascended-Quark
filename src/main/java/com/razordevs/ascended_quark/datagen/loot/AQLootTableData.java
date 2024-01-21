@@ -1,8 +1,6 @@
 package com.razordevs.ascended_quark.datagen.loot;
 
 import com.mojang.datafixers.util.Pair;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;

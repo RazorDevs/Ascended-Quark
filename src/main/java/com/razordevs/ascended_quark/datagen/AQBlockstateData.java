@@ -1,7 +1,7 @@
 package com.razordevs.ascended_quark.datagen;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
+import com.razordevs.ascended_quark.AscendedQuark;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class AQBlockstateData extends BlockStateProvider {
     public AQBlockstateData(DataGenerator output, ExistingFileHelper helper) {
-        super(output, AscendedQuarkMod.MODID, helper);
+        super(output, AscendedQuark.MODID, helper);
     }
 
     @Override

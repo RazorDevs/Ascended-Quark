@@ -1,22 +1,15 @@
 package com.razordevs.ascended_quark.datagen;
 
 import com.aetherteam.aether.AetherTags;
-import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.item.AetherItems;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
-import com.razordevs.ascended_quark.blocks.AQBlocks;
-import com.razordevs.ascended_quark.items.AQItems;
+import com.razordevs.ascended_quark.AscendedQuark;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
@@ -293,7 +286,7 @@ x
     }
 
     protected ResourceLocation  name(String name) {
-        return new ResourceLocation(AscendedQuarkMod.MODID, name);
+        return new ResourceLocation(AscendedQuark.MODID, name);
     }
 
     protected void stonecuttingRecipe(ItemLike item, ItemLike ingredient, Consumer<FinishedRecipe> consumer) {

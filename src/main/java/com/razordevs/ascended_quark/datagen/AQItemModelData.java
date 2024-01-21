@@ -1,6 +1,6 @@
 package com.razordevs.ascended_quark.datagen;
 
-import com.razordevs.ascended_quark.AscendedQuarkMod;
+import com.razordevs.ascended_quark.AscendedQuark;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.data.DataGenerator;
@@ -13,7 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class AQItemModelData extends ItemModelProvider {
     public AQItemModelData(DataGenerator output, ExistingFileHelper helper) {
-        super(output, AscendedQuarkMod.MODID, helper);
+        super(output, AscendedQuark.MODID, helper);
     }
     
     

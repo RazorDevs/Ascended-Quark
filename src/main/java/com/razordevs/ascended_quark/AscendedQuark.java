@@ -11,26 +11,21 @@ import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.items.AQItems;
 import com.razordevs.ascended_quark.particle.AQParticles;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.NewRegistryEvent;
-import net.minecraftforge.registries.RegisterEvent;
 import org.slf4j.Logger;
-import vazkii.quark.base.module.config.ConfigFlagManager;
 
-@Mod(AscendedQuarkMod.MODID)
-public class AscendedQuarkMod
+@Mod(AscendedQuark.MODID)
+public class AscendedQuark
 {
     public static final String MODID = "ascended_quark";
     public static final String DEEP_AETHER = "deep_aether";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public AscendedQuarkMod()
+    public AscendedQuark()
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dataSetup);
 
@@ -42,8 +37,6 @@ public class AscendedQuarkMod
         AQEntityTypes.ENTITY_TYPES.register(modEventBus);
         AQBlockEntityTypes.ENTITY_TYPES.register(modEventBus);
         AQParticles.PARTICLE_TYPES.register(modEventBus);
-
-
     }
 
     public void dataSetup(GatherDataEvent event) {

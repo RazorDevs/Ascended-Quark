@@ -1,24 +1,14 @@
 package com.razordevs.ascended_quark.datagen.loot;
 
-import com.google.common.collect.Sets;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
 import com.razordevs.ascended_quark.blocks.AQBlocks;
-import com.razordevs.ascended_quark.items.AQItems;
-import net.minecraft.core.Registry;
 import net.minecraft.data.loot.BlockLoot;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraftforge.registries.RegistryObject;
 import vazkii.quark.content.building.block.VerticalSlabBlock;
 
 import java.util.*;
-import java.util.function.BiConsumer;
-
-import static java.lang.System.in;
 
 public class AQBlockLoot extends BlockLoot {
 

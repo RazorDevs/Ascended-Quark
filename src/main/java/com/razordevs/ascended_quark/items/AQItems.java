@@ -2,26 +2,20 @@ package com.razordevs.ascended_quark.items;
 
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.item.AetherCreativeTabs;
-import com.razordevs.ascended_quark.AscendedQuarkMod;
-import com.razordevs.ascended_quark.blocks.AQBlocks;
+import com.razordevs.ascended_quark.AscendedQuark;
 import com.razordevs.ascended_quark.entity.AmbrosiumTorchArrow;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import vazkii.quark.base.item.QuarkArrowItem;
 import vazkii.quark.content.tools.module.TorchArrowModule;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 public class AQItems {
 
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, AscendedQuarkMod.MODID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, AscendedQuark.MODID);
 
     public static final RegistryObject<AQSlimeInABucketItem> SLIME_IN_A_SKYROOT_BUCKET_ITEM = ITEMS.register("slime_in_a_skyroot_bucket", () -> new AQSlimeInABucketItem(EntityType.SLIME, true));
 

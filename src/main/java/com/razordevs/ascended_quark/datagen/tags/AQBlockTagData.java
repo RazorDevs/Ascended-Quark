@@ -99,17 +99,23 @@ public class AQBlockTagData extends BlockTagsProvider {
 
         tag(BlockTags.SLABS).add(
                 AQBlocks.AETHER_DIRT_BRICK_SLAB.get(),
-                AQBlocks.QUICKSOIL_BRICK_SLAB.get()
+                AQBlocks.QUICKSOIL_BRICK_SLAB.get(),
+                AQBlocks.ICESTONE_BRICK_SLAB.get(),
+                AQBlocks.POLISHED_ICESTONE_SLAB.get()
         );
 
         tag(BlockTags.STAIRS).add(
                 AQBlocks.AETHER_DIRT_BRICK_STAIRS.get(),
-                AQBlocks.QUICKSOIL_BRICK_STAIRS.get()
+                AQBlocks.QUICKSOIL_BRICK_STAIRS.get(),
+                AQBlocks.ICESTONE_BRICK_STAIRS.get(),
+                AQBlocks.POLISHED_ICESTONE_STAIRS.get()
         );
 
         tag(BlockTags.WALLS).add(
                 AQBlocks.AETHER_DIRT_BRICKS.get(),
-                AQBlocks.QUICKSOIL_BRICK_WALL.get()
+                AQBlocks.QUICKSOIL_BRICK_WALL.get(),
+                AQBlocks.ICESTONE_BRICK_WALL.get(),
+                AQBlocks.POLISHED_ICESTONE_WALL.get()
         );
 
         tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "posts"))).add(
@@ -161,7 +167,9 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get(),
                 AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get(),
                 AQBlocks.HOLYSTONE_VERTICAL_SLAB.get(),
-                AQBlocks.SKYROOT_VERTICAL_SLAB.get()
+                AQBlocks.SKYROOT_VERTICAL_SLAB.get(),
+                AQBlocks.ICESTONE_BRICK_VERTICAL_SLAB.get(),
+                AQBlocks.POLISHED_ICESTONE_VERTICAL_SLAB.get()
         );
     }
 }

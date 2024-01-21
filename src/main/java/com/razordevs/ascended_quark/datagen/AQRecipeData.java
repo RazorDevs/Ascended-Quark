@@ -179,7 +179,53 @@ x
                 .pattern("AA")
                 .pattern("AA")
                 .unlockedBy(getHasName(AetherBlocks.QUICKSOIL_GLASS.get()), has(AetherBlocks.QUICKSOIL_GLASS.get())).save(consumer);
-         */
+
+        ShapedRecipeBuilder.shaped(AQBlocks.ICESTONE_BRICKS.get())
+                .define('A', AQBlocks.POLISHED_ICESTONE.get())
+                .pattern("AA")
+                .pattern("AA")
+                .unlockedBy(getHasName(AetherBlocks.ICESTONE.get()), has(AetherBlocks.ICESTONE.get())).save(consumer);
+
+        ShapedRecipeBuilder.shaped(AQBlocks.POLISHED_ICESTONE.get())
+                .define('A', AetherBlocks.ICESTONE.get())
+                .pattern("AA")
+                .pattern("AA")
+                .unlockedBy(getHasName(AetherBlocks.ICESTONE.get()), has(AetherBlocks.ICESTONE.get())).save(consumer);
+
+        slab(AQBlocks.ICESTONE_BRICK_SLAB.get(), AQBlocks.ICESTONE_BRICKS.get(), consumer);
+        stairs(AQBlocks.ICESTONE_BRICK_STAIRS.get(), AQBlocks.ICESTONE_BRICKS.get(), consumer);
+        wall(AQBlocks.ICESTONE_BRICK_WALL.get(), AQBlocks.ICESTONE_BRICKS.get(), consumer);
+        veticalSlab(AQBlocks.ICESTONE_BRICK_VERTICAL_SLAB.get(), AQBlocks.ICESTONE_BRICKS.get(), consumer);
+
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_SLAB.get(), AQBlocks.ICESTONE_BRICKS.get(), 2, consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_STAIRS.get(), AQBlocks.ICESTONE_BRICKS.get(), consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_WALL.get(), AQBlocks.ICESTONE_BRICKS.get(), consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_VERTICAL_SLAB.get(), AQBlocks.ICESTONE_BRICKS.get(),2, consumer);
+
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_SLAB.get(), AQBlocks.POLISHED_ICESTONE.get(), 2, consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_STAIRS.get(), AQBlocks.POLISHED_ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_WALL.get(), AQBlocks.POLISHED_ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_VERTICAL_SLAB.get(), AQBlocks.POLISHED_ICESTONE.get(),2, consumer);
+
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_SLAB.get(), AetherBlocks.ICESTONE.get(), 2, consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_STAIRS.get(), AetherBlocks.ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_WALL.get(), AetherBlocks.ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICK_VERTICAL_SLAB.get(), AetherBlocks.ICESTONE.get(),2, consumer);
+
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE.get(), AetherBlocks.ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICKS.get(), AetherBlocks.ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.ICESTONE_BRICKS.get(), AQBlocks.POLISHED_ICESTONE.get(), consumer);
+
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE_SLAB.get(), AQBlocks.POLISHED_ICESTONE.get(), 2, consumer);
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE_STAIRS.get(), AQBlocks.POLISHED_ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE_WALL.get(), AQBlocks.POLISHED_ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE_VERTICAL_SLAB.get(), AQBlocks.POLISHED_ICESTONE.get(),2, consumer);
+
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE_SLAB.get(), AetherBlocks.ICESTONE.get(), 2, consumer);
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE_STAIRS.get(), AetherBlocks.ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE_WALL.get(), AetherBlocks.ICESTONE.get(), consumer);
+        stonecuttingRecipe(AQBlocks.POLISHED_ICESTONE_VERTICAL_SLAB.get(), AetherBlocks.ICESTONE.get(),2, consumer);
+*/
     }
 
 

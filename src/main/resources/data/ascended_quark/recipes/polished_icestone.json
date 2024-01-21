@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "aether:icestone"
+    }
+  },
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "result": {
+    "item": "ascended_quark:polished_icestone",
+    "conditions": [
+      {
+        "type": "quark:flag",
+        "flag": "icestone_bricks"
+      }
+    ]
+  }
+}

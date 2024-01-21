@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "ascended_quark:polished_icestone"
+    }
+  },
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "result": {
+    "item": "ascended_quark:icestone_bricks",
+    "conditions": [
+      {
+        "type": "quark:flag",
+        "flag": "icestone_bricks"
+      }
+    ]
+  }
+}

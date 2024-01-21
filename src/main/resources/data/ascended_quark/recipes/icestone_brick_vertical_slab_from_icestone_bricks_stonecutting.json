@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "ascended_quark:icestone_bricks"
+  },
+  "result": "ascended_quark:icestone_brick_vertical_slab",
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "vertical_slabs"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "ascended_quark:polished_icestone"
+  },
+  "result": "ascended_quark:icestone_brick_wall",
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "icestone_bricks"
+    }
+  ]
+}

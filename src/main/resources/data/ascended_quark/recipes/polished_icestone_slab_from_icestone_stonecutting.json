@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "aether:icestone"
+  },
+  "result": "ascended_quark:polished_icestone_slab",
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "icestone_bricks"
+    }
+  ]
+}

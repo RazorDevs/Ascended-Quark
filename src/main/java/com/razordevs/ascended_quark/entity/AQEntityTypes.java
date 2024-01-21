@@ -11,7 +11,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class AQEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, AscendedQuark.MODID);
 
-
     public static final RegistryObject<EntityType<Stool>> STOOL = ENTITY_TYPES.register("stool",
             () -> EntityType.Builder.of(Stool::new, MobCategory.MISC)
             .sized(6F / 16F, 0.5F)

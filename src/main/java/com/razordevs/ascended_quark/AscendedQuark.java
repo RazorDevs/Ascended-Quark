@@ -20,8 +20,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 @Mod(AscendedQuark.MODID)
-public class AscendedQuark
-{
+public class AscendedQuark {
+
+    //TODO: Handle better Documentation
+
     public static final String MODID = "ascended_quark";
     public static final String DEEP_AETHER = "deep_aether";
     public static final Logger LOGGER = LogUtils.getLogger();
@@ -47,10 +49,9 @@ public class AscendedQuark
         // Client Data
         generator.addProvider(event.includeClient(), new AQBlockstateData(event.getGenerator(), fileHelper));
         generator.addProvider(event.includeClient(), new AQItemModelData(event.getGenerator(), fileHelper));
-
         generator.addProvider(event.includeClient(), new AQLangData(event.getGenerator()));
+
         // Server Data
-        //generator.addProvider(event.includeServer(), new DAWorldGenData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new AQRecipeData(event.getGenerator()));
         generator.addProvider(event.includeServer(), new AQLootTableData(event.getGenerator()));
         AQBlockTagData blockTags = new AQBlockTagData(event.getGenerator(), fileHelper);

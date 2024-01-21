@@ -1,11 +1,11 @@
-// 1.19.2	2024-01-21T15:50:07.5023237	Ascended Quark Block Tags
+// 1.19.2	2024-01-21T19:18:49.7954348	Ascended Quark Block Tags
 9984be4491950105807fcb3f125db46a0fbf6545 data/aether/tags/blocks/treated_as_aether_block.json
 089ae256b4e6eab481e02b9b2dc6d693afcaab62 data/forge/tags/blocks/chests/wooden.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/minecraft/tags/blocks/climbable.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/minecraft/tags/blocks/fall_damage_resetting.json
 62d88ffbec9266ae20c002bf6cc5ab1c0b349a82 data/minecraft/tags/blocks/mineable/axe.json
 97a450c00264339772363454b26b062773a9fda7 data/minecraft/tags/blocks/mineable/hoe.json
-5d229f112eecf0de8a7258e8fac75e61c365b15e data/minecraft/tags/blocks/mineable/pickaxe.json
+f3f5e78bb281bc87b611c6772d34cbaaf54fe2f0 data/minecraft/tags/blocks/mineable/pickaxe.json
 9ab524268e6c659bb1f243a2b8f757170d3f7ab4 data/minecraft/tags/blocks/mineable/shovel.json
 473e98b349e01f5008bb38cbd960b457617e2ad9 data/minecraft/tags/blocks/slabs.json
 e9428b5dd0b167e6e5d6199f38bc7f4b89375809 data/minecraft/tags/blocks/stairs.json

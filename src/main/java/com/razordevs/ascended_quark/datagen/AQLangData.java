@@ -71,6 +71,18 @@ public class AQLangData extends NitrogenLanguageProvider {
         addStairsLore(AQBlocks.AETHER_DIRT_BRICK_STAIRS.get());
         addWallLore(AQBlocks.AETHER_DIRT_BRICK_WALL.get());
 
+        addBricksLore(AQBlocks.POLISHED_ICESTONE.get());
+        addSlabLore(AQBlocks.POLISHED_ICESTONE_SLAB.get());
+        addVerticalSlabLore(AQBlocks.POLISHED_ICESTONE_VERTICAL_SLAB.get());
+        addStairsLore(AQBlocks.POLISHED_ICESTONE_STAIRS.get());
+        addWallLore(AQBlocks.POLISHED_ICESTONE_WALL.get());
+
+        addBricksLore(AQBlocks.ICESTONE_BRICKS.get());
+        addSlabLore(AQBlocks.ICESTONE_BRICK_SLAB.get());
+        addVerticalSlabLore(AQBlocks.ICESTONE_BRICK_VERTICAL_SLAB.get());
+        addStairsLore(AQBlocks.ICESTONE_BRICK_STAIRS.get());
+        addWallLore(AQBlocks.ICESTONE_BRICK_WALL.get());
+
         addVerticalSlabLore(AQBlocks.HOLYSTONE_VERTICAL_SLAB.get());
         addVerticalSlabLore(AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get());
         addVerticalSlabLore(AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get());

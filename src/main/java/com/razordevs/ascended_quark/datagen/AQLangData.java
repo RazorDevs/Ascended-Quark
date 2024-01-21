@@ -7,8 +7,8 @@ import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.RegistryObject;
+import org.codehaus.plexus.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,6 +58,27 @@ public class AQLangData extends NitrogenLanguageProvider {
         this.add("lore." + AQBlocks.ZANITE_BARS.get().getDescriptionId(), "Bars made out of Zanite. A good substitute for the iron ones, and also more colorful.");
         this.add("lore." + AQBlocks.QUICKSOIL_FRAMED_GLASS.get().getDescriptionId(), "Combine Iron Ingots and Quicksoil Glass, and you get yourself some fancy Quicksoil Framed Glass. Great for some more rustic or medieval builds.");
         this.add("lore." + AQBlocks.QUICKSOIL_FRAMED_GLASS_PANE.get().getDescriptionId(), "A thin decorative variant of Quicksoil Framed Glass. Great for some more rustic or medieval builds.");
+        this.add("lore." + AQBlocks.SKYROOT_LADDER.get().getDescriptionId(), "Hey look! Now ladders can be made out of Skyroot!");
+        this.add("lore." + AQBlocks.SKYROOT_CHEST.get().getDescriptionId(), "A nice looking chest made out of Skyroot. Perfect blend for your storage room.");
+        this.add("lore." + AQBlocks.HOLLOW_SKYROOT_LOG.get().getDescriptionId(), "");
+        this.add("lore." + AQBlocks.SKYROOT_STOOL.get().getDescriptionId(), "");
+
+        addPostLore(AQBlocks.SKYROOT_POST.get());
+        addPostLore(AQBlocks.STRIPPED_SKYROOT_POST.get());
+
+        addHedgeLore(AQBlocks.SKYROOT_HEDGE.get());
+        addHedgeLore(AQBlocks.GOLDEN_SKYROOT_HEDGE.get());
+        addHedgeLore(AQBlocks.HOLIDAY_SKYROOT_HEDGE.get());
+        addHedgeLore(AQBlocks.DECORATED_HOLIDAY_SKYROOT_HEDGE.get());
+        addHedgeLore(AQBlocks.CRYSTAL_SKYROOT_HEDGE.get());
+        addHedgeLore(AQBlocks.CRYSTAL_FRUIT_SKYROOT_HEDGE.get());
+
+        addCarpetLore(AQBlocks.SKYROOT_LEAF_CARPET.get());
+        addCarpetLore(AQBlocks.GOLDEN_OAK_LEAF_CARPET.get());
+        addCarpetLore(AQBlocks.HOLIDAY_LEAF_CARPET.get());
+        addCarpetLore(AQBlocks.DECORATED_HOLIDAY_LEAF_CARPET.get());
+        addCarpetLore(AQBlocks.CRYSTAL_LEAF_CARPET.get());
+        addCarpetLore(AQBlocks.CRYSTAL_FRUIT_LEAF_CARPET.get());
 
         addBricksLore(AQBlocks.QUICKSOIL_BRICKS.get());
         addSlabLore(AQBlocks.QUICKSOIL_BRICK_SLAB.get());
@@ -94,20 +115,45 @@ public class AQLangData extends NitrogenLanguageProvider {
     }
 
     private void addBricksLore(Block block){
-        this.add("lore." + block.getDescriptionId(), "Used as a building material native to the Aether. It is made from " + block.getName() + " and is sturdier than it too.");
+        this.add("lore." + block.getDescriptionId(), "Used as a building material native to the Aether. It is made from " + clearBlockOrigin(block, 7) + " and is sturdier than it too.");
     }
     private void addSlabLore(Block block){
-        this.add("lore." + block.getDescriptionId(), "Crafted from " + block.getName() + ". Slabs are half blocks, versatile for decoration and smooth slopes. Try adding some to a building's roofing!");
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 5) + ". Slabs are half blocks, versatile for decoration and smooth slopes. Try adding some to a building's roofing!");
     }
     private void addVerticalSlabLore(Block block){
-        this.add("lore." + block.getDescriptionId(), "Crafted from " + block.getName() + ". Vertical Slabs are half blocks, versatile for decoration. Try adding some to a building's window!");
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 14) + ". Vertical Slabs are half blocks, versatile for decoration. Try adding some to a building's window!");
     }
     private void addStairsLore(Block block){
-        this.add("lore." + block.getDescriptionId(), "Crafted from " + block.getName() + ". Stairs are useful for adding verticality to builds and are often used for decoration too!");
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 7) + ". Stairs are useful for adding verticality to builds and are often used for decoration too!");
     }
     private void addWallLore(Block block){
-        this.add("lore." + block.getDescriptionId(), "Crafted from " + block.getName() + ". Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 5) + ". Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
     }
+    private void addHedgeLore(Block block){
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 6) + ". ");
+    }
+    private void addPostLore(Block block){
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 5) + ". ");
+    }
+    private void addCarpetLore(Block block){
+        this.add("lore." + block.getDescriptionId(), "");
+    }
+
+
+    /**
+     * Returns the block of origin, cleaning the string and adding uppercase letters from the descriptionId of the passed block.
+     * Used in the Lang datageneration for various Blocks lore.
+     *
+     * @param block
+     * Block to elaborate.
+     *
+     * @param endIndex
+     * Index position used to exclude the suffix depending on the type of block.
+     */
+    private String clearBlockOrigin(Block block, int endIndex){
+        return StringUtils.capitaliseAllWords(block.getDescriptionId().substring(21, block.getDescriptionId().length() - endIndex).replace("_"," "));
+    }
+
 
     private String getName(String name) {
         char[] nameCharArray = name.toCharArray();

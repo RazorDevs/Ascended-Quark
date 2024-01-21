@@ -33,7 +33,7 @@ abstract class QuarkConfigHomeScreenMixin extends AbstractQScreen {
         return 1000;
     }
 
-    @WrapOperation(method = "init", at = @At(value = "NEW", target = "(IIIILnet/minecraft/network/chat/Component;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/client/gui/components/Button$OnPress;)Lvazkii/quark/base/client/config/screen/widgets/IconButton;"))
+    @WrapOperation(method = "init", at = @At(value = "NEW", target = "(IIIILnet/minecraft/network/chat/Component;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/client/gui/components/Button$OnPress;)Lvazkii/quark/base/client/config/screen/widgets/IconButton;"), remap = false)
     private IconButton changeIconIfAether(int x, int y, int w, int h, Component text, ItemStack icon, Button.OnPress onClick, Operation<IconButton> original) {
         if(text.getString().equals("The Aether")) {
             return new IconButton(x, y, w, h, text, new ItemStack(AetherItems.AETHER_PORTAL_FRAME.get()), onClick);

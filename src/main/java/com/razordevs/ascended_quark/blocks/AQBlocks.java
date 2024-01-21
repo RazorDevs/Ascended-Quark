@@ -72,6 +72,17 @@ public class AQBlocks {
     public static final RegistryObject<Block> QUICKSOIL_BRICK_WALL = registerBlock("quicksoil_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
     public static final RegistryObject<Block> QUICKSOIL_BRICK_VERTICAL_SLAB = registerBlock("quicksoil_brick_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.QUICKSOIL_BRICKS, BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
 
+    public static final RegistryObject<Block> POLISHED_ICESTONE = registerBlock("polished_icestone", () -> new Block(BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> POLISHED_ICESTONE_SLAB = registerBlock("polished_icestone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> POLISHED_ICESTONE_STAIRS = registerBlock("polished_icestone_stairs", () -> new StairBlock(POLISHED_ICESTONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> POLISHED_ICESTONE_WALL = registerBlock("polished_icestone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> POLISHED_ICESTONE_VERTICAL_SLAB = registerBlock("polished_icestone_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.POLISHED_ICESTONE, BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+
+    public static final RegistryObject<Block> ICESTONE_BRICKS = registerBlock("icestone_bricks", () -> new Block(BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> ICESTONE_BRICK_SLAB = registerBlock("icestone_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> ICESTONE_BRICK_STAIRS = registerBlock("icestone_brick_stairs", () -> new StairBlock(ICESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> ICESTONE_BRICK_WALL = registerBlock("icestone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
+    public static final RegistryObject<Block> ICESTONE_BRICK_VERTICAL_SLAB = registerBlock("icestone_brick_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.ICESTONE_BRICKS, BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
 
 
     public static final RegistryObject<Block> HOLYSTONE_FURNACE = registerBlock("holystone_furnace", () -> new AQFurnaceBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));

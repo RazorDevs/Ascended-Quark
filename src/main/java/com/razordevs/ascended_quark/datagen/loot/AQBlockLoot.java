@@ -9,9 +9,11 @@ import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraftforge.registries.RegistryObject;
+import vazkii.quark.content.building.block.VerticalSlabBlock;
 
 import java.util.*;
 import java.util.function.BiConsumer;
@@ -29,7 +31,9 @@ public class AQBlockLoot extends BlockLoot {
 
         for (Block block : getKnownBlocks()) {
             if(!registeredBlocks.contains(block)) {
-                this.dropSelf(block);
+                if(block instanceof SlabBlock || block instanceof VerticalSlabBlock)
+                    this.add(block, createSlabItemTable(block));
+                else this.dropSelf(block);
             }
 
         }

@@ -1,0 +1,5 @@
+    public static final RegistryObject<Block> ICESTONE_BRICKS = registerBlock("icestone_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> ICESTONE_BRICK_SLAB = registerBlock("icestone_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> ICESTONE_BRICK_STAIRS = registerBlock("icestone_brick_stairs", () -> new StairBlock(ICESTONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> ICESTONE_BRICK_WALL = registerBlock("icestone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
+    public static final RegistryObject<Block> ICESTONE_BRICK_VERTICAL_SLAB = registerBlock("icestone_brick_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.ICESTONE_BRICKS, BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));

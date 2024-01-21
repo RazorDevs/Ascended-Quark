@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ascended_quark:block/polished_icestone_slab"
+    },
+    "type=double": {
+      "model": "ascended_quark:block/polished_icestone"
+    },
+    "type=top": {
+      "model": "ascended_quark:block/polished_icestone_slab_top"
+    }
+  }
+}

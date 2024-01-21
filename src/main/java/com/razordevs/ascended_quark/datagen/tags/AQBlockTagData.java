@@ -63,7 +63,12 @@ public class AQBlockTagData extends BlockTagsProvider {
                 AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get(),
                 AQBlocks.ICESTONE_VERTICAL_SLAB.get(),
                 AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get(),
-                AQBlocks.AEROGEL_VERTICAL_SLAB.get()
+                AQBlocks.AEROGEL_VERTICAL_SLAB.get(),
+                AQBlocks.ICESTONE_BRICKS.get(),
+                AQBlocks.ICESTONE_BRICK_SLAB.get(),
+                AQBlocks.ICESTONE_VERTICAL_SLAB.get(),
+                AQBlocks.ICESTONE_BRICK_STAIRS.get(),
+                AQBlocks.ICESTONE_BRICK_WALL.get()
         );
 
         tag(BlockTags.MINEABLE_WITH_AXE).add(

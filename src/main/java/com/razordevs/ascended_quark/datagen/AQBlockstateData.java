@@ -35,6 +35,16 @@ public class AQBlockstateData extends BlockStateProvider {
         this.stairs(AQBlocks.QUICKSOIL_BRICK_STAIRS.get(), AQBlocks.QUICKSOIL_BRICKS.get());
         this.wallBlock(AQBlocks.QUICKSOIL_BRICK_WALL.get(), AQBlocks.QUICKSOIL_BRICKS.get());
 
+        this.block(AQBlocks.POLISHED_ICESTONE.get());
+        this.slab(AQBlocks.POLISHED_ICESTONE_SLAB.get(), AQBlocks.POLISHED_ICESTONE.get());
+        this.stairs(AQBlocks.POLISHED_ICESTONE_STAIRS.get(), AQBlocks.POLISHED_ICESTONE.get());
+        this.wallBlock(AQBlocks.POLISHED_ICESTONE_WALL.get(), AQBlocks.POLISHED_ICESTONE.get());
+
+        this.block(AQBlocks.ICESTONE_BRICKS.get());
+        this.slab(AQBlocks.ICESTONE_BRICK_SLAB.get(), AQBlocks.ICESTONE_BRICKS.get());
+        this.stairs(AQBlocks.ICESTONE_BRICK_STAIRS.get(), AQBlocks.ICESTONE_BRICKS.get());
+        this.wallBlock(AQBlocks.ICESTONE_BRICK_WALL.get(), AQBlocks.ICESTONE_BRICKS.get());
+
         this.translucentBlock(AQBlocks.QUICKSOIL_FRAMED_GLASS.get());
     }
 

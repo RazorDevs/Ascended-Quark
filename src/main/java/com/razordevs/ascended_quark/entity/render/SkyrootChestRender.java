@@ -16,8 +16,8 @@ public class SkyrootChestRender extends ChestRenderer<ChestBlockEntity> {
     @Override
     protected Material getMaterial(ChestBlockEntity blockEntity, ChestType chestType) {
         return switch (chestType) {
-            case LEFT -> AetherAtlases.TREASURE_CHEST_LEFT_MATERIAL;
-            case RIGHT -> AetherAtlases.TREASURE_CHEST_RIGHT_MATERIAL;
+            case LEFT -> AQAtlases.SKYROOT_CHEST_LEFT_MATERIAL;
+            case RIGHT -> AQAtlases.SKYROOT_CHEST_RIGHT_MATERIAL;
             case SINGLE -> AQAtlases.SKYROOT_CHEST_MATERIAL;
         };
     }

@@ -11,9 +11,9 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = AscendedQuark.MODID, value = {Dist.CLIENT}, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AQAtlases {
-    public static Material SKYROOT_CHEST_MATERIAL = getChestMaterial("skyroot_chest");
-    //public static Material SKYROOT_CHEST_LEFT_MATERIAL = getChestMaterial("treasure_chest_left");
-    //public static Material SKYROOT_CHEST_RIGHT_MATERIAL = getChestMaterial("treasure_chest_right");
+    public static Material SKYROOT_CHEST_MATERIAL = getChestMaterial("skyroot/normal");
+    public static Material SKYROOT_CHEST_LEFT_MATERIAL = getChestMaterial("skyroot/left");
+    public static Material SKYROOT_CHEST_RIGHT_MATERIAL = getChestMaterial("skyroot/right");
 
 
     public static Material getChestMaterial(String chestName) {
@@ -24,8 +24,8 @@ public class AQAtlases {
     public static void onTextureStitchPre(TextureStitchEvent.Pre event) {
         if (event.getAtlas().location().equals(Sheets.CHEST_SHEET)) {
             event.addSprite(SKYROOT_CHEST_MATERIAL.texture());
-            //event.addSprite(SKYROOT_CHEST_LEFT_MATERIAL.texture());
-            //event.addSprite(SKYROOT_CHEST_RIGHT_MATERIAL.texture());
+            event.addSprite(SKYROOT_CHEST_LEFT_MATERIAL.texture());
+            event.addSprite(SKYROOT_CHEST_RIGHT_MATERIAL.texture());
         }
     }
 }

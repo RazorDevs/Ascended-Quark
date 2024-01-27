@@ -69,6 +69,8 @@ public class AQItemModelData extends ItemModelProvider {
 
         this.itemBlock(AQBlocks.QUICKSOIL_FRAMED_GLASS.get());
         this.itemBlock(AQBlocks.BLUE_BERRY_CRATE.get());
+
+        this.itemBlock(AQBlocks.SKYROOT_STICK_BLOCK.get());
     }
 
     public void handheldItem(Item item) {

@@ -46,6 +46,7 @@ public class AQBlockstateData extends BlockStateProvider {
         this.wallBlock(AQBlocks.ICESTONE_BRICK_WALL.get(), AQBlocks.ICESTONE_BRICKS.get());
 
         this.translucentBlock(AQBlocks.QUICKSOIL_FRAMED_GLASS.get());
+        this.logBlock(AQBlocks.SKYROOT_STICK_BLOCK.get());
     }
 
 

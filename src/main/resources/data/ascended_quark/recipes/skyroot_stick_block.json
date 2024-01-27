@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "aether:skyroot_stick"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "item": "ascended_quark:skyroot_stick_block"
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "stick_block"
+    }
+  ]
+}

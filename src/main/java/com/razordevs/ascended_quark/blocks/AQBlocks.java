@@ -9,10 +9,12 @@ import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import com.razordevs.ascended_quark.AscendedQuark;
 import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.entity.block.SkyrootChestBlockEntity;
+import com.razordevs.ascended_quark.entity.block.SkyrootTrappedChestBlockEntity;
 import com.razordevs.ascended_quark.items.AQItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.TrappedChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -40,6 +42,7 @@ public class AQBlocks {
 
     public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AQStoolBlock::new);
     public static final RegistryObject<Block> SKYROOT_CHEST = registerBlock("skyroot_chest", () -> new AQChestBlock(BlockBehaviour.Properties.copy(Blocks.CHEST), AQBlockEntityTypes.SKYROOT_CHEST::get));
+    public static final RegistryObject<Block> SKYROOT_TRAPPED_CHEST = registerBlock("skyroot_trapped_chest", () -> new AQTrappedChestBlock(BlockBehaviour.Properties.copy(Blocks.TRAPPED_CHEST)));
     public static final RegistryObject<Block> SKYROOT_HEDGE = registerBlock("skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
     public static final RegistryObject<Block> GOLDEN_SKYROOT_HEDGE = registerBlock("golden_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
     public static final RegistryObject<Block> CRYSTAL_SKYROOT_HEDGE = registerBlock("crystal_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.CRYSTAL_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
@@ -118,7 +121,11 @@ public class AQBlocks {
             B block = Objects.requireNonNull(blockRegistryObject.get());
             if (block == SKYROOT_CHEST.get()) {
                 return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
-            } else return new BlockItem(block, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+            }
+            else if (block == SKYROOT_TRAPPED_CHEST.get()) {
+                return new EntityBlockItem(block, SkyrootTrappedChestBlockEntity::new, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+            }
+            else return new BlockItem(block, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
         };
     }
 

@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "ascended_quark:skyroot_chest"
+    },
+    "B": {
+      "item" : "minecraft:tripwire_hook"
+    }
+  },
+  "pattern": [
+    "AB"
+  ],
+  "result": {
+    "item": "ascended_quark:skyroot_trapped_chest"
+  },
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "variant_chests"
+        },
+        {
+          "type": "quark:flag",
+          "flag": "skyroot_quark_blocks"
+        }
+      ]
+    }
+  ]
+}

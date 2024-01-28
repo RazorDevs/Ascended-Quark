@@ -15,6 +15,10 @@ public class AQAtlases {
     public static Material SKYROOT_CHEST_LEFT_MATERIAL = getChestMaterial("skyroot/left");
     public static Material SKYROOT_CHEST_RIGHT_MATERIAL = getChestMaterial("skyroot/right");
 
+    public static Material SKYROOT_TRAPPED_CHEST_MATERIAL = getChestMaterial("skyroot/trapped");
+    public static Material SKYROOT_TRAPPED_CHEST_LEFT_MATERIAL = getChestMaterial("skyroot/trapped_left");
+    public static Material SKYROOT_TRAPPED_CHEST_RIGHT_MATERIAL = getChestMaterial("skyroot/trapped_right");
+
 
     public static Material getChestMaterial(String chestName) {
         return new Material(Sheets.CHEST_SHEET, new ResourceLocation(AscendedQuark.MODID, "entity/chest/" + chestName));
@@ -26,6 +30,9 @@ public class AQAtlases {
             event.addSprite(SKYROOT_CHEST_MATERIAL.texture());
             event.addSprite(SKYROOT_CHEST_LEFT_MATERIAL.texture());
             event.addSprite(SKYROOT_CHEST_RIGHT_MATERIAL.texture());
+            event.addSprite(SKYROOT_TRAPPED_CHEST_MATERIAL.texture());
+            event.addSprite(SKYROOT_TRAPPED_CHEST_LEFT_MATERIAL.texture());
+            event.addSprite(SKYROOT_TRAPPED_CHEST_RIGHT_MATERIAL.texture());
         }
     }
 }

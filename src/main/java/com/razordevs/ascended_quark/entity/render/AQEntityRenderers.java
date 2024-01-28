@@ -1,6 +1,7 @@
 package com.razordevs.ascended_quark.entity.render;
 
 import com.razordevs.ascended_quark.blocks.AQBlocks;
+import com.razordevs.ascended_quark.blocks.AQTrappedChestBlock;
 import com.razordevs.ascended_quark.entity.AQEntityTypes;
 import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -17,7 +18,8 @@ public class AQEntityRenderers {
 	@SubscribeEvent
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(AQEntityTypes.STOOL.get(), StoolEntityRender::new);
-		event.registerBlockEntityRenderer(AQBlockEntityTypes.SKYROOT_CHEST.get(), SkyrootChestRender::new);
+		event.registerBlockEntityRenderer(AQBlockEntityTypes.SKYROOT_CHEST.get(), AQChestRender::new);
+		event.registerBlockEntityRenderer(AQBlockEntityTypes.SKYROOT_TRAPPED_CHEST.get(), AQTrappedChestRender::new);
 		event.registerEntityRenderer(AQEntityTypes.AMBROSIUM_TORCH_ARROW.get(), AmbrosiumTorchArrowRenderer::new);
 	}
 

@@ -90,7 +90,6 @@ public class AQBlocks {
 
     public static final RegistryObject<Block> HOLYSTONE_FURNACE = registerBlock("holystone_furnace", () -> new AQFurnaceBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel(litBlockEmission(13))));
     public static final RegistryObject<Block> AMBROSIUM_LAMP = registerBlock("ambrosium_lamp", () -> new AmbrosiumLampBlock(BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE.get()).lightLevel((blockState) -> AmbrosiumLampBlock.getScaledChargeLevel(blockState, 16))));
-    public static final RegistryObject<Block> ZANITE_BARS = registerBlock("zanite_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BARS)));
     public static final RegistryObject<Block> QUICKSOIL_FRAMED_GLASS = registerBlock("quicksoil_framed_glass", () -> new QuicksoilGlassBlock(BlockBehaviour.Properties.copy(AetherBlocks.QUICKSOIL_GLASS.get())));
     public static final RegistryObject<Block> QUICKSOIL_FRAMED_GLASS_PANE = registerBlock("quicksoil_framed_glass_pane", () -> new QuicksoilGlassPaneBlock(BlockBehaviour.Properties.copy(AetherBlocks.QUICKSOIL_GLASS_PANE.get())));
 

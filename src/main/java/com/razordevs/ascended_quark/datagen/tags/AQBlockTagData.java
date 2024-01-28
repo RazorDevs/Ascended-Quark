@@ -56,7 +56,6 @@ public class AQBlockTagData extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 AQBlocks.HOLYSTONE_FURNACE.get(),
                 AQBlocks.AMBROSIUM_LAMP.get(),
-                AQBlocks.ZANITE_BARS.get(),
                 AQBlocks.ANGELIC_VERTICAL_SLAB.get(),
                 AQBlocks.HELLFIRE_VERTICAL_SLAB.get(),
                 AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get(),

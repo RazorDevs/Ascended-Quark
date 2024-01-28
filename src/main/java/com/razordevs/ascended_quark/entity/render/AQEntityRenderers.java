@@ -26,6 +26,5 @@ public class AQEntityRenderers {
 	@SubscribeEvent
 	public static void onClientSetup(FMLClientSetupEvent event) {
 		ItemBlockRenderTypes.setRenderLayer(AQBlocks.SKYROOT_LADDER.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(AQBlocks.ZANITE_BARS.get(), RenderType.cutout());
 	}
 }

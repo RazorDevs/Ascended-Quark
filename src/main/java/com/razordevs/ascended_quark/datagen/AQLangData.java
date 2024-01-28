@@ -43,7 +43,7 @@ public class AQLangData extends NitrogenLanguageProvider {
 
         this.add("quark.category.the_aether", "The Aether");
 
-        //TODO: Finish missing blocks lore entries
+        //TODO: Polishing lore descriptions
 
         this.add("lore." + AQItems.AMBROSIUM_TORCH_ARROW.get().getDescriptionId(), "An arrow tied to an Ambrosium Torch. It imbues the healing properties of Ambrosium, and places the torch on impact.");
         this.add("lore." + AQItems.BLUE_SWET_IN_A_BUCKET_ITEM.get().getDescriptionId(), "Seems like you caught a Blue Swet! Not that useful, but it's an easy way to transport them. They might get excited too!");
@@ -55,13 +55,13 @@ public class AQLangData extends NitrogenLanguageProvider {
         this.add("lore." + AQBlocks.HOLYSTONE_FURNACE.get().getDescriptionId(), "A versatile furnace that can also use Ambrosium as fuel. Also looks fancier in white.");
         this.add("lore." + AQBlocks.AMBROSIUM_LAMP.get().getDescriptionId(), "A lamp made out of Holystone and Ambrosium. Ambrosium Blocks can increase its light up to 4 times.");
         this.add("lore." + AQBlocks.BLUE_BERRY_CRATE.get().getDescriptionId(), "A handy crate for storing blue berries! A very good decoration block!");
-        this.add("lore." + AQBlocks.ZANITE_BARS.get().getDescriptionId(), "Bars made out of Zanite. A good substitute for the iron ones, and also more colorful.");
         this.add("lore." + AQBlocks.QUICKSOIL_FRAMED_GLASS.get().getDescriptionId(), "Combine Iron Ingots and Quicksoil Glass, and you get yourself some fancy Quicksoil Framed Glass. Great for some more rustic or medieval builds.");
         this.add("lore." + AQBlocks.QUICKSOIL_FRAMED_GLASS_PANE.get().getDescriptionId(), "A thin decorative variant of Quicksoil Framed Glass. Great for some more rustic or medieval builds.");
         this.add("lore." + AQBlocks.SKYROOT_LADDER.get().getDescriptionId(), "Hey look! Now ladders can be made out of Skyroot!");
         this.add("lore." + AQBlocks.SKYROOT_CHEST.get().getDescriptionId(), "A nice looking chest made out of Skyroot. Perfect blend for your storage room.");
-        this.add("lore." + AQBlocks.HOLLOW_SKYROOT_LOG.get().getDescriptionId(), "");
-        this.add("lore." + AQBlocks.SKYROOT_STOOL.get().getDescriptionId(), "");
+        this.add("lore." + AQBlocks.HOLLOW_SKYROOT_LOG.get().getDescriptionId(), "Can be crafted with four Skyroot Logs. You can sneak into them horizontally, anc climb inside of them vertically!");
+        this.add("lore." + AQBlocks.SKYROOT_STOOL.get().getDescriptionId(), "Stools can be created the same way you'd make a Bed, but using slabs instead of full wood blocks. As you can expect, you can sit on them!");
+        this.add("lore." + AQBlocks.SKYROOT_STICK_BLOCK.get().getDescriptionId(), "Cool looking pillar to store your sticks, or to integrate them into your builds!");
 
         addPostLore(AQBlocks.SKYROOT_POST.get());
         addPostLore(AQBlocks.STRIPPED_SKYROOT_POST.get());
@@ -130,13 +130,13 @@ public class AQLangData extends NitrogenLanguageProvider {
         this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 5) + ". Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
     }
     private void addHedgeLore(Block block){
-        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 6) + ". ");
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 6) + ". They connect to each other like fences, and have the same bounding box. You can even put flowers on them!");
     }
     private void addPostLore(Block block){
-        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 5) + ". ");
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 5) + ". These are slim log style blocks you can lay down vertically or horizontally. Chains and lanterns can also connect to them.");
     }
     private void addCarpetLore(Block block){
-        this.add("lore." + block.getDescriptionId(), "");
+        this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 7) + ". Leaf Carpets are a great way to add natural elements to your builds!");
     }
 
 

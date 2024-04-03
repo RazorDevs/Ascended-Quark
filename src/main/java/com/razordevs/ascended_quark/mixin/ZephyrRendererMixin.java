@@ -5,6 +5,7 @@ import com.aetherteam.aether.client.renderer.AetherModelLayers;
 import com.aetherteam.aether.client.renderer.entity.AerbunnyRenderer;
 import com.aetherteam.aether.client.renderer.entity.MultiModelRenderer;
 import com.aetherteam.aether.client.renderer.entity.ZephyrRenderer;
+import com.aetherteam.aether.client.renderer.entity.layers.ZephyrTransparencyLayer;
 import com.aetherteam.aether.client.renderer.entity.model.ClassicZephyrModel;
 import com.aetherteam.aether.client.renderer.entity.model.ZephyrModel;
 import com.aetherteam.aether.entity.monster.Zephyr;
@@ -30,6 +31,7 @@ public class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, EntityModel<
 
     public ZephyrRendererMixin(EntityRendererProvider.Context context, ZephyrModel defaultModel, float shadowRadius) {
         super(context, defaultModel, shadowRadius);
+        this.addLayer(new ZephyrTransparencyLayer(this, new ZephyrModel(context.getModelSet().bakeLayer(AetherModelLayers.ZEPHYR_TRANSPARENCY))));
         this.defaultModel = new ZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR));
         this.oldModel = new ClassicZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR_CLASSIC));
     }

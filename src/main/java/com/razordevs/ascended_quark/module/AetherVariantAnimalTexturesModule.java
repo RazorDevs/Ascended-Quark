@@ -42,7 +42,7 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
         registerTextures(VariantTextureType.PHYG, PHYG_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/phyg/phyg.png"));
         registerTextures(VariantTextureType.AERBUNNY, AERBUNNY_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/aerbunny/aerbunny.png"));
         registerTextures(VariantTextureType.ZEPHYR, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr.png"));
-        registerTextures(VariantTextureType.ZEPHYR, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr_layer.png"));
+        registerTextures(VariantTextureType.ZEPHYR_LAYER, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr_layer.png"));
     }
 
     @Override
@@ -72,6 +72,14 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
         if (!isEnabled || !enableZephyr)
             return null;
         return getTextureOrShiny(entity, VariantTextureType.ZEPHYR);
+    }
+
+    @Nullable
+    @OnlyIn(Dist.CLIENT)
+    public static ResourceLocation getZephyrLayerTexture(Zephyr entity) {
+        if (!isEnabled || !enableZephyr)
+            return null;
+        return getTextureOrShiny(entity, VariantTextureType.ZEPHYR_LAYER);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -107,7 +115,8 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
     public enum VariantTextureType {
         PHYG,
         AERBUNNY,
-        ZEPHYR
+        ZEPHYR,
+        ZEPHYR_LAYER
     }
 
 }

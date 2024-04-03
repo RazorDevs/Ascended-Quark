@@ -15,6 +15,7 @@
   },
   "client": [
     "AerbunnyRendererMixin",
-    "PhygRendererMixin"
+    "PhygRendererMixin",
+    "ZephyrRendererMixin"
   ]
 }

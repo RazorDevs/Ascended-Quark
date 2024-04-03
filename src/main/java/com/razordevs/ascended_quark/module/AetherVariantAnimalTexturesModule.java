@@ -1,6 +1,7 @@
 package com.razordevs.ascended_quark.module;
 
 import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.entity.monster.Zephyr;
 import com.aetherteam.aether.entity.passive.Aerbunny;
 import com.aetherteam.aether.entity.passive.Phyg;
 import com.google.common.collect.ListMultimap;
@@ -24,8 +25,10 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
     private static ListMultimap<VariantTextureType, ResourceLocation> textures;
     private static final int PHYG_COUNT = 2;
     private static final int AERBUNNY_COUNT = 2;
+    private static final int ZEPHYR_COUNT = 2;
     @Config public static boolean enablePhyg = true;
     @Config public static boolean enableAerbunny = true;
+    @Config public static boolean enableZephyr = true;
 
     private static boolean isEnabled;
 
@@ -38,6 +41,8 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
 
         registerTextures(VariantTextureType.PHYG, PHYG_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/phyg/phyg.png"));
         registerTextures(VariantTextureType.AERBUNNY, AERBUNNY_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/aerbunny/aerbunny.png"));
+        registerTextures(VariantTextureType.ZEPHYR, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr.png"));
+        registerTextures(VariantTextureType.ZEPHYR, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr_layer.png"));
     }
 
     @Override
@@ -59,6 +64,14 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
         if (!isEnabled || !enableAerbunny)
             return null;
         return getTextureOrShiny(entity, VariantTextureType.AERBUNNY);
+    }
+
+    @Nullable
+    @OnlyIn(Dist.CLIENT)
+    public static ResourceLocation getZephyrTexture(Zephyr entity) {
+        if (!isEnabled || !enableZephyr)
+            return null;
+        return getTextureOrShiny(entity, VariantTextureType.ZEPHYR);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -93,7 +106,8 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
 
     public enum VariantTextureType {
         PHYG,
-        AERBUNNY
+        AERBUNNY,
+        ZEPHYR
     }
 
 }

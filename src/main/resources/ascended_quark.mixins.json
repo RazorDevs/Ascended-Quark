@@ -15,8 +15,9 @@
   },
   "client": [
     "AerbunnyRendererMixin",
+    "CockatriceRendererMixin",
     "PhygRendererMixin",
-    "ZephyrRendererMixin",
-    "ZephyrLayerMixin"
+    "ZephyrLayerMixin",
+    "ZephyrRendererMixin"
   ]
 }

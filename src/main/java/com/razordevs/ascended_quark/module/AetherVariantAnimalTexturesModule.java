@@ -1,6 +1,8 @@
 package com.razordevs.ascended_quark.module;
 
 import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.AetherConfig;
+import com.aetherteam.aether.entity.monster.Cockatrice;
 import com.aetherteam.aether.entity.monster.Zephyr;
 import com.aetherteam.aether.entity.passive.Aerbunny;
 import com.aetherteam.aether.entity.passive.Phyg;
@@ -26,10 +28,11 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
     private static final int PHYG_COUNT = 2;
     private static final int AERBUNNY_COUNT = 2;
     private static final int ZEPHYR_COUNT = 2;
+    private static final int COCKATRICE_COUNT = 1;
     @Config public static boolean enablePhyg = true;
     @Config public static boolean enableAerbunny = true;
     @Config public static boolean enableZephyr = true;
-
+    @Config public static boolean enableCockatrice = true;
     private static boolean isEnabled;
 
     @Override
@@ -43,6 +46,8 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
         registerTextures(VariantTextureType.AERBUNNY, AERBUNNY_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/aerbunny/aerbunny.png"));
         registerTextures(VariantTextureType.ZEPHYR, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr.png"));
         registerTextures(VariantTextureType.ZEPHYR_LAYER, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr_layer.png"));
+        registerTextures(VariantTextureType.COCKATRICE, COCKATRICE_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/cockatrice/cockatrice.png"));
+
     }
 
     @Override
@@ -81,7 +86,13 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
             return null;
         return getTextureOrShiny(entity, VariantTextureType.ZEPHYR_LAYER);
     }
-
+    @Nullable
+    @OnlyIn(Dist.CLIENT)
+    public static ResourceLocation getCockatriceTexture(Cockatrice entity) {
+        if (!isEnabled || !enableCockatrice || AetherConfig.CLIENT.legacy_models.get())
+            return null;
+        return getTextureOrShiny(entity, VariantTextureType.COCKATRICE);
+    }
     @OnlyIn(Dist.CLIENT)
     public static ResourceLocation getTextureOrShiny(Entity e, VariantTextureType type) {
         return getTextureOrShiny(e, type, () -> getRandomTexture(e, type));
@@ -116,7 +127,8 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
         PHYG,
         AERBUNNY,
         ZEPHYR,
-        ZEPHYR_LAYER
+        ZEPHYR_LAYER,
+        COCKATRICE
     }
 
 }

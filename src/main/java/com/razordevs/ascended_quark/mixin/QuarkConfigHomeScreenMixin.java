@@ -28,7 +28,7 @@ abstract class QuarkConfigHomeScreenMixin extends AbstractQScreen {
 
 
     //Evil hack to not make the last config row shift to the left
-    @ModifyVariable(method = "init", at = @At("STORE"), ordinal = 7)
+    @ModifyVariable(method = "init", at = @At("STORE"), ordinal = 7, remap = false)
     private int modify(int original) {
         return 1000;
     }

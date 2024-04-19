@@ -17,8 +17,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import vazkii.quark.content.tools.module.TorchArrowModule;
-import vazkii.quark.integration.claim.IClaimIntegration;
+import org.violetmoon.quark.content.tools.module.TorchArrowModule;
+import org.violetmoon.quark.integration.claim.IClaimIntegration;
 
 public class AmbrosiumTorchArrow extends AbstractArrow {
 
@@ -38,7 +38,7 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
     public void tick() {
         super.tick();
 
-        if(!inGround && level.isClientSide && tickCount > 2) {
+        if(!inGround && level().isClientSide && tickCount > 2) {
             Vec3 motion = getDeltaMovement();
             double rs = 0.03;
             double ms = 0.08;
@@ -53,22 +53,22 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
                 double mx = (Math.random() - 0.5) * rs - motion.x * ms;
                 double my = (Math.random() - 0.5) * rs - motion.y * ms;
                 double mz = (Math.random() - 0.5) * rs - motion.z * ms;
-                level.addParticle(AQParticles.AMBROSIUM_SHARD_PARTICLE.get(), px, py, pz, mx, my, mz);
+                level().addParticle(AQParticles.AMBROSIUM_SHARD_PARTICLE.get(), px, py, pz, mx, my, mz);
             }
         }
     }
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
-        if(!level.isClientSide) {
+        if(!level().isClientSide) {
             BlockPos pos = result.getBlockPos();
             Direction direction = result.getDirection();
             BlockPos finalPos = pos.relative(direction);
-            BlockState state = level.getBlockState(finalPos);
+            BlockState state = level().getBlockState(finalPos);
 
-            if((state.isAir() || state.getMaterial().isReplaceable()) && direction != Direction.DOWN) {
+            if((state.isAir() || state.isSolid()) && direction != Direction.DOWN) {
 
-                if(this.getOwner() instanceof Player p && !IClaimIntegration.INSTANCE.canPlace(p, finalPos))
+                if(this.getOwner() instanceof Player p && !IClaimIntegration.Dummy.canPlace(p, finalPos))
                     return;
 
                 BlockState setState;
@@ -76,8 +76,8 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
                     setState = AetherBlocks.AMBROSIUM_TORCH.get().defaultBlockState();
                     else setState = AetherBlocks.AMBROSIUM_WALL_TORCH.get().defaultBlockState().setValue(WallTorchBlock.FACING, direction);
 
-                if(setState.canSurvive(level, finalPos)) {
-                    level.setBlock(finalPos, setState, 2);
+                if(setState.canSurvive(level(), finalPos)) {
+                    level().setBlock(finalPos, setState, 2);
                     playSound(setState.getSoundType().getPlaceSound());
                     discard();
                     return;

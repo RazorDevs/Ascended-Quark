@@ -5,7 +5,6 @@ import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -13,22 +12,18 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import vazkii.arl.interf.IBlockColorProvider;
-import vazkii.quark.base.block.QuarkBlock;
-import vazkii.quark.base.handler.RenderLayerHandler;
-import vazkii.quark.base.module.QuarkModule;
+import org.jetbrains.annotations.Nullable;
+import org.violetmoon.zeta.registry.IZetaBlockColorProvider;
 
 import javax.annotation.Nonnull;
 
-public class AQLeafCarpetBlock extends Block implements IBlockColorProvider {
+public class AQLeafCarpetBlock extends Block implements IZetaBlockColorProvider {
 
     private static final VoxelShape SHAPE = box(0, 0, 0, 16, 1, 16);
 
@@ -39,8 +34,6 @@ public class AQLeafCarpetBlock extends Block implements IBlockColorProvider {
         super(properties);
 
         baseState = base.defaultBlockState();
-
-        RenderLayerHandler.setRenderType(this, RenderLayerHandler.RenderTypeSkeleton.CUTOUT_MIPPED);
     }
 
     @Override
@@ -72,7 +65,6 @@ public class AQLeafCarpetBlock extends Block implements IBlockColorProvider {
         return !world.isEmptyBlock(pos.below());
     }
 
-    @Override
     @OnlyIn(Dist.CLIENT)
     public ItemColor getItemColor() {
         if (baseStack == null)
@@ -81,9 +73,18 @@ public class AQLeafCarpetBlock extends Block implements IBlockColorProvider {
         return (stack, tintIndex) -> Minecraft.getInstance().getItemColors().getColor(baseStack, tintIndex);
     }
 
-    @Override
     @OnlyIn(Dist.CLIENT)
     public BlockColor getBlockColor() {
         return (state, worldIn, pos, tintIndex) -> Minecraft.getInstance().getBlockColors().getColor(baseState, worldIn, pos, tintIndex);
+    }
+
+    @Override
+    public @Nullable String getBlockColorProviderName() {
+        return null;
+    }
+
+    @Override
+    public @Nullable String getItemColorProviderName() {
+        return null;
     }
 }

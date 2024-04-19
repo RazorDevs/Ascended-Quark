@@ -17,10 +17,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import vazkii.quark.base.block.IQuarkBlock;
-import vazkii.quark.base.block.QuarkBlock;
-import vazkii.quark.base.handler.RenderLayerHandler;
-import vazkii.quark.base.module.QuarkModule;
 
 import javax.annotation.Nonnull;
 
@@ -49,8 +45,6 @@ public class AQWoodenPostBlock extends Block implements SimpleWaterloggedBlock {
         for (BooleanProperty prop : CHAINED)
             state = state.setValue(prop, false);
         registerDefaultState(state);
-
-        RenderLayerHandler.setRenderType(this, RenderLayerHandler.RenderTypeSkeleton.CUTOUT);
     }
 
     @Nonnull

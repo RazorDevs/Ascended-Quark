@@ -3,7 +3,6 @@ package com.razordevs.ascended_quark.blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,10 +21,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import vazkii.quark.api.ICrawlSpaceBlock;
-import vazkii.quark.base.block.QuarkPillarBlock;
-import vazkii.quark.base.module.QuarkModule;
-import vazkii.quark.content.building.block.HollowPillarBlock;
+import org.violetmoon.quark.api.ICrawlSpaceBlock;
+import org.violetmoon.quark.content.building.block.HollowPillarBlock;
 
 import javax.annotation.Nonnull;
 

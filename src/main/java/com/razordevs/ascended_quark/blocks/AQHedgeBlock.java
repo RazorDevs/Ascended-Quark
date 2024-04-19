@@ -6,12 +6,9 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -29,20 +26,15 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
-import vazkii.arl.interf.IBlockColorProvider;
-import vazkii.arl.util.RegistryHelper;
-import vazkii.quark.base.block.IQuarkBlock;
-import vazkii.quark.base.handler.CreativeTabHandler;
-import vazkii.quark.base.handler.RenderLayerHandler;
-import vazkii.quark.base.module.QuarkModule;
-import vazkii.quark.content.building.block.HedgeBlock;
-import vazkii.quark.content.building.module.HedgesModule;
-import vazkii.quark.content.world.block.BlossomLeavesBlock;
+import org.jetbrains.annotations.Nullable;
+import org.violetmoon.quark.content.building.block.HedgeBlock;
+import org.violetmoon.quark.content.building.module.HedgesModule;
+import org.violetmoon.zeta.registry.IZetaBlockColorProvider;
 
 import javax.annotation.Nonnull;
 import java.util.function.BooleanSupplier;
 
-public class AQHedgeBlock extends FenceBlock implements IBlockColorProvider {
+public class AQHedgeBlock extends FenceBlock implements IZetaBlockColorProvider {
 
     private static final VoxelShape WOOD_SHAPE = box(6F, 0F, 6F, 10F, 15F, 10F);
     private static final VoxelShape HEDGE_CENTER_SHAPE = box(2F, 1F, 2F, 14F, 16F, 14F);
@@ -62,8 +54,6 @@ public class AQHedgeBlock extends FenceBlock implements IBlockColorProvider {
     public AQHedgeBlock(Block fence, Block leaf) {
         super(Block.Properties.copy(fence));
         this.leaf = leaf;
-
-        RenderLayerHandler.setRenderType(this, RenderLayerHandler.RenderTypeSkeleton.CUTOUT);
 
         registerDefaultState(defaultBlockState().setValue(EXTEND, false));
 
@@ -159,18 +149,26 @@ public class AQHedgeBlock extends FenceBlock implements IBlockColorProvider {
         builder.add(EXTEND);
     }
 
-    @Override
     @OnlyIn(Dist.CLIENT)
     public BlockColor getBlockColor() {
         final BlockState leafState = leaf.defaultBlockState();
         return (state, world, pos, tintIndex) -> Minecraft.getInstance().getBlockColors().getColor(leafState, world, pos, tintIndex);
     }
 
-    @Override
     @OnlyIn(Dist.CLIENT)
     public ItemColor getItemColor() {
         final ItemStack leafStack = new ItemStack(leaf);
         return (stack, tintIndex) -> Minecraft.getInstance().getItemColors().getColor(leafStack, tintIndex);
+    }
+
+    @Override
+    public @Nullable String getBlockColorProviderName() {
+        return null;
+    }
+
+    @Override
+    public @Nullable String getItemColorProviderName() {
+        return null;
     }
 }
 

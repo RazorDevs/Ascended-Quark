@@ -18,12 +18,10 @@ import net.minecraft.world.level.block.entity.TrappedChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import vazkii.quark.content.building.block.VerticalSlabBlock;
+import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 
 import java.util.Objects;
 import java.util.function.Function;
@@ -50,8 +48,7 @@ public class AQBlocks {
     public static final RegistryObject<Block> HOLIDAY_SKYROOT_HEDGE = registerBlock("holiday_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.HOLIDAY_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
     public static final RegistryObject<Block> DECORATED_HOLIDAY_SKYROOT_HEDGE = registerBlock("decorated_holiday_skyroot_hedge", () -> new AQHedgeBlock(AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), AetherBlocks.SKYROOT_FENCE.get()));
 
-    public static final RegistryObject<Block> SKYROOT_LEAF_CARPET = registerBlock("skyroot_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.SKYROOT_LEAVES.get(), BlockBehaviour.Properties.of(Material.CLOTH_DECORATION,
-                    MaterialColor.GRASS)
+    public static final RegistryObject<Block> SKYROOT_LEAF_CARPET = registerBlock("skyroot_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.SKYROOT_LEAVES.get(), BlockBehaviour.Properties.copy(Blocks.WHITE_CARPET)
             .strength(0F)
             .sound(SoundType.GRASS).noOcclusion()));
 
@@ -68,7 +65,7 @@ public class AQBlocks {
     public static final RegistryObject<Block> SKYROOT_VERTICAL_SLAB = registerBlock("skyroot_vertical_slab", ()-> new VerticalSlabBlock(AetherBlocks.SKYROOT_PLANKS, BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_PLANKS.get())));
     public static final RegistryObject<RotatedPillarBlock> SKYROOT_STICK_BLOCK = registerBlock("skyroot_stick_block", ()-> new RotatedPillarBlock(BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_PLANKS.get())));
 
-    public static final RegistryObject<Block> BLUE_BERRY_CRATE = registerBlock("blue_berry_crate", () -> new FlammableBlock(150, Block.Properties.of(Material.WOOD, MaterialColor.COLOR_BLUE).strength(1.5F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> BLUE_BERRY_CRATE = registerBlock("blue_berry_crate", () -> new FlammableBlock(150, Block.Properties.copy(Blocks.OAK_PLANKS).strength(1.5F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> QUICKSOIL_BRICKS = registerBlock("quicksoil_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
     public static final RegistryObject<Block> QUICKSOIL_BRICK_SLAB = registerBlock("quicksoil_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
     public static final RegistryObject<Block> QUICKSOIL_BRICK_STAIRS = registerBlock("quicksoil_brick_stairs", () -> new StairBlock(QUICKSOIL_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.SANDSTONE)));
@@ -119,12 +116,12 @@ public class AQBlocks {
         return () -> {
             B block = Objects.requireNonNull(blockRegistryObject.get());
             if (block == SKYROOT_CHEST.get()) {
-                return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+                return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties());
             }
             else if (block == SKYROOT_TRAPPED_CHEST.get()) {
-                return new EntityBlockItem(block, SkyrootTrappedChestBlockEntity::new, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+                return new EntityBlockItem(block, SkyrootTrappedChestBlockEntity::new, new Item.Properties());
             }
-            else return new BlockItem(block, new Item.Properties().tab(AetherCreativeTabs.AETHER_BLOCKS));
+            else return new BlockItem(block, new Item.Properties());
         };
     }
 

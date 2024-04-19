@@ -10,8 +10,8 @@ import net.minecraftforge.forgespi.language.ModFileScanData;
 import org.apache.commons.lang3.text.WordUtils;
 import org.objectweb.asm.Type;
 import org.spongepowered.asm.mixin.Unique;
-import vazkii.quark.base.module.ModuleCategory;
-import vazkii.quark.base.module.QuarkModule;
+import org.violetmoon.zeta.module.ZetaCategory;
+import org.violetmoon.zeta.module.ZetaModule;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -45,10 +45,10 @@ public class ModuleFinderHelper {
             Class<?> clazz = Class.forName(name, false, AscendedQuark.class.getClassLoader());
             AscendedQuark.LOGGER.info("Found Ascended Quark module class " + name);
 
-            QuarkModule moduleObj = (QuarkModule) clazz.getDeclaredConstructor().newInstance();
+            ZetaModule moduleObj = (ZetaModule) clazz.getDeclaredConstructor().newInstance();
 
             Map<String, Object> vals = target.annotationData();
-            ModuleCategory category = getOrMakeCategory();
+            ZetaCategory category = getOrMakeCategory();
 
             if(vals.containsKey("name"))
                 moduleObj.displayName = (String) vals.get("name");
@@ -60,7 +60,7 @@ public class ModuleFinderHelper {
                 moduleObj.description = (String) vals.get("description");
 
             if(vals.containsKey("antiOverlap"))
-                moduleObj.antiOverlap = (List<String>) vals.get("antiOverlap");
+                moduleObj.antiOverlap = (Set<String>) vals.get("antiOverlap");
 
             if(vals.containsKey("hasSubscriptions"))
                 moduleObj.hasSubscriptions = (boolean) vals.get("hasSubscriptions");
@@ -82,8 +82,8 @@ public class ModuleFinderHelper {
             moduleObj.category = category;
 
 
-            Map<Class<? extends QuarkModule>, QuarkModule> temp = ((ModuleFinderAccessor) finder).getFoundModules();
-            temp.put((Class<? extends QuarkModule>) clazz, moduleObj);
+            Map<Class<? extends ZetaModule>, ZetaModule> temp = ((ModuleFinderAccessor) finder).getFoundModules();
+            temp.put((Class<? extends ZetaModule>) clazz, moduleObj);
 
             ((ModuleFinderAccessor) finder).setFoundModules(temp);
 
@@ -92,7 +92,7 @@ public class ModuleFinderHelper {
         }
     }
 
-    private ModuleCategory getOrMakeCategory() {
-        return ModuleCategory.valueOf("THE_AETHER");
+    private ZetaCategory getOrMakeCategory() {
+        return ZetaCategory.valueOf("THE_AETHER");
     }
 }

@@ -14,28 +14,28 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import vazkii.quark.base.module.QuarkModule;
-import vazkii.quark.base.module.config.Config;
+import org.violetmoon.zeta.config.Config;
+import org.violetmoon.zeta.module.ZetaModule;
 
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.Supplier;
 
 @LoadModuleButWithoutCategory(hasSubscriptions = true, subscribeOn = Dist.CLIENT)
-public class AetherVariantAnimalTexturesModule extends QuarkModule {
+public class AetherVariantAnimalTexturesModule extends ZetaModule {
 
     private static ListMultimap<VariantTextureType, ResourceLocation> textures;
     private static final int PHYG_COUNT = 2;
     private static final int AERBUNNY_COUNT = 2;
     private static final int ZEPHYR_COUNT = 2;
     private static final int COCKATRICE_COUNT = 1;
-    @Config public static boolean enablePhyg = true;
+    @Config
+    public static boolean enablePhyg = true;
     @Config public static boolean enableAerbunny = true;
     @Config public static boolean enableZephyr = true;
     @Config public static boolean enableCockatrice = true;
     private static boolean isEnabled;
 
-    @Override
     public void clientSetup() {
         if(!enabled)
             return;
@@ -50,7 +50,6 @@ public class AetherVariantAnimalTexturesModule extends QuarkModule {
 
     }
 
-    @Override
     public void configChanged() {
         isEnabled = this.enabled;
     }

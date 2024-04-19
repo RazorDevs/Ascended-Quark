@@ -10,14 +10,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.phys.Vec3;
-import vazkii.arl.util.ItemNBTHelper;
+import org.violetmoon.zeta.util.ItemNBTHelper;
 
 import javax.annotation.Nonnull;
 
@@ -28,7 +27,7 @@ public abstract class AQEntityInABucketItem extends Item {
     private final EntityType bucketEntity;
 
     public AQEntityInABucketItem(EntityType bucketEntity, boolean isSkyroot) {
-        super(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_MISC).craftRemainder(AetherItems.SKYROOT_BUCKET.get()));
+        super(new Item.Properties().stacksTo(1).craftRemainder(AetherItems.SKYROOT_BUCKET.get()));
         this.bucketEntity = bucketEntity;
         if (isSkyroot)
             ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM_SKYROOT.add(new Pair<>(bucketEntity, this));

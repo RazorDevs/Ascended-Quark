@@ -25,7 +25,7 @@ public class AQAtlases {
     }
 
     @SubscribeEvent
-    public static void onTextureStitchPre(TextureStitchEvent.Pre event) {
+    public static void onTextureStitchPre(TextureStitchEvent event) {
         if (event.getAtlas().location().equals(Sheets.CHEST_SHEET)) {
             event.addSprite(SKYROOT_CHEST_MATERIAL.texture());
             event.addSprite(SKYROOT_CHEST_LEFT_MATERIAL.texture());

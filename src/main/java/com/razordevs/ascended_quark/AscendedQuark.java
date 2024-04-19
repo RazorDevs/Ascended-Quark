@@ -17,7 +17,13 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
 import org.slf4j.Logger;
+import org.violetmoon.quark.base.proxy.ClientProxy;
+import org.violetmoon.quark.base.proxy.CommonProxy;
+import org.violetmoon.zeta.Zeta;
+import org.violetmoon.zeta.multiloader.Env;
+import org.violetmoon.zetaimplforge.ForgeZeta;
 
 @Mod(AscendedQuark.MODID)
 public class AscendedQuark {
@@ -27,8 +33,19 @@ public class AscendedQuark {
     public static final String MODID = "ascended_quark";
     public static final String DEEP_AETHER = "deep_aether";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public AscendedQuark()
-    {
+
+    public static AscendedQuark instance;
+    public static CommonProxy proxy;
+    public static final Zeta ZETA = new ForgeZeta(MODID, LogManager.getLogger("aq-zeta"));
+
+    public AscendedQuark() {
+        instance = this;
+
+        ZETA.start();
+
+        proxy = Env.unsafeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+        proxy.start();
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dataSetup);
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

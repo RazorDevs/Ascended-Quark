@@ -1,10 +1,10 @@
 package com.razordevs.ascended_quark.module;
 
 import com.razordevs.ascended_quark.config.LoadModuleButWithoutCategory;
-import vazkii.quark.base.module.QuarkModule;
+import org.violetmoon.zeta.module.ZetaModule;
 
 @LoadModuleButWithoutCategory()
-public class BlueBerryCrateModule extends QuarkModule {
+public class BlueBerryCrateModule extends ZetaModule {
 
 
 }

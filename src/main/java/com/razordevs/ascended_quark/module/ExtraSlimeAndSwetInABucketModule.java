@@ -19,24 +19,23 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import vazkii.arl.util.ItemNBTHelper;
-import vazkii.quark.base.module.QuarkModule;
-import vazkii.quark.base.module.config.Config;
+import org.violetmoon.zeta.config.Config;
+import org.violetmoon.zeta.module.ZetaModule;
+import org.violetmoon.zeta.util.ItemNBTHelper;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 @LoadModuleButWithoutCategory(hasSubscriptions = true)
-public class ExtraSlimeAndSwetInABucketModule extends QuarkModule {
+public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
 
     @Config(flag = "are_swets_exited_in_the_aether", name = "Are Swets Exited In The Aether", description = "Disables Swets from dancing in The Aether. Note that this config only affects the client.") public boolean swets_exited = true;
     @Config(flag = "are_swet_buckets_enabled", name = "Are Swet Buckets Enabled", description = "When disabled, disables all Ascended Quark bucket items except for the Slime in a Skyroot Bucket item. Disable if you find swet buckets unbalanced.") public boolean swet_bucket_enabled = true;
     public static List<Pair<EntityType, AQEntityInABucketItem>> SLIME_WITH_BUCKET_ITEM = new ArrayList<>();
     public static List<Pair<EntityType, AQEntityInABucketItem>> SLIME_WITH_BUCKET_ITEM_SKYROOT = new ArrayList<>();
 
-    @Override
+
     @OnlyIn(Dist.CLIENT)
     public void clientSetup() {
         for (Pair<EntityType, AQEntityInABucketItem> pair : SLIME_WITH_BUCKET_ITEM_SKYROOT) {

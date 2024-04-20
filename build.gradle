@@ -23,7 +23,7 @@ apply plugin: 'io.github.0ffz.github-packages'
 apply plugin: 'org.spongepowered.mixin'
 
 version = "${project.mc_version}-${project.mod_version}"
-group = "com.github.razordevs.${mod_id}"
+group = "org.razordevs.${mod_id}"
 
 base {
     archivesName = mod_id

@@ -2,7 +2,6 @@ package org.razordevs.ascended_quark;
 
 import com.mojang.logging.LogUtils;
 import org.razordevs.ascended_quark.blocks.AQBlocks;
-import com.razordevs.ascended_quark.datagen.*;
 import org.razordevs.ascended_quark.datagen.AQItemModelData;
 import org.razordevs.ascended_quark.datagen.AQLangData;
 import org.razordevs.ascended_quark.datagen.AQRecipeData;

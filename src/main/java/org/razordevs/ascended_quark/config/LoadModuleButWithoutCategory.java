@@ -1,7 +1,6 @@
 package org.razordevs.ascended_quark.config;
 
 import net.minecraftforge.api.distmarker.Dist;
-import vazkii.quark.base.module.ModuleCategory;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

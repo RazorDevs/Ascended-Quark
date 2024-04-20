@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 //Cursed Code
 //Mixin didn't like the Type class idk
 public class ModuleFinderHelper {
-    private static final Pattern MODULE_CLASS_PATTERN = Pattern.compile("com.razordevs.ascended_quark.module.\\w+Module");
+    private static final Pattern MODULE_CLASS_PATTERN = Pattern.compile("org.razordevs.ascended_quark.module.\\w+Module");
     Object finder;
     public void start(Object o) {
         this.finder = o;
@@ -93,6 +93,6 @@ public class ModuleFinderHelper {
     }
 
     private ZetaCategory getOrMakeCategory() {
-        return ZetaCategory.valueOf("THE_AETHER");
+        return ZetaCategory.unknownCategory("THE_AETHER");
     }
 }

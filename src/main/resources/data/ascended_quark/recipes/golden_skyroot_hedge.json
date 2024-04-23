@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "tag": "aether:skyroot_logs"
+      "tag": "aether:golden_oak_logs"
     },
     "B": {
       "item": "aether:golden_oak_leaves"

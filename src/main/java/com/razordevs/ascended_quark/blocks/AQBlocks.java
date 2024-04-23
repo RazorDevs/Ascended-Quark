@@ -102,7 +102,7 @@ public class AQBlocks {
     public static final RegistryObject<Block> MOSSY_HOLYSTONE_VERTICAL_SLAB = registerBlock("mossy_holystone_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.MOSSY_HOLYSTONE, BlockBehaviour.Properties.copy(AetherBlocks.MOSSY_HOLYSTONE.get())));
     public static final RegistryObject<Block> ICESTONE_VERTICAL_SLAB = registerBlock("icestone_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.ICESTONE, BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
     public static final RegistryObject<Block> HOLYSTONE_BRICK_VERTICAL_SLAB = registerBlock("holystone_brick_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.HOLYSTONE_BRICKS, BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE_BRICKS.get())));
-    public static final RegistryObject<Block> AEROGEL_VERTICAL_SLAB = registerBlock("aerogel_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.AEROGEL, BlockBehaviour.Properties.copy(AetherBlocks.AEROGEL.get())));
+    public static final RegistryObject<Block> AEROGEL_VERTICAL_SLAB = registerBlock("aerogel_vertical_slab", () -> new AerogelVerticalSlabBlock(AetherBlocks.AEROGEL, BlockBehaviour.Properties.copy(AetherBlocks.AEROGEL.get())));
 
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {

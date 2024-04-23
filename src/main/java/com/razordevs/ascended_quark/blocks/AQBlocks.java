@@ -40,6 +40,7 @@ public class AQBlocks {
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_WALL = registerBlock("aether_dirt_brick_wall", () -> new WallBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_VERTICAL_SLAB = registerBlock("aether_dirt_brick_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.AETHER_DIRT_BRICKS, BlockBehaviour.Properties.copy(AQBlocks.AETHER_DIRT_BRICKS.get())));
 
+    public static final RegistryObject<Block> VERTICAL_SKYROOT_PLANKS = registerBlock("vertical_skyroot_planks", () -> new Block(BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_PLANKS.get())));
     public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AQStoolBlock::new);
     public static final RegistryObject<Block> SKYROOT_CHEST = registerBlock("skyroot_chest", () -> new AQChestBlock(BlockBehaviour.Properties.copy(Blocks.CHEST), AQBlockEntityTypes.SKYROOT_CHEST::get));
     public static final RegistryObject<Block> SKYROOT_TRAPPED_CHEST = registerBlock("skyroot_trapped_chest", () -> new AQTrappedChestBlock(BlockBehaviour.Properties.copy(Blocks.TRAPPED_CHEST)));

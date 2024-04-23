@@ -5,7 +5,7 @@
       "item": "aether:skyroot_planks"
     },
     "B": {
-      "item": "minecraft:stick"
+      "tag": "forge:rods/wooden"
     }
   },
   "pattern": [

@@ -11,8 +11,10 @@ import com.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
 import com.razordevs.ascended_quark.entity.block.SkyrootChestBlockEntity;
 import com.razordevs.ascended_quark.entity.block.SkyrootTrappedChestBlockEntity;
 import com.razordevs.ascended_quark.items.AQItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.TrappedChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -102,7 +104,7 @@ public class AQBlocks {
     public static final RegistryObject<Block> MOSSY_HOLYSTONE_VERTICAL_SLAB = registerBlock("mossy_holystone_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.MOSSY_HOLYSTONE, BlockBehaviour.Properties.copy(AetherBlocks.MOSSY_HOLYSTONE.get())));
     public static final RegistryObject<Block> ICESTONE_VERTICAL_SLAB = registerBlock("icestone_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.ICESTONE, BlockBehaviour.Properties.copy(AetherBlocks.ICESTONE.get())));
     public static final RegistryObject<Block> HOLYSTONE_BRICK_VERTICAL_SLAB = registerBlock("holystone_brick_vertical_slab", () -> new VerticalSlabBlock(AetherBlocks.HOLYSTONE_BRICKS, BlockBehaviour.Properties.copy(AetherBlocks.HOLYSTONE_BRICKS.get())));
-    public static final RegistryObject<Block> AEROGEL_VERTICAL_SLAB = registerBlock("aerogel_vertical_slab", () -> new AerogelVerticalSlabBlock(AetherBlocks.AEROGEL, BlockBehaviour.Properties.copy(AetherBlocks.AEROGEL.get())));
+    public static final RegistryObject<Block> AEROGEL_VERTICAL_SLAB = registerBlock("aerogel_vertical_slab", () -> new AerogelVerticalSlabBlock(AetherBlocks.AEROGEL, BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIAMOND).strength(1.0F, 2000.0F).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops().isViewBlocking(AQBlocks::never)));
 
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
@@ -133,6 +135,18 @@ public class AQBlocks {
         return (p_50763_) -> {
             return p_50763_.getValue(BlockStateProperties.LIT) ? p_50760_ : 0;
         };
+    }
+
+    private static boolean never(BlockState p_test_1_, BlockGetter p_test_2_, BlockPos p_test_3_) {
+        return false;
+    }
+
+    private static boolean always(BlockState p_test_1_, BlockGetter p_test_2_, BlockPos p_test_3_) {
+        return true;
+    }
+
+    private static <A> boolean never(BlockState p_test_1_, BlockGetter p_test_2_, BlockPos p_test_3_, A p_test_4_) {
+        return false;
     }
 }
 

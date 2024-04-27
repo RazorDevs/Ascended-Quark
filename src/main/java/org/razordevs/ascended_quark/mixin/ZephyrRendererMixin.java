@@ -30,7 +30,7 @@ public class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, EntityModel<
 
     @Override
     public ResourceLocation getTextureLocation(Zephyr entity) {
-        return AetherConfig.CLIENT.legacy_models.get() ? this.getOldTexture() : AetherVariantAnimalTexturesModule.getZephyrTexture(entity);
+        return AetherConfig.CLIENT.legacy_models.get() ? this.getOldTexture() : AetherVariantAnimalTexturesModule.Client.getZephyrTexture(entity);
     }
 
     public ZephyrModel getDefaultModel() {

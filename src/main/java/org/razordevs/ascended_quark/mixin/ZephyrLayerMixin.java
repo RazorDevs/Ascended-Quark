@@ -31,7 +31,7 @@ public class ZephyrLayerMixin extends RenderLayer<Zephyr, EntityModel<Zephyr>> {
             this.getParentModel().copyPropertiesTo(this.transparency);
             this.transparency.prepareMobModel(zephyr, limbSwing, limbSwingAmount, partialTicks);
             this.transparency.setupAnim(zephyr, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-            VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(AetherVariantAnimalTexturesModule.getZephyrLayerTexture(zephyr)));
+            VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(AetherVariantAnimalTexturesModule.Client.getZephyrLayerTexture(zephyr)));
             this.transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(zephyr, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
         }
 

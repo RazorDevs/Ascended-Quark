@@ -1,26 +1,29 @@
 package org.razordevs.ascended_quark.datagen.tags;
 
 import com.aetherteam.aether.AetherTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQBlocks;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
-import vazkii.quark.base.Quark;
+import org.violetmoon.quark.base.Quark;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
 public class AQBlockTagData extends BlockTagsProvider {
 
-    public AQBlockTagData(DataGenerator output,  @Nullable ExistingFileHelper helper) {
-        super(output, AscendedQuark.MODID, helper);
+    public AQBlockTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper helper) {
+        super(output, registries, AscendedQuark.MODID, helper);
     }
     @Nonnull
     @Override
@@ -30,14 +33,13 @@ public class AQBlockTagData extends BlockTagsProvider {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
 
-        // Makes tool debuff work with all Ascended Quark blocks. Commented code can be used to remove blocks if necessary
-        TagAppender<Block> tag = this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK);
+        IntrinsicTagAppender<Block> aether_block_tag = this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK);
         Collection<RegistryObject<Block>> blocks = AQBlocks.BLOCKS.getEntries();
-        // blocks.remove(Blocks.DIRT);
-        for (RegistryObject<Block> block : blocks) {
-            tag.add(block.get());
+        for (RegistryObject<Block> block : blocks)
+        {
+            aether_block_tag.add(block.get());
         }
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL).add(

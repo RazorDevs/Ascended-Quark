@@ -5,10 +5,6 @@
   "package": "org.razordevs.ascended_quark.mixin",
   "refmap": "ascended_quark.refmap.json",
   "mixins": [
-    "ModuleCategoryMixin",
-    "ModuleFinderAccessor",
-    "ModuleFinderMixin",
-    "QuarkConfigHomeScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

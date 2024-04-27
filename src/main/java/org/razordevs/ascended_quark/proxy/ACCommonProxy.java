@@ -2,6 +2,7 @@ package org.razordevs.ascended_quark.proxy;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.item.AetherItems;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.violetmoon.quark.base.config.QuarkGeneralConfig;
@@ -16,7 +17,7 @@ public class ACCommonProxy {
         // MODULES
         AscendedQuark.ZETA.loadModules(
                 List.of(
-                        new ZetaCategory("the_aether", AetherItems.AETHER_PORTAL_FRAME.get(), Aether.MODID)
+                        new ZetaCategory("aether", Blocks.GLOWSTONE.asItem(), AscendedQuark.MODID)
                 ),
                 new ModFileScanDataModuleFinder(AscendedQuark.MODID), //forge only
                 QuarkGeneralConfig.INSTANCE

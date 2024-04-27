@@ -1,11 +1,13 @@
 package org.razordevs.ascended_quark.datagen.tags;
 
 import com.aetherteam.aether.AetherTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQBlocks;
 import org.razordevs.ascended_quark.items.AQItems;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -13,17 +15,18 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
-import vazkii.quark.base.Quark;
+import org.violetmoon.quark.base.Quark;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
 public class AQItemTagData extends ItemTagsProvider {
 
-    public AQItemTagData(DataGenerator output, BlockTagsProvider blocks, @Nullable ExistingFileHelper helper) {
-        super(output, blocks, AscendedQuark.MODID, helper);
+    public AQItemTagData(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper) {
+        super(p_275343_, p_275729_, p_275322_, AscendedQuark.MODID, existingFileHelper);
     }
+
     @Nonnull
     @Override
     public String getName() {
@@ -32,10 +35,10 @@ public class AQItemTagData extends ItemTagsProvider {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
 
         // Makes tool debuff work with all Deep Aether blocks. Commented code can be used to remove blocks if necessary
-        TagAppender<Item> tag = this.tag(AetherTags.Items.TREATED_AS_AETHER_ITEM);
+        IntrinsicTagAppender<Item> tag = this.tag(AetherTags.Items.TREATED_AS_AETHER_ITEM);
         Collection<RegistryObject<Item>> items = AQItems.ITEMS.getEntries();
         // blocks.remove(Blocks.DIRT);
         for (RegistryObject<Item> item : items) {

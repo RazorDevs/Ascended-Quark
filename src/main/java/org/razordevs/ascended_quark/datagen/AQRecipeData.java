@@ -1,6 +1,7 @@
 package org.razordevs.ascended_quark.datagen;
 
 import com.aetherteam.aether.AetherTags;
+import net.minecraft.data.PackOutput;
 import org.razordevs.ascended_quark.AscendedQuark;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
@@ -15,12 +16,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public class AQRecipeData extends RecipeProvider {
-    public AQRecipeData(DataGenerator output) {
+    public AQRecipeData(PackOutput output) {
         super(output);
     }
 
     @Override
-    protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
         /*
         ShapedRecipeBuilder.shaped(AQBlocks.AETHER_DIRT_BRICKS.get(), 4).define('A', AetherBlocks.AETHER_DIRT.get())
                 .define('B', AetherBlocks.HOLYSTONE.get())
@@ -221,7 +222,7 @@ x
 */
     }
 
-
+/*
     void slab(Block slab, Block texture, Consumer<FinishedRecipe> consumer) {
         slabBuilder(slab, Ingredient.of(texture)).unlockedBy(getHasName(texture), has(texture)).save(consumer);
         //slabRevert(slab, texture, consumer);
@@ -296,4 +297,6 @@ x
     protected void stonecuttingRecipe(ItemLike item, ItemLike ingredient, int count, Consumer<FinishedRecipe> consumer) {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ingredient), item, count).unlockedBy(getHasName(ingredient), has(ingredient)).save(consumer, name(getConversionRecipeName(item, ingredient) + "_stonecutting"));
     }
+
+ */
 }

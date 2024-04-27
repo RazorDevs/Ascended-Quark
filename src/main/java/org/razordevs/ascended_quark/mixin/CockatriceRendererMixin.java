@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class CockatriceRendererMixin {
     @Inject(method = "getTextureLocation(Lcom/aetherteam/aether/entity/monster/Cockatrice;)Lnet/minecraft/resources/ResourceLocation;", at = @At("HEAD"), cancellable = true, remap = false)
     private void overrideTexture(Cockatrice cockatrice, CallbackInfoReturnable<ResourceLocation> cir) {
-        ResourceLocation loc = AetherVariantAnimalTexturesModule.getCockatriceTexture(cockatrice);
+        ResourceLocation loc = AetherVariantAnimalTexturesModule.Client.getCockatriceTexture(cockatrice);
         if (loc != null)
             cir.setReturnValue(loc);
     }

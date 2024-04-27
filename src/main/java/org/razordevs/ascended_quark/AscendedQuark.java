@@ -1,6 +1,8 @@
 package org.razordevs.ascended_quark;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import org.razordevs.ascended_quark.blocks.AQBlocks;
 import org.razordevs.ascended_quark.datagen.AQItemModelData;
 import org.razordevs.ascended_quark.datagen.AQLangData;
@@ -21,12 +23,17 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.razordevs.ascended_quark.datagen.AQBlockstateData;
+import org.razordevs.ascended_quark.proxy.ACCommonProxy;
 import org.slf4j.Logger;
+import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.violetmoon.quark.base.proxy.ClientProxy;
 import org.violetmoon.quark.base.proxy.CommonProxy;
 import org.violetmoon.zeta.Zeta;
 import org.violetmoon.zeta.multiloader.Env;
+import org.violetmoon.zeta.util.Utils;
 import org.violetmoon.zetaimplforge.ForgeZeta;
+
+import java.util.concurrent.CompletableFuture;
 
 @Mod(AscendedQuark.MODID)
 public class AscendedQuark {
@@ -38,16 +45,18 @@ public class AscendedQuark {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static AscendedQuark instance;
-    public static CommonProxy proxy;
+    public static ACCommonProxy proxy=new ACCommonProxy();
     public static final Zeta ZETA = new ForgeZeta(MODID, LogManager.getLogger("aq-zeta"));
 
     public AscendedQuark() {
         instance = this;
-
         ZETA.start();
-
-        proxy = Env.unsafeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
         proxy.start();
+        //proxy = Env.unsafeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+        //proxy.start();
+        //if (Utils.isDevEnv()) {
+        //    MixinEnvironment.getCurrentEnvironment().audit();
+        //}
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dataSetup);
 
@@ -64,18 +73,19 @@ public class AscendedQuark {
     public void dataSetup(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
-
-
+        PackOutput output = generator.getPackOutput();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         // Client Data
-        generator.addProvider(event.includeClient(), new AQBlockstateData(event.getGenerator(), fileHelper));
-        generator.addProvider(event.includeClient(), new AQItemModelData(event.getGenerator(), fileHelper));
-        generator.addProvider(event.includeClient(), new AQLangData(event.getGenerator()));
+        generator.addProvider(event.includeClient(), new AQBlockstateData(output, fileHelper));
+        generator.addProvider(event.includeClient(), new AQItemModelData(output, fileHelper));
+        generator.addProvider(event.includeClient(), new AQLangData(output));
 
         // Server Data
-        generator.addProvider(event.includeServer(), new AQRecipeData(event.getGenerator()));
-        generator.addProvider(event.includeServer(), new AQLootTableData(event.getGenerator()));
-        AQBlockTagData blockTags = new AQBlockTagData(event.getGenerator(), fileHelper);
+        generator.addProvider(event.includeServer(), new AQRecipeData(output));
+        generator.addProvider(event.includeServer(), AQLootTableData.create(output));
+        AQBlockTagData blockTags = new AQBlockTagData(output, lookupProvider, fileHelper);
+
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new AQItemTagData(event.getGenerator(), blockTags, fileHelper));
+        generator.addProvider(event.includeServer(), new AQItemTagData(output, lookupProvider, blockTags.contentsGetter(), fileHelper));
     }
 }

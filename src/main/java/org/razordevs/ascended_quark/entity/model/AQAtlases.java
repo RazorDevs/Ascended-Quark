@@ -1,5 +1,6 @@
 package org.razordevs.ascended_quark.entity.model;
 
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.razordevs.ascended_quark.AscendedQuark;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.resources.model.Material;
@@ -11,13 +12,13 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = AscendedQuark.MODID, value = {Dist.CLIENT}, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AQAtlases {
-    public static Material SKYROOT_CHEST_MATERIAL = getChestMaterial("skyroot/normal");
-    public static Material SKYROOT_CHEST_LEFT_MATERIAL = getChestMaterial("skyroot/left");
-    public static Material SKYROOT_CHEST_RIGHT_MATERIAL = getChestMaterial("skyroot/right");
+    public static Material SKYROOT_CHEST_MATERIAL;
+    public static Material SKYROOT_CHEST_LEFT_MATERIAL;
+    public static Material SKYROOT_CHEST_RIGHT_MATERIAL;
 
-    public static Material SKYROOT_TRAPPED_CHEST_MATERIAL = getChestMaterial("skyroot/trapped");
-    public static Material SKYROOT_TRAPPED_CHEST_LEFT_MATERIAL = getChestMaterial("skyroot/trapped_left");
-    public static Material SKYROOT_TRAPPED_CHEST_RIGHT_MATERIAL = getChestMaterial("skyroot/trapped_right");
+    public static Material SKYROOT_TRAPPED_CHEST_MATERIAL;
+    public static Material SKYROOT_TRAPPED_CHEST_LEFT_MATERIAL;
+    public static Material SKYROOT_TRAPPED_CHEST_RIGHT_MATERIAL;
 
 
     public static Material getChestMaterial(String chestName) {
@@ -25,14 +26,14 @@ public class AQAtlases {
     }
 
     @SubscribeEvent
-    public static void onTextureStitchPre(TextureStitchEvent event) {
-        if (event.getAtlas().location().equals(Sheets.CHEST_SHEET)) {
-            event.addSprite(SKYROOT_CHEST_MATERIAL.texture());
-            event.addSprite(SKYROOT_CHEST_LEFT_MATERIAL.texture());
-            event.addSprite(SKYROOT_CHEST_RIGHT_MATERIAL.texture());
-            event.addSprite(SKYROOT_TRAPPED_CHEST_MATERIAL.texture());
-            event.addSprite(SKYROOT_TRAPPED_CHEST_LEFT_MATERIAL.texture());
-            event.addSprite(SKYROOT_TRAPPED_CHEST_RIGHT_MATERIAL.texture());
-        }
+    public static void registerChestAtlases(FMLClientSetupEvent event) {
+        event.enqueueWork(()-> {
+            SKYROOT_CHEST_MATERIAL = getChestMaterial("skyroot/normal");
+            SKYROOT_CHEST_LEFT_MATERIAL = getChestMaterial("skyroot/left");
+            SKYROOT_CHEST_RIGHT_MATERIAL = getChestMaterial("skyroot/right");
+            SKYROOT_TRAPPED_CHEST_MATERIAL = getChestMaterial("skyroot/trapped");
+            SKYROOT_TRAPPED_CHEST_LEFT_MATERIAL = getChestMaterial("skyroot/trapped_left");
+            SKYROOT_TRAPPED_CHEST_RIGHT_MATERIAL = getChestMaterial("skyroot/trapped_right");
+        });
     }
 }

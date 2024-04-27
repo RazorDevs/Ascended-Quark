@@ -1,6 +1,8 @@
 package org.razordevs.ascended_quark.entity;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.block.Blocks;
 import org.razordevs.ascended_quark.items.AQItems;
 import org.razordevs.ascended_quark.particle.AQParticles;
 import net.minecraft.core.BlockPos;
@@ -17,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.tools.module.TorchArrowModule;
 import org.violetmoon.quark.integration.claim.IClaimIntegration;
 
@@ -60,30 +63,36 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
-        if(!level().isClientSide) {
+        if (!this.level().isClientSide) {
             BlockPos pos = result.getBlockPos();
             Direction direction = result.getDirection();
             BlockPos finalPos = pos.relative(direction);
-            BlockState state = level().getBlockState(finalPos);
-
-            if((state.isAir() || state.isSolid()) && direction != Direction.DOWN) {
-
-                if(this.getOwner() instanceof Player p && !IClaimIntegration.Dummy.canPlace(p, finalPos))
-                    return;
+            BlockState state = this.level().getBlockState(finalPos);
+            if ((state.isAir() || state.canBeReplaced()) && direction != Direction.DOWN) {
+                Entity var7 = this.getOwner();
+                if (var7 instanceof Player) {
+                    Player p = (Player)var7;
+                    if (!Quark.FLAN_INTEGRATION.canPlace(p, finalPos)) {
+                        return;
+                    }
+                }
 
                 BlockState setState;
-                if(direction == Direction.UP)
+                if (direction == Direction.UP) {
                     setState = AetherBlocks.AMBROSIUM_TORCH.get().defaultBlockState();
-                    else setState = AetherBlocks.AMBROSIUM_WALL_TORCH.get().defaultBlockState().setValue(WallTorchBlock.FACING, direction);
+                } else {
+                    setState =  AetherBlocks.AMBROSIUM_TORCH.get().defaultBlockState().setValue(WallTorchBlock.FACING, direction);
+                }
 
-                if(setState.canSurvive(level(), finalPos)) {
-                    level().setBlock(finalPos, setState, 2);
-                    playSound(setState.getSoundType().getPlaceSound());
-                    discard();
+                if (setState.canSurvive(this.level(), finalPos)) {
+                    this.level().setBlock(finalPos, setState, 2);
+                    this.playSound(setState.getSoundType().getPlaceSound());
+                    this.discard();
                     return;
                 }
             }
         }
+
         super.onHitBlock(result);
     }
 

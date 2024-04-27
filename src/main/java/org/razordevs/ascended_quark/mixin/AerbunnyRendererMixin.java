@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class AerbunnyRendererMixin {
     @Inject(method = "getTextureLocation(Lcom/aetherteam/aether/entity/passive/Aerbunny;)Lnet/minecraft/resources/ResourceLocation;", at = @At("HEAD"), cancellable = true, remap = false)
     private void overrideTexture(Aerbunny aerbunny, CallbackInfoReturnable<ResourceLocation> cir) {
-        ResourceLocation loc = AetherVariantAnimalTexturesModule.getAerbunnyTexture(aerbunny);
+        ResourceLocation loc = AetherVariantAnimalTexturesModule.Client.getAerbunnyTexture(aerbunny);
         if (loc != null)
             cir.setReturnValue(loc);
     }

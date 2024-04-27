@@ -1,9 +1,9 @@
 package org.razordevs.ascended_quark.module;
 
-import org.razordevs.ascended_quark.config.LoadModuleButWithoutCategory;
+import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 
-@LoadModuleButWithoutCategory()
+@ZetaLoadModule(category = "aether")
 public class AmbrosiumTorchArrowModule extends ZetaModule {
 
 }

@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class PhygRendererMixin {
     @Inject(method = "getTextureLocation(Lcom/aetherteam/aether/entity/passive/Phyg;)Lnet/minecraft/resources/ResourceLocation;", at = @At("HEAD"), cancellable = true, remap = false)
     private void overrideTexture(Phyg pig, CallbackInfoReturnable<ResourceLocation> cir) {
-        ResourceLocation loc = AetherVariantAnimalTexturesModule.getPhygTexture(pig);
+        ResourceLocation loc = AetherVariantAnimalTexturesModule.Client.getPhygTexture(pig);
         if (loc != null)
             cir.setReturnValue(loc);
     }

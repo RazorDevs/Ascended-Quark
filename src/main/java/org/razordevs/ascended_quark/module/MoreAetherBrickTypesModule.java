@@ -1,10 +1,10 @@
 package org.razordevs.ascended_quark.module;
 
-import org.razordevs.ascended_quark.config.LoadModuleButWithoutCategory;
 import org.violetmoon.zeta.config.Config;
+import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 
-@LoadModuleButWithoutCategory()
+@ZetaLoadModule(category = "aether")
 public class MoreAetherBrickTypesModule extends ZetaModule {
     @Config(flag = "quicksoil_bricks", name = "Enable Quicksoil Bricks") public boolean quicksoil_bricks = true;
     @Config(flag = "aether_dirt_bricks", name = "Enable Aether Dirt Bricks") public boolean aether_dirt_bricks = true;

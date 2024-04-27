@@ -37,27 +37,11 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
-
-        if(!inGround && level.isClientSide && tickCount > 2) {
-            Vec3 motion = getDeltaMovement();
-            double rs = 0.03;
-            double ms = 0.08;
-            double sprd = 0.1;
-
-            int parts = 6;
-            for(int i = 0; i < parts; i++) {
-                double px = getX() - motion.x * ((float) i / parts) + (Math.random() - 0.5) * sprd;
-                double py = getY() - motion.y * ((float) i / parts) + (Math.random() - 0.5) * sprd;
-                double pz = getZ() - motion.z * ((float) i / parts) + (Math.random() - 0.5) * sprd;
-
-                double mx = (Math.random() - 0.5) * rs - motion.x * ms;
-                double my = (Math.random() - 0.5) * rs - motion.y * ms;
-                double mz = (Math.random() - 0.5) * rs - motion.z * ms;
-                level.addParticle(AQParticles.AMBROSIUM_SHARD_PARTICLE.get(), px, py, pz, mx, my, mz);
-            }
-        }
+        spawnFlyingParticles();
     }
 
+
+    // Method responsible for Ambrosium Torch placing on block hit.
     @Override
     protected void onHitBlock(BlockHitResult result) {
         if(!level.isClientSide) {
@@ -90,14 +74,34 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-            if(result.getEntity() instanceof LivingEntity entity) {
-                entity.heal(2.0F);
-            }
-            super.onHitEntity(result);
+        if(result.getEntity() instanceof LivingEntity entity)
+            entity.heal(10.0F);
+        super.onHitEntity(result);
     }
 
     @Override
     protected ItemStack getPickupItem() {
-            return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AQItems.AMBROSIUM_TORCH_ARROW.get());
+        return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AQItems.AMBROSIUM_TORCH_ARROW.get());
+    }
+
+    private void spawnFlyingParticles() {
+        if(!inGround && level.isClientSide && tickCount > 2) {
+            Vec3 motion = getDeltaMovement();
+            double rs = 0.03;
+            double ms = 0.08;
+            double sprd = 0.1;
+
+            int parts = 6;
+            for(int i = 0; i < parts; i++) {
+                double px = getX() - motion.x * ((float) i / parts) + (Math.random() - 0.5) * sprd;
+                double py = getY() - motion.y * ((float) i / parts) + (Math.random() - 0.5) * sprd;
+                double pz = getZ() - motion.z * ((float) i / parts) + (Math.random() - 0.5) * sprd;
+
+                double mx = (Math.random() - 0.5) * rs - motion.x * ms;
+                double my = (Math.random() - 0.5) * rs - motion.y * ms;
+                double mz = (Math.random() - 0.5) * rs - motion.z * ms;
+                level.addParticle(AQParticles.AMBROSIUM_SHARD_PARTICLE.get(), px, py, pz, mx, my, mz);
+            }
         }
+    }
 }

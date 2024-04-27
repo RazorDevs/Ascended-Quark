@@ -42,6 +42,10 @@ public class AQItemTagData extends ItemTagsProvider {
             tag.add(item.get());
         }
 
+        tag(AetherTags.Items.PLANKS_CRAFTING).add(
+                AQBlocks.VERTICAL_SKYROOT_PLANKS.get().asItem()
+        );
+
         tag(ItemTags.SLABS).add(
                 AQBlocks.AETHER_DIRT_BRICK_SLAB.get().asItem()
         );

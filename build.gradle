@@ -31,6 +31,7 @@ archivesBaseName = project.modid
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+
 minecraft {
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -107,6 +108,7 @@ dependencies {
     implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
     implementation fg.deobf("vazkii.quark:Quark:${quark_version}")
     implementation fg.deobf("vazkii.autoreglib:AutoRegLib:${autoreglib_version}")
+
     implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.2"))
     implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.3.2")) {
         jarJar.ranged(it, "[0.3.2,)")

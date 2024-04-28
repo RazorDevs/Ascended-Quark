@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.razordevs.ascended_quark.datagen.AQBlockstateData;
+import org.razordevs.ascended_quark.proxy.ACClientProxy;
 import org.razordevs.ascended_quark.proxy.ACCommonProxy;
 import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.MixinEnvironment;
@@ -45,18 +46,18 @@ public class AscendedQuark {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static AscendedQuark instance;
-    public static ACCommonProxy proxy=new ACCommonProxy();
+    public static ACCommonProxy proxy;
     public static final Zeta ZETA = new ForgeZeta(MODID, LogManager.getLogger("aq-zeta"));
 
     public AscendedQuark() {
         instance = this;
         ZETA.start();
+
+        proxy = Env.unsafeRunForDist(() -> ACClientProxy::new, () -> ACCommonProxy::new);
         proxy.start();
-        //proxy = Env.unsafeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
-        //proxy.start();
-        //if (Utils.isDevEnv()) {
-        //    MixinEnvironment.getCurrentEnvironment().audit();
-        //}
+        if (Utils.isDevEnv()) {
+            MixinEnvironment.getCurrentEnvironment().audit();
+        }
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dataSetup);
 

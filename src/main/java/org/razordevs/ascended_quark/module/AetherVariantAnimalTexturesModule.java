@@ -45,7 +45,6 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
         public void clientSetup(ZClientSetup event) {
             if (!enabled)
                 return;
-
             textures = Multimaps.newListMultimap(new EnumMap<>(VariantTextureType.class), ArrayList::new);
 
             registerTextures(VariantTextureType.PHYG, PHYG_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/phyg/phyg.png"));

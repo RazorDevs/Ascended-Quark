@@ -4,6 +4,7 @@ import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
+import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.violetmoon.quark.base.config.QuarkGeneralConfig;
 import org.violetmoon.zeta.module.ZetaCategory;
@@ -20,7 +21,7 @@ public class ACCommonProxy {
                         new ZetaCategory("aether", Blocks.GLOWSTONE.asItem(), AscendedQuark.MODID)
                 ),
                 new ModFileScanDataModuleFinder(AscendedQuark.MODID), //forge only
-                QuarkGeneralConfig.INSTANCE
+                AQGeneralConfig.INSTANCE
         );
     }
 }

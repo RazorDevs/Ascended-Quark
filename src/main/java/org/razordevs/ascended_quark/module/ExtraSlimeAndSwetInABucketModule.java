@@ -3,9 +3,10 @@ package org.razordevs.ascended_quark.module;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherItems;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.RegistryObject;
-import org.razordevs.ascended_quark.items.AQEntityInABucketItem;
+import org.razordevs.ascended_quark.items.AQItems;
+import org.razordevs.ascended_quark.items.AQSlimeInABucketItem;
 import org.razordevs.ascended_quark.items.AQSwetInABucketItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.nbt.CompoundTag;
@@ -17,7 +18,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.gameevent.GameEvent;
-import org.violetmoon.quark.content.tools.module.SlimeInABucketModule;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
 import org.violetmoon.zeta.config.Config;
 import org.violetmoon.zeta.event.bus.LoadEvent;
@@ -48,14 +48,49 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
                 Player player = event.getEntity();
                 ItemStack stack = player.getMainHandItem();
                 EntityType<?> entity = event.getTarget().getType();
-                Pair<AQEntityInABucketItem, InteractionHand> result = CheckAllBucket(player, event.getTarget().getType());
 
-                if (result != null) {
+                Pair<AQSwetInABucketItem, InteractionHand> result = CheckAllBucket(player, entity);
+
+                if(result == null && entity == EntityType.SLIME) {
+                    InteractionHand hand;
+                    if(player.getMainHandItem().getItem() == AetherItems.SKYROOT_BUCKET.get())
+                        hand = InteractionHand.MAIN_HAND;
+                    else if(player.getOffhandItem().getItem() == AetherItems.SKYROOT_BUCKET.get())
+                        hand = InteractionHand.OFF_HAND;
+                    else return;
+
+                    if (!event.getLevel().isClientSide) {
+
+                        ItemStack outStack = new ItemStack(AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get());
+
+                        CompoundTag cmp = event.getTarget().serializeNBT();
+                        ItemNBTHelper.setCompound(outStack, AQSlimeInABucketItem.TAG_ENTITY_DATA, cmp);
+
+                        if (stack.getCount() == 1)
+                            player.setItemInHand(hand, outStack);
+                        else {
+                            stack.shrink(1);
+                            if (stack.getCount() == 0)
+                                player.setItemInHand(hand, outStack);
+                            else if (!player.getInventory().add(outStack))
+                                player.drop(outStack, false);
+                        }
+
+                        event.getLevel().gameEvent(player, GameEvent.ENTITY_INTERACT, event.getTarget().position());
+                        event.getTarget().discard();
+                    } else player.swing(hand);
+
+                    event.setCanceled(true);
+                    event.setCancellationResult(InteractionResult.SUCCESS);
+                }
+                else if (result != null) {
                     InteractionHand hand = result.getSecond();
                     if (!event.getLevel().isClientSide) {
+
                         ItemStack outStack = new ItemStack(result.getFirst());
+
                         CompoundTag cmp = event.getTarget().serializeNBT();
-                        ItemNBTHelper.setCompound(outStack, AQEntityInABucketItem.TAG_ENTITY_DATA, cmp);
+                        ItemNBTHelper.setCompound(outStack, AQSwetInABucketItem.TAG_ENTITY_DATA, cmp);
 
                         if (stack.getCount() == 1)
                             player.setItemInHand(hand, outStack);
@@ -80,15 +115,13 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
     }
 
     @Nullable
-    public Pair<AQEntityInABucketItem, InteractionHand> CheckAllBucket(Player player, EntityType<?> swet) {
+    public Pair<AQSwetInABucketItem, InteractionHand> CheckAllBucket(Player player, EntityType<?> swet) {
         ItemStack stack = player.getMainHandItem();
         ItemStack stack2 = player.getOffhandItem();
         InteractionHand hand = InteractionHand.MAIN_HAND;
 
         if (!swet_bucket_enabled)
             return null;
-
-        if(stack.getItem() == Items.BUCKET )
 
         if (stack.getItem() == Items.BUCKET || stack2.getItem() == Items.BUCKET) {
             if (stack.getItem() != Items.BUCKET)
@@ -103,7 +136,7 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
             if (stack.getItem() != AetherItems.SKYROOT_BUCKET.get())
                 hand = InteractionHand.OFF_HAND;
 
-            for (Pair<RegistryObject<EntityType<Swet>>, AQEntityInABucketItem> entry : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
+            for (Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem> entry : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
                 if (entry.getFirst().get() == swet) {
                     return new Pair<>(entry.getSecond(), hand);
                 }
@@ -119,16 +152,18 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
         @LoadEvent
         public void clientSetup(ZClientSetup event) {
             event.enqueueWork(() -> {
-                for (Pair<EntityType, AQEntityInABucketItem> pair : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
+                for (Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem> pair : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
                     if (!(pair.getSecond() instanceof AQSwetInABucketItem && !swets_exited))
-                        ItemProperties.register(pair.getSecond(), new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, AQEntityInABucketItem.TAG_EXCITED, false) ? 1 : 0);
+                        ItemProperties.register(pair.getSecond(), new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, AQSwetInABucketItem.TAG_EXCITED, false) ? 1 : 0);
                 }
 
                 if (swets_exited) {
-                    for (Pair<EntityType, AQEntityInABucketItem> pair : SLIME_WITH_BUCKET_ITEM) {
-                        ItemProperties.register(pair.getSecond(), new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, AQEntityInABucketItem.TAG_EXCITED, false) ? 1 : 0);
+                    for (Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem> pair : SLIME_WITH_BUCKET_ITEM) {
+                        ItemProperties.register(pair.getSecond(), new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, AQSwetInABucketItem.TAG_EXCITED, false) ? 1 : 0);
                     }
                 }
+
+                ItemProperties.register(AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get(), new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, "excited", false) ? 1.0F : 0.0F);
             });
         }
     }

@@ -97,5 +97,7 @@ public class AQItemTagData extends ItemTagsProvider {
                 AQBlocks.HOLYSTONE_VERTICAL_SLAB.get().asItem(),
                 AQBlocks.SKYROOT_VERTICAL_SLAB.get().asItem()
         );
+
+        tag(AetherTags.Items.PLANKS_CRAFTING).add(AQBlocks.VERTICAL_SKYROOT_PLANKS.get().asItem());
     }
 }

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ascended_quark:skyroot_trapped_chest"
+          "name": "ascended_quark:vertical_skyroot_planks"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "ascended_quark:blocks/skyroot_trapped_chest"
+  "random_sequence": "ascended_quark:blocks/vertical_skyroot_planks"
 }

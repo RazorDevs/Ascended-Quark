@@ -21,6 +21,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -36,6 +39,7 @@ public class AQBlocks {
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_WALL = registerBlock("aether_dirt_brick_wall", () -> new WallBlock(Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> AETHER_DIRT_BRICK_VERTICAL_SLAB = registerBlock("aether_dirt_brick_vertical_slab", () -> new VerticalSlabBlock(AQBlocks.AETHER_DIRT_BRICKS, BlockBehaviour.Properties.copy(AQBlocks.AETHER_DIRT_BRICKS.get())));
 
+    public static final RegistryObject<Block> VERTICAL_SKYROOT_PLANKS = registerBlock("vertical_skyroot_planks", () -> new Block(BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_PLANKS.get())));
     public static final RegistryObject<Block> SKYROOT_STOOL = registerBlock("skyroot_stool", AQStoolBlock::new);
     public static final RegistryObject<Block> SKYROOT_CHEST = registerBlock("skyroot_chest", () -> new AQChestBlock(BlockBehaviour.Properties.copy(Blocks.CHEST), AQBlockEntityTypes.SKYROOT_CHEST::get));
     public static final RegistryObject<Block> SKYROOT_TRAPPED_CHEST = registerBlock("skyroot_trapped_chest", () -> new AQTrappedChestBlock(BlockBehaviour.Properties.copy(Blocks.TRAPPED_CHEST)));
@@ -126,6 +130,113 @@ public class AQBlocks {
     private static ToIntFunction<BlockState> litBlockEmission(int p_50760_) {
         return (p_50763_) -> {
             return p_50763_.getValue(BlockStateProperties.LIT) ? p_50760_ : 0;
+        };
+    }
+
+    public static Block[] blockList(RegistryObject<Block>[] registryObjects){
+        Collection<Block> blocks = new ArrayList<>(List.of());
+        for (RegistryObject<Block> registryObject : registryObjects) {
+            blocks.add(registryObject.get());
+        }
+        return blocks.toArray(new Block[0]);
+    }
+
+    public static RegistryObject<Block>[] aetherDirtBlocks(){
+        return new RegistryObject[]{
+                AETHER_DIRT_BRICKS,
+                AETHER_DIRT_BRICK_STAIRS,
+                AETHER_DIRT_BRICK_SLAB,
+                AETHER_DIRT_BRICK_WALL,
+                AETHER_DIRT_BRICK_VERTICAL_SLAB
+        };
+    }
+
+    public static RegistryObject<Block>[] skyrootBlocks(){
+        return new RegistryObject[]{
+                HOLLOW_SKYROOT_LOG,
+                SKYROOT_LEAF_CARPET,
+                HOLIDAY_LEAF_CARPET,
+                CRYSTAL_LEAF_CARPET,
+                CRYSTAL_FRUIT_LEAF_CARPET,
+                DECORATED_HOLIDAY_LEAF_CARPET,
+                VERTICAL_SKYROOT_PLANKS,
+                SKYROOT_VERTICAL_SLAB,
+                SKYROOT_STICK_BLOCK,
+                SKYROOT_LADDER,
+                SKYROOT_HEDGE,
+                SKYROOT_POST,
+                STRIPPED_SKYROOT_POST,
+                CRYSTAL_SKYROOT_HEDGE,
+                CRYSTAL_FRUIT_SKYROOT_HEDGE,
+                HOLIDAY_SKYROOT_HEDGE,
+                DECORATED_HOLIDAY_SKYROOT_HEDGE
+        };
+    }
+
+    public static RegistryObject<Block>[] goldenOakBlocks(){
+        return new RegistryObject[]{
+                GOLDEN_OAK_LEAF_CARPET,
+                GOLDEN_SKYROOT_HEDGE
+        };
+    }
+
+    public static RegistryObject<Block>[] holystoneBlocks(){
+        return new RegistryObject[]{
+                HOLYSTONE_VERTICAL_SLAB,
+                MOSSY_HOLYSTONE_VERTICAL_SLAB,
+                HOLYSTONE_BRICK_VERTICAL_SLAB,
+        };
+    }
+
+    public static RegistryObject<Block>[] functionalBlocks(){
+        return new RegistryObject[]{
+                SKYROOT_CHEST,
+                SKYROOT_TRAPPED_CHEST,
+                SKYROOT_STOOL,
+                BLUE_BERRY_CRATE,
+                HOLYSTONE_FURNACE,
+                AMBROSIUM_LAMP
+        };
+    }
+
+    public static RegistryObject<Block>[] quicksoilBlocks(){
+        return new RegistryObject[]{
+                QUICKSOIL_BRICKS,
+                QUICKSOIL_BRICK_STAIRS,
+                QUICKSOIL_BRICK_SLAB,
+                QUICKSOIL_BRICK_WALL,
+                QUICKSOIL_BRICK_VERTICAL_SLAB,
+                QUICKSOIL_FRAMED_GLASS,
+                QUICKSOIL_FRAMED_GLASS_PANE
+        };
+    }
+
+    public static RegistryObject<Block>[] icestoneBlocks(){
+        return new RegistryObject[]{
+                ICESTONE_VERTICAL_SLAB,
+                ICESTONE_BRICKS,
+                ICESTONE_BRICK_STAIRS,
+                ICESTONE_BRICK_SLAB,
+                ICESTONE_BRICK_WALL,
+                ICESTONE_BRICK_VERTICAL_SLAB,
+                POLISHED_ICESTONE,
+                POLISHED_ICESTONE_STAIRS,
+                POLISHED_ICESTONE_SLAB,
+                POLISHED_ICESTONE_WALL,
+                POLISHED_ICESTONE_VERTICAL_SLAB,
+        };
+    }
+
+    public static RegistryObject<Block>[] aerogelBlocks(){
+        return new RegistryObject[]{
+                AEROGEL_VERTICAL_SLAB
+        };
+    }
+
+    public static RegistryObject<Block>[] dungeonBlocks(){
+        return new RegistryObject[]{
+                ANGELIC_VERTICAL_SLAB,
+                HELLFIRE_VERTICAL_SLAB
         };
     }
 }

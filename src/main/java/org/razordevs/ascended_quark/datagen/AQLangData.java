@@ -113,6 +113,8 @@ public class AQLangData extends NitrogenLanguageProvider {
         addVerticalSlabLore(AQBlocks.SKYROOT_VERTICAL_SLAB.get());
         addVerticalSlabLore(AQBlocks.ANGELIC_VERTICAL_SLAB.get());
         addVerticalSlabLore(AQBlocks.ICESTONE_VERTICAL_SLAB.get());
+
+        addVerticalPlanksLore(AQBlocks.VERTICAL_SKYROOT_PLANKS.get());
     }
 
     private void addBricksLore(Block block){
@@ -138,6 +140,9 @@ public class AQLangData extends NitrogenLanguageProvider {
     }
     private void addCarpetLore(Block block){
         this.add("lore." + block.getDescriptionId(), "Crafted from " + clearBlockOrigin(block, 7) + ". Leaf Carpets are a great way to add natural elements to your builds!");
+    }
+    private void addVerticalPlanksLore(Block block){
+        this.add("lore." + block.getDescriptionId(), "Simple vertical planks to spice up your creativity.");
     }
 
 

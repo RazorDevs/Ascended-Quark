@@ -1,15 +1,15 @@
 modLoader="javafml"
 loaderVersion="[47,)"
-license = "Assets: All Rights Reserved; Code: GPL-3.0"
+license = "LGPL-3.0"
 issueTrackerURL="https://github.com/RazorDevs/Ascended-Quark/issues"
 
 [[mods]]
 modId="ascended_quark"
-version="${file.jarVersion}"
+version="1.0.2"
 displayName="Ascended Quark"
 authors="RazorDevs"
 description='''
-mod_description = A small mod that aims to bring compatibility between quark and the aether mod!
+A small mod that aims to bring compatibility between quark and the aether mod!
 '''
 logoFile="ascended_quark.png"
 credits="A special thanks goes to the creators behind Quark and the Aether mods!"
@@ -20,6 +20,7 @@ mandatory=true
 versionRange="[47.1.0,)"
 ordering="NONE"
 side="BOTH"
+
 [[dependencies.ascended_quark]]
 modId="minecraft"
 mandatory=true

@@ -1,11 +1,11 @@
 package org.razordevs.ascended_quark.entity;
 
-import org.razordevs.ascended_quark.AscendedQuark;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.razordevs.ascended_quark.AscendedQuark;
 
 
 public class AQEntityTypes {

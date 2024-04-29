@@ -2,8 +2,8 @@ package org.razordevs.ascended_quark.mixin;
 
 import com.aetherteam.aether.client.renderer.entity.CockatriceRenderer;
 import com.aetherteam.aether.entity.monster.Cockatrice;
-import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import net.minecraft.resources.ResourceLocation;
+import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

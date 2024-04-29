@@ -1,12 +1,12 @@
 package org.razordevs.ascended_quark.entity.render;
 
-import org.razordevs.ascended_quark.entity.model.AQAtlases;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.properties.ChestType;
 import org.jetbrains.annotations.NotNull;
+import org.razordevs.ascended_quark.entity.model.AQAtlases;
 
 public class AQChestRender extends ChestRenderer<ChestBlockEntity> {
     public AQChestRender(BlockEntityRendererProvider.Context context) {

@@ -1,8 +1,5 @@
 package org.razordevs.ascended_quark.blocks;
 
-import org.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
-import org.razordevs.ascended_quark.entity.block.HolystoneFurnaceBlockEntity;
-import org.razordevs.ascended_quark.particle.AQParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -18,6 +15,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
+import org.razordevs.ascended_quark.entity.block.HolystoneFurnaceBlockEntity;
+import org.razordevs.ascended_quark.particle.AQParticles;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

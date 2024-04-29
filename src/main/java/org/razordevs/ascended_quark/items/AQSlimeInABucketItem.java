@@ -1,7 +1,6 @@
 package org.razordevs.ascended_quark.items;
 
 import com.aetherteam.aether.item.AetherItems;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -26,7 +25,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.phys.Vec3;
-import org.razordevs.ascended_quark.module.ExtraSlimeAndSwetInABucketModule;
 import org.violetmoon.zeta.util.ItemNBTHelper;
 
 import javax.annotation.Nonnull;

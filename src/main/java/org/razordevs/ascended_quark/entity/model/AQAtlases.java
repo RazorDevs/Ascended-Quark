@@ -1,14 +1,13 @@
 package org.razordevs.ascended_quark.entity.model;
 
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import org.razordevs.ascended_quark.AscendedQuark;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import org.razordevs.ascended_quark.AscendedQuark;
 
 @Mod.EventBusSubscriber(modid = AscendedQuark.MODID, value = {Dist.CLIENT}, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AQAtlases {

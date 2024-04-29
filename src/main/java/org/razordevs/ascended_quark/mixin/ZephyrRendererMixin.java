@@ -8,11 +8,11 @@ import com.aetherteam.aether.client.renderer.entity.layers.ZephyrTransparencyLay
 import com.aetherteam.aether.client.renderer.entity.model.ClassicZephyrModel;
 import com.aetherteam.aether.client.renderer.entity.model.ZephyrModel;
 import com.aetherteam.aether.entity.monster.Zephyr;
-import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import org.spongepowered.asm.mixin.*;
+import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
+import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(value = ZephyrRenderer.class, remap = false)
 public class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, EntityModel<Zephyr>, ZephyrModel, ClassicZephyrModel> {

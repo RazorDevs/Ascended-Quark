@@ -1,11 +1,8 @@
 package org.razordevs.ascended_quark.datagen;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
-import net.minecraft.data.PackOutput;
-import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.blocks.AQBlocks;
 import net.minecraft.core.Direction;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -13,8 +10,9 @@ import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.blocks.AQBlocks;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
-
 
 import java.util.Map;
 

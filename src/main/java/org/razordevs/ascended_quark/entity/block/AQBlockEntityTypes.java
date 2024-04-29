@@ -1,11 +1,11 @@
 package org.razordevs.ascended_quark.entity.block;
 
-import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.blocks.AQBlocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.blocks.AQBlocks;
 
 public class AQBlockEntityTypes {
     public static final DeferredRegister<BlockEntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, AscendedQuark.MODID);

@@ -1,6 +1,5 @@
 package org.razordevs.ascended_quark.entity;
 
-import org.razordevs.ascended_quark.blocks.AQStoolBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -15,6 +14,7 @@ import net.minecraft.world.level.block.piston.PistonMovingBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
+import org.razordevs.ascended_quark.blocks.AQStoolBlock;
 
 import javax.annotation.Nonnull;
 import java.util.List;

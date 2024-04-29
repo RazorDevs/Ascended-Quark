@@ -1,12 +1,9 @@
 package org.razordevs.ascended_quark.entity;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.Blocks;
-import org.razordevs.ascended_quark.items.AQItems;
-import org.razordevs.ascended_quark.particle.AQParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -19,9 +16,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.razordevs.ascended_quark.items.AQItems;
+import org.razordevs.ascended_quark.particle.AQParticles;
 import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.tools.module.TorchArrowModule;
-import org.violetmoon.quark.integration.claim.IClaimIntegration;
 
 public class AmbrosiumTorchArrow extends AbstractArrow {
 

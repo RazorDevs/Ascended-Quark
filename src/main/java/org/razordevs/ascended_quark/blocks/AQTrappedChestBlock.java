@@ -1,7 +1,5 @@
 package org.razordevs.ascended_quark.blocks;
 
-import org.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
-import org.razordevs.ascended_quark.entity.block.SkyrootTrappedChestBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -14,6 +12,8 @@ import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+import org.razordevs.ascended_quark.entity.block.AQBlockEntityTypes;
+import org.razordevs.ascended_quark.entity.block.SkyrootTrappedChestBlockEntity;
 
 
 public class AQTrappedChestBlock extends AQChestBlock {

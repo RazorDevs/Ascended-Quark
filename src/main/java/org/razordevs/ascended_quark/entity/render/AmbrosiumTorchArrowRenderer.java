@@ -1,10 +1,10 @@
 package org.razordevs.ascended_quark.entity.render;
 
-import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.entity.AmbrosiumTorchArrow;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.entity.AmbrosiumTorchArrow;
 
 public class AmbrosiumTorchArrowRenderer extends ArrowRenderer<AmbrosiumTorchArrow> {
 

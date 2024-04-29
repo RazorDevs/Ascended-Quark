@@ -2,18 +2,20 @@ package org.razordevs.ascended_quark.datagen.loot;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
-import org.razordevs.ascended_quark.blocks.AQBlocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraftforge.registries.RegistryObject;
+import org.razordevs.ascended_quark.blocks.AQBlocks;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

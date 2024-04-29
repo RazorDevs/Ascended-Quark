@@ -1,10 +1,10 @@
 package org.razordevs.ascended_quark.entity.block;
 
-import org.razordevs.ascended_quark.blocks.AQBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.razordevs.ascended_quark.blocks.AQBlocks;
 
 public class SkyrootChestBlockEntity extends ChestBlockEntity {
     protected SkyrootChestBlockEntity(BlockEntityType<?> p_155327_, BlockPos p_155328_, BlockState p_155329_) {

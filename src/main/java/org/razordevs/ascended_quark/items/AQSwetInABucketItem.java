@@ -11,7 +11,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -22,11 +21,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
 import org.razordevs.ascended_quark.module.ExtraSlimeAndSwetInABucketModule;
 import org.violetmoon.zeta.util.ItemNBTHelper;
@@ -60,12 +56,6 @@ public class AQSwetInABucketItem extends Item {
 
         return super.getName(stack);
     }
-
-    public static boolean isSlimeChunk(ServerLevel world, int x, int z) {
-        ChunkPos chunkpos = new ChunkPos(new BlockPos(x, 0, z));
-        return WorldgenRandom.seedSlimeChunk(chunkpos.x, chunkpos.z, world.getSeed(), 987234911L).nextInt(10) == 0;
-    }
-
     public EntityType<Swet> getBucketEntity() {
         return bucketEntity.get();
     }

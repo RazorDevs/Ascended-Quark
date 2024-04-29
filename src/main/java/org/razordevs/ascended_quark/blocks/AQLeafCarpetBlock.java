@@ -12,6 +12,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -30,8 +31,13 @@ public class AQLeafCarpetBlock extends Block implements IZetaBlockColorProvider 
     private final BlockState baseState;
     private ItemStack baseStack;
 
-    public AQLeafCarpetBlock(Block base, Properties properties) {
-        super(properties);
+    public AQLeafCarpetBlock(Block base) {
+        super(Block.Properties.of()
+                .noCollission()
+                .strength(0F)
+                .sound(SoundType.GRASS)
+                .noOcclusion()
+                .ignitedByLava());
 
         baseState = base.defaultBlockState();
     }
@@ -80,11 +86,11 @@ public class AQLeafCarpetBlock extends Block implements IZetaBlockColorProvider 
 
     @Override
     public @Nullable String getBlockColorProviderName() {
-        return null;
+        return "leaf_carpet";
     }
 
     @Override
     public @Nullable String getItemColorProviderName() {
-        return null;
+        return "leaf_carpet";
     }
 }

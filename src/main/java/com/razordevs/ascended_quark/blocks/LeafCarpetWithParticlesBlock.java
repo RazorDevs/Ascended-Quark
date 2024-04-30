@@ -35,8 +35,8 @@ public class LeafCarpetWithParticlesBlock extends AQLeafCarpetBlock  {
 
     private final Supplier<? extends ParticleOptions> particle;
 
-    public LeafCarpetWithParticlesBlock(Supplier<? extends ParticleOptions> particle, Block base, BlockBehaviour.Properties properties) {
-        super(base, properties);
+    public LeafCarpetWithParticlesBlock(Supplier<? extends ParticleOptions> particle, Block base) {
+        super(base);
         this.particle = particle;
     }
 

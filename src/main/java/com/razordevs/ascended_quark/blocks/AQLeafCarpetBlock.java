@@ -35,8 +35,12 @@ public class AQLeafCarpetBlock extends Block implements IBlockColorProvider {
     private final BlockState baseState;
     private ItemStack baseStack;
 
-    public AQLeafCarpetBlock(Block base, Properties properties) {
-        super(properties);
+    public AQLeafCarpetBlock(Block base) {
+        super(Block.Properties.of(Material.CLOTH_DECORATION)
+                .noCollission()
+                .strength(0F)
+                .sound(SoundType.GRASS)
+                .noOcclusion());
 
         baseState = base.defaultBlockState();
 

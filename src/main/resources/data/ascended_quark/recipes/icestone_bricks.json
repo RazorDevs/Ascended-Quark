@@ -13,7 +13,7 @@
     "item": "ascended_quark:icestone_bricks",
     "conditions": [
       {
-        "type": "quark:flag",
+        "type": "ascended_quark:flag",
         "flag": "icestone_bricks"
       }
     ]

@@ -25,7 +25,7 @@
           "flag": "hedges"
         },
         {
-          "type": "quark:flag",
+          "type": "ascended_quark:flag",
           "flag": "skyroot_quark_blocks"
         }
       ]

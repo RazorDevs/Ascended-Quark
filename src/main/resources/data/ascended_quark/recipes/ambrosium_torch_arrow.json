@@ -13,7 +13,7 @@
   },
   "conditions": [
     {
-      "type": "quark:flag",
+      "type": "ascended_quark:flag",
       "flag": "ambrosium_torch_arrow"
     }
   ]

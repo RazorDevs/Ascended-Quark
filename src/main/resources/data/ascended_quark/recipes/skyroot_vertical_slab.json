@@ -23,7 +23,7 @@
           "flag": "vertical_slabs"
         },
         {
-          "type": "quark:flag",
+          "type": "ascended_quark:flag",
           "flag": "skyroot_quark_blocks"
         }
       ]

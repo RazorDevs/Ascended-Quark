@@ -7,7 +7,7 @@
   "result": "ascended_quark:quicksoil_brick_vertical_slab",
   "conditions": [
     {
-      "type": "quark:flag",
+      "type": "ascended_quark:flag",
       "flag": "quicksoil_bricks"
     }
   ]

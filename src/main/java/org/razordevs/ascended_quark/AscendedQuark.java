@@ -28,10 +28,15 @@ import org.razordevs.ascended_quark.proxy.ACCommonProxy;
 import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.violetmoon.zeta.Zeta;
+import org.violetmoon.zeta.config.ConfigManager;
+import org.violetmoon.zeta.config.ZetaGeneralConfig;
+import org.violetmoon.zeta.module.ModuleFinder;
+import org.violetmoon.zeta.module.ZetaCategory;
 import org.violetmoon.zeta.multiloader.Env;
 import org.violetmoon.zeta.util.Utils;
 import org.violetmoon.zetaimplforge.ForgeZeta;
 
+import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(AscendedQuark.MODID)
@@ -56,6 +61,7 @@ public class AscendedQuark {
         if (Utils.isDevEnv()) {
             MixinEnvironment.getCurrentEnvironment().audit();
         }
+
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dataSetup);
 

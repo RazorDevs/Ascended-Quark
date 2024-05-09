@@ -7,7 +7,7 @@
   "result": "ascended_quark:polished_icestone_wall",
   "conditions": [
     {
-      "type": "quark:flag",
+      "type": "ascended_quark:flag",
       "flag": "icestone_bricks"
     }
   ]

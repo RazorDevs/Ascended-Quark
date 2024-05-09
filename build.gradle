@@ -87,7 +87,12 @@ dependencies {
     implementation fg.deobf("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
     implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
-    
+
+    // Genesis
+    //implementation fg.deobf("local:aether_genesis:1.20.1-0.0.1-neoforge")
+    //implementation fg.deobf("curse.maven:aeroblender-879879:${project.aeroblender_version}")
+    //implementation fg.deobf("curse.maven:terrablender-563928:5315142")
+
     // Quark
     implementation fg.deobf("curse.maven:quark-243121:${quark_version}")
     implementation fg.deobf("curse.maven:zeta-968868:${zeta_version}")

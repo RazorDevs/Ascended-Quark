@@ -21,7 +21,7 @@
   },
   "conditions": [
     {
-      "type": "quark:flag",
+      "type": "ascended_quark:flag",
       "flag": "ambrosium_lamp"
     }
   ]

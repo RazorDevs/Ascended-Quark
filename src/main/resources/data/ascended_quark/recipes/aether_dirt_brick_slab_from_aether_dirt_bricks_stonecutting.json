@@ -7,7 +7,7 @@
   "result": "ascended_quark:aether_dirt_brick_slab",
   "conditions": [
     {
-      "type": "quark:flag",
+      "type": "ascended_quark:flag",
       "flag": "aether_dirt_bricks"
     }
   ]

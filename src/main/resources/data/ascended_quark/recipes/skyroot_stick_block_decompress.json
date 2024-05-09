@@ -15,7 +15,7 @@
   "conditions": [
     {
       "type": "quark:flag",
-      "flag": "vertical_slabs"
+      "flag": "stick_block"
     }
   ]
 }

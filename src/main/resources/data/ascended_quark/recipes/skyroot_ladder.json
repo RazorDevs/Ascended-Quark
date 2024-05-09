@@ -26,7 +26,7 @@
           "flag": "variant_ladders"
         },
         {
-          "type": "quark:flag",
+          "type": "ascended_quark:flag",
           "flag": "skyroot_quark_blocks"
         }
       ]

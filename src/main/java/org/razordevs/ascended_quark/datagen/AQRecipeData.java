@@ -8,6 +8,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public class AQRecipeData extends RecipeProvider {
+
+    //TODO: Fix Recipes with Every Compat and Woodworks
+
     public AQRecipeData(PackOutput output) {
         super(output);
     }

@@ -43,6 +43,7 @@ import java.util.concurrent.CompletableFuture;
 public class AscendedQuark {
 
     //TODO: Handle better Documentation
+    //TODO: 1.1 Planning with other Addon compat
 
     public static final String MODID = "ascended_quark";
     public static final String DEEP_AETHER = "deep_aether";

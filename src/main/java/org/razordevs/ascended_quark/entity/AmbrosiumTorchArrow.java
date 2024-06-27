@@ -3,6 +3,8 @@ package org.razordevs.ascended_quark.entity;
 import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -98,7 +100,7 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
     @Override
     protected void onHitEntity(EntityHitResult result) {
             if(result.getEntity() instanceof LivingEntity entity) {
-                entity.heal(2.0F);
+                entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1));
             }
             super.onHitEntity(result);
     }

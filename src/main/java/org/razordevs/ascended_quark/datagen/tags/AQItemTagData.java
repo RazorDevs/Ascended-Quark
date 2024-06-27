@@ -78,6 +78,14 @@ public class AQItemTagData extends ItemTagsProvider {
                 AQBlocks.SKYROOT_CHEST.get().asItem()
         );
 
+        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "revertable_chests"))).add(
+                AQBlocks.SKYROOT_CHEST.get().asItem()
+        );
+
+        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "boatable_chests"))).add(
+                AQBlocks.SKYROOT_CHEST.get().asItem()
+        );
+
         tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "ladders"))).add(
                 AQBlocks.SKYROOT_LADDER.get().asItem()
         );

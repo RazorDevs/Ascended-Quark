@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "A": {
-      "item": "aether:skyroot_log"
+      "tag": "aether:skyroot_logs"
     }
   },
   "pattern": [

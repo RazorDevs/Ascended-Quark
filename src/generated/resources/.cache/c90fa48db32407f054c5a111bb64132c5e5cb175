@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-28T12:47:33.2066689	Ascended Quark Item Tags
+// 1.20.1	2024-06-27T13:01:08.4935021	Ascended Quark Item Tags
 9a00690582d0d658a96be3b0752ae32397a588e1 data/aether/tags/items/planks_crafting.json
 5ed34835b444f5605272363ee09e4c1fddb37773 data/aether/tags/items/treated_as_aether_item.json
 089ae256b4e6eab481e02b9b2dc6d693afcaab62 data/forge/tags/items/chests/wooden.json
@@ -6,9 +6,11 @@
 119c832e848b261dcfaad11931c85349a7404a60 data/minecraft/tags/items/slabs.json
 afcca0b61f3cfba04d1cd2ddc3296d6d57a53252 data/minecraft/tags/items/stairs.json
 d5a7f45742f74266258427a031844d44fc0d8fb8 data/minecraft/tags/items/walls.json
+089ae256b4e6eab481e02b9b2dc6d693afcaab62 data/quark/tags/items/boatable_chests.json
 03761ab9d63aaecc5e66cc5e3c234a2f0c6971e0 data/quark/tags/items/hedges.json
 b23f2aa8c33badeff892cfefeabbb5481e9f8340 data/quark/tags/items/hollow_logs.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/quark/tags/items/ladders.json
 4f89e9cc905e5c64fb602133083b080ad57f27c3 data/quark/tags/items/posts.json
+089ae256b4e6eab481e02b9b2dc6d693afcaab62 data/quark/tags/items/revertable_chests.json
 9b05a108aee814b70443eb720ce75ecad104361a data/quark/tags/items/stools.json
 257656a21d7b01ed97d47cbf28b655447729fd38 data/quark/tags/items/vertical_slabs.json

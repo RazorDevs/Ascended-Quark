@@ -96,7 +96,7 @@ dependencies {
     // Quark
     implementation fg.deobf("curse.maven:quark-243121:${quark_version}")
     implementation fg.deobf("curse.maven:zeta-968868:${zeta_version}")
-    implementation fg.deobf("curse.maven:quark-oddities-301051:3575623")
+    //implementation fg.deobf("curse.maven:quark-oddities-301051:3575623")
     
     // Extra
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")

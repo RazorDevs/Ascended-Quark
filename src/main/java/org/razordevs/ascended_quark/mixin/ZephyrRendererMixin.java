@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin(value = ZephyrRenderer.class, remap = false)
+@Mixin(value = ZephyrRenderer.class, remap = true)
 public class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, EntityModel<Zephyr>, ZephyrModel, ClassicZephyrModel> {
     private static final ResourceLocation ZEPHYR_TEXTURE = new ResourceLocation("aether", "textures/entity/mobs/zephyr/zephyr.png");
     private static final ResourceLocation ZEPHYR_CLASSIC_TEXTURE = new ResourceLocation("aether", "textures/entity/mobs/zephyr/zephyr_classic.png");

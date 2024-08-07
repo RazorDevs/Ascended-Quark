@@ -59,9 +59,9 @@ public class AscendedQuark {
 
         proxy = Env.unsafeRunForDist(() -> ACClientProxy::new, () -> ACCommonProxy::new);
         proxy.start();
-        if (Utils.isDevEnv()) {
-            MixinEnvironment.getCurrentEnvironment().audit();
-        }
+//        if (Utils.isDevEnv()) {
+//            MixinEnvironment.getCurrentEnvironment().audit();
+//        }
 
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dataSetup);

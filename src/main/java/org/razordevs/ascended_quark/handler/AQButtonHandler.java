@@ -9,6 +9,7 @@ import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.resources.language.I18n;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AQGeneralConfig;
+import org.violetmoon.quark.base.config.QuarkGeneralConfig;
 import org.violetmoon.zeta.client.event.play.ZScreen;
 import org.violetmoon.zeta.event.bus.PlayEvent;
 
@@ -38,9 +39,15 @@ public class AQButtonHandler {
                     int x = widget.getX();
 
                     if(AQGeneralConfig.aqButtonOnRight)
-                        x += widget.getWidth() + 28; //4px of padding
+                        if(QuarkGeneralConfig.qButtonOnRight && QuarkGeneralConfig.enableQButton)
+                            x += widget.getWidth() + 28;
+                        else
+                            x += widget.getWidth() + 4;
                     else
-                        x -= 48; //4px of padding, accounting for the 20px width of the AQ button
+                        if(QuarkGeneralConfig.qButtonOnRight || !QuarkGeneralConfig.enableQButton)
+                            x -= 24;
+                        else
+                            x -= 48;
 
                     Button aqButton = new AQButton(x, widget.getY());
                     event.addListener(aqButton);

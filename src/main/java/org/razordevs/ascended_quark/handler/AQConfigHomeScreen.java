@@ -21,7 +21,7 @@ import java.util.List;
 
 public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
 
-    private static final CubeMap CUBE_MAP = new CubeMap(new ResourceLocation(Quark.MOD_ID, "textures/misc/panorama/panorama"));
+    private static final CubeMap CUBE_MAP = new CubeMap(new ResourceLocation(AscendedQuark.MODID, "textures/misc/panorama/panorama"));
     private static final PanoramaRenderer PANORAMA = new PanoramaRenderer(CUBE_MAP);
     private float time;
 
@@ -35,7 +35,7 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
 
         List<Integer> socialButtonPlacements = centeredRow(width / 2, 20, 5, 5);
         Iterator<Integer> iter = socialButtonPlacements.iterator();
-        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.discord"), 0x7289da, 0, "https://discord.gg/vm"));
+        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.discord"), 0x7289da, 1, "https://discord.gg/Y6fabygHRk"));
     }
 
     //annoyingly it's not passed to renderBackground
@@ -70,8 +70,6 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
         this.partialTicks = partialTicks;
 
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
-
-        guiGraphics.drawCenteredString(font, I18n.get("quark.gui.config.subheader2"), width / 2, 38, 0x9EFFFE);
     }
 
 }

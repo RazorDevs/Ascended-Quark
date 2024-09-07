@@ -114,6 +114,14 @@ public class AQLangData extends NitrogenLanguageProvider {
         addVerticalSlabLore(AQBlocks.ICESTONE_VERTICAL_SLAB.get());
 
         addVerticalPlanksLore(AQBlocks.VERTICAL_SKYROOT_PLANKS.get());
+
+        addMenuLangComponents();
+    }
+
+    private void addMenuLangComponents() {
+        this.add(AscendedQuark.MODID + ".category.aether", "Aether");
+        this.add(AscendedQuark.MODID + ".category.general", "General Settings");
+        this.add(AscendedQuark.MODID + ".gui.config.social.discord", "RazorDevs Discord");
     }
 
     private void addBricksLore(Block block){

@@ -11,8 +11,6 @@ import org.violetmoon.quark.base.client.handler.ModelHandler;
 import org.violetmoon.quark.base.handler.WoodSetHandler;
 
 public class ACClientProxy extends ACCommonProxy {
-    //TODO: CONFIG SCREEN
-
     public void start() {
         AscendedQuark.ZETA.loadBus
                 .subscribe(ModelHandler.class)

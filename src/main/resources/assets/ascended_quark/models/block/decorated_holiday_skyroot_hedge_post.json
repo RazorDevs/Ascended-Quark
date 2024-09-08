@@ -1,5 +1,6 @@
 {
   "parent": "quark:block/hedge_post",
+  "render_type": "minecraft:cutout",
   "textures": {
     "log": "aether:block/natural/skyroot_log",
     "leaf": "aether:block/natural/decorated_holiday_leaves"

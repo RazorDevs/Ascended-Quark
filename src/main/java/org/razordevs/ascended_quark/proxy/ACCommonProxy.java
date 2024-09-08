@@ -19,5 +19,8 @@ public class ACCommonProxy {
                 new ModFileScanDataModuleFinder(AscendedQuark.MODID), //forge only
                 AQGeneralConfig.INSTANCE
         );
+
+        AscendedQuark.ZETA.loadBus
+                .subscribe(this);
     }
 }

@@ -2,7 +2,7 @@ package org.razordevs.ascended_quark.items;
 
 import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.aetherteam.aether.entity.monster.Swet;
-import com.aetherteam.aether.item.AetherItems;
+import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,22 +25,26 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.razordevs.ascended_quark.module.ExtraSlimeAndSwetInABucketModule;
+import org.violetmoon.zeta.item.ZetaItem;
+import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.ItemNBTHelper;
 
 import javax.annotation.Nonnull;
-public class AQSwetInABucketItem extends Item {
+public class AQSwetInABucketItem extends ZetaItem {
 
     public static final String TAG_ENTITY_DATA = "slime_nbt";
     public static final String TAG_EXCITED = "excited";
 
     private final RegistryObject<EntityType<Swet>> bucketEntity;
 
-    public AQSwetInABucketItem(RegistryObject<EntityType<Swet>> bucketEntity, boolean isSkyroot) {
-        super(new Item.Properties().stacksTo(1).craftRemainder(AetherItems.SKYROOT_BUCKET.get()));
+    public AQSwetInABucketItem(String name, ZetaModule module, RegistryObject<EntityType<Swet>> bucketEntity, boolean isSkyroot) {
+        super(name, module, new Item.Properties().stacksTo(1));
         this.bucketEntity = bucketEntity;
         if (isSkyroot)
             ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM_SKYROOT.add(new Pair<>(bucketEntity, this));
         else ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM.add(new Pair<>(bucketEntity, this));
+
+        this.setCreativeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey());
     }
 
     @Nonnull
@@ -66,6 +70,7 @@ public class AQSwetInABucketItem extends Item {
         Direction facing = context.getClickedFace();
         Level worldIn = context.getLevel();
         Player playerIn = context.getPlayer();
+        if(playerIn == null) return InteractionResult.FAIL;
         InteractionHand hand = context.getHand();
 
         double x = pos.getX() + 0.5 + facing.getStepX();

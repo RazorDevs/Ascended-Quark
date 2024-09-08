@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "ascended_quark:polished_icestone"
   },
-  "result": "ascended_quark:icestone_brick_stairs",
+  "result": "ascended_quark:icestone_bricks_stairs",
   "conditions": [
     {
       "type": "ascended_quark:flag",

@@ -1,5 +1,6 @@
 package org.razordevs.ascended_quark.module;
 
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherItems;
 import com.mojang.datafixers.util.Pair;
@@ -10,17 +11,18 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.registries.RegistryObject;
-import org.razordevs.ascended_quark.items.AQItems;
 import org.razordevs.ascended_quark.items.AQSlimeInABucketItem;
 import org.razordevs.ascended_quark.items.AQSwetInABucketItem;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
 import org.violetmoon.zeta.config.Config;
 import org.violetmoon.zeta.event.bus.LoadEvent;
 import org.violetmoon.zeta.event.bus.PlayEvent;
+import org.violetmoon.zeta.event.load.ZRegister;
 import org.violetmoon.zeta.event.play.entity.player.ZPlayerInteract;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
@@ -39,6 +41,16 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
     public boolean swet_bucket_enabled = true;
     public static List<Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem>> SLIME_WITH_BUCKET_ITEM = new ArrayList<>();
     public static List<Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem>> SLIME_WITH_BUCKET_ITEM_SKYROOT = new ArrayList<>();
+    Item slime;
+
+    @LoadEvent
+    public void register(ZRegister register) {
+        new AQSwetInABucketItem("blue_swet_in_a_bucket", this, AetherEntityTypes.BLUE_SWET, false);
+        new AQSwetInABucketItem("blue_swet_in_a_skyroot_bucket", this, AetherEntityTypes.BLUE_SWET, true);
+        new AQSwetInABucketItem("golden_swet_in_a_bucket", this, AetherEntityTypes.GOLDEN_SWET, false);
+        new AQSwetInABucketItem("golden_swet_in_a_skyroot_bucket", this, AetherEntityTypes.GOLDEN_SWET, true);
+        slime = new AQSlimeInABucketItem("slime_in_a_skyroot_bucket", this);
+    }
 
     @PlayEvent
     public void entityInteract(ZPlayerInteract.EntityInteract event) {
@@ -60,7 +72,7 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
 
                     if (!event.getLevel().isClientSide) {
 
-                        ItemStack outStack = new ItemStack(AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get());
+                        ItemStack outStack = new ItemStack(slime);
 
                         CompoundTag cmp = event.getTarget().serializeNBT();
                         ItemNBTHelper.setCompound(outStack, AQSlimeInABucketItem.TAG_ENTITY_DATA, cmp);
@@ -162,7 +174,7 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
                     }
                 }
 
-                ItemProperties.register(AQItems.SLIME_IN_A_SKYROOT_BUCKET_ITEM.get(), new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, "excited", false) ? 1.0F : 0.0F);
+                ItemProperties.register(slime, new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, "excited", false) ? 1.0F : 0.0F);
             });
         }
     }

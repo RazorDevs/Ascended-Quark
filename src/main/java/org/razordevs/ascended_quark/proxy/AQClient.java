@@ -1,7 +1,6 @@
 package org.razordevs.ascended_quark.proxy;
 
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.violetmoon.quark.base.Quark;
 import org.violetmoon.zeta.client.ClientTicker;
 import org.violetmoon.zeta.client.ZetaClient;
 import org.violetmoon.zetaimplforge.client.ForgeZetaClient;

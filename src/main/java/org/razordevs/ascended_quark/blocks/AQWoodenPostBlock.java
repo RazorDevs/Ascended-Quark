@@ -6,10 +6,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ChainBlock;
-import net.minecraft.world.level.block.LanternBlock;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -19,10 +16,17 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.violetmoon.quark.base.util.BlockPropertyUtil;
+import org.violetmoon.zeta.block.ZetaBlock;
+import org.violetmoon.zeta.module.ZetaModule;
+import org.violetmoon.zeta.registry.RenderLayerRegistry;
 
 import javax.annotation.Nonnull;
 
-public class AQWoodenPostBlock extends Block implements SimpleWaterloggedBlock {
+/**
+ * [Code Copy] {@link org.violetmoon.quark.content.building.block.WoodPostBlock}
+ */
+public class AQWoodenPostBlock extends ZetaBlock implements SimpleWaterloggedBlock {
 
     private static final VoxelShape SHAPE_X = Block.box(0F, 6F, 6F, 16F, 10F, 10F);
     private static final VoxelShape SHAPE_Y = Block.box(6F, 0F, 6F, 10F, 16F, 10F);
@@ -40,8 +44,8 @@ public class AQWoodenPostBlock extends Block implements SimpleWaterloggedBlock {
             BooleanProperty.create("chain_east")
     };
 
-    public AQWoodenPostBlock(Properties properties) {
-        super(properties);
+    public AQWoodenPostBlock(String name, ZetaModule module) {
+        super(name, module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_FENCE));
 
         BlockState state = stateDefinition.any().setValue(WATERLOGGED, false).setValue(AXIS, Direction.Axis.Y);
 
@@ -49,8 +53,12 @@ public class AQWoodenPostBlock extends Block implements SimpleWaterloggedBlock {
             state = state.setValue(prop, false);
         registerDefaultState(state);
 
+        if (module != null) {
+            module.zeta.renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT);
+        }
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public VoxelShape getShape(BlockState state, @Nonnull BlockGetter worldIn, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
@@ -66,6 +74,7 @@ public class AQWoodenPostBlock extends Block implements SimpleWaterloggedBlock {
         return !state.getValue(WATERLOGGED);
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public FluidState getFluidState(BlockState state) {
@@ -77,6 +86,7 @@ public class AQWoodenPostBlock extends Block implements SimpleWaterloggedBlock {
         return getState(context.getLevel(), context.getClickedPos(), context.getClickedFace().getAxis());
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public BlockState updateShape(BlockState state, @Nonnull Direction facing, @Nonnull BlockState facingState, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull BlockPos facingPos) {
@@ -87,6 +97,7 @@ public class AQWoodenPostBlock extends Block implements SimpleWaterloggedBlock {
         return super.updateShape(state, facing, facingState, level, pos, facingPos);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void neighborChanged(@Nonnull BlockState state, @Nonnull Level worldIn, @Nonnull BlockPos pos, @Nonnull Block blockIn, @Nonnull BlockPos fromPos, boolean isMoving) {
         super.neighborChanged(state, worldIn, pos, blockIn, fromPos, isMoving);

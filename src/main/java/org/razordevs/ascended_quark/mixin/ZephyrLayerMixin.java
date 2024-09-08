@@ -14,25 +14,27 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(value = ZephyrTransparencyLayer.class)
 public class ZephyrLayerMixin extends RenderLayer<Zephyr, EntityModel<Zephyr>> {
-    private static final ResourceLocation ZEPHYR_TRANSPARENCY_TEXTURE = new ResourceLocation("aether", "textures/entity/mobs/zephyr/zephyr_layer.png");
-    private final ZephyrModel transparency;
+
+    @Unique
+    private final ZephyrModel ascended_quark$transparency;
 
     public ZephyrLayerMixin(RenderLayerParent<Zephyr, EntityModel<Zephyr>> entityRenderer, ZephyrModel transparencyModel) {
         super(entityRenderer);
-        this.transparency = transparencyModel;
+        this.ascended_quark$transparency = transparencyModel;
     }
 
 
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Zephyr zephyr, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (this.getParentModel() instanceof ZephyrModel && !zephyr.isInvisible()) {
-            this.getParentModel().copyPropertiesTo(this.transparency);
-            this.transparency.prepareMobModel(zephyr, limbSwing, limbSwingAmount, partialTicks);
-            this.transparency.setupAnim(zephyr, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+            this.getParentModel().copyPropertiesTo(this.ascended_quark$transparency);
+            this.ascended_quark$transparency.prepareMobModel(zephyr, limbSwing, limbSwingAmount, partialTicks);
+            this.ascended_quark$transparency.setupAnim(zephyr, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
             VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(AetherVariantAnimalTexturesModule.Client.getZephyrLayerTexture(zephyr)));
-            this.transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(zephyr, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+            this.ascended_quark$transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(zephyr, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
         }
 
     }

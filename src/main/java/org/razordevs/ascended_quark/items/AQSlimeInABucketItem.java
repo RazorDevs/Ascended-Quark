@@ -1,6 +1,6 @@
 package org.razordevs.ascended_quark.items;
 
-import com.aetherteam.aether.item.AetherItems;
+import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -25,16 +25,20 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.phys.Vec3;
+import org.violetmoon.zeta.item.ZetaItem;
+import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.ItemNBTHelper;
 
 import javax.annotation.Nonnull;
 
-public class AQSlimeInABucketItem extends Item {
+public class AQSlimeInABucketItem extends ZetaItem {
 
     public static final String TAG_ENTITY_DATA = "slime_nbt";
     public static final String TAG_EXCITED = "excited";
-    public AQSlimeInABucketItem() {
-        super(new Item.Properties().stacksTo(1).craftRemainder(AetherItems.SKYROOT_BUCKET.get()));
+    public AQSlimeInABucketItem(String name, ZetaModule module) {
+        super(name, module, new Item.Properties().stacksTo(1));
+        if(module.enabled)
+            this.setCreativeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey());
     }
 
     @Override
@@ -76,6 +80,7 @@ public class AQSlimeInABucketItem extends Item {
         Direction facing = context.getClickedFace();
         Level worldIn = context.getLevel();
         Player playerIn = context.getPlayer();
+        if(playerIn == null) return InteractionResult.FAIL;
         InteractionHand hand = context.getHand();
 
         double x = pos.getX() + 0.5 + facing.getStepX();

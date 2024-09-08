@@ -29,15 +29,22 @@ ordering="NONE"
 side="BOTH"
 
 [[dependencies.ascended_quark]]
+modId="terrablender"
+mandatory=false
+versionRange="[0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.ascended_quark]]
 modId="quark"
 mandatory=true
 versionRange="[0,)"
-ordering="AFTER"
+ordering="BEFORE"
 side="BOTH"
 
 [[dependencies.ascended_quark]]
 modId="aether"
 mandatory=true
 versionRange="[1.4.0,)"
-ordering="AFTER"
+ordering="NONE"
 side="BOTH"

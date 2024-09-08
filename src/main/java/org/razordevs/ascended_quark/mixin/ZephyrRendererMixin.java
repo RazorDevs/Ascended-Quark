@@ -13,19 +13,24 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(value = ZephyrRenderer.class, remap = true)
+@Mixin(ZephyrRenderer.class)
 public class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, EntityModel<Zephyr>, ZephyrModel, ClassicZephyrModel> {
+    @Unique
     private static final ResourceLocation ZEPHYR_TEXTURE = new ResourceLocation("aether", "textures/entity/mobs/zephyr/zephyr.png");
+    @Unique
     private static final ResourceLocation ZEPHYR_CLASSIC_TEXTURE = new ResourceLocation("aether", "textures/entity/mobs/zephyr/zephyr_classic.png");
-    private final ZephyrModel defaultModel;
-    private final ClassicZephyrModel oldModel;
+    @Unique
+    private final ZephyrModel ascended_quark$defaultModel;
+    @Unique
+    private final ClassicZephyrModel ascended_quark$oldModel;
 
     public ZephyrRendererMixin(EntityRendererProvider.Context context, ZephyrModel defaultModel, float shadowRadius) {
         super(context, defaultModel, shadowRadius);
         this.addLayer(new ZephyrTransparencyLayer(this, new ZephyrModel(context.getModelSet().bakeLayer(AetherModelLayers.ZEPHYR_TRANSPARENCY))));
-        this.defaultModel = new ZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR));
-        this.oldModel = new ClassicZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR_CLASSIC));
+        this.ascended_quark$defaultModel = new ZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR));
+        this.ascended_quark$oldModel = new ClassicZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR_CLASSIC));
     }
 
     @Override
@@ -34,11 +39,11 @@ public class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, EntityModel<
     }
 
     public ZephyrModel getDefaultModel() {
-        return this.defaultModel;
+        return this.ascended_quark$defaultModel;
     }
 
     public ClassicZephyrModel getOldModel() {
-        return this.oldModel;
+        return this.ascended_quark$oldModel;
     }
 
     public ResourceLocation getDefaultTexture() {

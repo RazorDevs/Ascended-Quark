@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "ascended_quark:quicksoil_bricks"
   },
-  "result": "ascended_quark:quicksoil_brick_stairs",
+  "result": "ascended_quark:quicksoil_bricks_stairs",
   "conditions": [
     {
       "type": "ascended_quark:flag",

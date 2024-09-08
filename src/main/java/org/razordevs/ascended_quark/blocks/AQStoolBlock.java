@@ -30,12 +30,14 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.razordevs.ascended_quark.entity.AQEntityTypes;
-import org.razordevs.ascended_quark.entity.Stool;
+import org.razordevs.ascended_quark.entity.AQStool;
+import org.razordevs.ascended_quark.module.SkyrootStoolModule;
+import org.violetmoon.zeta.block.ZetaBlock;
+import org.violetmoon.zeta.module.ZetaModule;
 
 import javax.annotation.Nonnull;
 
-public class AQStoolBlock extends Block implements SimpleWaterloggedBlock {
+public class AQStoolBlock extends ZetaBlock implements SimpleWaterloggedBlock {
         private static final VoxelShape SHAPE_TOP = Block.box(0F, 1F, 0F, 16F, 9F, 16F);
         private static final VoxelShape SHAPE_LEG = Block.box(0F, 0F, 0F, 4F, 1F, 4F);
 
@@ -56,8 +58,8 @@ public class AQStoolBlock extends Block implements SimpleWaterloggedBlock {
         public static final BooleanProperty BIG = BooleanProperty.create("big");
         public static final BooleanProperty SAT_IN = BooleanProperty.create("sat_in");
 
-        public AQStoolBlock() {
-            super(
+        public AQStoolBlock(String name, ZetaModule module) {
+            super(name, module,
                     BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)
                             .sound(SoundType.WOOD)
                             .strength(0.2F)
@@ -86,7 +88,7 @@ public class AQStoolBlock extends Block implements SimpleWaterloggedBlock {
                 return super.use(state, worldIn, pos, player, handIn, hit);
 
             if(!worldIn.isClientSide) {
-                Stool entity = new Stool(AQEntityTypes.STOOL.get(), worldIn);
+                AQStool entity = new AQStool(SkyrootStoolModule.stoolEntity, worldIn);
                 entity.setPos(pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5);
 
                 worldIn.addFreshEntity(entity);
@@ -168,7 +170,7 @@ public class AQStoolBlock extends Block implements SimpleWaterloggedBlock {
             return defaultBlockState()
                     .setValue(WATERLOGGED, world.getFluidState(pos).getType() == Fluids.WATER)
                     .setValue(BIG, world.getBlockState(pos.above()).getShape(world, pos.above()).min(Direction.Axis.Y) == 0)
-                    .setValue(SAT_IN, world.getEntitiesOfClass(Stool.class, new AABB(pos, pos.above()).inflate(0.4), e -> e.blockPosition().equals(pos)).size() > 0);
+                    .setValue(SAT_IN, world.getEntitiesOfClass(AQStool.class, new AABB(pos, pos.above()).inflate(0.4), e -> e.blockPosition().equals(pos)).size() > 0);
         }
 
         @Override

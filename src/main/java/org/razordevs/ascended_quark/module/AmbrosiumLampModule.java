@@ -1,11 +1,20 @@
 package org.razordevs.ascended_quark.module;
 
-import org.violetmoon.zeta.config.Config;
+import com.aetherteam.aether.item.AetherCreativeTabs;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
+import org.razordevs.ascended_quark.blocks.AmbrosiumLampBlock;
+import org.violetmoon.zeta.event.bus.LoadEvent;
+import org.violetmoon.zeta.event.load.ZRegister;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 
 @ZetaLoadModule(category = "aether")
 public class AmbrosiumLampModule extends ZetaModule {
-    @Config(flag = "ambrosium_lamp")
-    public static boolean enableAmbrosiumLamp = true;
+
+    @LoadEvent
+    public void register(ZRegister register) {
+        new AmbrosiumLampBlock("ambrosium_lamp", this, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F).requiresCorrectToolForDrops().lightLevel((blockState) -> AmbrosiumLampBlock.getScaledChargeLevel(blockState, 16))).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+    }
 }

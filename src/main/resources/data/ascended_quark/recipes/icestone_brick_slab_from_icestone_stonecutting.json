@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "aether:icestone"
   },
-  "result": "ascended_quark:icestone_brick_slab",
+  "result": "ascended_quark:icestone_bricks_slab",
   "conditions": [
     {
       "type": "ascended_quark:flag",

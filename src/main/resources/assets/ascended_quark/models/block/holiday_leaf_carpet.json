@@ -1,5 +1,6 @@
 {
   "parent": "quark:block/leaf_carpet",
+  "render_type": "minecraft:cutout",
   "textures": {
     "all": "aether:block/natural/holiday_leaves"
   }

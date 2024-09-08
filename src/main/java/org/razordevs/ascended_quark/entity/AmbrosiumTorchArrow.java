@@ -18,8 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import org.razordevs.ascended_quark.items.AQItems;
-import org.razordevs.ascended_quark.particle.AQParticles;
+import org.razordevs.ascended_quark.module.AmbrosiumTorchArrowModule;
 import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.tools.module.TorchArrowModule;
 
@@ -30,11 +29,11 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
     }
 
     public AmbrosiumTorchArrow(Level level, double x, double y, double z) {
-        super(AQEntityTypes.AMBROSIUM_TORCH_ARROW.get(), x, y, z, level);
+        super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, x, y, z, level);
     }
 
     public AmbrosiumTorchArrow(Level level, LivingEntity shooter) {
-        super(AQEntityTypes.AMBROSIUM_TORCH_ARROW.get(), shooter, level);
+        super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, shooter, level);
     }
 
     @Override
@@ -56,7 +55,7 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
                 double mx = (Math.random() - 0.5) * rs - motion.x * ms;
                 double my = (Math.random() - 0.5) * rs - motion.y * ms;
                 double mz = (Math.random() - 0.5) * rs - motion.z * ms;
-                level().addParticle(AQParticles.AMBROSIUM_SHARD_PARTICLE.get(), px, py, pz, mx, my, mz);
+                level().addParticle(AmbrosiumTorchArrowModule.ambrosiumShardParticle, px, py, pz, mx, my, mz);
             }
         }
     }
@@ -70,8 +69,7 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
             BlockState state = this.level().getBlockState(finalPos);
             if ((state.isAir() || state.canBeReplaced()) && direction != Direction.DOWN) {
                 Entity var7 = this.getOwner();
-                if (var7 instanceof Player) {
-                    Player p = (Player)var7;
+                if (var7 instanceof Player p) {
                     if (!Quark.FLAN_INTEGRATION.canPlace(p, finalPos)) {
                         return;
                     }
@@ -107,6 +105,6 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
 
     @Override
     protected ItemStack getPickupItem() {
-            return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AQItems.AMBROSIUM_TORCH_ARROW.get());
+            return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
         }
 }

@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "ascended_quark:aether_dirt_bricks"
   },
-  "result": "ascended_quark:aether_dirt_brick_slab",
+  "result": "ascended_quark:aether_dirt_bricks_slab",
   "conditions": [
     {
       "type": "ascended_quark:flag",

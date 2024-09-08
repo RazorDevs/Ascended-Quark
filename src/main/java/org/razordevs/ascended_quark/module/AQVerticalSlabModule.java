@@ -15,7 +15,7 @@ import org.violetmoon.zeta.event.load.ZRegister;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 
-@ZetaLoadModule(category = "aether")
+@ZetaLoadModule(category = "aether", name = "Ascended Quark Vertical Slabs")
 public class AQVerticalSlabModule extends ZetaModule {
 
 

@@ -5,8 +5,7 @@
   "package": "org.razordevs.ascended_quark.mixin",
   "refmap": "ascended_quark.refmap.json",
   "mixins": [
-    "VariantRegistryAccessor",
-    "ZetaModuleAccessor"
+    "VariantRegistryAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

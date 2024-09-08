@@ -1,15 +1,19 @@
 package org.razordevs.ascended_quark.module.compat.deep_aether;
 
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.fml.ModList;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.mixin.ZetaModuleAccessor;
 import org.violetmoon.zeta.Zeta;
+import org.violetmoon.zeta.block.ZetaPillarBlock;
+import org.violetmoon.zeta.event.bus.LoadEvent;
+import org.violetmoon.zeta.event.load.ZRegister;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 
 //TODO : IMPLEMENT DEEP AETHER COMBAT
-@ZetaLoadModule(category = "aether", antiOverlap = {"everycomp", "aether"})
-public class DAWoodModule extends ZetaModule implements ZetaModuleAccessor {
+@ZetaLoadModule(category = "deep_aether", antiOverlap = {"everycomp"})
+public class WoodModule extends ZetaModule {
 /*
     public static final RegistryObject<Block> HOLLOW_ROSEROOT_LOG = registerBlock("hollow_roseroot_log", () -> new AQHollowLogBlock(BlockBehaviour.Properties.copy(AetherBlocks.SKYROOT_LOG.get())));
     public static final RegistryObject<Block> ROSEROOT_LADDER = registerBlock("roseroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER)));
@@ -24,11 +28,9 @@ public class DAWoodModule extends ZetaModule implements ZetaModuleAccessor {
     public static final RegistryObject<Block> ROSEROOT_LEAF_CARPET = registerBlock("roseroot_leaf_carpet", () -> new AQLeafCarpetBlock(AetherBlocks.SKYROOT_LEAVES.get()));
 */
 
-    @Override
-    public void callSetEnabled(Zeta z, boolean willEnable) {
-        if(ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) {
-            super.setEnabled(z, willEnable);
-        }
-        else super.setEnabled(z, false);
+
+    @LoadEvent
+    public void register(ZRegister register) {
+
     }
 }

@@ -28,7 +28,7 @@ import java.util.function.ToIntFunction;
 public class RegistryUtil {
     protected static HashMap<ResourceKey<CreativeModeTab>, HashMap<ItemLike, Supplier<? extends ItemLike>>> TABS = new HashMap<>();
 
-    public static void registerWoodsetExtension(String type, ZetaModule module, RegistryObject<SlabBlock> slab, RegistryObject<Block> planks, RegistryObject<FenceBlock> fence, RegistryObject<RotatedPillarBlock> log, RegistryObject<Block> leaves) {
+    public static void registerWoodsetExtension(String type, ZetaModule module, RegistryObject<? extends Block> slab, RegistryObject<? extends Block> planks, RegistryObject<? extends Block> fence, RegistryObject<? extends Block> log, RegistryObject<? extends Block> leaves) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaBlock("vertical_" + type + "_planks", module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS)), planks);
         SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);
 
@@ -62,7 +62,7 @@ public class RegistryUtil {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock(name, module, leaves), fence);
     }
 
-    public static void createLeafCarpet(String name, ZetaModule module, RegistryObject<Block> leaves) {
+    public static void createLeafCarpet(String name, ZetaModule module, RegistryObject<? extends Block> leaves) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new AQLeafCarpetBlock(name, module), leaves);
     }
 

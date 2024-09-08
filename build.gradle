@@ -68,8 +68,6 @@ repositories {
     maven { url = "https://www.cursemaven.com" }
     maven { url = "https://maven.blamejared.com/" }
     maven { url = "https://modmaven.dev" }
-    maven { url "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"}
-    maven { url = 'https://maven.minecraftforge.net/' }
 
     maven githubPackage.invoke("The-Aether-Team/Nitrogen")
     maven githubPackage.invoke("The-Aether-Team/Cumulus")

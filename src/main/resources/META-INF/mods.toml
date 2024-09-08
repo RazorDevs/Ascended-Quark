@@ -18,33 +18,47 @@ credits="A special thanks goes to the creators behind Quark and the Aether mods!
 modId="forge"
 mandatory=true
 versionRange="[47.1.0,)"
-ordering="NONE"
+ordering="AFTER"
 side="BOTH"
 
 [[dependencies.ascended_quark]]
 modId="minecraft"
 mandatory=true
 versionRange="[1.20.1]"
-ordering="NONE"
+ordering="AFTER"
 side="BOTH"
 
 [[dependencies.ascended_quark]]
 modId="terrablender"
 mandatory=false
 versionRange="[0,)"
-ordering="NONE"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.ascended_quark]]
+modId="aeroblender"
+mandatory=false
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.ascended_quark]]
+modId="deep_aether"
+mandatory=false
+versionRange="[0,)"
+ordering="AFTER"
 side="BOTH"
 
 [[dependencies.ascended_quark]]
 modId="quark"
 mandatory=true
 versionRange="[0,)"
-ordering="BEFORE"
+ordering="AFTER"
 side="BOTH"
 
 [[dependencies.ascended_quark]]
 modId="aether"
 mandatory=true
 versionRange="[1.4.0,)"
-ordering="NONE"
+ordering="AFTER"
 side="BOTH"

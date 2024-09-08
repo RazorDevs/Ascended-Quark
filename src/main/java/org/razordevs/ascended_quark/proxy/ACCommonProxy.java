@@ -17,8 +17,8 @@ public class ACCommonProxy {
         // MODULES
         AscendedQuark.ZETA.loadModules(
                 List.of(
-                        new ZetaCategory("aether", Blocks.GLOWSTONE.asItem(), AscendedQuark.MODID),
-                        new ZetaCategory("deep_aether", DABlocks.ROSEROOT_LOG.get().asItem(), AscendedQuark.MODID)
+                        new ZetaCategory("aether", Blocks.GLOWSTONE.asItem(), AscendedQuark.MODID)
+                        //new ZetaCategory("deep_aether", Blocks.REDSTONE_BLOCK.asItem(), AscendedQuark.MODID)
                 ),
                 new ModFileScanDataModuleFinder(AscendedQuark.MODID), //forge only
                 AQGeneralConfig.INSTANCE

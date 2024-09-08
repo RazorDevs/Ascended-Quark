@@ -12,11 +12,7 @@ import org.violetmoon.quark.base.handler.WoodSetHandler;
 
 public class ACClientProxy extends ACCommonProxy {
     public void start() {
-        AscendedQuark.ZETA.loadBus
-                .subscribe(AQClientUtil.class);
-
         AscendedQuark.ZETA.playBus
-                .subscribe(ClientUtil.class)
                 .subscribe(AQButtonHandler.class)
                 .subscribe(AQClientUtil.class);
 

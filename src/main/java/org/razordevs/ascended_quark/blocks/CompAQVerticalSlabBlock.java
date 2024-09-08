@@ -23,7 +23,6 @@ public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaB
         AscendedQuark.ZETA.registry.registerBlock(this, registryName, true);
         this.module = module;
 
-        this.setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
         if (module.category.isAddon()) {
             module.zeta.requiredModTooltipHandler.map(this, module.category.requiredMod);
         }

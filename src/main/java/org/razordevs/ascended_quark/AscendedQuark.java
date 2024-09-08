@@ -18,7 +18,7 @@ import org.violetmoon.zetaimplforge.ForgeZeta;
 @Mod(AscendedQuark.MODID)
 public class AscendedQuark {
 
-    //TODO: Handle better Documentation
+    //TODO: ADD BLOCK REMAPS BEFORE RELEASE
 
     public static final String MODID = "ascended_quark";
     public static final String DEEP_AETHER = "deep_aether";

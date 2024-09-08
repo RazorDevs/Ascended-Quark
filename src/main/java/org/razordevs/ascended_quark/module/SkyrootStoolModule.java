@@ -1,11 +1,13 @@
 package org.razordevs.ascended_quark.module;
 
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.RegistryUtil;
 import org.razordevs.ascended_quark.blocks.AQStoolBlock;
 import org.razordevs.ascended_quark.entity.AQStool;
 import org.razordevs.ascended_quark.entity.render.StoolEntityRender;
@@ -23,7 +25,7 @@ public class SkyrootStoolModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        new AQStoolBlock("skyroot_stool", this).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQStoolBlock("skyroot_stool", this), AetherBlocks.SKYROOT_PLANKS);
 
         stoolEntity = EntityType.Builder.of(AQStool::new, MobCategory.MISC)
                 .sized(0.375F, 0.5F)

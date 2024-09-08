@@ -1,6 +1,7 @@
 package org.razordevs.ascended_quark.items;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.phys.Vec3;
+import org.razordevs.ascended_quark.RegistryUtil;
 import org.violetmoon.zeta.item.ZetaItem;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.ItemNBTHelper;
@@ -37,8 +39,8 @@ public class AQSlimeInABucketItem extends ZetaItem {
     public static final String TAG_EXCITED = "excited";
     public AQSlimeInABucketItem(String name, ZetaModule module) {
         super(name, module, new Item.Properties().stacksTo(1));
-        if(module.enabled)
-            this.setCreativeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey());
+
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET);
     }
 
     @Override

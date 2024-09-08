@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.fml.ModList;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.violetmoon.zeta.Zeta;
+import org.violetmoon.zeta.block.ZetaBlock;
 import org.violetmoon.zeta.block.ZetaPillarBlock;
 import org.violetmoon.zeta.event.bus.LoadEvent;
 import org.violetmoon.zeta.event.load.ZRegister;

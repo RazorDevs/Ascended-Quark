@@ -1,6 +1,8 @@
 package org.razordevs.ascended_quark.module;
 
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.Position;
@@ -20,6 +22,7 @@ import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.RegistryUtil;
 import org.razordevs.ascended_quark.entity.AmbrosiumTorchArrow;
 import org.razordevs.ascended_quark.entity.render.AmbrosiumTorchArrowRenderer;
 import org.razordevs.ascended_quark.particle.AmbrosiumShardParticle;
@@ -43,7 +46,8 @@ public class AmbrosiumTorchArrowModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        ambrosium_torch_arrow = new ZetaArrowItem.Impl("ambrosium_torch_arrow", this, (level, stack, living) -> new AmbrosiumTorchArrow(level, living)).setCreativeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey());
+        ambrosium_torch_arrow = new ZetaArrowItem.Impl("ambrosium_torch_arrow", this, (level, stack, living) -> new AmbrosiumTorchArrow(level, living));
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), ambrosium_torch_arrow, AetherItems.ENCHANTED_DART);
 
         ambrosiumTorchArrowType = EntityType.Builder.<AmbrosiumTorchArrow>of(AmbrosiumTorchArrow::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("ambrosium_torch_arrow");
         register.getRegistry().register(ambrosiumTorchArrowType, "ambrosium_torch_arrow", Registries.ENTITY_TYPE);

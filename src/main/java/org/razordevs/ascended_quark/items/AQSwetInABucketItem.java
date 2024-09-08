@@ -3,6 +3,8 @@ package org.razordevs.ascended_quark.items;
 import com.aetherteam.aether.data.resources.registries.AetherDimensions;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import com.aetherteam.aether.item.AetherItems;
+import com.aetherteam.aether.item.EquipmentUtil;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,6 +26,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.registries.RegistryObject;
+import org.razordevs.ascended_quark.RegistryUtil;
 import org.razordevs.ascended_quark.module.ExtraSlimeAndSwetInABucketModule;
 import org.violetmoon.zeta.item.ZetaItem;
 import org.violetmoon.zeta.module.ZetaModule;
@@ -44,7 +47,7 @@ public class AQSwetInABucketItem extends ZetaItem {
             ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM_SKYROOT.add(new Pair<>(bucketEntity, this));
         else ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM.add(new Pair<>(bucketEntity, this));
 
-        this.setCreativeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey());
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET);
     }
 
     @Nonnull

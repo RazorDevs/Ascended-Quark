@@ -1,5 +1,6 @@
 package org.razordevs.ascended_quark.module;
 
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.google.common.collect.Lists;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -8,6 +9,7 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import org.razordevs.ascended_quark.RegistryUtil;
 import org.violetmoon.quark.content.building.module.CompressedBlocksModule;
 import org.violetmoon.zeta.block.ZetaFlammableBlock;
 import org.violetmoon.zeta.block.ZetaFlammablePillarBlock;
@@ -42,13 +44,15 @@ public class CompressedBlockModule extends ZetaModule {
 
     private void crate(String name, MapColor color, boolean compost) {
         Block block = (new ZetaFlammableBlock(name + "_crate", this, 150, BlockBehaviour.Properties.of().mapColor(color).ignitedByLava().strength(1.5F).sound(SoundType.WOOD))).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block, AetherBlocks.SKYROOT_PLANKS);
         if (compost) {
             this.compostable.add(block);
         }
     }
 
     private void pillar(String name, MapColor color, boolean compost, BooleanSupplier cond, int flammability) {
-        Block block = (new ZetaFlammablePillarBlock(name + "_block", this, flammability, BlockBehaviour.Properties.of().mapColor(color).ignitedByLava().strength(0.5F).sound(SoundType.WOOD))).setCondition(cond).setCreativeTab(CreativeModeTabs.BUILDING_BLOCKS);
+        Block block = (new ZetaFlammablePillarBlock(name + "_block", this, flammability, BlockBehaviour.Properties.of().mapColor(color).ignitedByLava().strength(0.5F).sound(SoundType.WOOD))).setCondition(cond);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block, AetherBlocks.SKYROOT_PLANKS);
         if (compost) {
             this.compostable.add(block);
         }

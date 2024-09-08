@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.RegistryUtil;
+import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.blocks.AQTrappedVariantChestBlock;
 import org.razordevs.ascended_quark.blocks.AQVariantChestBlock;
 import org.razordevs.ascended_quark.entity.block.AQVariantChestBlockEntity;
@@ -25,7 +25,6 @@ import org.razordevs.ascended_quark.entity.block.AQVariantTrappedChestBlockEntit
 import org.razordevs.ascended_quark.entity.render.AQVariantChestRenderer;
 import org.razordevs.ascended_quark.proxy.AQClient;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
-import org.violetmoon.quark.content.building.client.render.be.VariantChestRenderer;
 import org.violetmoon.quark.mixin.mixins.accessor.AccessorAbstractChestedHorse;
 import org.violetmoon.zeta.client.SimpleWithoutLevelRenderer;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
@@ -37,7 +36,6 @@ import org.violetmoon.zeta.event.play.entity.living.ZLivingDeath;
 import org.violetmoon.zeta.event.play.entity.player.ZPlayerInteract;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
-import org.violetmoon.zeta.util.BooleanSuppliers;
 
 import java.util.*;
 import java.util.function.BooleanSupplier;

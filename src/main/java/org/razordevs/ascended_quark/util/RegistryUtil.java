@@ -1,6 +1,7 @@
-package org.razordevs.ascended_quark;
+package org.razordevs.ascended_quark.util;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import net.minecraft.client.gui.components.tabs.Tab;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -15,30 +16,30 @@ import org.razordevs.ascended_quark.blocks.*;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.VariantLadderBlock;
-import org.violetmoon.quark.content.building.module.VariantChestsModule;
 import org.violetmoon.zeta.block.ZetaBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.BooleanSuppliers;
 import org.violetmoon.zeta.util.handler.ToolInteractionHandler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class RegistryUtil {
-    protected static HashMap<ResourceKey<CreativeModeTab>, HashMap<ItemLike, Supplier<? extends ItemLike>>> TABS = new HashMap<>();
+    public static ArrayList<TabModel> TABS = new ArrayList<>();
 
     public static void registerWoodsetExtension(String type, ZetaModule module, RegistryObject<? extends Block> slab, RegistryObject<? extends Block> planks, RegistryObject<? extends Block> fence, RegistryObject<? extends Block> log, RegistryObject<? extends Block> leaves) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaBlock("vertical_" + type + "_planks", module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS)), planks);
         SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);
 
-        createHedge(type+"_hedge", module, leaves, fence);
+        createHedge(type + "_hedge", module, leaves, fence);
 
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_"+type+"_log", module), log);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), log);
         new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
         Block post = new AQWoodenPostBlock(type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, log);
-        Block stripped = new AQWoodenPostBlock("stripped_"+type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), stripped, log);
         ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);
 
@@ -48,12 +49,17 @@ public class RegistryUtil {
     }
 
     public static void addCreativeModeTab(ResourceKey<CreativeModeTab> tab, ItemLike item, RegistryObject<? extends ItemLike> parent) {
-        if (TABS.containsKey(tab)) {
-            TABS.get(tab).put(item, parent);
-        } else {
+        boolean flag = false;
+        for(TabModel tm : TABS){
+            if(tm.getTab().equals(tab)){
+                tm.add(item, parent);
+                flag = true;
+            }
+        }
+        if(!flag){
             HashMap<ItemLike, Supplier<? extends ItemLike>> map = new HashMap<>();
             map.put(item, parent);
-            TABS.put(tab, map);
+            TABS.add(new TabModel(tab, map));
         }
     }
 

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":  { "model": "ascended_quark:block/deep_aether/hollow_roseroot_log" },
+    "axis=z":   { "model": "ascended_quark:block/deep_aether/hollow_roseroot_log_horizontal", "x": 90 },
+    "axis=x":   { "model": "ascended_quark:block/deep_aether/hollow_roseroot_log_horizontal", "x": 90, "y": 90 }
+  }
+}

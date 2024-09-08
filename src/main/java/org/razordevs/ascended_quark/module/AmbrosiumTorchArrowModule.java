@@ -1,6 +1,5 @@
 package org.razordevs.ascended_quark.module;
 
-import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.client.Minecraft;
@@ -22,7 +21,7 @@ import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.RegistryUtil;
+import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.entity.AmbrosiumTorchArrow;
 import org.razordevs.ascended_quark.entity.render.AmbrosiumTorchArrowRenderer;
 import org.razordevs.ascended_quark.particle.AmbrosiumShardParticle;

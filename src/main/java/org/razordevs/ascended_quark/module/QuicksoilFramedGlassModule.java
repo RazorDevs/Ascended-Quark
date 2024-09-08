@@ -5,7 +5,7 @@ import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import org.razordevs.ascended_quark.RegistryUtil;
+import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.blocks.AQGlassBlock;
 import org.razordevs.ascended_quark.blocks.AQGlassPaneBlock;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;

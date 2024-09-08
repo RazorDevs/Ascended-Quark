@@ -2,8 +2,6 @@ package org.razordevs.ascended_quark;
 
 //TODO: IMPLEMENT BETTER TABS HANDLING
 
-
-import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -14,6 +12,8 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.razordevs.ascended_quark.util.RegistryUtil;
+import org.razordevs.ascended_quark.util.TabModel;
 
 import java.util.HashMap;
 import java.util.function.Supplier;
@@ -24,11 +24,13 @@ public class AQTabs {
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();
 
-        if(RegistryUtil.TABS.containsKey(tab)) {
-            HashMap<ItemLike, Supplier<? extends ItemLike>> map = RegistryUtil.TABS.get(tab);
+        for(TabModel tm : RegistryUtil.TABS) {
+            if (tm.getTab().equals(tab)){
+                HashMap<ItemLike, Supplier<? extends ItemLike>> map = tm.getItemMap();
 
-            for(ItemLike item : map.keySet()) {
-                addToTab(map.get(item).get().asItem(), item.asItem(), event);
+                for (ItemLike item : map.keySet()) {
+                    addToTab(map.get(item).get().asItem(), item.asItem(), event);
+                }
             }
         }
     }

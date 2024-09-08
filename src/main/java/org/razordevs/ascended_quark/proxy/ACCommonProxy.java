@@ -15,8 +15,6 @@ import java.util.function.Supplier;
 
 public class ACCommonProxy {
 
-    //TODO: Deep Aether Compat
-
     public void start() {
         // MODULES
         AscendedQuark.ZETA.loadModules(

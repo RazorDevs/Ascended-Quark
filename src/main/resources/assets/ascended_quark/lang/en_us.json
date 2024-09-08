@@ -1,5 +1,6 @@
 {
-  "ascended_quark.category.aether": "Aether",
+  "ascended_quark.category.aether": "The Aether",
+  "ascended_quark.category.deep_aether": "Deep Aether",
   "ascended_quark.category.general": "General Settings",
   "ascended_quark.gui.config.social.discord": "RazorDevs Discord",
   "block.ascended_quark.aerogel_vertical_slab": "Aerogel Vertical Slab",
@@ -121,6 +122,5 @@
   "lore.item.ascended_quark.blue_swet_in_a_skyroot_bucket": "Seems like you caught a Blue Swet! Not that useful, but it's an easy way to transport them. They might get excited too!",
   "lore.item.ascended_quark.golden_swet_in_a_bucket": "Seems like you caught a Golden Swet! Not that useful, but it's an easy way to transport them. They might get excited too!",
   "lore.item.ascended_quark.golden_swet_in_a_skyroot_bucket": "Seems like you caught a Golden Swet! Not that useful, but it's an easy way to transport them. They might get excited too!",
-  "lore.item.ascended_quark.quicksoil_glass_shard": "Apparently something broke. You can still use some of the shards to craft the glass again.",
-  "quark.category.the_aether": "The Aether"
+  "lore.item.ascended_quark.quicksoil_glass_shard": "Apparently something broke. You can still use some of the shards to craft the glass again."
 }

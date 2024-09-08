@@ -16,6 +16,8 @@ import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
+import java.util.Objects;
+
 @Mixin(value = ZephyrTransparencyLayer.class)
 public class ZephyrLayerMixin extends RenderLayer<Zephyr, EntityModel<Zephyr>> {
 
@@ -33,7 +35,7 @@ public class ZephyrLayerMixin extends RenderLayer<Zephyr, EntityModel<Zephyr>> {
             this.getParentModel().copyPropertiesTo(this.ascended_quark$transparency);
             this.ascended_quark$transparency.prepareMobModel(zephyr, limbSwing, limbSwingAmount, partialTicks);
             this.ascended_quark$transparency.setupAnim(zephyr, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-            VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(AetherVariantAnimalTexturesModule.Client.getZephyrLayerTexture(zephyr)));
+            VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(Objects.requireNonNull(AetherVariantAnimalTexturesModule.Client.getZephyrLayerTexture(zephyr))));
             this.ascended_quark$transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(zephyr, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
         }
 

@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/mossy_holystone_vertical_slab",
+  "textures": {
+    "layer0": "ascended_quark:item/mossy_holystone_vertical_slab"
+  }
+}

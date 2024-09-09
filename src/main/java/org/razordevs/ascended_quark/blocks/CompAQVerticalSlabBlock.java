@@ -1,6 +1,5 @@
 package org.razordevs.ascended_quark.blocks;
 
-import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;

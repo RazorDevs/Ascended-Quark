@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    "L L",
+    " L "
+  ],
+  "key": {
+    "L": {
+      "item": "deep_aether:roseroot"
+    }
+  },
+  "result": {
+    "item": "ascended_quark:hollow_roseroot",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "quark:flag",
+      "flag": "hollow_logs"
+    }
+  ]
+}

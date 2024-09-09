@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/ambrosium_lamp_0",
+  "textures": {
+    "layer0": "ascended_quark:item/ambrosium_lamp"
+  }
+}

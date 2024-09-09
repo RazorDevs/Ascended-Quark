@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/hollow_skyroot_log",
+  "textures": {
+    "layer0": "ascended_quark:item/hollow_skyroot_log"
+  }
+}

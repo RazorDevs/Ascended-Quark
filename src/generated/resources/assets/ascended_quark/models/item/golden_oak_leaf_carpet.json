@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/golden_oak_leaf_carpet",
+  "textures": {
+    "layer0": "ascended_quark:item/golden_oak_leaf_carpet"
+  }
+}

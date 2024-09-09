@@ -1,5 +1,7 @@
 {
-  "values": [
-    "ascended_quark:skyroot_chest"
-  ]
+    "values": [
+        "ascended_quark:skyroot_chest",
+        "ascended_quark:roseroot_chest",
+        "ascended_quark:roseroot_trapped_chest"
+    ]
 }

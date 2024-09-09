@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/stripped_skyroot_post",
+  "textures": {
+    "layer0": "ascended_quark:item/stripped_skyroot_post"
+  }
+}

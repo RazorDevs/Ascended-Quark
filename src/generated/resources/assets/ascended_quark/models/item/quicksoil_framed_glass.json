@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/quicksoil_framed_glass",
+  "textures": {
+    "layer0": "ascended_quark:item/quicksoil_framed_glass"
+  }
+}

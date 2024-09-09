@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/icestone_bricks_stairs",
+  "textures": {
+    "layer0": "ascended_quark:item/icestone_bricks_stairs"
+  }
+}

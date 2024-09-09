@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/skyroot_post",
+  "textures": {
+    "layer0": "ascended_quark:item/skyroot_post"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/chest",
+  "textures": {
+    "layer0": "ascended_quark:item/skyroot_trapped_chest"
+  }
+}

@@ -8,7 +8,7 @@ import org.violetmoon.zeta.module.ZetaModule;
 import teamrazor.deepaether.init.DABlocks;
 
 //TODO : IMPLEMENT DEEP AETHER COMBAT
-@ZetaLoadModule(category = "deep_aether", antiOverlap = {"everycomp"})
+//@ZetaLoadModule(category = "deep_aether", antiOverlap = {"everycomp"})
 public class WoodModule extends ZetaModule {
 
     @LoadEvent

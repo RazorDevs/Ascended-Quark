@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/blue_berry_crate",
+  "textures": {
+    "layer0": "ascended_quark:item/blue_berry_crate"
+  }
+}

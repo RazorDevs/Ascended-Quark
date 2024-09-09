@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/decorated_holiday_leaf_carpet",
+  "textures": {
+    "layer0": "ascended_quark:item/decorated_holiday_leaf_carpet"
+  }
+}

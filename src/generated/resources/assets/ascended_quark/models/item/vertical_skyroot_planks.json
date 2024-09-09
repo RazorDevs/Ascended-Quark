@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/vertical_skyroot_planks",
+  "textures": {
+    "layer0": "ascended_quark:item/vertical_skyroot_planks"
+  }
+}

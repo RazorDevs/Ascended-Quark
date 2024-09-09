@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y":  { "model": "ascended_quark:block/hollow_roseroot" },
+        "axis=z":   { "model": "ascended_quark:block/hollow_roseroot_horizontal", "x": 90 },
+        "axis=x":   { "model": "ascended_quark:block/hollow_roseroot_horizontal", "x": 90, "y": 90 }
+    }
+}

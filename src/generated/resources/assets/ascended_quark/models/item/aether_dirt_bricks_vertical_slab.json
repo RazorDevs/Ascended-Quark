@@ -1,0 +1,6 @@
+{
+  "parent": "ascended_quark:block/aether_dirt_bricks_vertical_slab",
+  "textures": {
+    "layer0": "ascended_quark:item/aether_dirt_bricks_vertical_slab"
+  }
+}

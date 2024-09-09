@@ -5,7 +5,7 @@ import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
-import org.razordevs.ascended_quark.RegistryUtil;
+import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.blocks.AmbrosiumLampBlock;
 import org.violetmoon.zeta.event.bus.LoadEvent;
 import org.violetmoon.zeta.event.load.ZRegister;

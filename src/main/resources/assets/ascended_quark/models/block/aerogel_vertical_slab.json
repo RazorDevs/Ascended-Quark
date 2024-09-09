@@ -1,9 +1,0 @@
-{
-  "parent": "quark:block/vertical_slab",
-  "render_type": "minecraft:translucent",
-  "textures": {
-    "bottom": "aether:block/construction/aerogel",
-    "top": "aether:block/construction/aerogel",
-    "side": "aether:block/construction/aerogel"
-  }
-}

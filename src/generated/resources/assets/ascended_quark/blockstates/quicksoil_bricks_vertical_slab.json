@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "type=double": {
+      "model": "ascended_quark:block/quicksoil_bricks"
+    },
+    "type=east": {
+      "model": "ascended_quark:block/quicksoil_bricks_vertical_slab",
+      "uvlock": true,
+      "y": 90
+    },
+    "type=north": {
+      "model": "ascended_quark:block/quicksoil_bricks_vertical_slab",
+      "uvlock": true
+    },
+    "type=south": {
+      "model": "ascended_quark:block/quicksoil_bricks_vertical_slab",
+      "uvlock": true,
+      "y": 180
+    },
+    "type=west": {
+      "model": "ascended_quark:block/quicksoil_bricks_vertical_slab",
+      "uvlock": true,
+      "y": 270
+    }
+  }
+}

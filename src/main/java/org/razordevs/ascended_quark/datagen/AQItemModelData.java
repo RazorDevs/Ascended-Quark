@@ -34,17 +34,18 @@ public class AQItemModelData extends ItemModelProvider {
     
     @Override
     protected void registerModels() {
-        List<Item> toGenerateItem = new ArrayList<>();
-        toGenerateItem.addAll(itemMap.values());
+        List<Item> toGenerateBlockItem = new ArrayList<>();
+        toGenerateBlockItem.addAll(itemMap.values());
 
         List<Block> toGenerateBlock = new ArrayList<>();
         toGenerateBlock.addAll(blockMap.values());
 
-        for(Item item : toGenerateItem) {
+        for(Item item : toGenerateBlockItem) {
             if (item instanceof AQSlimeInABucketItem || item instanceof AQSwetInABucketItem) {
                 continue;
             }
 
+            System.out.println(item);
             if (item instanceof TieredItem) {
                 this.handheldItem(item);
             }
@@ -55,16 +56,19 @@ public class AQItemModelData extends ItemModelProvider {
 
         toGenerateBlock.remove(blockMap.get("ambrosium_lamp"));
         this.itemBlock(blockMap.get("ambrosium_lamp"), new ResourceLocation(AscendedQuark.MODID, "block/ambrosium_lamp_0"));
+        toGenerateBlock.remove(blockMap.get("quicksoil_framed_glass_pane"));
+        this.itemBlockFlatName(blockMap.get("quicksoil_framed_glass_pane"), "quicksoil_framed_glass" );
+
         for(Block block : toGenerateBlock) {
              if(block instanceof HedgeBlock)
-                 continue; //Need manual input
+                 this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID,  "block/" + this.blockName(block) + "_post"));
              else if(block instanceof WallBlock)
-                 continue; //Need manual input
+                this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID,  "block/" + this.blockName(block) + "_inventory"));
 
-             if(block instanceof ChestBlock) {
+             else if(block instanceof ChestBlock) {
                  this.itemChest(block);
              }
-             else if(block instanceof LadderBlock || block instanceof IronBarsBlock) {
+             else if(block instanceof LadderBlock) {
                  this.itemBlockFlat(block);
              }
              else {

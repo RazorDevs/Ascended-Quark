@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "ascended_quark:item/polished_icestone_wall"
-  }
+  "parent": "ascended_quark:block/polished_icestone_wall_inventory"
 }

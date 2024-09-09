@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "big=true": { "model": "ascended_quark:block/deep_aether/roseroot_big_stool" },
-    "big=false": { "model": "ascended_quark:block/deep_aether/roseroot_stool" }
-  }
-}

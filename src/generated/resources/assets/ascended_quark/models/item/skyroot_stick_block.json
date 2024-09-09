@@ -1,6 +1,3 @@
 {
-  "parent": "ascended_quark:block/skyroot_stick_block",
-  "textures": {
-    "layer0": "ascended_quark:item/skyroot_stick_block"
-  }
+  "parent": "ascended_quark:block/skyroot_stick_block"
 }

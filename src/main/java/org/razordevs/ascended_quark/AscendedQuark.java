@@ -67,14 +67,22 @@ public class AscendedQuark {
         ZetaRegistryAccessor accessor = (ZetaRegistryAccessor) ZETA.registry;
 
         HashMap<String, Block> blockMap = new HashMap<>();
+        HashMap<String, Item> itemBlockMap = new HashMap<>();
         HashMap<String, Item> itemMap = new HashMap<>();
+
         for (Object value : accessor.getInternalNames().keySet()) {
             ResourceLocation location = accessor.getInternalNames().get(value);
             if (value instanceof Block block)
                 blockMap.put(location.getPath(), block);
             else if(value instanceof Item item)
-                itemMap.put(location.getPath(), item);
+                itemBlockMap.put(location.getPath(), item);
         }
+
+        itemBlockMap.forEach((s, item) -> {
+            if(!blockMap.containsKey(s))
+                itemMap.put(s, item);
+        });
+        itemBlockMap.clear();
 
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
@@ -88,10 +96,10 @@ public class AscendedQuark {
         // Server Data
         //generator.addProvider(event.includeServer(), new AQRecipeData(output));
         generator.addProvider(event.includeServer(), AQLootTableData.create(output, blockMap));
-        //AQBlockTagData blockTags = new AQBlockTagData(output, lookupProvider, fileHelper);
+        AQBlockTagData blockTags = new AQBlockTagData(output, lookupProvider, fileHelper, blockMap);
 
-        //generator.addProvider(event.includeServer(), blockTags);
-        //generator.addProvider(event.includeServer(), new AQItemTagData(output, lookupProvider, blockTags.contentsGetter(), fileHelper));
+        generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new AQItemTagData(output, lookupProvider, blockTags.contentsGetter(), fileHelper, itemMap, blockMap));
     }
 
     public static ResourceLocation asResource(String name) {

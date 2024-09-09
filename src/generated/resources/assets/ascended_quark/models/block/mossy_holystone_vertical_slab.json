@@ -1,0 +1,8 @@
+{
+  "parent": "quark:block/vertical_slab",
+  "textures": {
+    "bottom": "aether:block/natural/mossy_holystone",
+    "side": "aether:block/natural/mossy_holystone",
+    "top": "aether:block/natural/mossy_holystone"
+  }
+}

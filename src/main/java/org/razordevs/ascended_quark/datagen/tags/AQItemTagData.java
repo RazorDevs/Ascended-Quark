@@ -5,25 +5,45 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
+import org.razordevs.ascended_quark.blocks.AQHollowLogBlock;
+import org.razordevs.ascended_quark.blocks.AQTrappedVariantChestBlock;
+import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
 import org.violetmoon.quark.base.Quark;
+import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class AQItemTagData extends ItemTagsProvider {
-
-    public AQItemTagData(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper) {
+    final HashMap<String, Item> itemMap;
+    final HashMap<String, Block> blockMap;
+    public AQItemTagData(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper, HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
         super(p_275343_, p_275729_, p_275322_, AscendedQuark.MODID, existingFileHelper);
+        this.itemMap = itemMap;
+        this.blockMap = blockMap;
     }
+
+    protected static final String[] Wood  = {
+            "skyroot",
+            "roseroot",
+            "yagroot",
+            "cruderoot",
+            "sunroot",
+            "conberry"
+    };
 
     @Nonnull
     @Override
@@ -31,81 +51,99 @@ public class AQItemTagData extends ItemTagsProvider {
         return "Ascended Quark Item Tags";
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-/*
+
+        List<Item> items = new ArrayList<>(itemMap.values());
+        List<Block> blocks = new ArrayList<>(blockMap.values());
+
+        blockMap.values().forEach(block -> items.add(block.asItem()));
+
         // Makes tool debuff work with all Deep Aether blocks. Commented code can be used to remove blocks if necessary
         IntrinsicTagAppender<Item> tag = this.tag(AetherTags.Items.TREATED_AS_AETHER_ITEM);
-        Collection<RegistryObject<Item>> items = AQItems.ITEMS.getEntries();
-        // blocks.remove(Blocks.DIRT);
-        for (RegistryObject<Item> item : items) {
-            tag.add(item.get());
-        }
+        // itemList.remove(Blocks.DIRT);
+        items.forEach(tag::add);
 
-        tag(ItemTags.SLABS).add(
-                AQBlocks.AETHER_DIRT_BRICK_SLAB.get().asItem()
-        );
 
-        tag(ItemTags.STAIRS).add(
-                AQBlocks.AETHER_DIRT_BRICK_STAIRS.get().asItem()
-        );
+        blocks.forEach(block -> {
+            if (block instanceof SlabBlock)
+                tag(ItemTags.SLABS).add(block.asItem());
+        });
 
-        tag(ItemTags.WALLS).add(
-                AQBlocks.AETHER_DIRT_BRICKS.get().asItem()
-        );
+        blocks.forEach(block -> {
+            if (block instanceof StairBlock)
+                tag(ItemTags.STAIRS).add(block.asItem());
+        });
 
-        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "posts"))).add(
-                AQBlocks.SKYROOT_POST.get().asItem(),
-                AQBlocks.STRIPPED_SKYROOT_POST.get().asItem()
-        );
+        blocks.forEach(block -> {
+            if (block instanceof WallBlock)
+                tag(ItemTags.WALLS).add(block.asItem());
+        });
+
+        blocks.forEach(block -> {
+            if (block instanceof AQWoodenPostBlock)
+                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "posts"))).add(block.asItem());
+        });
 
         tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "stools"))).add(
-                AQBlocks.SKYROOT_STOOL.get().asItem()
-        );
+                blockMap.get("skyroot_stool").asItem());
 
-        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "hedges"))).add(
-            AQBlocks.SKYROOT_HEDGE.get().asItem()
-        );
 
-        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "hollow_logs"))).add(
-                AQBlocks.HOLLOW_SKYROOT_LOG.get().asItem()
-        );
+        blocks.forEach(block -> {
+            if (block instanceof AQHedgeBlock)
+                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "hedges"))).add(block.asItem());
+        });
 
-        tag(Tags.Items.CHESTS_WOODEN).add(
-                AQBlocks.SKYROOT_CHEST.get().asItem()
-        );
+        blocks.forEach(block -> {
+            if (block instanceof AQHollowLogBlock)
+                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "hollow_logs"))).add(block.asItem());
+        });
 
-        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "revertable_chests"))).add(
-                AQBlocks.SKYROOT_CHEST.get().asItem()
-        );
+        blocks.forEach(block -> {
+            if (block instanceof ChestBlock) {
+                tag(Tags.Items.CHESTS_WOODEN).add(block.asItem());
+                tag(Tags.Items.CHESTS).add(block.asItem());
 
-        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "boatable_chests"))).add(
-                AQBlocks.SKYROOT_CHEST.get().asItem()
-        );
+                if((block instanceof AQTrappedVariantChestBlock)) {
+                    tag(Tags.Items.CHESTS_TRAPPED).add(block.asItem());
+                }
+                else {
+                    tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "revertable_chests"))).add(block.asItem());
+                    tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "boatable_chests"))).add(block.asItem());
+                }
+            }
+        });
 
-        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "ladders"))).add(
-                AQBlocks.SKYROOT_LADDER.get().asItem()
-        );
+        blocks.forEach(block -> {
+            if (block instanceof LadderBlock)
+                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "ladders"))).add(block.asItem());
+        });
 
         tag(ItemTags.ARROWS).add(
-                AQItems.AMBROSIUM_TORCH_ARROW.get()
-        );
-        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "vertical_slabs"))).add(
-                AQBlocks.AEROGEL_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.HOLYSTONE_BRICK_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.AETHER_DIRT_BRICK_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.ANGELIC_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.HELLFIRE_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.ICESTONE_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.MOSSY_HOLYSTONE_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.QUICKSOIL_BRICK_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.HOLYSTONE_VERTICAL_SLAB.get().asItem(),
-                AQBlocks.SKYROOT_VERTICAL_SLAB.get().asItem()
-        );
+                itemMap.get("ambrosium_torch_arrow"));
 
-        tag(AetherTags.Items.PLANKS_CRAFTING).add(AQBlocks.VERTICAL_SKYROOT_PLANKS.get().asItem());
+        blockMap.keySet().forEach(s -> {
+            if (blockMap.get(s) instanceof VerticalSlabBlock block) {
+                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "vertical_slabs"))).add(block.asItem());
+                for(String string : Wood) {
+                    if(s.contains(string)) {
+                        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "wooden_vertical_slabs"))).add(block.asItem());
+                        break;
+                    }
+                }
+            }
+        });
 
- */
+        blockMap.keySet().forEach(s -> {
+            if(s.contains("vertical_") && s.contains("_planks")) {
+                tag(AetherTags.Items.PLANKS_CRAFTING).add(blockMap.get(s).asItem());
+            }
+        });
+
+        blockMap.keySet().forEach(s -> {
+            if(s.contains("bookshelf")) {
+                tag(Tags.Items.BOOKSHELVES).add(blockMap.get(s).asItem());
+            }
+        });
     }
 }

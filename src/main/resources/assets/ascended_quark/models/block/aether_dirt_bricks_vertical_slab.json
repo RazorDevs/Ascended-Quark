@@ -1,8 +1,0 @@
-{
-    "parent": "quark:block/vertical_slab",
-    "textures": {
-        "bottom": "ascended_quark:block/aether_dirt_bricks",
-        "top": "ascended_quark:block/aether_dirt_bricks",
-        "side": "ascended_quark:block/aether_dirt_bricks"
-    }
-}

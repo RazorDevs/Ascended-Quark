@@ -1,6 +1,5 @@
 package org.razordevs.ascended_quark.datagen;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
@@ -15,10 +14,11 @@ import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.mixin.ZetaRegistryAccessor;
+import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
 import org.violetmoon.quark.base.Quark;
+import org.violetmoon.quark.content.building.block.HedgeBlock;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
-import oshi.util.tuples.Pair;
+import org.violetmoon.quark.content.building.block.WoodPostBlock;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +34,224 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     @Override
     public void registerStatesAndModels() {
         this.verticalPLank("skyroot", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
+        this.pillar((RotatedPillarBlock) blockMap.get("skyroot_stick_block"));
+        this.compressed("blue_berry_crate");
+        this.hollowLog("skyroot", AetherBlocks.SKYROOT_LOG.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/");
+        this.post("skyroot", AetherBlocks.SKYROOT_LOG.get(), "natural/");
+        this.strippedPost("skyroot", AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/");
+
+        this.ladder("skyroot");
+        this.hedge("skyroot", AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/");
+        this.hedge("golden_skyroot", AetherBlocks.GOLDEN_OAK_LEAVES.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/");
+        this.hedge("holiday_skyroot", AetherBlocks.HOLIDAY_LEAVES.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/");
+        this.hedge("decorated_holiday_skyroot", AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/");
+        this.hedge("crystal_skyroot", AetherBlocks.CRYSTAL_LEAVES.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/");
+        this.hedge("crystal_fruit_skyroot", AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/");
+        this.chest("skyroot", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
+
+        this.leafCarpet("skyroot", AetherBlocks.SKYROOT_LEAVES.get(), "natural/");
+        this.leafCarpet("crystal", AetherBlocks.CRYSTAL_LEAVES.get(), "natural/");
+        this.leafCarpet("crystal_fruit", AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(), "natural/");
+        this.leafCarpet("holiday", AetherBlocks.HOLIDAY_LEAVES.get(), "natural/");
+        this.leafCarpet("decorated_holiday", AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), "natural/");
+        this.leafCarpet("golden_oak", AetherBlocks.GOLDEN_OAK_LEAVES.get(), "natural/");
+
         this.verticalSlab("skyroot", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
+        this.verticalSlab("aerogel", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
+        this.verticalSlab("holystone_brick", AetherBlocks.HOLYSTONE_BRICKS.get(), "construction/");
+        this.verticalSlab("mossy_holystone", AetherBlocks.MOSSY_HOLYSTONE.get(), "natural/");
+        this.verticalSlab("holystone", AetherBlocks.HOLYSTONE.get(), "natural/");
+        this.verticalSlab("icestone", AetherBlocks.ICESTONE.get(), "natural/");
+        this.verticalSlab("angelic", AetherBlocks.ANGELIC_STONE.get(), "dungeon/");
+        this.verticalSlab("hellfire", AetherBlocks.HELLFIRE_STONE.get(), "dungeon/");
+
+        this.stoneSet("aether_dirt_bricks");
+        this.stoneSet("icestone_bricks");
+        this.stoneSet("polished_icestone");
+        this.stoneSet("quicksoil_bricks");
+    }
+
+    public void woodset(String type, Block log, Block planks, Block leaves) {
+        this.verticalPLank(type, planks);
+        this.leafCarpet(type, leaves);
+        this.verticalSlab(type, planks);
+    }
+
+    public void stoneSet(String type) {
+        Block base = blockMap.get(type);
+        this.block(base);
+        this.slab(blockMap.get(type+"_slab"), base);
+        this.stairs(blockMap.get(type+"_stairs"), base);
+        this.wallBlock(blockMap.get(type+"_wall"), base);
+        this.verticalSlab(type);
+    }
+
+    public void ladder(String type) {
+        Block block = blockMap.get(type+"_ladder");
+        ResourceLocation location = this.texture(this.name(block));
+        ModelFile ladder = this.models().withExistingParent(this.name(block), this.mcLoc("block/block")).renderType(new ResourceLocation("cutout")).ao(false).texture("particle", location).texture("texture", location).element().from(0.0F, 0.0F, 15.2F).to(16.0F, 16.0F, 15.2F).shade(false).face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#texture").end().face(Direction.SOUTH).uvs(16.0F, 0.0F, 0.0F, 16.0F).texture("#texture").end().end();
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            Direction direction = state.getValue(LadderBlock.FACING);
+            return ConfiguredModel.builder().modelFile(ladder).rotationY((int)(direction.toYRot() + 180.0F) % 360).build();
+        }, LadderBlock.WATERLOGGED);
+    }
+
+    public void chest(String type, Block planks, String location) {
+        Block block = blockMap.get(type+"_chest");
+        Block trapped = blockMap.get(type+"_trapped_chest");
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.chest(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
+        this.getVariantBuilder(trapped).partialState().addModels(new ConfiguredModel(this.chest(this.name(trapped), this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
+    }
+
+    public void chest(String type, Block planks) {
+        Block block = blockMap.get(type+"_chest");
+        Block trapped = blockMap.get(type+"_trapped_chest");
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.chest(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
+        this.getVariantBuilder(trapped).partialState().addModels(new ConfiguredModel(this.chest(this.name(trapped), this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
+    }
+
+    public ModelFile chest(String name, ResourceLocation particle) {
+        return this.models().getBuilder(name).texture("particle", particle);
+    }
+
+
+    public void pillar(RotatedPillarBlock block) {
+        this.axisBlock(block, this.extend(this.texture(this.name(block)), "_side"), this.extend(this.texture(this.name(block)), "_top"));
+    }
+
+    public void strippedPost(String type, Block log) {
+        this.post("stripped_"+type,log);
+    }
+
+    public void strippedPost(String type, Block log, String location) {
+        this.post("stripped_"+type,log,location);
+    }
+
+    public void post(String type, Block log) {
+        Block block = blockMap.get(type+"_post");
+        this.postBlock(block, postModel(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(log))));
+    }
+
+    public void post(String type, Block log, String location) {
+        Block block = blockMap.get(type+"_post");
+        this.postBlock(block, postModel(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(log), location)));
+    }
+
+    public ModelFile postModel(String name, ResourceLocation texture) {
+        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/post"))
+                .texture("texture", texture);
+    }
+
+    public void postBlock(Block block, ModelFile post) {
+        MultiPartBlockStateBuilder builder = this.getMultipartBuilder(block);
+
+        ModelFile small = this.models().getExistingFile(new ResourceLocation(AscendedQuark.MODID, "block/chain_small"));
+        ModelFile small_up = this.models().getExistingFile(new ResourceLocation(AscendedQuark.MODID, "block/chain_small_top"));
+
+        builder.part().modelFile(post).addModel().condition(AQWoodenPostBlock.AXIS, Direction.Axis.Y);
+        builder.part().modelFile(post).rotationY(90).rotationX(90).addModel().condition(AQWoodenPostBlock.AXIS, Direction.Axis.X);
+        builder.part().modelFile(post).rotationX(90).addModel().condition(AQWoodenPostBlock.AXIS, Direction.Axis.Z);
+
+        builder.part().modelFile(small).addModel().condition(AQWoodenPostBlock.CHAINED[0], true);
+        builder.part().modelFile(small_up).addModel().condition(AQWoodenPostBlock.CHAINED[1], true);
+        builder.part().modelFile(small_up).rotationX(90).addModel().condition(AQWoodenPostBlock.CHAINED[2], true);
+        builder.part().modelFile(small).rotationX(90).addModel().condition(AQWoodenPostBlock.CHAINED[3], true);
+        builder.part().modelFile(small).rotationX(90).rotationY(90).addModel().condition(AQWoodenPostBlock.CHAINED[4], true);
+        builder.part().modelFile(small_up).rotationX(90).rotationY(90).addModel().condition(AQWoodenPostBlock.CHAINED[5], true);
+    }
+
+    public void hedge(String type, Block leaf, Block log) {
+        this.hedgeBlock(blockMap.get(type+"_hedge"), this.texture(BuiltInRegistries.BLOCK.getKey(leaf)), this.texture(BuiltInRegistries.BLOCK.getKey(log)));
+    }
+
+    public void hedge(String type, Block leaf, Block log, String location) {
+        this.hedgeBlock(blockMap.get(type+"_hedge"), this.texture(BuiltInRegistries.BLOCK.getKey(leaf), location), this.texture(BuiltInRegistries.BLOCK.getKey(log), location));
+    }
+
+    public void hedgeBlock(Block block, ResourceLocation leaf, ResourceLocation log) {
+        String baseName = this.key(block).toString();
+        this.fourWayBlockExtended(block,
+                this.hedgePost(baseName + "_post", leaf, log),
+                this.hedgeSide(baseName + "_side", leaf),
+                this.hedgeExtend(baseName+"_extend", leaf));
+    }
+
+    public ModelFile hedgePost(String name, ResourceLocation leaves, ResourceLocation log) {
+        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hedge_post"))
+                .texture("log", log)
+                .texture("leaf", leaves)
+                .renderType("cutout");
+    }
+
+    public ModelFile hedgeSide(String name, ResourceLocation leaves) {
+        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hedge_side"))
+                .texture("leaf", leaves)
+                .renderType("cutout");
+    }
+
+    public ModelFile hedgeExtend(String name, ResourceLocation leaves) {
+        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hedge_extend"))
+                .texture("leaf", leaves)
+                .renderType("cutout");
+    }
+
+    public void fourWayBlockExtended(Block block, ModelFile post, ModelFile side, ModelFile extend) {
+        MultiPartBlockStateBuilder builder = this.getMultipartBuilder(block);
+        builder.part().modelFile(post).addModel().condition(HedgeBlock.EXTEND, true);
+        builder.part().modelFile(extend).addModel().condition(HedgeBlock.EXTEND, false);
+
+        PipeBlock.PROPERTY_BY_DIRECTION.entrySet().forEach((e) -> {
+            Direction dir = e.getKey();
+            if (dir.getAxis().isHorizontal()) {
+                builder.part().modelFile(side).rotationY(((int)dir.toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), true);
+            }
+
+        });
+    }
+
+    public ModelFile cubeAllTranslucent(Block block) {
+        return this.models().cubeAll(this.name(block), this.texture(this.name(block))).renderType(new ResourceLocation("translucent"));
+    }
+
+    public void hollowLog(String type, Block log) {
+        Block block = blockMap.get("hollow_"+type+"_log");
+        this.hollowLog((RotatedPillarBlock) block,
+                this.texture(BuiltInRegistries.BLOCK.getKey(log)),
+                this.extend(this.texture(BuiltInRegistries.BLOCK.getKey(log)), "_top"),
+                this.extendPrefix(this.texture(BuiltInRegistries.BLOCK.getKey(log)), "stripped_"));
+    }
+
+    public void hollowLog(String type, Block log, Block stripped, String prefix) {
+        Block block = blockMap.get("hollow_"+type+"_log");
+        this.hollowLog((RotatedPillarBlock) block,
+                this.texture(BuiltInRegistries.BLOCK.getKey(log), prefix),
+                this.extend(this.texture(BuiltInRegistries.BLOCK.getKey(log), prefix), "_top"),
+                this.texture(BuiltInRegistries.BLOCK.getKey(stripped), prefix));
+    }
+
+    public void hollowLog(RotatedPillarBlock block, ResourceLocation side, ResourceLocation end, ResourceLocation inside) {
+        this.axisBlock(block, this.hollowCubeColumn(this.name(block), side, end, inside),
+                this.cubeColumnHorizontal(this.name(block) + "_horizontal", side, end, inside));
+    }
+
+    public ModelFile hollowCubeColumn(String name, ResourceLocation side, ResourceLocation end, ResourceLocation inside) {
+        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hollow_log"))
+                .texture("side", side)
+                .texture("end", end)
+                .texture("inside", inside);
+    }
+
+    public ModelFile cubeColumnHorizontal(String name, ResourceLocation side, ResourceLocation end, ResourceLocation inside) {
+        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hollow_log_horizontal"))
+                .texture("side", side)
+                .texture("end", end)
+                .texture("inside", inside);
+    }
+
+    public void compressed(String type) {
+        Block block = blockMap.get(type);
+        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), this.extend(this.texture(this.name(block)), "_bottom"), this.extend(this.texture(this.name(block)), "_bottom"));
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(compressed));
     }
 
 
@@ -76,6 +293,14 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.verticalSlabBlock(block, this.verticalSlab(type + "_vertical_slab", this.blockTexture(texture)), this.models().getExistingFile(this.texture(BuiltInRegistries.BLOCK.getKey(texture))));
     }
 
+    public void verticalSlab(String type) {
+        verticalSlab(type, type);
+    }
+    public void verticalSlab(String type, String texture) {
+        Block block = blockMap.get(type + "_vertical_slab");
+        this.verticalSlabBlock(block, this.verticalSlab(type + "_vertical_slab", this.texture(texture)), this.models().getExistingFile(this.texture(texture)));
+    }
+
     public void verticalSlab(String type, Block texture, String suffix) {
         Block block = blockMap.get(type + "_vertical_slab");
         this.verticalSlabBlock(block, this.verticalSlab(type + "_vertical_slab", this.texture(BuiltInRegistries.BLOCK.getKey(texture), suffix)), this.models().getExistingFile(this.texture(BuiltInRegistries.BLOCK.getKey(texture))));
@@ -109,6 +334,25 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.simpleBlock(block, this.verticalPLank("vertical_" + type + "_planks", this.texture(BuiltInRegistries.BLOCK.getKey(texture), suffix)));
     }
 
+    public ModelFile verticalPLank(String name, ResourceLocation texture) {
+        return this.models().singleTexture(name, new ResourceLocation(Quark.MOD_ID, "block/vertical_planks"), "all", texture);
+    }
+
+
+    public void leafCarpet(String type, Block texture) {
+        Block block = blockMap.get(type + "_leaf_carpet");
+        this.simpleBlock(block, this.verticalPLank(type + "_leaf_carpet", this.blockTexture(texture)));
+    }
+
+    public void leafCarpet(String type, Block texture, String suffix) {
+        Block block = blockMap.get(type + "_leaf_carpet");
+        this.simpleBlock(block, this.leafCarpet(type + "_leaf_carpet", this.texture(BuiltInRegistries.BLOCK.getKey(texture), suffix)));
+    }
+
+    public ModelFile leafCarpet(String name, ResourceLocation texture) {
+        return this.models().singleTexture(name, new ResourceLocation(Quark.MOD_ID, "block/leaf_carpet"), "all", texture).renderType("cutout");
+    }
+
     public ModelFile verticalSlab(String name, ResourceLocation texture) {
         return this.sideBottomTop(name, new ResourceLocation(Quark.MOD_ID, "block/vertical_slab"), texture);
     }
@@ -117,9 +361,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         return this.models().withExistingParent(name, parent).texture("side", location).texture("bottom", location).texture("top", location);
     }
 
-    public ModelFile verticalPLank(String name, ResourceLocation texture) {
-        return this.models().singleTexture(name, new ResourceLocation(Quark.MOD_ID, "block/vertical_planks"), "all", texture);
-    }
+
 
     public void pottedPlant(Block block, Block flower) {
         ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/"  + this.name(flower))).renderType(new ResourceLocation("cutout"));
@@ -159,8 +401,15 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public void wallBlock(Block block, Block baseBlock) {
+        wallBlockInventory(this.name(block) + "_inventory", this.texture(this.name(baseBlock)));
         this.wallBlockInternal((WallBlock) block, this.name(block), this.texture(this.name(baseBlock)));
     }
+
+    public void wallBlockInventory(String name, ResourceLocation texture) {
+        this.models().withExistingParent(name, new ResourceLocation("block/wall_inventory"))
+                .texture("wall", texture);
+    }
+
     public void blockDoubleDrops(Block block) {
         this.getVariantBuilder(block).forAllStatesExcept(state -> ConfiguredModel.builder().modelFile(this.cubeAll(block)).build(), AetherBlockStateProperties.DOUBLE_DROPS);
     }
@@ -269,5 +518,9 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
     private ResourceLocation key(Block block) {
         return ForgeRegistries.BLOCKS.getKey(block);
+    }
+
+    public ResourceLocation extendPrefix(ResourceLocation location, String prefix) {
+        return new ResourceLocation(location.getNamespace(), prefix+location.getPath());
     }
 }

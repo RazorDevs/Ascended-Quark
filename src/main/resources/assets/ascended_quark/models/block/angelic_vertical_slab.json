@@ -1,8 +1,0 @@
-{
-  "parent": "quark:block/vertical_slab",
-  "textures": {
-    "bottom": "aether:block/dungeon/angelic_stone",
-    "top": "aether:block/dungeon/angelic_stone",
-    "side": "aether:block/dungeon/angelic_stone"
-  }
-}

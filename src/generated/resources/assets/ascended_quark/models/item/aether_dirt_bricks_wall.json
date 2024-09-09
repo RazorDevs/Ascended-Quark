@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "ascended_quark:item/aether_dirt_bricks_wall"
-  }
+  "parent": "ascended_quark:block/aether_dirt_bricks_wall_inventory"
 }

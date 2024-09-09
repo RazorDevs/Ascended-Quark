@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ascended_quark:block/quicksoil_framed_glass_pane"
+    "layer0": "ascended_quark:block/quicksoil_framed_glass"
   }
 }

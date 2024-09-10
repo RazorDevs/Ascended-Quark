@@ -1,5 +1,10 @@
 {
   "values": [
-    "ascended_quark:vertical_skyroot_planks"
+    "ascended_quark:vertical_conberry_planks",
+    "ascended_quark:vertical_skyroot_planks",
+    "ascended_quark:vertical_cruderoot_planks",
+    "ascended_quark:vertical_roseroot_planks",
+    "ascended_quark:vertical_yagroot_planks",
+    "ascended_quark:vertical_sunroot_planks"
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "quark:block/hedge_post",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaf": "deep_aether:block/sunroot_leaves",
+    "log": "deep_aether:block/sunroot_log"
+  }
+}

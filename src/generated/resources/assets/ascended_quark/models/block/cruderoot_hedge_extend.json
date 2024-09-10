@@ -1,0 +1,7 @@
+{
+  "parent": "quark:block/hedge_extend",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaf": "deep_aether:block/cruderoot_leaves"
+  }
+}

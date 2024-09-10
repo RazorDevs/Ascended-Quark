@@ -19,6 +19,7 @@ import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 import org.violetmoon.quark.content.building.block.WoodPostBlock;
+import teamrazor.deepaether.init.DABlocks;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +34,20 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     final HashMap<String, Block> blockMap;
     @Override
     public void registerStatesAndModels() {
+        this.woodset("roseroot", DABlocks.ROSEROOT_LOG.get(), DABlocks.STRIPPED_ROSEROOT_LOG.get(), DABlocks.ROSEROOT_PLANKS.get(), DABlocks.ROSEROOT_LEAVES.get());
+        this.leafCarpet("blue_roseroot", DABlocks.BLUE_ROSEROOT_LEAVES.get());
+        this.leafCarpet("flowering_blue_roseroot", DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES.get());
+        this.leafCarpet("flowering_roseroot", DABlocks.FLOWERING_ROSEROOT_LEAVES.get());
+
+        this.hedge("blue_roseroot", DABlocks.BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get());
+        this.hedge("flowering_blue_roseroot", DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get());
+        this.hedge("flowering_roseroot", DABlocks.FLOWERING_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get());
+
+        this.woodset("cruderoot", DABlocks.CRUDEROOT_LOG.get(), DABlocks.STRIPPED_CRUDEROOT_LOG.get(), DABlocks.CRUDEROOT_PLANKS.get(), DABlocks.CRUDEROOT_LEAVES.get());
+        this.woodset("sunroot", DABlocks.SUNROOT_LOG.get(), DABlocks.STRIPPED_SUNROOT_LOG.get(), DABlocks.SUNROOT_PLANKS.get(), DABlocks.SUNROOT_LEAVES.get());
+        this.woodset("yagroot", DABlocks.YAGROOT_LOG.get(), DABlocks.STRIPPED_YAGROOT_LOG.get(), DABlocks.YAGROOT_PLANKS.get(), DABlocks.YAGROOT_LEAVES.get());
+        this.woodset("conberry", DABlocks.CONBERRY_LOG.get(), DABlocks.STRIPPED_CONBERRY_LOG.get(), DABlocks.CONBERRY_PLANKS.get(), DABlocks.CONBERRY_LEAVES.get());
+
         this.verticalPLank("skyroot", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
         this.pillar((RotatedPillarBlock) blockMap.get("skyroot_stick_block"));
         this.compressed("blue_berry_crate");
@@ -71,10 +86,15 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.stoneSet("quicksoil_bricks");
     }
 
-    public void woodset(String type, Block log, Block planks, Block leaves) {
+    public void woodset(String type, Block log, Block stripped, Block planks, Block leaves) {
         this.verticalPLank(type, planks);
         this.leafCarpet(type, leaves);
         this.verticalSlab(type, planks);
+        this.hedge(type, leaves, log);
+        this.post(type, log);
+        this.strippedPost(type, stripped);
+        this.ladder(type);
+        this.hollowLog(type, log);
     }
 
     public void stoneSet(String type) {

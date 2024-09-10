@@ -8,7 +8,7 @@ import org.violetmoon.zeta.module.ZetaModule;
 import teamrazor.deepaether.init.DABlocks;
 
 //TODO : IMPLEMENT DEEP AETHER COMPAT
-//@ZetaLoadModule(category = "deep_aether", antiOverlap = {"everycomp"})
+@ZetaLoadModule(category = "deep_aether", antiOverlap = {"everycomp"})
 public class WoodModule extends ZetaModule {
 
     @LoadEvent
@@ -21,7 +21,7 @@ public class WoodModule extends ZetaModule {
 
         RegistryUtil.createHedge("flowering_roseroot_hedge", this, DABlocks.FLOWERING_ROSEROOT_LEAVES, DABlocks.ROSEROOT_FENCE);
         RegistryUtil.createHedge("blue_roseroot_hedge", this, DABlocks.BLUE_ROSEROOT_LEAVES, DABlocks.ROSEROOT_FENCE);
-        RegistryUtil.createHedge("flowering_blue_hedge", this, DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES, DABlocks.ROSEROOT_FENCE);
+        RegistryUtil.createHedge("flowering_blue_roseroot_hedge", this, DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES, DABlocks.ROSEROOT_FENCE);
 
         // YAGROOT
         RegistryUtil.registerWoodsetExtension("yagroot", this, DABlocks.YAGROOT_SLAB, DABlocks.YAGROOT_PLANKS, DABlocks.YAGROOT_FENCE, DABlocks.YAGROOT_LOG, DABlocks.YAGROOT_LEAVES);

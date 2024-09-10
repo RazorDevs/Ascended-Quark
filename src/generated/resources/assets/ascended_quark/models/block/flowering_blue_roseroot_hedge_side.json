@@ -1,0 +1,7 @@
+{
+  "parent": "quark:block/hedge_side",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaf": "deep_aether:block/flowering_blue_roseroot_leaves"
+  }
+}

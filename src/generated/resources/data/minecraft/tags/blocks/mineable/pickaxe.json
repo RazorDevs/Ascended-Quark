@@ -11,13 +11,13 @@
     "ascended_quark:icestone_bricks_wall",
     "ascended_quark:polished_icestone_slab",
     "ascended_quark:polished_icestone",
-    "ascended_quark:icestone_bricks_slab",
     "ascended_quark:polished_icestone_vertical_slab",
     "ascended_quark:icestone_bricks_vertical_slab",
     "ascended_quark:polished_icestone_stairs",
     "ascended_quark:icestone_bricks_stairs",
-    "ascended_quark:polished_icestone_wall",
     "ascended_quark:icestone_bricks",
+    "ascended_quark:icestone_bricks_slab",
+    "ascended_quark:polished_icestone_wall",
     "ascended_quark:icestone_vertical_slab"
   ]
 }

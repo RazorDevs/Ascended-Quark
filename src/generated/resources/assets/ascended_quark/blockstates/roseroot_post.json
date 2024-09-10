@@ -1,0 +1,85 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "ascended_quark:block/roseroot_post"
+      },
+      "when": {
+        "axis": "y"
+      }
+    },
+    {
+      "apply": {
+        "model": "ascended_quark:block/roseroot_post",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "axis": "x"
+      }
+    },
+    {
+      "apply": {
+        "model": "ascended_quark:block/roseroot_post",
+        "x": 90
+      },
+      "when": {
+        "axis": "z"
+      }
+    },
+    {
+      "apply": {
+        "model": "ascended_quark:block/chain_small"
+      },
+      "when": {
+        "chain_down": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "ascended_quark:block/chain_small_top"
+      },
+      "when": {
+        "chain_up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "ascended_quark:block/chain_small_top",
+        "x": 90
+      },
+      "when": {
+        "chain_north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "ascended_quark:block/chain_small",
+        "x": 90
+      },
+      "when": {
+        "chain_south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "ascended_quark:block/chain_small",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "chain_west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "ascended_quark:block/chain_small_top",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "chain_east": "true"
+      }
+    }
+  ]
+}

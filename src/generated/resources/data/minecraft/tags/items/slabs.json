@@ -1,8 +1,8 @@
 {
   "values": [
     "ascended_quark:polished_icestone_slab",
-    "ascended_quark:icestone_bricks_slab",
     "ascended_quark:aether_dirt_bricks_slab",
+    "ascended_quark:icestone_bricks_slab",
     "ascended_quark:quicksoil_bricks_slab"
   ]
 }

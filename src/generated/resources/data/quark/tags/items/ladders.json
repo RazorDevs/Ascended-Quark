@@ -1,5 +1,10 @@
 {
   "values": [
-    "ascended_quark:skyroot_ladder"
+    "ascended_quark:roseroot_ladder",
+    "ascended_quark:sunroot_ladder",
+    "ascended_quark:skyroot_ladder",
+    "ascended_quark:conberry_ladder",
+    "ascended_quark:cruderoot_ladder",
+    "ascended_quark:yagroot_ladder"
   ]
 }

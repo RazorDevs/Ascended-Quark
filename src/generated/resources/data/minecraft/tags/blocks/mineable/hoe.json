@@ -1,10 +1,18 @@
 {
   "values": [
     "ascended_quark:crystal_leaf_carpet",
+    "ascended_quark:roseroot_leaf_carpet",
+    "ascended_quark:blue_roseroot_leaf_carpet",
+    "ascended_quark:skyroot_leaf_carpet",
+    "ascended_quark:cruderoot_leaf_carpet",
+    "ascended_quark:flowering_roseroot_leaf_carpet",
     "ascended_quark:golden_oak_leaf_carpet",
+    "ascended_quark:flowering_blue_roseroot_leaf_carpet",
     "ascended_quark:decorated_holiday_leaf_carpet",
     "ascended_quark:crystal_fruit_leaf_carpet",
-    "ascended_quark:skyroot_leaf_carpet",
-    "ascended_quark:holiday_leaf_carpet"
+    "ascended_quark:conberry_leaf_carpet",
+    "ascended_quark:sunroot_leaf_carpet",
+    "ascended_quark:holiday_leaf_carpet",
+    "ascended_quark:yagroot_leaf_carpet"
   ]
 }

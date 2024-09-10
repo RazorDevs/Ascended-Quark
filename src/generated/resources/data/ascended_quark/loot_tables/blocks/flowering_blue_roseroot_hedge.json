@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ascended_quark:flowering_blue_roseroot_hedge"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "ascended_quark:blocks/flowering_blue_roseroot_hedge"
+}

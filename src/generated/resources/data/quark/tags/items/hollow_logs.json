@@ -1,5 +1,10 @@
 {
   "values": [
-    "ascended_quark:hollow_skyroot_log"
+    "ascended_quark:hollow_conberry_log",
+    "ascended_quark:hollow_cruderoot_log",
+    "ascended_quark:hollow_sunroot_log",
+    "ascended_quark:hollow_roseroot_log",
+    "ascended_quark:hollow_skyroot_log",
+    "ascended_quark:hollow_yagroot_log"
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "quark:block/hollow_log",
+  "textures": {
+    "end": "deep_aether:block/yagroot_log_top",
+    "inside": "deep_aether:stripped_block/yagroot_log",
+    "side": "deep_aether:block/yagroot_log"
+  }
+}

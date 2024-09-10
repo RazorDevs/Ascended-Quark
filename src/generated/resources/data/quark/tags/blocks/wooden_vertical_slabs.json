@@ -1,5 +1,10 @@
 {
   "values": [
+    "ascended_quark:yagroot_vertical_slab",
+    "ascended_quark:sunroot_vertical_slab",
+    "ascended_quark:roseroot_vertical_slab",
+    "ascended_quark:conberry_vertical_slab",
+    "ascended_quark:cruderoot_vertical_slab",
     "ascended_quark:skyroot_vertical_slab"
   ]
 }

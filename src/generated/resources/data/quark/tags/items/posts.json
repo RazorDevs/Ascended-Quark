@@ -1,6 +1,16 @@
 {
   "values": [
     "ascended_quark:stripped_skyroot_post",
-    "ascended_quark:skyroot_post"
+    "ascended_quark:stripped_cruderoot_post",
+    "ascended_quark:roseroot_post",
+    "ascended_quark:yagroot_post",
+    "ascended_quark:sunroot_post",
+    "ascended_quark:stripped_conberry_post",
+    "ascended_quark:cruderoot_post",
+    "ascended_quark:stripped_roseroot_post",
+    "ascended_quark:stripped_yagroot_post",
+    "ascended_quark:stripped_sunroot_post",
+    "ascended_quark:skyroot_post",
+    "ascended_quark:conberry_post"
   ]
 }

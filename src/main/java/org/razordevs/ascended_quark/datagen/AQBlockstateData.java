@@ -94,7 +94,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.post(type, log);
         this.strippedPost(type, stripped);
         this.ladder(type);
-        this.hollowLog(type, log);
+        this.hollowLog(type, log, stripped, "");
     }
 
     public void stoneSet(String type) {

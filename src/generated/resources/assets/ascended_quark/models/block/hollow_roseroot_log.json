@@ -2,7 +2,7 @@
   "parent": "quark:block/hollow_log",
   "textures": {
     "end": "deep_aether:block/roseroot_log_top",
-    "inside": "deep_aether:stripped_block/roseroot_log",
+    "inside": "deep_aether:block/stripped_roseroot_log",
     "side": "deep_aether:block/roseroot_log"
   }
 }

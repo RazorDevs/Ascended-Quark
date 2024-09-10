@@ -2,7 +2,7 @@
   "parent": "quark:block/hollow_log_horizontal",
   "textures": {
     "end": "deep_aether:block/yagroot_log_top",
-    "inside": "deep_aether:stripped_block/yagroot_log",
+    "inside": "deep_aether:block/stripped_yagroot_log",
     "side": "deep_aether:block/yagroot_log"
   }
 }

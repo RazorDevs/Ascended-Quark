@@ -1,5 +1,6 @@
 {
   "parent": "quark:block/hollow_log_horizontal",
+  "render_type": "minecraft:cutout",
   "textures": {
     "end": "deep_aether:block/sunroot_log_top",
     "inside": "deep_aether:block/stripped_sunroot_log",

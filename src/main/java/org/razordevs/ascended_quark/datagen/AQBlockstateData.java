@@ -258,14 +258,16 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hollow_log"))
                 .texture("side", side)
                 .texture("end", end)
-                .texture("inside", inside);
+                .texture("inside", inside)
+                .renderType(new ResourceLocation("translucent"));
     }
 
     public ModelFile cubeColumnHorizontal(String name, ResourceLocation side, ResourceLocation end, ResourceLocation inside) {
         return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hollow_log_horizontal"))
                 .texture("side", side)
                 .texture("end", end)
-                .texture("inside", inside);
+                .texture("inside", inside)
+                .renderType(new ResourceLocation("translucent"));
     }
 
     public void compressed(String type) {
@@ -361,7 +363,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
     public void leafCarpet(String type, Block texture) {
         Block block = blockMap.get(type + "_leaf_carpet");
-        this.simpleBlock(block, this.verticalPLank(type + "_leaf_carpet", this.blockTexture(texture)));
+        this.simpleBlock(block, this.leafCarpet(type + "_leaf_carpet", this.blockTexture(texture)));
     }
 
     public void leafCarpet(String type, Block texture, String suffix) {

@@ -1,5 +1,6 @@
 {
   "parent": "quark:block/hollow_log",
+  "render_type": "minecraft:cutout",
   "textures": {
     "end": "aether:block/natural/skyroot_log_top",
     "inside": "aether:block/natural/stripped_skyroot_log",

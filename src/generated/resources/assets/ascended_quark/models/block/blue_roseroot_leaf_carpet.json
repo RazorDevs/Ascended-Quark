@@ -1,5 +1,6 @@
 {
-  "parent": "quark:block/vertical_planks",
+  "parent": "quark:block/leaf_carpet",
+  "render_type": "minecraft:cutout",
   "textures": {
     "all": "deep_aether:block/blue_roseroot_leaves"
   }

@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-10T13:20:12.6555919	Item Models: ascended_quark
+// 1.20.1	2024-09-11T13:39:12.344083	Item Models: ascended_quark
 ac6cc442ad1688515a1e6ecea181ad01d1b15ef2 assets/ascended_quark/models/item/aerogel_vertical_slab.json
 865c07dce7c0bcdcd091057b1eceebe058ce1dfc assets/ascended_quark/models/item/aether_dirt_bricks.json
 3b8d00c3908ee166dfb41b4555672b26578243bd assets/ascended_quark/models/item/aether_dirt_bricks_slab.json
@@ -37,6 +37,7 @@ bcad450d81a7c795d30df492a888a17f578a464a assets/ascended_quark/models/item/flowe
 2b6fc6e05be20d5873f1906db76ff2cb018e280b assets/ascended_quark/models/item/flowering_roseroot_leaf_carpet.json
 f74c475de7e2284dd8a285506538248454644f3f assets/ascended_quark/models/item/golden_oak_leaf_carpet.json
 73ec80c61d7527676e33ff1de2ff3f1704304430 assets/ascended_quark/models/item/golden_skyroot_hedge.json
+8244d93264670db7725a72a92bb780b1ed18e62a assets/ascended_quark/models/item/gravarang.json
 3f7022774ab5efc0b021f8a45d47fc8b0f10f4df assets/ascended_quark/models/item/hellfire_vertical_slab.json
 7b8100e6bd0b497c2614fb5329053bec038806f3 assets/ascended_quark/models/item/holiday_leaf_carpet.json
 f7969c0de5e6a11f6245736166b42d372b600205 assets/ascended_quark/models/item/holiday_skyroot_hedge.json

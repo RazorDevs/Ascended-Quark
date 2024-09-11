@@ -50,15 +50,15 @@ ordering="AFTER"
 side="BOTH"
 
 [[dependencies.ascended_quark]]
-modId="quark"
+modId="aether"
 mandatory=true
-versionRange="[0,)"
+versionRange="[1.4.0,)"
 ordering="AFTER"
 side="BOTH"
 
 [[dependencies.ascended_quark]]
-modId="aether"
+modId="quark"
 mandatory=true
-versionRange="[1.4.0,)"
+versionRange="[0,)"
 ordering="AFTER"
 side="BOTH"

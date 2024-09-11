@@ -1,6 +1,6 @@
 {
   "parent": "quark:block/hollow_log",
-  "render_type": "minecraft:cutout",
+  "render_type": "minecraft:translucent",
   "textures": {
     "end": "deep_aether:block/cruderoot_log_top",
     "inside": "deep_aether:block/stripped_cruderoot_log",

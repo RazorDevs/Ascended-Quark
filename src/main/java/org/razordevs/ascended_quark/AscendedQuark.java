@@ -94,7 +94,7 @@ public class AscendedQuark {
         generator.addProvider(event.includeClient(), new AQLangData(output, itemMap, blockMap));
 
         // Server Data
-        //generator.addProvider(event.includeServer(), new AQRecipeData(output));
+        generator.addProvider(event.includeServer(), new AQRecipeData(output, itemMap, blockMap));
         generator.addProvider(event.includeServer(), AQLootTableData.create(output, blockMap));
         AQBlockTagData blockTags = new AQBlockTagData(output, lookupProvider, fileHelper, blockMap);
 

@@ -1,0 +1,31 @@
+{
+  "type": "forge:and",
+  "category": "building",
+  "key": {
+    "A": {
+      "tag": "aether:skyroot_logs"
+    },
+    "B": {
+      "item": "aether:decorated_holiday_leaves"
+    }
+  },
+  "pattern": [
+    "B",
+    "A"
+  ],
+  "result": {
+    "count": 2,
+    "item": "ascended_quark:decorated_holiday_skyroot_hedge"
+  },
+  "show_notification": true,
+  "values": [
+    {
+      "type": "quark:flag",
+      "flag": "hedges"
+    },
+    {
+      "type": "ascended_quark:flag",
+      "flag": "skyroot_quark_blocks"
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 package org.razordevs.ascended_quark.util;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
-import net.minecraft.client.gui.components.tabs.Tab;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;

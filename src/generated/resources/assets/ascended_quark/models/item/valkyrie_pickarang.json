@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "ascended_quark:item/gravarang"
+    "layer0": "ascended_quark:item/valkyrie_pickarang"
   }
 }

@@ -1,9 +1,5 @@
 package org.razordevs.ascended_quark.module;
 
-import com.aetherteam.aether.AetherTags;
-import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.item.AetherCreativeTabs;
-import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -19,14 +15,12 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.RegistryObject;
-import org.apache.commons.compress.utils.Sets;
 import org.jetbrains.annotations.Nullable;
 import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.tools.client.render.entity.PickarangRenderer;
 import org.violetmoon.quark.content.tools.config.PickarangType;
 import org.violetmoon.quark.content.tools.entity.rang.AbstractPickarang;
+import org.violetmoon.quark.content.tools.entity.rang.Flamerang;
 import org.violetmoon.quark.content.tools.entity.rang.Pickarang;
 import org.violetmoon.quark.content.tools.item.PickarangItem;
 import org.violetmoon.quark.content.tools.module.PickarangModule;
@@ -34,8 +28,7 @@ import org.violetmoon.zeta.advancement.ManualTrigger;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
 import org.violetmoon.zeta.config.Config;
 import org.violetmoon.zeta.event.bus.LoadEvent;
-import org.violetmoon.zeta.event.load.ZConfigChanged;
-import org.violetmoon.zeta.event.load.ZRegister;
+import org.violetmoon.zeta.event.load.*;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.BooleanSuppliers;
@@ -46,26 +39,23 @@ import java.util.List;
 import java.util.function.BooleanSupplier;
 
 @ZetaLoadModule(category = "aether")
-public class AetherPickarangModule extends ZetaModule {
-    @Config(name = "gravarang")
-    public static PickarangType<Pickarang> gravarangType = new PickarangType<>(Items.PINK_WOOL, Items.DIAMOND_PICKAXE, 20, 3, 800, 20.0, 2, 10);
+public class AQPickarangModule extends ZetaModule {
 
-    @Hint("gravarang")
-    public static Item gravarang;
+    @Config(flag = "phoenix_flamerang")
+    public static boolean enableFlamerang = true;
+
+    @Hint
+    public static Item valk_pickarang;
+    @Hint("flamerang")
+    public static Item phoenix_flamerang;
 
     private static final List<PickarangType<?>> knownTypes = new ArrayList<>();
     private static boolean isEnabled;
 
-    public static ManualTrigger throwGravarangTrigger;
-
-    private static final ThreadLocal<DamageSource> ACTIVE_PICKARANG_DAMAGE = new ThreadLocal<>();
-
-
     @LoadEvent
     public final void register(ZRegister event) {
-            gravarang = makePickarang(gravarangType, "gravarang", Pickarang::new, Pickarang::new, BooleanSuppliers.TRUE).setCreativeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), Items.DIAMOND_HOE, false);
-
-            throwGravarangTrigger = event.getAdvancementModifierRegistry().registerManualTrigger("throw_gravarang");
+        valk_pickarang = makePickarang(PickarangModule.pickarangType, "valkyrie_pickarang", Pickarang::new, Pickarang::new, BooleanSuppliers.TRUE).setCreativeTab(CreativeModeTabs.TOOLS_AND_UTILITIES, Items.DIAMOND_HOE, false);
+        phoenix_flamerang = makePickarang(PickarangModule.flamerangType, "phoenix_flamerang", Flamerang::new, Flamerang::new, () -> enableFlamerang).setCreativeTab(CreativeModeTabs.TOOLS_AND_UTILITIES, Items.NETHERITE_HOE, false);
     }
 
     private <T extends AbstractPickarang<T>> PickarangItem makePickarang(PickarangType<T> type, String name,
@@ -114,5 +104,13 @@ public class AetherPickarangModule extends ZetaModule {
             return pick.getPickarangType().isFireResistant();
 
         return false;
+    }
+
+    @ZetaLoadModule(clientReplacement = true)
+    public static class Client extends AQPickarangModule {
+        @LoadEvent
+        public final void clientSetup(ZClientSetup event) {
+            knownTypes.forEach(t -> EntityRenderers.register(t.getEntityType(), PickarangRenderer::new));
+        }
     }
 }

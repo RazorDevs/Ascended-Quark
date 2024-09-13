@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "hedges"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "deep_aether_wood"
+        }
+      ]
+    }
+  ],
+  "key": {
+    "A": {
+      "item": "deep_aether:roseroot_log"
+    },
+    "B": {
+      "item": "deep_aether:blue_roseroot_leaves"
+    }
+  },
+  "pattern": [
+    "B",
+    "A"
+  ],
+  "result": {
+    "count": 2,
+    "item": "ascended_quark:blue_roseroot_hedge"
+  },
+  "show_notification": true
+}

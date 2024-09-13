@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "vertical_slabs"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "deep_aether_wood"
+        }
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "ascended_quark:vertical_cruderoot_planks"
+    }
+  ],
+  "result": {
+    "item": "deep_aether:cruderoot_planks"
+  }
+}

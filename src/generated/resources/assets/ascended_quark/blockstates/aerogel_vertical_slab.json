@@ -1,7 +1,7 @@
 {
   "variants": {
     "type=double": {
-      "model": "aether:block/skyroot_planks"
+      "model": "aether:block/aerogel"
     },
     "type=east": {
       "model": "ascended_quark:block/aerogel_vertical_slab",

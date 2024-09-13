@@ -2,6 +2,7 @@ package org.razordevs.ascended_quark.datagen;
 
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -28,6 +29,8 @@ public class AQRecipeData extends RecipeProvider {
     private final HashMap<String, Item> itemMap;
     private final HashMap<String, Block> blockMap;
 
+    private static final String DA_WOOD = "deep_aether_wood";
+
     public AQRecipeData(PackOutput output, HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
         super(output);
         this.itemMap = itemMap;
@@ -38,11 +41,20 @@ public class AQRecipeData extends RecipeProvider {
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
         skyrootHedge(blockMap.get("decorated_holiday_skyroot_hedge"), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
 
-        woodset("roseroot", DABlocks.ROSEROOT_PLANKS.get(), DABlocks.ROSEROOT_LOG.get(), DABlocks.ROSEROOT_WOOD.get(), DABlocks.STRIPPED_ROSEROOT_WOOD.get(), DABlocks.ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_SLAB.get(), "deep_aether_wood", consumer);
-        woodset("cruderoot", DABlocks.CRUDEROOT_PLANKS.get(), DABlocks.CRUDEROOT_LOG.get(), DABlocks.CRUDEROOT_WOOD.get(), DABlocks.STRIPPED_CRUDEROOT_WOOD.get(), DABlocks.CRUDEROOT_LEAVES.get(), DABlocks.CRUDEROOT_SLAB.get(), "deep_aether_wood", consumer);
-        woodset("sunroot", DABlocks.SUNROOT_PLANKS.get(), DABlocks.SUNROOT_LOG.get(), DABlocks.SUNROOT_WOOD.get(), DABlocks.STRIPPED_SUNROOT_WOOD.get(), DABlocks.SUNROOT_LEAVES.get(), DABlocks.SUNROOT_SLAB.get(), "deep_aether_wood", consumer);
-        woodset("yagroot", DABlocks.YAGROOT_PLANKS.get(), DABlocks.YAGROOT_LOG.get(), DABlocks.YAGROOT_WOOD.get(), DABlocks.STRIPPED_YAGROOT_WOOD.get(), DABlocks.YAGROOT_LEAVES.get(), DABlocks.YAGROOT_SLAB.get(), "deep_aether_wood", consumer);
-        woodset("conberry", DABlocks.CONBERRY_PLANKS.get(), DABlocks.CONBERRY_LOG.get(), DABlocks.CONBERRY_WOOD.get(), DABlocks.STRIPPED_CONBERRY_WOOD.get(), DABlocks.CONBERRY_LEAVES.get(), DABlocks.CONBERRY_SLAB.get(), "deep_aether_wood", consumer);
+        woodset("roseroot", DABlocks.ROSEROOT_PLANKS.get(), DABlocks.ROSEROOT_LOG.get(), DABlocks.ROSEROOT_WOOD.get(), DABlocks.STRIPPED_ROSEROOT_WOOD.get(), DABlocks.ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_SLAB.get(), DA_WOOD, consumer);
+        this.hedge(blockMap.get("flowering_roseroot_hedge"), DABlocks.FLOWERING_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get(), DEFAULT_FLAG, DA_WOOD, consumer);
+        this.hedge(blockMap.get("blue_roseroot_hedge"), DABlocks.BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get(), DEFAULT_FLAG, DA_WOOD, consumer);
+        this.hedge(blockMap.get("flowering_blue_roseroot_hedge"), DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get(), DEFAULT_FLAG, DA_WOOD, consumer);
+        this.carpet(blockMap.get("flowering_roseroot_leaf_carpet"), DABlocks.FLOWERING_ROSEROOT_LEAVES.get(), DA_WOOD, consumer);
+        this.carpet(blockMap.get("blue_roseroot_leaf_carpet"), DABlocks.BLUE_ROSEROOT_LEAVES.get(), DA_WOOD, consumer);
+        this.carpet(blockMap.get("flowering_blue_roseroot_leaf_carpet"), DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES.get(), DA_WOOD, consumer);
+
+        woodset("cruderoot", DABlocks.CRUDEROOT_PLANKS.get(), DABlocks.CRUDEROOT_LOG.get(), DABlocks.CRUDEROOT_WOOD.get(), DABlocks.STRIPPED_CRUDEROOT_WOOD.get(), DABlocks.CRUDEROOT_LEAVES.get(), DABlocks.CRUDEROOT_SLAB.get(), DA_WOOD, consumer);
+        woodset("sunroot", DABlocks.SUNROOT_PLANKS.get(), DABlocks.SUNROOT_LOG.get(), DABlocks.SUNROOT_WOOD.get(), DABlocks.STRIPPED_SUNROOT_WOOD.get(), DABlocks.SUNROOT_LEAVES.get(), DABlocks.SUNROOT_SLAB.get(), DA_WOOD, consumer);
+        woodset("yagroot", DABlocks.YAGROOT_PLANKS.get(), DABlocks.YAGROOT_LOG.get(), DABlocks.YAGROOT_WOOD.get(), DABlocks.STRIPPED_YAGROOT_WOOD.get(), DABlocks.YAGROOT_LEAVES.get(), DABlocks.YAGROOT_SLAB.get(), DA_WOOD, consumer);
+        woodset("conberry", DABlocks.CONBERRY_PLANKS.get(), DABlocks.CONBERRY_LOG.get(), DABlocks.CONBERRY_WOOD.get(), DABlocks.STRIPPED_CONBERRY_WOOD.get(), DABlocks.CONBERRY_LEAVES.get(), DABlocks.CONBERRY_SLAB.get(), DA_WOOD, consumer);
+
+
 
         /*
         ShapedRecipeBuilder.shaped(AQBlocks.AETHER_DIRT_BRICKS.get(), 4).define('A', AetherBlocks.AETHER_DIRT.get())
@@ -245,6 +257,7 @@ x
     }
 
     private void woodset(String type, Block planks, Block log, Block wood, Block strippedWood, Block leaves, Block slab, String flag, Consumer<FinishedRecipe> consumer) {
+        this.verticalPlanks(blockMap.get("vertical_" + type + "_planks"), planks, flag, consumer);
         this.hedge(blockMap.get(type+"_hedge"), leaves, log, DEFAULT_FLAG, flag, consumer);
         this.verticalSlab(blockMap.get(type + "_vertical_slab"), slab, flag, consumer);
         this.carpet(blockMap.get(type + "_leaf_carpet"), leaves, flag, consumer);
@@ -253,6 +266,7 @@ x
         this.chest(blockMap.get(type+"_chest"), planks, flag, consumer);
         this.chest(blockMap.get(type+"_trapped_chest"), planks, flag, consumer);
         this.hollowLog(blockMap.get("hollow_" + type + "_log"), log, flag, consumer);
+        this.ladder(blockMap.get(type + "_ladder"), planks, flag, consumer);
     }
 
 
@@ -293,6 +307,22 @@ x
                 .unlockedBy(getHasName(wood), has(wood)).save(consumer);
     }
 
+    void verticalPlanks(ItemLike verticalPlanks, ItemLike planks, String flag, Consumer<FinishedRecipe> consumer) {
+        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, verticalPlanks, 3)
+                .define('A', planks)
+                .pattern("A")
+                .pattern("A")
+                .pattern("A")
+                .condition(new ResourceLocation(Quark.MOD_ID, "flag"), "vertical_planks")
+                .condition(DEFAULT_FLAG, flag)
+                .unlockedBy(getHasName(planks), has(planks)).save(consumer);
+
+        ConditionalShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, planks)
+                .condition(new ResourceLocation(Quark.MOD_ID, "flag"), "vertical_slabs")
+                .condition(DEFAULT_FLAG, flag).requires(verticalPlanks)
+                .unlockedBy(getHasName(planks), has(planks)).save(consumer, getItemName(verticalPlanks) + "_from_" + getItemName(planks));
+    }
+
     void chest(ItemLike chest, ItemLike planks, String flag, Consumer<FinishedRecipe> consumer) {
         ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chest)
                 .define('A', planks)
@@ -315,6 +345,17 @@ x
                 .unlockedBy(getHasName(log), has(log)).save(consumer);
     }
 
+    void ladder(ItemLike ladder, ItemLike planks, String flag, Consumer<FinishedRecipe> consumer){
+        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ladder, 4)
+                .define('A', planks)
+                .define('-', AetherItems.SKYROOT_STICK.get())
+                .pattern("- -")
+                .pattern("-A-")
+                .pattern("- -")
+                .condition(new ResourceLocation(Quark.MOD_ID, "flag"), "variant_ladders")
+                .condition(DEFAULT_FLAG, flag)
+                .unlockedBy(getHasName(planks), has(planks)).save(consumer);
+    }
 
     void verticalSlabRevert(Block slab, Block reverted, Consumer<FinishedRecipe> consumer, String flag) {
         verticalSlabRevertBuilder(reverted, Ingredient.of(slab), flag).unlockedBy(getHasName(slab), has(slab)).save(consumer, getItemName(reverted) + "_from_" + getItemName(slab));

@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "variant_ladders"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "deep_aether_wood"
+        }
+      ]
+    }
+  ],
+  "key": {
+    "-": {
+      "item": "aether:skyroot_stick"
+    },
+    "A": {
+      "item": "deep_aether:conberry_planks"
+    }
+  },
+  "pattern": [
+    "- -",
+    "-A-",
+    "- -"
+  ],
+  "result": {
+    "count": 4,
+    "item": "ascended_quark:conberry_ladder"
+  },
+  "show_notification": true
+}

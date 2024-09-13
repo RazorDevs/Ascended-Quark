@@ -72,7 +72,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.leafCarpet("golden_oak", AetherBlocks.GOLDEN_OAK_LEAVES.get(), "natural/");
 
         this.verticalSlab("skyroot", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
-        this.verticalSlab("aerogel", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
+        this.verticalSlab("aerogel", AetherBlocks.AEROGEL.get(), "construction/");
         this.verticalSlab("holystone_brick", AetherBlocks.HOLYSTONE_BRICKS.get(), "construction/");
         this.verticalSlab("mossy_holystone", AetherBlocks.MOSSY_HOLYSTONE.get(), "natural/");
         this.verticalSlab("holystone", AetherBlocks.HOLYSTONE.get(), "natural/");

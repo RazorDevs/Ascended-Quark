@@ -26,8 +26,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implements RecipeBuilder {
-    private List<Pair<ResourceLocation, String>> condition = new ArrayList<>();
-
+    private final List<Pair<ResourceLocation, String>> condition = new ArrayList<>();
     private final RecipeCategory category;
     private final Item result;
     private final int count;
@@ -72,7 +71,7 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
     }
 
     public ConditionalShapedRecipeBuilder pattern(String p_126131_) {
-        if (!this.rows.isEmpty() && p_126131_.length() != ((String)this.rows.get(0)).length()) {
+        if (!this.rows.isEmpty() && p_126131_.length() != this.rows.get(0).length()) {
             throw new IllegalArgumentException("Pattern must be the same width on every line!");
         } else {
             this.rows.add(p_126131_);
@@ -208,8 +207,6 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
                     p_126167_.add("conditions", conditions);
                 }
                 else {
-                    p_126167_.addProperty("type", "forge:and");
-
                     JsonArray values = new JsonArray();
 
 
@@ -220,7 +217,13 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
                         values.add(conditions);
                     }
 
-                    p_126167_.add("values", values);
+                    JsonArray array = new JsonArray();
+                    JsonObject object = new JsonObject();
+                    object.addProperty("type", "forge:and");
+                    object.add("values", values);
+
+                    array.add(object);
+                    p_126167_.add("conditions", array);
 
                 }
             }

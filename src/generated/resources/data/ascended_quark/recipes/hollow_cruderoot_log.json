@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "hollow_logs"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "deep_aether_wood"
+        }
+      ]
+    }
+  ],
+  "key": {
+    "A": {
+      "item": "deep_aether:cruderoot_log"
+    }
+  },
+  "pattern": [
+    " A ",
+    "A A",
+    " A "
+  ],
+  "result": {
+    "count": 4,
+    "item": "ascended_quark:hollow_cruderoot_log"
+  },
+  "show_notification": true
+}

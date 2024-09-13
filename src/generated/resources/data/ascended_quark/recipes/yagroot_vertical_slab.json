@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "vertical_slabs"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "deep_aether_wood"
+        }
+      ]
+    }
+  ],
+  "key": {
+    "#": {
+      "item": "deep_aether:yagroot_slab"
+    }
+  },
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 3,
+    "item": "ascended_quark:yagroot_vertical_slab"
+  },
+  "show_notification": true
+}

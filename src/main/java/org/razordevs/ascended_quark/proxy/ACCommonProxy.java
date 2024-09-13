@@ -2,16 +2,13 @@ package org.razordevs.ascended_quark.proxy;
 
 import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.module.compat.deep_aether.WoodModule;
 import org.violetmoon.zeta.module.ZetaCategory;
 import org.violetmoon.zetaimplforge.module.ModFileScanDataModuleFinder;
 import teamrazor.deepaether.init.DABlocks;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 public class ACCommonProxy {
 

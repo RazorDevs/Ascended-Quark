@@ -9,7 +9,7 @@ import teamrazor.deepaether.init.DABlocks;
 
 //TODO : IMPLEMENT DEEP AETHER COMPAT
 @ZetaLoadModule(category = "deep_aether", antiOverlap = {"everycomp"})
-public class WoodModule extends ZetaModule {
+public class DeepAetherWoodModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {

@@ -1,6 +1,21 @@
 {
-  "type": "forge:and",
+  "type": "minecraft:crafting_shaped",
   "category": "building",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "hedges"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "skyroot_quark_blocks"
+        }
+      ]
+    }
+  ],
   "key": {
     "A": {
       "tag": "aether:skyroot_logs"
@@ -17,15 +32,5 @@
     "count": 2,
     "item": "ascended_quark:decorated_holiday_skyroot_hedge"
   },
-  "show_notification": true,
-  "values": [
-    {
-      "type": "quark:flag",
-      "flag": "hedges"
-    },
-    {
-      "type": "ascended_quark:flag",
-      "flag": "skyroot_quark_blocks"
-    }
-  ]
+  "show_notification": true
 }

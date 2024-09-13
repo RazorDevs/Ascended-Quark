@@ -13,7 +13,9 @@ import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.datagen.recipe.ConditionalShapedRecipeBuilder;
+import org.razordevs.ascended_quark.datagen.recipe.ConditionalShapelessRecipeBuilder;
 import org.violetmoon.quark.base.Quark;
+import teamrazor.deepaether.init.DABlocks;
 
 import java.util.HashMap;
 import java.util.function.Consumer;
@@ -35,6 +37,12 @@ public class AQRecipeData extends RecipeProvider {
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
         skyrootHedge(blockMap.get("decorated_holiday_skyroot_hedge"), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
+
+        woodset("roseroot", DABlocks.ROSEROOT_PLANKS.get(), DABlocks.ROSEROOT_LOG.get(), DABlocks.ROSEROOT_WOOD.get(), DABlocks.STRIPPED_ROSEROOT_WOOD.get(), DABlocks.ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_SLAB.get(), "deep_aether_wood", consumer);
+        woodset("cruderoot", DABlocks.CRUDEROOT_PLANKS.get(), DABlocks.CRUDEROOT_LOG.get(), DABlocks.CRUDEROOT_WOOD.get(), DABlocks.STRIPPED_CRUDEROOT_WOOD.get(), DABlocks.CRUDEROOT_LEAVES.get(), DABlocks.CRUDEROOT_SLAB.get(), "deep_aether_wood", consumer);
+        woodset("sunroot", DABlocks.SUNROOT_PLANKS.get(), DABlocks.SUNROOT_LOG.get(), DABlocks.SUNROOT_WOOD.get(), DABlocks.STRIPPED_SUNROOT_WOOD.get(), DABlocks.SUNROOT_LEAVES.get(), DABlocks.SUNROOT_SLAB.get(), "deep_aether_wood", consumer);
+        woodset("yagroot", DABlocks.YAGROOT_PLANKS.get(), DABlocks.YAGROOT_LOG.get(), DABlocks.YAGROOT_WOOD.get(), DABlocks.STRIPPED_YAGROOT_WOOD.get(), DABlocks.YAGROOT_LEAVES.get(), DABlocks.YAGROOT_SLAB.get(), "deep_aether_wood", consumer);
+        woodset("conberry", DABlocks.CONBERRY_PLANKS.get(), DABlocks.CONBERRY_LOG.get(), DABlocks.CONBERRY_WOOD.get(), DABlocks.STRIPPED_CONBERRY_WOOD.get(), DABlocks.CONBERRY_LEAVES.get(), DABlocks.CONBERRY_SLAB.get(), "deep_aether_wood", consumer);
 
         /*
         ShapedRecipeBuilder.shaped(AQBlocks.AETHER_DIRT_BRICKS.get(), 4).define('A', AetherBlocks.AETHER_DIRT.get())
@@ -236,31 +244,80 @@ x
 */
     }
 
+    private void woodset(String type, Block planks, Block log, Block wood, Block strippedWood, Block leaves, Block slab, String flag, Consumer<FinishedRecipe> consumer) {
+        this.hedge(blockMap.get(type+"_hedge"), leaves, log, DEFAULT_FLAG, flag, consumer);
+        this.verticalSlab(blockMap.get(type + "_vertical_slab"), slab, flag, consumer);
+        this.carpet(blockMap.get(type + "_leaf_carpet"), leaves, flag, consumer);
+        this.post(blockMap.get(type + "_post"), wood, flag, consumer);
+        this.post(blockMap.get("stripped_" + type + "_post"), strippedWood, flag, consumer);
+        this.chest(blockMap.get(type+"_chest"), planks, flag, consumer);
+        this.chest(blockMap.get(type+"_trapped_chest"), planks, flag, consumer);
+        this.hollowLog(blockMap.get("hollow_" + type + "_log"), log, flag, consumer);
+    }
+
 
     void slab(Block slab, Block texture, Consumer<FinishedRecipe> consumer) {
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, slab, Ingredient.of(texture)).unlockedBy(getHasName(texture), has(texture)).save(consumer);
-        //slabRevert(slab, texture, consumer);
     }
 
-    void veticalSlab(Block slab, Block texture, Consumer<FinishedRecipe> consumer) {
-        verticalSlabBuilder(slab, Ingredient.of(texture)).unlockedBy(getHasName(texture), has(texture)).save(consumer);
-        veticalSlabRevert(slab, texture, consumer);
+    void verticalSlab(Block vertical, Block slab, String flag, Consumer<FinishedRecipe> consumer) {
+        verticalSlabBuilder(vertical, Ingredient.of(slab), flag).unlockedBy(getHasName(slab), has(slab)).save(consumer);
+        verticalSlabRevert(vertical, slab, consumer, flag);
     }
 
-    protected static RecipeBuilder verticalSlabBuilder(ItemLike itemLike, Ingredient ingredient) {
-        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, itemLike, 3).define('#', ingredient)
+    protected static RecipeBuilder verticalSlabBuilder(ItemLike itemLike, Ingredient ingredient, String flag) {
+        return ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, itemLike, 3).define('#', ingredient)
                 .pattern("#")
                 .pattern("#")
-                .pattern("#");
+                .pattern("#")
+                .condition(new ResourceLocation(Quark.MOD_ID, "flag"), "vertical_slabs")
+                .condition(DEFAULT_FLAG, flag);
     }
 
-    void carpet(ItemLike carpet, ItemLike leaf, Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, carpet, 3).define('A', leaf)
-                .pattern("AA").unlockedBy(getHasName(leaf), has(leaf)).save(consumer);
+    void carpet(ItemLike carpet, ItemLike leaf, String flag, Consumer<FinishedRecipe> consumer) {
+        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, carpet, 3).define('A', leaf)
+                .pattern("AA")
+                .condition(new ResourceLocation(Quark.MOD_ID, "flag"), "leaf_carpet")
+                .condition(DEFAULT_FLAG, flag)
+                .unlockedBy(getHasName(leaf), has(leaf)).save(consumer);
     }
 
-    void veticalSlabRevert(Block slab, Block reverted, Consumer<FinishedRecipe> consumer) {
-        verticalSlabRevertBuilder(reverted, Ingredient.of(slab)).unlockedBy(getHasName(slab), has(slab)).save(consumer, getItemName(reverted) + "_from_" + getItemName(slab));
+    void post(ItemLike post, ItemLike wood, String flag, Consumer<FinishedRecipe> consumer) {
+        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, post, 8)
+                .define('A', wood)
+                .pattern("A")
+                .pattern("A")
+                .pattern("A")
+                .condition(new ResourceLocation(Quark.MOD_ID, "flag"), "wooden_posts")
+                .condition(DEFAULT_FLAG, flag)
+                .unlockedBy(getHasName(wood), has(wood)).save(consumer);
+    }
+
+    void chest(ItemLike chest, ItemLike planks, String flag, Consumer<FinishedRecipe> consumer) {
+        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chest)
+                .define('A', planks)
+                .pattern("AAA")
+                .pattern("A A")
+                .pattern("AAA")
+                .condition(new ResourceLocation(Quark.MOD_ID, "flag"), "variant_chests")
+                .condition(DEFAULT_FLAG, flag)
+                .unlockedBy(getHasName(planks), has(planks)).save(consumer);
+    }
+
+    void hollowLog(ItemLike hollowLog, ItemLike log, String flag, Consumer<FinishedRecipe> consumer) {
+        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, hollowLog, 4)
+                .define('A', log)
+                .pattern(" A ")
+                .pattern("A A")
+                .pattern(" A ")
+                .condition(new ResourceLocation(Quark.MOD_ID, "flag"), "hollow_logs")
+                .condition(DEFAULT_FLAG, flag)
+                .unlockedBy(getHasName(log), has(log)).save(consumer);
+    }
+
+
+    void verticalSlabRevert(Block slab, Block reverted, Consumer<FinishedRecipe> consumer, String flag) {
+        verticalSlabRevertBuilder(reverted, Ingredient.of(slab), flag).unlockedBy(getHasName(slab), has(slab)).save(consumer, getItemName(reverted) + "_from_" + getItemName(slab));
     }
 
     void hedge(ItemLike hedge, ItemLike leaves, TagKey<Item> stem, ResourceLocation conditionLocation, String conditionName, Consumer<FinishedRecipe> consumer) {
@@ -287,8 +344,9 @@ x
     void skyrootHedge(ItemLike hedge, ItemLike leaves, Consumer<FinishedRecipe> consumer) {
         hedge(hedge, leaves, AetherTags.Items.SKYROOT_LOGS, DEFAULT_FLAG, "skyroot_quark_blocks", consumer);
     }
-    protected static RecipeBuilder verticalSlabRevertBuilder(ItemLike itemLike, Ingredient ingredient) {
-        return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, itemLike).requires(ingredient);
+    protected static RecipeBuilder verticalSlabRevertBuilder(ItemLike itemLike, Ingredient ingredient, String flag) {
+        return ConditionalShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, itemLike).condition(new ResourceLocation(Quark.MOD_ID, "flag"), "vertical_slabs")
+                .condition(DEFAULT_FLAG, flag).requires(ingredient);
     }
 
     void slabRevert(Block slab, Block reverted, Consumer<FinishedRecipe> consumer) {

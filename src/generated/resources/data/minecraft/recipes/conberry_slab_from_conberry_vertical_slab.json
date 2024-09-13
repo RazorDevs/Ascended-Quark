@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "vertical_slabs"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "deep_aether_wood"
+        }
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "ascended_quark:conberry_vertical_slab"
+    }
+  ],
+  "result": {
+    "item": "deep_aether:conberry_slab"
+  }
+}

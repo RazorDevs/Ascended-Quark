@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:yagroot_hedge"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yagroot_leaves": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deep_aether:yagroot_leaves"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_yagroot_leaves",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:yagroot_hedge"
+    ]
+  },
+  "sends_telemetry_event": false
+}

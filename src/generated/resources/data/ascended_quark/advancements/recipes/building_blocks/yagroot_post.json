@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:yagroot_post"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yagroot_wood": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "deep_aether:yagroot_wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_yagroot_wood",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:yagroot_post"
+    ]
+  },
+  "sends_telemetry_event": false
+}

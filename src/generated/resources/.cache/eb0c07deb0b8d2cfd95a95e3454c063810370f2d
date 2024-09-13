@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-10T13:20:12.6555919	Item Models: ascended_quark
+// 1.20.1	2024-09-13T15:54:44.6891616	Item Models: ascended_quark
 ac6cc442ad1688515a1e6ecea181ad01d1b15ef2 assets/ascended_quark/models/item/aerogel_vertical_slab.json
 865c07dce7c0bcdcd091057b1eceebe058ce1dfc assets/ascended_quark/models/item/aether_dirt_bricks.json
 3b8d00c3908ee166dfb41b4555672b26578243bd assets/ascended_quark/models/item/aether_dirt_bricks_slab.json
@@ -56,6 +56,7 @@ f2173c140e7e9fc048947b6a4f5d841d49baf469 assets/ascended_quark/models/item/icest
 c45a398fab3c8d7c4e66bd6c1932cb6079b0fca3 assets/ascended_quark/models/item/icestone_bricks_wall.json
 d90229f04e35110ff84d7c3394911f94c7c447f3 assets/ascended_quark/models/item/icestone_vertical_slab.json
 63d38fc82fc9336efacdda87957f563a40a381f4 assets/ascended_quark/models/item/mossy_holystone_vertical_slab.json
+3773e6419a2b73ddffb5647bfc9045ba278047b0 assets/ascended_quark/models/item/phoenix_flamerang.json
 26119f19bc41af547e8135502c7d4a94566a7305 assets/ascended_quark/models/item/polished_icestone.json
 24a7c221a724dfde8a348ab53109329bfcfec01c assets/ascended_quark/models/item/polished_icestone_slab.json
 190cb197777d6556c66a0d5132026529f16f30df assets/ascended_quark/models/item/polished_icestone_stairs.json
@@ -98,6 +99,7 @@ fe99bffe7ff15134c72046352abb0c378f5b90a5 assets/ascended_quark/models/item/sunro
 927d140e3cad011929e5c4098e2e0c1b23091126 assets/ascended_quark/models/item/sunroot_post.json
 5a08473d0ecbfa922f463513347be8ebb88e28d9 assets/ascended_quark/models/item/sunroot_trapped_chest.json
 d3693baadc29af9bbf1c7524826ae9ef0c224f41 assets/ascended_quark/models/item/sunroot_vertical_slab.json
+d829a1d4af94261ecd564873cd4da6f8e777bcce assets/ascended_quark/models/item/valkyrie_pickarang.json
 4eb38a35799956595a9e48d9eabab048c5ad17dd assets/ascended_quark/models/item/vertical_conberry_planks.json
 6e557877ba317c848b223f48699ecd46abfa2e0f assets/ascended_quark/models/item/vertical_cruderoot_planks.json
 a9715808c22940329700c49288693740f1337239 assets/ascended_quark/models/item/vertical_roseroot_planks.json

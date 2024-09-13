@@ -10,9 +10,11 @@ import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.registries.RegistryObject;
 import org.codehaus.plexus.util.StringUtils;
 import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.blocks.AQHollowLogBlock;
 import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
 import org.violetmoon.quark.content.building.block.LeafCarpetBlock;
+import org.violetmoon.quark.content.building.block.VariantLadderBlock;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 
 import java.util.ArrayList;
@@ -54,17 +56,20 @@ public class AQLangData extends NitrogenLanguageProvider {
             else if(block instanceof SlabBlock)
                 this.addSlabLore(block);
             else if(block instanceof StairBlock)
-                this.addSlabLore(block);
+                this.addStairsLore(block);
             else if(block instanceof WallBlock)
                 this.addWallLore(block);
+            else if(block instanceof AQHollowLogBlock)
+                this.addHollowLogLore(block);
+            else if(block instanceof VariantLadderBlock)
+                this.addLadderLore(block);
+
         }
 
         for (Item item : items)
         {
             this.add(item, this.getName(item.toString()));
         }
-
-        this.add("quark.category.the_aether", "The Aether");
 
         //TODO: Polishing lore descriptions
 
@@ -80,9 +85,7 @@ public class AQLangData extends NitrogenLanguageProvider {
         this.add("lore.block.ascended_quark.blue_berry_crate", "A handy crate for storing blue berries! A very good decoration block!");
         this.add("lore.block.ascended_quark.quicksoil_framed_glass", "Combine Iron Ingots and Quicksoil Glass, and you get yourself some fancy Quicksoil Framed Glass. Great for some more rustic or medieval builds.");
         this.add("lore.block.ascended_quark.quicksoil_framed_glass_pane", "A thin decorative variant of Quicksoil Framed Glass. Great for some more rustic or medieval builds.");
-        this.add("lore.block.ascended_quark.skyroot_ladder", "Hey look! Now ladders can be made out of Skyroot!");
         this.add("lore.block.ascended_quark.skyroot_chest", "A nice looking chest made out of Skyroot. Perfect blend for your storage room.");
-        this.add("lore.block.ascended_quark.hollow_skyroot_log", "Can be crafted with four Skyroot Logs. You can sneak into them horizontally, anc climb inside of them vertically!");
         this.add("lore.block.ascended_quark.skyroot_stool", "Stools can be created the same way you'd make a Bed, but using slabs instead of full wood blocks. As you can expect, you can sit on them!");
         this.add("lore.block.ascended_quark.skyroot_stick_block", "Cool looking pillar to store your sticks, or to integrate them into your builds!");
 
@@ -94,10 +97,20 @@ public class AQLangData extends NitrogenLanguageProvider {
         addMenuLangComponents();
     }
 
+
     private void addMenuLangComponents() {
-        this.add(AscendedQuark.MODID + ".category.aether", "Aether");
+        this.add(AscendedQuark.MODID + ".category.aether", "The Aether");
+        this.add(AscendedQuark.MODID + ".category.deep_aether", "Deep Aether");
         this.add(AscendedQuark.MODID + ".category.general", "General Settings");
         this.add(AscendedQuark.MODID + ".gui.config.social.discord", "RazorDevs Discord");
+    }
+
+    private void addLadderLore(Block block) {
+        this.add("lore." + block.getDescriptionId(), "Ladders made out of " + clearBlockOrigin(block, 7) + "! Much better decoration than plain ol' stairs...");
+    }
+
+    private void addHollowLogLore(Block block) {
+        this.add("lore." + block.getDescriptionId(), "Can be crafted with four " + clearBlockOrigin(block, 7) + " Logs. You can sneak into them horizontally, and climb inside of them vertically!");
     }
 
     private void addBricksLore(Block block){

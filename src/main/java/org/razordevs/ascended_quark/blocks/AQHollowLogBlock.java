@@ -6,15 +6,16 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
+import org.violetmoon.quark.content.building.block.HollowPillarBlock;
 import org.violetmoon.zeta.block.ZetaPillarBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.registry.RenderLayerRegistry;
 import org.violetmoon.zeta.util.MiscUtil;
 
-public class AQHollowLogBlock extends ZetaPillarBlock {
+public class AQHollowLogBlock extends HollowPillarBlock {
 
     public AQHollowLogBlock(String name, @Nullable ZetaModule module) {
-        super(name, module, MiscUtil.copyPropertySafe(Blocks.OAK_LOG).isSuffocating((s, g, p) -> false));
+        super(name, module, MiscUtil.copyPropertySafe(Blocks.OAK_LOG).isSuffocating((s, g, p) -> false).noOcclusion());
         if (module != null) {
             module.zeta.renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT_MIPPED);
         }

@@ -20,23 +20,21 @@ import java.util.Objects;
 
 @Mixin(value = ZephyrTransparencyLayer.class)
 public class ZephyrLayerMixin extends RenderLayer<Zephyr, EntityModel<Zephyr>> {
-
-    @Unique
-    private final ZephyrModel ascended_quark$transparency;
+    private final ZephyrModel transparency;
 
     public ZephyrLayerMixin(RenderLayerParent<Zephyr, EntityModel<Zephyr>> entityRenderer, ZephyrModel transparencyModel) {
         super(entityRenderer);
-        this.ascended_quark$transparency = transparencyModel;
+        this.transparency = transparencyModel;
     }
 
 
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Zephyr zephyr, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (this.getParentModel() instanceof ZephyrModel && !zephyr.isInvisible()) {
-            this.getParentModel().copyPropertiesTo(this.ascended_quark$transparency);
-            this.ascended_quark$transparency.prepareMobModel(zephyr, limbSwing, limbSwingAmount, partialTicks);
-            this.ascended_quark$transparency.setupAnim(zephyr, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+            this.getParentModel().copyPropertiesTo(this.transparency);
+            this.transparency.prepareMobModel(zephyr, limbSwing, limbSwingAmount, partialTicks);
+            this.transparency.setupAnim(zephyr, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
             VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(Objects.requireNonNull(AetherVariantAnimalTexturesModule.Client.getZephyrLayerTexture(zephyr))));
-            this.ascended_quark$transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(zephyr, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+            this.transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(zephyr, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
         }
 
     }

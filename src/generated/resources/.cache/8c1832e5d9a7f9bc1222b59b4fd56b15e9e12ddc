@@ -1,22 +1,22 @@
-// 1.20.1	2024-09-13T12:11:06.2987585	Ascended Quark Block Tags
-006150a9ed3201bbe909b4d367739d52051c9121 data/aether/tags/blocks/treated_as_aether_block.json
+// 1.20.1	2024-09-13T15:54:44.6876739	Ascended Quark Block Tags
+f0b27b9f2876f94251f0800cac5760470f180a0e data/aether/tags/blocks/treated_as_aether_block.json
 116952e655b482a919c5e4824616a4c363b56025 data/forge/tags/blocks/chests.json
 ac06d1f820eeb0f3942179b2248a9d0cdf52e670 data/forge/tags/blocks/chests/trapped.json
 116952e655b482a919c5e4824616a4c363b56025 data/forge/tags/blocks/chests/wooden.json
 8bf99587d339bafc2b477f18244b67ff2393c94e data/minecraft/tags/blocks/climbable.json
 8bf99587d339bafc2b477f18244b67ff2393c94e data/minecraft/tags/blocks/fall_damage_resetting.json
 116952e655b482a919c5e4824616a4c363b56025 data/minecraft/tags/blocks/guarded_by_piglins.json
-26b3314bbfec9a5eb50d348efc2006e6bbe9f69e data/minecraft/tags/blocks/mineable/axe.json
+d92104567f568373af7acae21f9a0acb92c1443e data/minecraft/tags/blocks/mineable/axe.json
 85cfac8409523fadc0fe11576e5bf8aa275a7b4b data/minecraft/tags/blocks/mineable/hoe.json
 de13ed40eaf8705e4299281f2f9f34eb9cf6ff5c data/minecraft/tags/blocks/mineable/pickaxe.json
 8057957e613a17633931268cd54255f339692dfc data/minecraft/tags/blocks/mineable/shovel.json
 309c1bd21e12c013a0019c2c6fd3bd1db78f1dcb data/minecraft/tags/blocks/slabs.json
 19b6e1dce9d6feb8e678e302bb77c088da4c9254 data/minecraft/tags/blocks/stairs.json
 ca45c3c823b06fb97573173a962b9e539dd73634 data/minecraft/tags/blocks/walls.json
-6abe4c7631d6d88e9d5ba69d87628813136d9fc1 data/quark/tags/blocks/hedges.json
+7855626123cfb7d0ee6b1f5a541970920dcb9c63 data/quark/tags/blocks/hedges.json
 8baa253d0417220e4508dde4fdf50e835b29da2f data/quark/tags/blocks/hollow_logs.json
 8bf99587d339bafc2b477f18244b67ff2393c94e data/quark/tags/blocks/ladders.json
-26306c987dbd6002fe6621ae896b2732f8257b6c data/quark/tags/blocks/posts.json
+d97a1f42fd7fa5034a99f96b7e9c2410b04d829c data/quark/tags/blocks/posts.json
 9b05a108aee814b70443eb720ce75ecad104361a data/quark/tags/blocks/stools.json
 dce56d8569337fcf6d3a9975ae51ab22406beb17 data/quark/tags/blocks/vertical_slabs.json
 2c5c6e2528d5ce0f8dd69539c7d4b117f8b1acc3 data/quark/tags/blocks/wooden_vertical_slabs.json

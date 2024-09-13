@@ -1,8 +1,9 @@
 {
   "parent": "quark:block/hollow_log_horizontal",
+  "render_type": "minecraft:translucent",
   "textures": {
     "end": "deep_aether:block/conberry_log_top",
-    "inside": "deep_aether:stripped_block/conberry_log",
+    "inside": "deep_aether:block/stripped_conberry_log",
     "side": "deep_aether:block/conberry_log"
   }
 }

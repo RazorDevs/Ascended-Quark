@@ -54,6 +54,8 @@ public class RegistryUtil {
         new AQHedgeBlock(type + "_hedge", module);
         new AQHollowLogBlock("hollow_" + type + "_log", module);
         new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true);
+        if(!type.equals("skyroot"))
+            new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD)
         Block post = new AQWoodenPostBlock(type + "_post", module);
         Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
         ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);

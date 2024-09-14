@@ -102,11 +102,10 @@ public class AscendedQuark {
     @Deprecated(forRemoval = true)
     @ApiStatus.ScheduledForRemoval(inVersion = "1.22")
     public void missingMappings(MissingMappingsEvent event) {
-
         Stream<MissingMappingsEvent.Mapping<Block>> stream = event.getMappings(ForgeRegistries.Keys.BLOCKS, AscendedQuark.MODID).stream();
         stream.filter(mapping -> mapping.getKey().getPath().contains("brick_"))
                 .forEach(blockMapping -> {
-                    Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(AscendedQuark.MODID, blockMapping.getKey().getPath().replace("brick_", "bricks_")));
+                    Block block = ForgeRegistries.BLOCKS.getValue(asResource(blockMapping.getKey().getPath().replace("brick_", "bricks_")));
                     if(block != null)
                         blockMapping.remap(block);
 
@@ -115,7 +114,7 @@ public class AscendedQuark {
         Stream<MissingMappingsEvent.Mapping<Item>> itemSteam = event.getMappings(ForgeRegistries.Keys.ITEMS, AscendedQuark.MODID).stream();
         itemSteam.filter(mapping -> mapping.getKey().getPath().contains("brick_"))
                 .forEach(itemMapping -> {
-                    Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(AscendedQuark.MODID, itemMapping.getKey().getPath().replace("brick_", "bricks_")));
+                    Block block = ForgeRegistries.BLOCKS.getValue(asResource(itemMapping.getKey().getPath().replace("brick_", "bricks_")));
                     if(block != null)
                         itemMapping.remap(block.asItem());
                 });

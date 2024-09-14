@@ -36,15 +36,15 @@ public class RegistryUtil {
         createHedge(type + "_hedge", module, fence);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), log, module);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true), planks, module);
+        if(!type.equals("skyroot"))
+            addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD), planks, module);
 
         Block post = new AQWoodenPostBlock(type + "_post", module);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, log, module);
         Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), stripped, log, module);
         ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);
-
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new CompAQVerticalSlabBlock(type + "_vertical_slab", slab, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module), planks, module);
-
         createLeafCarpet(type + "_leaf_carpet", module, leaves);
     }
 

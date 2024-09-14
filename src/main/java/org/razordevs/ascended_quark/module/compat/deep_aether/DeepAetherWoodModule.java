@@ -12,7 +12,6 @@ import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 import teamrazor.deepaether.init.DABlocks;
 
-//TODO : IMPLEMENT DEEP AETHER COMPAT
 @ZetaLoadModule(category = "deep_aether", antiOverlap = {"everycomp"})
 public class DeepAetherWoodModule extends ZetaModule {
 

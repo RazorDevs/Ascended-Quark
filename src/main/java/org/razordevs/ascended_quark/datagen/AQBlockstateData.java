@@ -112,6 +112,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.strippedPost(type, stripped);
         this.ladder(type);
         this.hollowLog(type, log, stripped, "");
+        this.bookshelf(type, planks);
     }
 
     public void stoneSet(String type) {
@@ -298,10 +299,15 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
     public void compressed(String type) {
         Block block = blockMap.get(type);
-        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), new ResourceLocation(AscendedQuark.MODID, "block/crate_bottom"), this.extend(this.texture(this.name(block)), "_top"));
+        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), AscendedQuark.asResource("block/crate_bottom"), this.extend(this.texture(this.name(block)), "_top"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(compressed));
     }
 
+    public void bookshelf(String type, Block planks){
+        Block block = blockMap.get(type + "_bookshelf");
+        ModelFile bookshelf = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), this.texture(BuiltInRegistries.BLOCK.getKey(planks)), this.texture(BuiltInRegistries.BLOCK.getKey(planks)));
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(bookshelf));
+    }
 
     public ResourceLocation texture(String name) {
         return this.modLoc("block/"  + name);

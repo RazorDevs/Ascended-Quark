@@ -10,6 +10,9 @@
     "ascended_quark:aerogel_vertical_slab",
     "ascended_quark:aether_mud_brick_lattice",
     "ascended_quark:aether_mud_pillar",
+    "ascended_quark:mossy_holystone_tile_vertical_slab",
+    "ascended_quark:holystone_tile_vertical_slab",
+    "ascended_quark:big_holystone_bricks_vertical_slab",
     "ascended_quark:icestone_bricks_wall",
     "ascended_quark:polished_icestone_slab",
     "ascended_quark:polished_icestone",
@@ -17,9 +20,16 @@
     "ascended_quark:icestone_bricks_vertical_slab",
     "ascended_quark:polished_icestone_stairs",
     "ascended_quark:icestone_bricks_stairs",
+    "ascended_quark:clorite_vertical_slab",
+    "ascended_quark:polished_aseterite_vertical_slab",
+    "ascended_quark:aseterite_vertical_slab",
     "ascended_quark:icestone_bricks",
+    "ascended_quark:raw_clorite_vertical_slab",
+    "ascended_quark:polished_clorite_vertical_slab",
     "ascended_quark:icestone_bricks_slab",
     "ascended_quark:polished_icestone_wall",
+    "ascended_quark:aseterite_bricks_vertical_slab",
+    "ascended_quark:aether_mud_bricks_vertical_slab",
     "ascended_quark:icestone_vertical_slab"
   ]
 }

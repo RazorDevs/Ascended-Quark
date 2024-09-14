@@ -1,9 +1,13 @@
 package org.razordevs.ascended_quark.blocks;
 
+import com.aetherteam.aether.item.AetherCreativeTabs;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 import org.violetmoon.zeta.block.IZetaBlock;
 import org.violetmoon.zeta.module.ZetaModule;
@@ -26,9 +30,10 @@ public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaB
         if (module.category.isAddon()) {
             module.zeta.requiredModTooltipHandler.map(this, module.category.requiredMod);
         }
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), this, (RegistryObject<? extends ItemLike>) parent, module);
     }
     public CompAQVerticalSlabBlock(String registryName, Properties properties, ZetaModule module) {
-        this(registryName, () -> Blocks.OAK_SLAB, properties, module);
+        this(registryName, () -> Blocks.STONE_SLAB, properties, module);
     }
 
         public CompAQVerticalSlabBlock setCondition(BooleanSupplier enabledSupplier) {

@@ -8,6 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraftforge.client.model.generators.*;
@@ -15,6 +16,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
+import org.razordevs.ascended_quark.blocks.CompAQVerticalSlabBlock;
 import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
@@ -80,6 +82,17 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.verticalSlab("icestone", AetherBlocks.ICESTONE.get(), "natural/");
         this.verticalSlab("angelic", AetherBlocks.ANGELIC_STONE.get(), "dungeon/");
         this.verticalSlab("hellfire", AetherBlocks.HELLFIRE_STONE.get(), "dungeon/");
+
+        this.verticalSlab("mossy_holystone_tile", DABlocks.MOSSY_HOLYSTONE_TILES.get());
+        this.verticalSlab("holystone_tile", DABlocks.HOLYSTONE_TILES.get());
+        this.verticalSlab("big_holystone_bricks", DABlocks.BIG_HOLYSTONE_BRICKS.get());
+        this.verticalSlab("aseterite", DABlocks.ASETERITE.get());
+        this.verticalSlab("polished_aseterite", DABlocks.POLISHED_ASETERITE.get());
+        this.verticalSlab("aseterite_bricks", DABlocks.ASETERITE_BRICKS.get());
+        this.verticalSlab("raw_clorite", DABlocks.RAW_CLORITE.get());
+        this.verticalSlab("clorite", DABlocks.CLORITE.get());
+        this.verticalSlab("polished_clorite", DABlocks.POLISHED_CLORITE.get());
+        this.verticalSlab("aether_mud_bricks", DABlocks.AETHER_MUD_BRICKS.get());
 
         this.stoneSet("aether_dirt_bricks");
         this.stoneSet("icestone_bricks");

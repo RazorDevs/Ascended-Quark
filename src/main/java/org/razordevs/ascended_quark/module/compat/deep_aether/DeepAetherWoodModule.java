@@ -19,6 +19,7 @@ public class DeepAetherWoodModule extends ZetaModule {
     @LoadEvent
     public void register(ZRegister register) {
         // ROSEROOT
+
         if(this.enabled) RegistryUtil.registerWoodsetExtension("roseroot", this, DABlocks.ROSEROOT_SLAB, DABlocks.ROSEROOT_PLANKS, DABlocks.ROSEROOT_FENCE, DABlocks.ROSEROOT_LOG, DABlocks.ROSEROOT_LEAVES);
         else RegistryUtil.registerDisabledWoodsetExtension("roseroot", this);
 

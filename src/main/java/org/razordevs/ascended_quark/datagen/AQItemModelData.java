@@ -10,6 +10,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.Level;
 import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.blocks.AQStoolBlock;
 import org.razordevs.ascended_quark.items.AQSlimeInABucketItem;
 import org.razordevs.ascended_quark.items.AQSwetInABucketItem;
@@ -60,7 +61,7 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlockFlatName(blockMap.get("quicksoil_framed_glass_pane"), "quicksoil_framed_glass" );
 
         for(Block block : toGenerateBlock) {
-             if(block instanceof HedgeBlock)
+             if(block instanceof AQHedgeBlock)
                  this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID,  "block/" + this.blockName(block) + "_post"));
              else if(block instanceof WallBlock)
                 this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID,  "block/" + this.blockName(block) + "_inventory"));

@@ -37,9 +37,9 @@ public class RegistryUtil {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), log, module);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true), planks, module);
 
-        Block post = new AQWoodenPostBlock(type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        Block post = new AQWoodenPostBlock(type + "_post", module);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, log, module);
-        Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), stripped, log, module);
         ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);
 
@@ -54,8 +54,8 @@ public class RegistryUtil {
         new AQHedgeBlock(type + "_hedge", module);
         new AQHollowLogBlock("hollow_" + type + "_log", module);
         new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true);
-        Block post = new AQWoodenPostBlock(type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
-        Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        Block post = new AQWoodenPostBlock(type + "_post", module);
+        Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
         ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);
         new CompAQVerticalSlabBlock(type + "_vertical_slab", BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module);
         new AQLeafCarpetBlock(type + "_leaf_carpet", module);

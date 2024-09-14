@@ -18,6 +18,7 @@ import org.razordevs.ascended_quark.blocks.AQTrappedVariantChestBlock;
 import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
 import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
+import teamrazor.deepaether.init.DABlocks;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -42,6 +43,9 @@ public class AQBlockTagData extends BlockTagsProvider {
 
     private final String[] pickaxeBricks = {
             "icestone",
+            "aseterite",
+            "aether_mud_bricks",
+            "clorite"
     };
 
     @Nonnull
@@ -78,7 +82,10 @@ public class AQBlockTagData extends BlockTagsProvider {
                 blockMap.get("holystone_brick_vertical_slab"),
                 blockMap.get("aerogel_vertical_slab"),
                 blockMap.get("aether_mud_brick_lattice"),
-                blockMap.get("aether_mud_pillar")
+                blockMap.get("aether_mud_pillar"),
+                blockMap.get("mossy_holystone_tile_vertical_slab"),
+                blockMap.get("holystone_tile_vertical_slab"),
+                blockMap.get("big_holystone_bricks_vertical_slab")
         );
         blockMap.keySet().forEach(block -> {
             for(String type : pickaxeBricks) {

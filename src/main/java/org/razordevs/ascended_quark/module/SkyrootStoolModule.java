@@ -25,7 +25,7 @@ public class SkyrootStoolModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQStoolBlock("skyroot_stool", this), AetherBlocks.SKYROOT_PLANKS);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQStoolBlock("skyroot_stool", this), AetherBlocks.SKYROOT_PLANKS, this);
 
         stoolEntity = EntityType.Builder.of(AQStool::new, MobCategory.MISC)
                 .sized(0.375F, 0.5F)

@@ -46,7 +46,7 @@ public class AQSwetInABucketItem extends ZetaItem {
             ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM_SKYROOT.add(new Pair<>(bucketEntity, this));
         else ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM.add(new Pair<>(bucketEntity, this));
 
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET, module);
     }
 
     @Nonnull

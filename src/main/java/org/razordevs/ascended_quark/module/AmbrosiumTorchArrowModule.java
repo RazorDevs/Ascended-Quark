@@ -46,7 +46,7 @@ public class AmbrosiumTorchArrowModule extends ZetaModule {
     @LoadEvent
     public void register(ZRegister register) {
         ambrosium_torch_arrow = new ZetaArrowItem.Impl("ambrosium_torch_arrow", this, (level, stack, living) -> new AmbrosiumTorchArrow(level, living));
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), ambrosium_torch_arrow, AetherItems.ENCHANTED_DART);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), ambrosium_torch_arrow, AetherItems.ENCHANTED_DART, this);
 
         ambrosiumTorchArrowType = EntityType.Builder.<AmbrosiumTorchArrow>of(AmbrosiumTorchArrow::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("ambrosium_torch_arrow");
         register.getRegistry().register(ambrosiumTorchArrowType, "ambrosium_torch_arrow", Registries.ENTITY_TYPE);

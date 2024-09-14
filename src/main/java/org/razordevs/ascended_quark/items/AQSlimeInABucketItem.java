@@ -40,7 +40,7 @@ public class AQSlimeInABucketItem extends ZetaItem {
     public AQSlimeInABucketItem(String name, ZetaModule module) {
         super(name, module, new Item.Properties().stacksTo(1));
 
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET, module);
     }
 
     @Override

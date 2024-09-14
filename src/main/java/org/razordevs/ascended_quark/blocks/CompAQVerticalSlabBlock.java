@@ -1,6 +1,7 @@
 package org.razordevs.ascended_quark.blocks;
 
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
@@ -26,8 +27,11 @@ public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaB
             module.zeta.requiredModTooltipHandler.map(this, module.category.requiredMod);
         }
     }
+    public CompAQVerticalSlabBlock(String registryName, Properties properties, ZetaModule module) {
+        this(registryName, () -> Blocks.OAK_SLAB, properties, module);
+    }
 
-    public CompAQVerticalSlabBlock setCondition(BooleanSupplier enabledSupplier) {
+        public CompAQVerticalSlabBlock setCondition(BooleanSupplier enabledSupplier) {
         this.enabledSupplier = enabledSupplier;
         return this;
     }

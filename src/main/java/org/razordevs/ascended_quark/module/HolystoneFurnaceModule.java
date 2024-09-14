@@ -17,6 +17,6 @@ public class HolystoneFurnaceModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), new AQVariantFurnaceBlock("holystone", this, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F).requiresCorrectToolForDrops().lightLevel(RegistryUtil.litBlockEmission(13))), AetherBlocks.ALTAR);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), new AQVariantFurnaceBlock("holystone", this, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F).requiresCorrectToolForDrops().lightLevel(RegistryUtil.litBlockEmission(13))), AetherBlocks.ALTAR, this);
     }
 }

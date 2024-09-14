@@ -21,8 +21,8 @@ public class QuicksoilFramedGlassModule extends ZetaModule {
     @LoadEvent
     public void register(ZRegister register) {
         Block block = new AQGlassBlock("quicksoil_framed_glass", BlockPropertyUtil.copyPropertySafe(Blocks.GLASS).friction(1.1F).lightLevel(s -> 11), this);
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block, AetherBlocks.QUICKSOIL_GLASS);
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQGlassPaneBlock("quicksoil_framed_glass_pane", BlockPropertyUtil.copyPropertySafe(block), this), AetherBlocks.QUICKSOIL_GLASS_PANE);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block, AetherBlocks.QUICKSOIL_GLASS, this);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQGlassPaneBlock("quicksoil_framed_glass_pane", BlockPropertyUtil.copyPropertySafe(block), this), AetherBlocks.QUICKSOIL_GLASS_PANE, this);
         new ZetaItem("quicksoil_glass_shard", this, new Item.Properties()).setCreativeTab(AetherCreativeTabs.AETHER_INGREDIENTS.getKey());
     }
 }

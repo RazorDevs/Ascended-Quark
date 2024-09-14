@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "more_mud_blocks"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "more_aether_mud_blocks"
+        }
+      ]
+    }
+  ],
+  "key": {
+    "A": {
+      "item": "deep_aether:aether_mud_bricks"
+    }
+  },
+  "pattern": [
+    " A ",
+    "A A",
+    " A "
+  ],
+  "result": {
+    "count": 4,
+    "item": "ascended_quark:aether_mud_brick_lattice"
+  },
+  "show_notification": true
+}

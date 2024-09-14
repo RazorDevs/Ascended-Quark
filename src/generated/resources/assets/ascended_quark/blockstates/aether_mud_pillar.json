@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ascended_quark:block/aether_mud_pillar_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ascended_quark:block/aether_mud_pillar"
+    },
+    "axis=z": {
+      "model": "ascended_quark:block/aether_mud_pillar_horizontal",
+      "x": 90
+    }
+  }
+}

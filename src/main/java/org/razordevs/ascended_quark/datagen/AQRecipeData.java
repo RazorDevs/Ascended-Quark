@@ -15,7 +15,9 @@ import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.datagen.recipe.ConditionalShapedRecipeBuilder;
 import org.razordevs.ascended_quark.datagen.recipe.ConditionalShapelessRecipeBuilder;
+import org.razordevs.ascended_quark.datagen.recipe.ConditionalSingleItemBuilder;
 import org.violetmoon.quark.base.Quark;
+import oshi.util.tuples.Pair;
 import teamrazor.deepaether.init.DABlocks;
 
 import java.util.HashMap;
@@ -26,6 +28,8 @@ public class AQRecipeData extends RecipeProvider {
     //TODO: Fix Recipes with Every Compat and Woodworks
 
     public static final ResourceLocation DEFAULT_FLAG = new ResourceLocation(AscendedQuark.MODID, "flag");
+    public static final ResourceLocation QUARK_FLAG = new ResourceLocation(Quark.MOD_ID, "flag");
+    ;
     private final HashMap<String, Item> itemMap;
     private final HashMap<String, Block> blockMap;
 
@@ -54,7 +58,28 @@ public class AQRecipeData extends RecipeProvider {
         woodset("yagroot", DABlocks.YAGROOT_PLANKS.get(), DABlocks.YAGROOT_LOG.get(), DABlocks.YAGROOT_WOOD.get(), DABlocks.STRIPPED_YAGROOT_WOOD.get(), DABlocks.YAGROOT_LEAVES.get(), DABlocks.YAGROOT_SLAB.get(), DA_WOOD, consumer);
         woodset("conberry", DABlocks.CONBERRY_PLANKS.get(), DABlocks.CONBERRY_LOG.get(), DABlocks.CONBERRY_WOOD.get(), DABlocks.STRIPPED_CONBERRY_WOOD.get(), DABlocks.CONBERRY_LEAVES.get(), DABlocks.CONBERRY_SLAB.get(), DA_WOOD, consumer);
 
+        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockMap.get("aether_mud_pillar"))
+                .define('A', DABlocks.AETHER_MUD_BRICKS_SLAB.get())
+                .pattern("A")
+                .pattern("A")
+                .condition(QUARK_FLAG, "more_mud_blocks")
+                .condition(DEFAULT_FLAG, "more_aether_mud_blocks")
+                .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS_SLAB.get()), has(DABlocks.AETHER_MUD_BRICKS_SLAB.get()))
+                .save(consumer);
 
+        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockMap.get("aether_mud_brick_lattice"), 4)
+                .define('A', DABlocks.AETHER_MUD_BRICKS.get())
+                .pattern(" A ")
+                .pattern("A A")
+                .pattern(" A ")
+                .condition(QUARK_FLAG, "more_mud_blocks")
+                .condition(DEFAULT_FLAG, "more_aether_mud_blocks")
+                .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS.get()), has(DABlocks.AETHER_MUD_BRICKS.get()))
+                .save(consumer);
+
+        stonecuttingRecipe(blockMap.get("aether_mud_pillar"), DABlocks.AETHER_MUD_BRICKS.get(), consumer,
+                new Pair<>(QUARK_FLAG, "more_mud_blocks"),
+                new Pair<>(DEFAULT_FLAG, "more_aether_mud_blocks"));
 
         /*
         ShapedRecipeBuilder.shaped(AQBlocks.AETHER_DIRT_BRICKS.get(), 4).define('A', AetherBlocks.AETHER_DIRT.get())
@@ -410,11 +435,13 @@ x
         return new ResourceLocation(AscendedQuark.MODID, name);
     }
 
-    protected void stonecuttingRecipe(ItemLike item, ItemLike ingredient, Consumer<FinishedRecipe> consumer) {
-        stonecuttingRecipe(item, ingredient, 1, consumer);
+    protected void stonecuttingRecipe(ItemLike item, ItemLike ingredient, Consumer<FinishedRecipe> consumer, Pair<ResourceLocation, String>... condition) {
+        stonecuttingRecipe(item, ingredient, 1, consumer, condition);
     }
 
-    protected void stonecuttingRecipe(ItemLike item, ItemLike ingredient, int count, Consumer<FinishedRecipe> consumer) {
-        SingleItemRecipeBuilder.stonecutting( Ingredient.of(ingredient), RecipeCategory.BUILDING_BLOCKS, item, count).unlockedBy(getHasName(ingredient), has(ingredient)).save(consumer, name(getConversionRecipeName(item, ingredient) + "_stonecutting"));
+    protected void stonecuttingRecipe(ItemLike item, ItemLike ingredient, int count, Consumer<FinishedRecipe> consumer, Pair<ResourceLocation, String>[] condition) {
+        ConditionalSingleItemBuilder.stonecutting(Ingredient.of(ingredient), RecipeCategory.BUILDING_BLOCKS, item, count)
+                .condition(condition)
+                .unlockedBy(getHasName(ingredient), has(ingredient)).save(consumer, name(getConversionRecipeName(item, ingredient) + "_stonecutting"));
     }
 }

@@ -131,6 +131,10 @@ tasks.named('jar', Jar).configure {
     finalizedBy 'reobfJar'
 }
 
+processResources {
+    exclude '.cache/'
+}
+
 publishing {
     publications {
         register('mavenJava', MavenPublication) {

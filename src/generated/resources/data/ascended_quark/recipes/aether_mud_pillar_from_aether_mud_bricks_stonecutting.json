@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:stonecutting",
+  "conditions": [
+    {
+      "type": "forge:and",
+      "values": [
+        {
+          "type": "quark:flag",
+          "flag": "more_mud_blocks"
+        },
+        {
+          "type": "ascended_quark:flag",
+          "flag": "more_aether_mud_blocks"
+        }
+      ]
+    }
+  ],
+  "count": 1,
+  "ingredient": {
+    "item": "deep_aether:aether_mud_bricks"
+  },
+  "result": "ascended_quark:aether_mud_pillar"
+}

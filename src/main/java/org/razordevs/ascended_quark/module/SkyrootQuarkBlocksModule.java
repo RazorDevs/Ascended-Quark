@@ -2,6 +2,7 @@ package org.razordevs.ascended_quark.module;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.particle.AetherParticleTypes;
+import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.InteractionResult;
@@ -76,6 +77,10 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
 
         AQTrappedVariantChestBlock trappedChest = (AQTrappedVariantChestBlock) (new AQTrappedVariantChestBlock(name, module, () -> aqTrappedChestTEType, props)).setCondition(condition);
         aqTrappedChests.add(trappedChest);
+
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), regularChest, AetherBlocks.CHEST_MIMIC);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), trappedChest, AetherBlocks.CHEST_MIMIC);
+
     }
 
     @LoadEvent

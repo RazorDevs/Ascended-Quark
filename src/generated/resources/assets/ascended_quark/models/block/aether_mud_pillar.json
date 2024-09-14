@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ascended_quark:block/aether_mud_pillar_top",
+    "side": "ascended_quark:block/aether_mud_pillar_side"
+  }
+}

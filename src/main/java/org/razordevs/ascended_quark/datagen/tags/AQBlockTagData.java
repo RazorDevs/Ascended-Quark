@@ -76,7 +76,9 @@ public class AQBlockTagData extends BlockTagsProvider {
                 blockMap.get("holystone_brick_vertical_slab"),
                 blockMap.get("mossy_holystone_vertical_slab"),
                 blockMap.get("holystone_brick_vertical_slab"),
-                blockMap.get("aerogel_vertical_slab")
+                blockMap.get("aerogel_vertical_slab"),
+                blockMap.get("aether_mud_brick_lattice"),
+                blockMap.get("aether_mud_pillar")
         );
         blockMap.keySet().forEach(block -> {
             for(String type : pickaxeBricks) {

@@ -51,6 +51,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.verticalPLank("skyroot", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
         this.pillar((RotatedPillarBlock) blockMap.get("skyroot_stick_block"));
         this.compressed("blue_berry_crate");
+        this.compressed("goldleaf_berry_crate");
         this.hollowLog("skyroot", AetherBlocks.SKYROOT_LOG.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/");
         this.post("skyroot", AetherBlocks.SKYROOT_LOG.get(), "natural/");
         this.strippedPost("skyroot", AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/");
@@ -84,6 +85,9 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.stoneSet("icestone_bricks");
         this.stoneSet("polished_icestone");
         this.stoneSet("quicksoil_bricks");
+
+        this.blockCutout("aether_mud_brick_lattice");
+        this.pillar((RotatedPillarBlock) blockMap.get("aether_mud_pillar"));
     }
 
     public void woodset(String type, Block log, Block stripped, Block planks, Block leaves) {
@@ -233,6 +237,15 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         return this.models().cubeAll(this.name(block), this.texture(this.name(block))).renderType(new ResourceLocation("translucent"));
     }
 
+    public void blockCutout(String name) {
+        Block block = blockMap.get(name);
+        this.simpleBlock(block, this.cubeAllTranslucent(block));
+    }
+
+    public ModelFile cubeAllCutout(Block block) {
+        return this.models().cubeAll(this.name(block), this.texture(this.name(block))).renderType(new ResourceLocation("cutout"));
+    }
+
     public void hollowLog(String type, Block log) {
         Block block = blockMap.get("hollow_"+type+"_log");
         this.hollowLog((RotatedPillarBlock) block,
@@ -272,7 +285,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
     public void compressed(String type) {
         Block block = blockMap.get(type);
-        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), this.extend(this.texture(this.name(block)), "_bottom"), this.extend(this.texture(this.name(block)), "_bottom"));
+        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), new ResourceLocation(AscendedQuark.MODID, "block/crate_bottom"), this.extend(this.texture(this.name(block)), "_top"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(compressed));
     }
 

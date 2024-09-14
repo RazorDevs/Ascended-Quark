@@ -14,6 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 import org.razordevs.ascended_quark.blocks.*;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
+import org.violetmoon.quark.content.building.block.VariantBookshelfBlock;
 import org.violetmoon.quark.content.building.block.VariantLadderBlock;
 import org.violetmoon.zeta.block.ZetaBlock;
 import org.violetmoon.zeta.module.ZetaModule;
@@ -22,6 +23,7 @@ import org.violetmoon.zeta.util.handler.ToolInteractionHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
@@ -35,7 +37,8 @@ public class RegistryUtil {
         createHedge(type + "_hedge", module, leaves, fence);
 
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), log);
-        new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true), planks);
+
         Block post = new AQWoodenPostBlock(type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, log);
         Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());

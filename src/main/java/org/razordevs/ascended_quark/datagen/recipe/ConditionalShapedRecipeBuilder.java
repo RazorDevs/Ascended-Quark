@@ -56,7 +56,7 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
     }
 
     public ConditionalShapedRecipeBuilder define(Character p_126128_, ItemLike p_126129_) {
-        return this.define(p_126128_, Ingredient.of(new ItemLike[]{p_126129_}));
+        return this.define(p_126128_, Ingredient.of(p_126129_));
     }
 
     public ConditionalShapedRecipeBuilder define(Character p_126125_, Ingredient p_126126_) {
@@ -144,7 +144,7 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
 
     public static class Result extends CraftingRecipeBuilder.CraftingResult {
         @NotNull
-        private final List<Pair<ResourceLocation, String>> condition; //= Maps.newLinkedHashMap();
+        private final List<Pair<ResourceLocation, String>> condition;
         private final ResourceLocation id;
         private final Item result;
         private final int count;

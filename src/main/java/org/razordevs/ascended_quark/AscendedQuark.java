@@ -13,8 +13,11 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.MissingMappingsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.ApiStatus;
 import org.razordevs.ascended_quark.datagen.AQBlockstateData;
 import org.razordevs.ascended_quark.datagen.AQItemModelData;
 import org.razordevs.ascended_quark.datagen.AQLangData;
@@ -25,21 +28,16 @@ import org.razordevs.ascended_quark.datagen.tags.AQItemTagData;
 import org.razordevs.ascended_quark.mixin.ZetaRegistryAccessor;
 import org.razordevs.ascended_quark.proxy.ACClientProxy;
 import org.razordevs.ascended_quark.proxy.ACCommonProxy;
-import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.violetmoon.zeta.Zeta;
 import org.violetmoon.zeta.multiloader.Env;
-import org.violetmoon.zeta.util.Utils;
 import org.violetmoon.zetaimplforge.ForgeZeta;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 @Mod(AscendedQuark.MODID)
 public class AscendedQuark {
-
-    //TODO: ADD BLOCK REMAPS BEFORE RELEASE
-
     public static final String MODID = "ascended_quark";
     public static final String DEEP_AETHER = "deep_aether";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
@@ -54,9 +52,8 @@ public class AscendedQuark {
 
         proxy = Env.unsafeRunForDist(() -> ACClientProxy::new, () -> ACCommonProxy::new);
         proxy.start();
-        //if (Utils.isDevEnv()) {
-        //    MixinEnvironment.getCurrentEnvironment().audit();
-        //}
+
+        MinecraftForge.EVENT_BUS.addListener(this::missingMappings);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::dataSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -100,6 +97,28 @@ public class AscendedQuark {
 
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new AQItemTagData(output, lookupProvider, blockTags.contentsGetter(), fileHelper, itemMap, blockMap));
+    }
+
+    @Deprecated(forRemoval = true)
+    @ApiStatus.ScheduledForRemoval(inVersion = "1.22")
+    public void missingMappings(MissingMappingsEvent event) {
+
+        Stream<MissingMappingsEvent.Mapping<Block>> stream = event.getMappings(ForgeRegistries.Keys.BLOCKS, AscendedQuark.MODID).stream();
+        stream.filter(mapping -> mapping.getKey().getPath().contains("brick_"))
+                .forEach(blockMapping -> {
+                    Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(AscendedQuark.MODID, blockMapping.getKey().getPath().replace("brick_", "bricks_")));
+                    if(block != null)
+                        blockMapping.remap(block);
+
+                });
+
+        Stream<MissingMappingsEvent.Mapping<Item>> itemSteam = event.getMappings(ForgeRegistries.Keys.ITEMS, AscendedQuark.MODID).stream();
+        itemSteam.filter(mapping -> mapping.getKey().getPath().contains("brick_"))
+                .forEach(itemMapping -> {
+                    Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(AscendedQuark.MODID, itemMapping.getKey().getPath().replace("brick_", "bricks_")));
+                    if(block != null)
+                        itemMapping.remap(block.asItem());
+                });
     }
 
     public static ResourceLocation asResource(String name) {

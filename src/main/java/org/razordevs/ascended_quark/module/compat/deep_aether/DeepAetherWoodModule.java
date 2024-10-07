@@ -4,6 +4,7 @@ import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.world.level.block.Block;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.blocks.AQLeafCarpetBlock;
+import org.razordevs.ascended_quark.module.WoodSetContext;
 import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
 import org.violetmoon.zeta.event.bus.LoadEvent;
@@ -19,7 +20,7 @@ public class DeepAetherWoodModule extends ZetaModule {
     public void register(ZRegister register) {
         // ROSEROOT
 
-        if(this.enabled) RegistryUtil.registerWoodsetExtension("roseroot", this, DABlocks.ROSEROOT_SLAB, DABlocks.ROSEROOT_PLANKS, DABlocks.ROSEROOT_FENCE, DABlocks.ROSEROOT_LOG, DABlocks.ROSEROOT_LEAVES);
+        if(this.enabled) RegistryUtil.registerWoodsetExtension("roseroot", this, new WoodSetContext(DABlocks.ROSEROOT_SLAB, DABlocks.ROSEROOT_PLANKS, DABlocks.ROSEROOT_FENCE, DABlocks.ROSEROOT_LOG, DABlocks.ROSEROOT_LEAVES));
         else RegistryUtil.registerDisabledWoodsetExtension("roseroot", this);
 
         Block block = new AQLeafCarpetBlock("flowering_roseroot_leaf_carpet", this);
@@ -42,19 +43,19 @@ public class DeepAetherWoodModule extends ZetaModule {
 
 
         // YAGROOT
-        if(this.enabled) RegistryUtil.registerWoodsetExtension("yagroot", this, DABlocks.YAGROOT_SLAB, DABlocks.YAGROOT_PLANKS, DABlocks.YAGROOT_FENCE, DABlocks.YAGROOT_LOG, DABlocks.YAGROOT_LEAVES);
+        if(this.enabled) RegistryUtil.registerWoodsetExtension("yagroot", this, new WoodSetContext(DABlocks.YAGROOT_SLAB, DABlocks.YAGROOT_PLANKS, DABlocks.YAGROOT_FENCE, DABlocks.YAGROOT_LOG, DABlocks.YAGROOT_LEAVES));
         else RegistryUtil.registerDisabledWoodsetExtension("yagroot", this);
 
         // CRUDEROOT
-        if(this.enabled) RegistryUtil.registerWoodsetExtension("cruderoot", this, DABlocks.CRUDEROOT_SLAB, DABlocks.CRUDEROOT_PLANKS, DABlocks.CRUDEROOT_FENCE, DABlocks.CRUDEROOT_LOG, DABlocks.CRUDEROOT_LEAVES);
+        if(this.enabled) RegistryUtil.registerWoodsetExtension("cruderoot", this, new WoodSetContext(DABlocks.CRUDEROOT_SLAB, DABlocks.CRUDEROOT_PLANKS, DABlocks.CRUDEROOT_FENCE, DABlocks.CRUDEROOT_LOG, DABlocks.CRUDEROOT_LEAVES));
         else RegistryUtil.registerDisabledWoodsetExtension("cruderoot", this);
 
         // CONBERRY
-        if(this.enabled) RegistryUtil.registerWoodsetExtension("conberry", this, DABlocks.CONBERRY_SLAB, DABlocks.CONBERRY_PLANKS, DABlocks.CONBERRY_FENCE, DABlocks.CONBERRY_LOG, DABlocks.CONBERRY_LEAVES);
+        if(this.enabled) RegistryUtil.registerWoodsetExtension("conberry", this, new WoodSetContext(DABlocks.CONBERRY_SLAB, DABlocks.CONBERRY_PLANKS, DABlocks.CONBERRY_FENCE, DABlocks.CONBERRY_LOG, DABlocks.CONBERRY_LEAVES));
         else RegistryUtil.registerDisabledWoodsetExtension("conberry", this);
 
         // SUNROOT
-        if(this.enabled) RegistryUtil.registerWoodsetExtension("sunroot", this, DABlocks.SUNROOT_SLAB, DABlocks.SUNROOT_PLANKS, DABlocks.SUNROOT_FENCE, DABlocks.SUNROOT_LOG, DABlocks.SUNROOT_LEAVES);
+        if(this.enabled) RegistryUtil.registerWoodsetExtension("sunroot", this, new WoodSetContext(DABlocks.SUNROOT_SLAB, DABlocks.SUNROOT_PLANKS, DABlocks.SUNROOT_FENCE, DABlocks.SUNROOT_LOG, DABlocks.SUNROOT_LEAVES));
         else RegistryUtil.registerDisabledWoodsetExtension("sunroot", this);
     }
 }

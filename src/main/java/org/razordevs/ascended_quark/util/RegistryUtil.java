@@ -5,7 +5,9 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -13,8 +15,8 @@ import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.registries.RegistryObject;
 import org.razordevs.ascended_quark.blocks.*;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
+import org.razordevs.ascended_quark.module.WoodSetContext;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
-import org.violetmoon.quark.content.building.block.VariantBookshelfBlock;
 import org.violetmoon.quark.content.building.block.VariantLadderBlock;
 import org.violetmoon.zeta.block.ZetaBlock;
 import org.violetmoon.zeta.module.ZetaModule;
@@ -23,29 +25,38 @@ import org.violetmoon.zeta.util.handler.ToolInteractionHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
+/**
+ * Zeta's module system is run before modded stuff is registered,
+ * causing a lot of issues when adding compatibility.
+ * <p>
+ * This class is meant to fix this by delaying the work, using an Array as a temporary
+ * storage and adding the items later through tabs.
+ */
 public class RegistryUtil {
     public static ArrayList<TabModel> TABS = new ArrayList<>();
 
-    public static void registerWoodsetExtension(String type, ZetaModule module, RegistryObject<? extends Block> slab, RegistryObject<? extends Block> planks, RegistryObject<? extends Block> fence, RegistryObject<? extends Block> log, RegistryObject<? extends Block> leaves) {
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaBlock("vertical_" + type + "_planks", module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS)), planks, module);
+    /**
+     * Adds all variant blocks of a wood type
+     */
+    public static void registerWoodsetExtension(String type, ZetaModule module, WoodSetContext context) {
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaBlock("vertical_" + type + "_planks", module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS)), context.planks(), module);
         SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);
-        createHedge(type + "_hedge", module, fence);
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), log, module);
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true), planks, module);
+        createHedge(type + "_hedge", module, context.fence());
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), context.log(), module);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true), context.planks(), module);
         if(!type.equals("skyroot"))
-            addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD), planks, module);
+            addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD), context.planks(), module);
 
         Block post = new AQWoodenPostBlock(type + "_post", module);
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, log, module);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, context.log(), module);
         Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), stripped, log, module);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), stripped, context.log(), module);
         ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new CompAQVerticalSlabBlock(type + "_vertical_slab", slab, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module), planks, module);
-        createLeafCarpet(type + "_leaf_carpet", module, leaves);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new CompAQVerticalSlabBlock(type + "_vertical_slab", context.slab(), BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module), context.planks(), module);
+        createLeafCarpet(type + "_leaf_carpet", module, context.leaves());
     }
 
     public static void registerDisabledWoodsetExtension(String type, ZetaModule module) {

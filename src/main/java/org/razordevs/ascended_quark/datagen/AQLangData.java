@@ -71,8 +71,6 @@ public class AQLangData extends NitrogenLanguageProvider {
             this.add(item, this.getName(item.toString()));
         }
 
-        //TODO: Polishing lore descriptions
-
         this.add("lore.item.ascended_quark.ambrosium_torch_arrow", "An arrow tied to an Ambrosium Torch. It imbues the healing properties of Ambrosium, and places the torch on impact.");
         this.add("lore.item.ascended_quark.blue_swet_in_a_bucket", "Seems like you caught a Blue Swet! Not that useful, but it's an easy way to transport them. They might get excited too!");
         this.add("lore.item.ascended_quark.blue_swet_in_a_skyroot_bucket", "Seems like you caught a Blue Swet! Not that useful, but it's an easy way to transport them. They might get excited too!");

@@ -25,8 +25,6 @@ import java.util.function.Consumer;
 
 public class AQRecipeData extends RecipeProvider {
 
-    //TODO: Fix Recipes with Every Compat and Woodworks
-
     public static final ResourceLocation DEFAULT_FLAG = new ResourceLocation(AscendedQuark.MODID, "flag");
     public static final ResourceLocation QUARK_FLAG = new ResourceLocation(Quark.MOD_ID, "flag");
 

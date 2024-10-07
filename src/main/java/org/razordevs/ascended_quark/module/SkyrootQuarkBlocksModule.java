@@ -53,7 +53,7 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        RegistryUtil.registerWoodsetExtension("skyroot", this, AetherBlocks.SKYROOT_SLAB, AetherBlocks.SKYROOT_PLANKS, AetherBlocks.SKYROOT_FENCE, AetherBlocks.SKYROOT_LOG, AetherBlocks.SKYROOT_LEAVES);
+        RegistryUtil.registerWoodsetExtension("skyroot", this, new WoodSetContext(AetherBlocks.SKYROOT_SLAB, AetherBlocks.SKYROOT_PLANKS, AetherBlocks.SKYROOT_FENCE, AetherBlocks.SKYROOT_LOG, AetherBlocks.SKYROOT_LEAVES));
         RegistryUtil.createLeafCarpetParticle("golden_oak_leaf_carpet", this, AetherBlocks.GOLDEN_OAK_LEAVES, AetherParticleTypes.GOLDEN_OAK_LEAVES);
         RegistryUtil.createLeafCarpetParticle("crystal_leaf_carpet", this, AetherBlocks.CRYSTAL_LEAVES, AetherParticleTypes.CRYSTAL_LEAVES);
         RegistryUtil.createLeafCarpetParticle("crystal_fruit_leaf_carpet", this, AetherBlocks.CRYSTAL_FRUIT_LEAVES, AetherParticleTypes.CRYSTAL_LEAVES);

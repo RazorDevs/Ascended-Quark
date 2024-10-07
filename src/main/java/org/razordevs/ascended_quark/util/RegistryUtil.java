@@ -59,6 +59,9 @@ public class RegistryUtil {
         createLeafCarpet(type + "_leaf_carpet", module, context.leaves());
     }
 
+    /**
+     * Adds all variant blocks of a disabled wood type, and won't be added to tabs
+     */
     public static void registerDisabledWoodsetExtension(String type, ZetaModule module) {
         new ZetaBlock("vertical_" + type + "_planks", module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS));
         SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);

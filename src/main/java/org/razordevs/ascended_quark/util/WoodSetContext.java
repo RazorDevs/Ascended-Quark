@@ -1,4 +1,4 @@
-package org.razordevs.ascended_quark.module;
+package org.razordevs.ascended_quark.util;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;

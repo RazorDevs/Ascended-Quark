@@ -15,7 +15,6 @@ import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.registries.RegistryObject;
 import org.razordevs.ascended_quark.blocks.*;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
-import org.razordevs.ascended_quark.module.WoodSetContext;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.VariantLadderBlock;
 import org.violetmoon.zeta.block.ZetaBlock;

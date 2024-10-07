@@ -58,21 +58,4 @@ public class AmbrosiumShardParticle extends RisingParticle {
             return shardParticle;
         }
     }
-
-    /*
-    @OnlyIn(Dist.CLIENT)
-    public static class SmallProvider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprite;
-
-        public SmallProvider(SpriteSet spriteSet) {
-            this.sprite = spriteSet;
-        }
-
-        public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double v, double v1, double v2, double v3, double v4, double v5) {
-            AmbrosiumShardParticle shardParticle = new AmbrosiumShardParticle(level, v, v1, v2, v3, v4, v5);
-            shardParticle.pickSprite(this.sprite);
-            shardParticle.scale(0.5F);
-            return shardParticle;
-        }
-    }*/
 }

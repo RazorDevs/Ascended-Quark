@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class AQButton extends Button {
 
-    private boolean showBubble;
+    private final boolean showBubble;
 
     public AQButton(int x, int y) {
         super(Button.builder(Component.literal("aq"), AQButton::click).size(20, 20).pos(x, y));
@@ -65,6 +65,7 @@ public class AQButton extends Button {
             try {
                 getAQMarkerFile().createNewFile();
             } catch (IOException e) {
+                System.out.println("Failed to create file.");
                 e.printStackTrace();
             }
 

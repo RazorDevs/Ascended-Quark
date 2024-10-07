@@ -10,7 +10,7 @@ import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.blocks.AQStoolBlock;
 import org.razordevs.ascended_quark.entity.AQStool;
-import org.razordevs.ascended_quark.entity.render.StoolEntityRender;
+import org.razordevs.ascended_quark.entity.render.AQStoolEntityRenderer;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
 import org.violetmoon.zeta.event.bus.LoadEvent;
 import org.violetmoon.zeta.event.load.ZRegister;
@@ -38,6 +38,6 @@ public class SkyrootStoolModule extends ZetaModule {
 
     @LoadEvent
     public final void clientSetup(ZClientSetup event) {
-        EntityRenderers.register(stoolEntity, StoolEntityRender::new);
+        EntityRenderers.register(stoolEntity, AQStoolEntityRenderer::new);
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.resources.language.I18n;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.violetmoon.quark.base.config.QuarkGeneralConfig;
@@ -36,24 +37,29 @@ public class AQButtonHandler {
         for(GuiEventListener listener : listeners)
             if(listener instanceof AbstractWidget widget) {
                 if(targetButtonNames.contains(widget.getMessage().getString())) {
-                    int x = widget.getX();
-
-                    if(AQGeneralConfig.aqButtonOnRight)
-                        if(QuarkGeneralConfig.qButtonOnRight && QuarkGeneralConfig.enableQButton)
-                            x += widget.getWidth() + 28;
-                        else
-                            x += widget.getWidth() + 4;
-                    else
-                        if(QuarkGeneralConfig.qButtonOnRight || !QuarkGeneralConfig.enableQButton)
-                            x -= 24;
-                        else
-                            x -= 48;
-
-                    Button aqButton = new AQButton(x, widget.getY());
+                    Button aqButton = getButton(widget);
                     event.addListener(aqButton);
                     return;
                 }
             }
+    }
+
+    @NotNull
+    private static Button getButton(AbstractWidget widget) {
+        int x = widget.getX();
+
+        if(AQGeneralConfig.aqButtonOnRight)
+            if(QuarkGeneralConfig.qButtonOnRight && QuarkGeneralConfig.enableQButton)
+                x += widget.getWidth() + 28;
+            else
+                x += widget.getWidth() + 4;
+        else
+            if(QuarkGeneralConfig.qButtonOnRight || !QuarkGeneralConfig.enableQButton)
+                x -= 24;
+            else
+                x -= 48;
+
+        return new AQButton(x, widget.getY());
     }
 
     private static @Nullable Set<String> getTargetButtons(Screen gui) {

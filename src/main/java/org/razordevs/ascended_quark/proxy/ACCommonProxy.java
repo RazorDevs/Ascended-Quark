@@ -20,7 +20,8 @@ public class ACCommonProxy {
                 List.of(
                         new ZetaCategory("aether", () -> new ItemStack(AetherItems.AETHER_PORTAL_FRAME.get()), AscendedQuark.MODID),
                         new ZetaCategory("deep_aether", () ->
-                                ModList.get().isLoaded(AscendedQuark.DEEP_AETHER) ? new ItemStack(DABlocks.ROSEROOT_LOG.get()) : new ItemStack(Blocks.BARRIER.asItem()), AscendedQuark.DEEP_AETHER)
+                                ModList.get().isLoaded(AscendedQuark.DEEP_AETHER) ?
+                                        new ItemStack(DABlocks.ROSEROOT_LOG.get()) : new ItemStack(Blocks.BARRIER.asItem()), AscendedQuark.DEEP_AETHER)
                 ),
                 new ModFileScanDataModuleFinder(AscendedQuark.MODID), //forge only
                 AQGeneralConfig.INSTANCE

@@ -5,12 +5,16 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import org.razordevs.ascended_quark.entity.AQStool;
+import org.violetmoon.quark.content.building.client.render.entity.StoolEntityRenderer;
 
 import javax.annotation.Nonnull;
 
-public class StoolEntityRender extends EntityRenderer<AQStool> {
+/**
+ *  CODE COPY - {@link StoolEntityRenderer}
+ */
+public class AQStoolEntityRenderer extends EntityRenderer<AQStool> {
 
-	public StoolEntityRender(EntityRendererProvider.Context context) {
+	public AQStoolEntityRenderer(EntityRendererProvider.Context context) {
             super(context);
         }
         @Nonnull

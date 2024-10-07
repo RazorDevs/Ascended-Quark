@@ -25,6 +25,7 @@ import org.razordevs.ascended_quark.entity.block.AQVariantChestBlockEntity;
 import org.razordevs.ascended_quark.entity.block.AQVariantTrappedChestBlockEntity;
 import org.razordevs.ascended_quark.entity.render.AQVariantChestRenderer;
 import org.razordevs.ascended_quark.proxy.AQClient;
+import org.razordevs.ascended_quark.util.WoodSetContext;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.mixin.mixins.accessor.AccessorAbstractChestedHorse;
 import org.violetmoon.zeta.client.SimpleWithoutLevelRenderer;

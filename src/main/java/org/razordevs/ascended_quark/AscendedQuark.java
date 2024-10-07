@@ -38,6 +38,9 @@ import java.util.stream.Stream;
 
 @Mod(AscendedQuark.MODID)
 public class AscendedQuark {
+
+    //TODO: Pickarangs LootTables
+
     public static final String MODID = "ascended_quark";
     public static final String DEEP_AETHER = "deep_aether";
     public static final Logger LOGGER = LogManager.getLogger(MODID);

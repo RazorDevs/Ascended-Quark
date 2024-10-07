@@ -21,6 +21,8 @@ import java.util.List;
 
 public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
 
+    //TODO: Better Panorama
+
     private static final CubeMap CUBE_MAP = new CubeMap(new ResourceLocation(AscendedQuark.MODID, "textures/misc/panorama/panorama"));
     private static final PanoramaRenderer PANORAMA = new PanoramaRenderer(CUBE_MAP);
     private float time;
@@ -36,6 +38,7 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
         List<Integer> socialButtonPlacements = centeredRow(width / 2, 20, 5, 5);
         Iterator<Integer> iter = socialButtonPlacements.iterator();
         addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.discord"), 0x7289da, 1, "https://discord.gg/Y6fabygHRk"));
+        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.website"), 0x7289da, 2, "https://razordevs.github.io/"));
     }
 
     //annoyingly it's not passed to renderBackground

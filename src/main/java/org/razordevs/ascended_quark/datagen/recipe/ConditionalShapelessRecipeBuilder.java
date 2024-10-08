@@ -34,22 +34,22 @@ public class ConditionalShapelessRecipeBuilder extends CraftingRecipeBuilder imp
     @Nullable
     private String group;
 
-    public ConditionalShapelessRecipeBuilder(RecipeCategory p_250837_, ItemLike p_251897_, int p_252227_) {
-        this.category = p_250837_;
-        this.result = p_251897_.asItem();
-        this.count = p_252227_;
+    public ConditionalShapelessRecipeBuilder(RecipeCategory category, ItemLike result, int count) {
+        this.category = category;
+        this.result = result.asItem();
+        this.count = count;
     }
 
-    public static ConditionalShapelessRecipeBuilder shapeless(RecipeCategory p_250714_, ItemLike p_249659_) {
-        return new ConditionalShapelessRecipeBuilder(p_250714_, p_249659_, 1);
+    public static ConditionalShapelessRecipeBuilder shapeless(RecipeCategory category, ItemLike result) {
+        return new ConditionalShapelessRecipeBuilder(category, result, 1);
     }
 
-    public static ConditionalShapelessRecipeBuilder shapeless(RecipeCategory p_252339_, ItemLike p_250836_, int p_249928_) {
-        return new ConditionalShapelessRecipeBuilder(p_252339_, p_250836_, p_249928_);
+    public static ConditionalShapelessRecipeBuilder shapeless(RecipeCategory category, ItemLike result, int count) {
+        return new ConditionalShapelessRecipeBuilder(category, result, count);
     }
 
-    public ConditionalShapelessRecipeBuilder requires(TagKey<Item> p_206420_) {
-        return this.requires(Ingredient.of(p_206420_));
+    public ConditionalShapelessRecipeBuilder requires(TagKey<Item> tagKey) {
+        return this.requires(Ingredient.of(tagKey));
     }
 
     public ConditionalShapelessRecipeBuilder condition(ResourceLocation condition, String name) {
@@ -57,37 +57,37 @@ public class ConditionalShapelessRecipeBuilder extends CraftingRecipeBuilder imp
         return this;
     }
 
-    public ConditionalShapelessRecipeBuilder requires(ItemLike p_126210_) {
-        return this.requires(p_126210_, 1);
+    public ConditionalShapelessRecipeBuilder requires(ItemLike itemLike) {
+        return this.requires(itemLike, 1);
     }
 
-    public ConditionalShapelessRecipeBuilder requires(ItemLike p_126212_, int p_126213_) {
-        for(int i = 0; i < p_126213_; ++i) {
-            this.requires(Ingredient.of(p_126212_));
+    public ConditionalShapelessRecipeBuilder requires(ItemLike itemLike, int count) {
+        for(int i = 0; i < count; ++i) {
+            this.requires(Ingredient.of(itemLike));
         }
 
         return this;
     }
 
-    public ConditionalShapelessRecipeBuilder requires(Ingredient p_126185_) {
-        return this.requires(p_126185_, 1);
+    public ConditionalShapelessRecipeBuilder requires(Ingredient ingredient) {
+        return this.requires(ingredient, 1);
     }
 
-    public ConditionalShapelessRecipeBuilder requires(Ingredient p_126187_, int p_126188_) {
-        for(int i = 0; i < p_126188_; ++i) {
-            this.ingredients.add(p_126187_);
+    public ConditionalShapelessRecipeBuilder requires(Ingredient ingredient, int count) {
+        for(int i = 0; i < count; ++i) {
+            this.ingredients.add(ingredient);
         }
 
         return this;
     }
 
-    public ConditionalShapelessRecipeBuilder unlockedBy(String p_126197_, CriterionTriggerInstance p_126198_) {
-        this.advancement.addCriterion(p_126197_, p_126198_);
+    public ConditionalShapelessRecipeBuilder unlockedBy(String name, CriterionTriggerInstance triggerInstance) {
+        this.advancement.addCriterion(name, triggerInstance);
         return this;
     }
 
-    public ConditionalShapelessRecipeBuilder group(@Nullable String p_126195_) {
-        this.group = p_126195_;
+    public ConditionalShapelessRecipeBuilder group(@Nullable String group) {
+        this.group = group;
         return this;
     }
 
@@ -95,15 +95,15 @@ public class ConditionalShapelessRecipeBuilder extends CraftingRecipeBuilder imp
         return this.result;
     }
 
-    public void save(Consumer<FinishedRecipe> p_126205_, ResourceLocation p_126206_) {
-        this.ensureValid(p_126206_);
-        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_126206_)).rewards(AdvancementRewards.Builder.recipe(p_126206_)).requirements(RequirementsStrategy.OR);
-        p_126205_.accept(new ConditionalShapelessRecipeBuilder.Result(p_126206_, this.result, this.count, this.group == null ? "" : this.group, determineBookCategory(this.category), this.ingredients, this.advancement, p_126206_.withPrefix("recipes/" + this.category.getFolderName() + "/"), condition));
+    public void save(Consumer<FinishedRecipe> recipeConsumer, ResourceLocation location) {
+        this.ensureValid(location);
+        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(location)).rewards(AdvancementRewards.Builder.recipe(location)).requirements(RequirementsStrategy.OR);
+        recipeConsumer.accept(new ConditionalShapelessRecipeBuilder.Result(location, this.result, this.count, this.group == null ? "" : this.group, determineBookCategory(this.category), this.ingredients, this.advancement, location.withPrefix("recipes/" + this.category.getFolderName() + "/"), condition));
     }
 
-    private void ensureValid(ResourceLocation p_126208_) {
+    private void ensureValid(ResourceLocation location) {
         if (this.advancement.getCriteria().isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + p_126208_);
+            throw new IllegalStateException("No way of obtaining recipe " + location);
         }
     }
 
@@ -117,22 +117,22 @@ public class ConditionalShapelessRecipeBuilder extends CraftingRecipeBuilder imp
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation p_249007_, Item p_248667_, int p_249014_, String p_248592_, CraftingBookCategory p_249485_, List<Ingredient> p_252312_, Advancement.Builder p_249909_, ResourceLocation p_249109_, List<Pair<ResourceLocation, String>> condition) {
-            super(p_249485_);
-            this.id = p_249007_;
-            this.result = p_248667_;
-            this.count = p_249014_;
-            this.group = p_248592_;
-            this.ingredients = p_252312_;
-            this.advancement = p_249909_;
-            this.advancementId = p_249109_;
+        public Result(ResourceLocation location, Item result, int count, String group, CraftingBookCategory bookCategory, List<Ingredient> ingredients, Advancement.Builder advBuilder, ResourceLocation advId, List<Pair<ResourceLocation, String>> condition) {
+            super(bookCategory);
+            this.id = location;
+            this.result = result;
+            this.count = count;
+            this.group = group;
+            this.ingredients = ingredients;
+            this.advancement = advBuilder;
+            this.advancementId = advId;
             this.condition = condition;
         }
 
-        public void serializeRecipeData(JsonObject p_126230_) {
-            super.serializeRecipeData(p_126230_);
+        public void serializeRecipeData(JsonObject jsonObject) {
+            super.serializeRecipeData(jsonObject);
             if (!this.group.isEmpty()) {
-                p_126230_.addProperty("group", this.group);
+                jsonObject.addProperty("group", this.group);
             }
 
             JsonArray jsonarray = new JsonArray();
@@ -141,30 +141,30 @@ public class ConditionalShapelessRecipeBuilder extends CraftingRecipeBuilder imp
                 jsonarray.add(ingredient.toJson());
             }
 
-            p_126230_.add("ingredients", jsonarray);
+            jsonObject.add("ingredients", jsonarray);
             JsonObject jsonobject = new JsonObject();
             jsonobject.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result).toString());
             if (this.count > 1) {
                 jsonobject.addProperty("count", this.count);
             }
 
-            p_126230_.add("result", jsonobject);
+            jsonObject.add("result", jsonobject);
 
             if(!condition.isEmpty()) {
                 if(condition.size() == 1) {
                     JsonObject conditions = new JsonObject();
                     conditions.addProperty("type", condition.get(0).getA().toString());
                     conditions.addProperty("flag", this.condition.get(0).getB());
-                    p_126230_.add("conditions", conditions);
+                    jsonObject.add("conditions", conditions);
                 }
                 else {
                     JsonArray values = new JsonArray();
 
 
-                    for(int i = 0; i < condition.size(); i++) {
+                    for (Pair<ResourceLocation, String> resourceLocationStringPair : condition) {
                         JsonObject conditions = new JsonObject();
-                        conditions.addProperty("type", condition.get(i).getA().toString());
-                        conditions.addProperty("flag", this.condition.get(i).getB());
+                        conditions.addProperty("type", resourceLocationStringPair.getA().toString());
+                        conditions.addProperty("flag", resourceLocationStringPair.getB());
                         values.add(conditions);
                     }
 
@@ -174,7 +174,7 @@ public class ConditionalShapelessRecipeBuilder extends CraftingRecipeBuilder imp
                     object.add("values", values);
 
                     array.add(object);
-                    p_126230_.add("conditions", array);
+                    jsonObject.add("conditions", array);
 
                 }
             }

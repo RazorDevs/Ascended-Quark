@@ -35,29 +35,29 @@ public class ConditionalSingleItemBuilder implements RecipeBuilder {
     private String group;
     private final RecipeSerializer<?> type;
 
-    public ConditionalSingleItemBuilder(RecipeCategory p_251425_, RecipeSerializer<?> p_249762_, Ingredient p_251221_, ItemLike p_251302_, int p_250964_) {
-        this.category = p_251425_;
-        this.type = p_249762_;
-        this.result = p_251302_.asItem();
-        this.ingredient = p_251221_;
-        this.count = p_250964_;
+    public ConditionalSingleItemBuilder(RecipeCategory category, RecipeSerializer<?> serializer, Ingredient ingredient, ItemLike result, int count) {
+        this.category = category;
+        this.type = serializer;
+        this.result = result.asItem();
+        this.ingredient = ingredient;
+        this.count = count;
     }
 
-    public static ConditionalSingleItemBuilder stonecutting(Ingredient p_248596_, RecipeCategory p_250503_, ItemLike p_250269_) {
-        return new ConditionalSingleItemBuilder(p_250503_, RecipeSerializer.STONECUTTER, p_248596_, p_250269_, 1);
+    public static ConditionalSingleItemBuilder stonecutting(Ingredient ingredient, RecipeCategory category, ItemLike result) {
+        return new ConditionalSingleItemBuilder(category, RecipeSerializer.STONECUTTER, ingredient, result, 1);
     }
 
-    public static ConditionalSingleItemBuilder stonecutting(Ingredient p_251375_, RecipeCategory p_248984_, ItemLike p_250105_, int p_249506_) {
-        return new ConditionalSingleItemBuilder(p_248984_, RecipeSerializer.STONECUTTER, p_251375_, p_250105_, p_249506_);
+    public static ConditionalSingleItemBuilder stonecutting(Ingredient ingredient, RecipeCategory category, ItemLike result, int count) {
+        return new ConditionalSingleItemBuilder(category, RecipeSerializer.STONECUTTER, ingredient, result, count);
     }
 
-    public ConditionalSingleItemBuilder unlockedBy(String p_176810_, CriterionTriggerInstance p_176811_) {
-        this.advancement.addCriterion(p_176810_, p_176811_);
+    public ConditionalSingleItemBuilder unlockedBy(String name, CriterionTriggerInstance triggerInstance) {
+        this.advancement.addCriterion(name, triggerInstance);
         return this;
     }
 
-    public ConditionalSingleItemBuilder group(@Nullable String p_176808_) {
-        this.group = p_176808_;
+    public ConditionalSingleItemBuilder group(@Nullable String group) {
+        this.group = group;
         return this;
     }
 
@@ -75,15 +75,15 @@ public class ConditionalSingleItemBuilder implements RecipeBuilder {
         return this.result;
     }
 
-    public void save(Consumer<FinishedRecipe> p_126327_, ResourceLocation p_126328_) {
-        this.ensureValid(p_126328_);
-        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_126328_)).rewards(AdvancementRewards.Builder.recipe(p_126328_)).requirements(RequirementsStrategy.OR);
-        p_126327_.accept(new ConditionalSingleItemBuilder.Result(p_126328_, this.type, this.group == null ? "" : this.group, this.ingredient, this.result, this.count, this.advancement, p_126328_.withPrefix("recipes/" + this.category.getFolderName() + "/"), condition));
+    public void save(Consumer<FinishedRecipe> recipeConsumer, ResourceLocation location) {
+        this.ensureValid(location);
+        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(location)).rewards(AdvancementRewards.Builder.recipe(location)).requirements(RequirementsStrategy.OR);
+        recipeConsumer.accept(new ConditionalSingleItemBuilder.Result(location, this.type, this.group == null ? "" : this.group, this.ingredient, this.result, this.count, this.advancement, location.withPrefix("recipes/" + this.category.getFolderName() + "/"), condition));
     }
 
-    private void ensureValid(ResourceLocation p_126330_) {
+    private void ensureValid(ResourceLocation location) {
         if (this.advancement.getCriteria().isEmpty()) {
-            throw new IllegalStateException("No way of obtaining recipe " + p_126330_);
+            throw new IllegalStateException("No way of obtaining recipe " + location);
         }
     }
 
@@ -99,33 +99,33 @@ public class ConditionalSingleItemBuilder implements RecipeBuilder {
         private final ResourceLocation advancementId;
         private final RecipeSerializer<?> type;
 
-        public Result(ResourceLocation p_126340_, RecipeSerializer<?> p_126341_, String p_126342_, Ingredient p_126343_, Item p_126344_, int p_126345_, Advancement.Builder p_126346_, ResourceLocation p_126347_, List<Pair<ResourceLocation, String>> condition) {
-            this.id = p_126340_;
-            this.type = p_126341_;
-            this.group = p_126342_;
-            this.ingredient = p_126343_;
-            this.result = p_126344_;
-            this.count = p_126345_;
-            this.advancement = p_126346_;
-            this.advancementId = p_126347_;
+        public Result(ResourceLocation location, RecipeSerializer<?> serializer, String group, Ingredient ingredient, Item result, int count, Advancement.Builder advBuilder, ResourceLocation advId, List<Pair<ResourceLocation, String>> condition) {
+            this.id = location;
+            this.type = serializer;
+            this.group = group;
+            this.ingredient = ingredient;
+            this.result = result;
+            this.count = count;
+            this.advancement = advBuilder;
+            this.advancementId = advId;
             this.condition = condition;
         }
 
-        public void serializeRecipeData(JsonObject p_126349_) {
+        public void serializeRecipeData(JsonObject jsonObject) {
             if (!this.group.isEmpty()) {
-                p_126349_.addProperty("group", this.group);
+                jsonObject.addProperty("group", this.group);
             }
 
-            p_126349_.add("ingredient", this.ingredient.toJson());
-            p_126349_.addProperty("result", BuiltInRegistries.ITEM.getKey(this.result).toString());
-            p_126349_.addProperty("count", this.count);
+            jsonObject.add("ingredient", this.ingredient.toJson());
+            jsonObject.addProperty("result", BuiltInRegistries.ITEM.getKey(this.result).toString());
+            jsonObject.addProperty("count", this.count);
 
             if(!condition.isEmpty()) {
                 if(condition.size() == 1) {
                     JsonObject conditions = new JsonObject();
                     conditions.addProperty("type", condition.get(0).getA().toString());
                     conditions.addProperty("flag", this.condition.get(0).getB());
-                    p_126349_.add("conditions", conditions);
+                    jsonObject.add("conditions", conditions);
                 }
                 else {
                     JsonArray values = new JsonArray();
@@ -144,7 +144,7 @@ public class ConditionalSingleItemBuilder implements RecipeBuilder {
                     object.add("values", values);
 
                     array.add(object);
-                    p_126349_.add("conditions", array);
+                    jsonObject.add("conditions", array);
 
                 }
             }

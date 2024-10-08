@@ -97,14 +97,13 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-            if(result.getEntity() instanceof LivingEntity entity) {
+            if(result.getEntity() instanceof LivingEntity entity)
                 entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1));
-            }
             super.onHitEntity(result);
     }
 
     @Override
     protected ItemStack getPickupItem() {
-            return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
-        }
+        return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
+    }
 }

@@ -23,7 +23,10 @@ public class AQVariantChestRenderer extends VariantChestRenderer {
         super(context, isTrap);
     }
 
-    public @Nullable Material getMaterial(ChestBlockEntity tile, ChestType type) {
+    // Overridden to use our mod id
+    @Nullable
+    @Override
+    public Material getMaterial(ChestBlockEntity tile, ChestType type) {
         Block block = tile.getBlockState().getBlock();
         Pair<Block, ChestType> pair = Pair.of(block, type);
         return this.materialMap.computeIfAbsent(pair, (b) -> {

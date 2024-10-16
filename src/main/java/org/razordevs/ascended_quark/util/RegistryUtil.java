@@ -3,6 +3,7 @@ package org.razordevs.ascended_quark.util;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -11,6 +12,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.registries.RegistryObject;
 import org.razordevs.ascended_quark.blocks.*;
@@ -18,6 +21,7 @@ import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.VariantLadderBlock;
 import org.violetmoon.zeta.block.ZetaBlock;
+import org.violetmoon.zeta.event.play.loading.ZLootTableLoad;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.BooleanSuppliers;
 import org.violetmoon.zeta.util.handler.ToolInteractionHandler;
@@ -56,6 +60,17 @@ public class RegistryUtil {
         ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new CompAQVerticalSlabBlock(type + "_vertical_slab", context.slab(), BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module), context.planks(), module);
         createLeafCarpet(type + "_leaf_carpet", module, context.leaves());
+    }
+
+    public static void registerModifiedLootTable(ResourceLocation loot, ItemLike item, int weight, int quality, ZLootTableLoad event) {
+        if(event.getName().equals(loot)){
+            LootPoolEntryContainer entry = LootItem.lootTableItem(item)
+                    .setWeight(weight)
+                    .setQuality(quality)
+                    .build();
+
+            event.add(entry);
+        }
     }
 
     /**

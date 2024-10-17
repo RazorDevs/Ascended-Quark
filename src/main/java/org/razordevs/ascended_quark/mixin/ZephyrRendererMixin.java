@@ -11,6 +11,7 @@ import com.aetherteam.aether.entity.monster.Zephyr;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import org.spongepowered.asm.mixin.Mixin;
 
@@ -26,8 +27,8 @@ public class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, EntityModel<
     private final ZephyrModel defaultModel;
     private final ClassicZephyrModel oldModel;
 
-    public ZephyrRendererMixin(EntityRendererProvider.Context context, ZephyrModel defaultModel, float shadowRadius) {
-        super(context, new ZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR)), shadowRadius);
+    public ZephyrRendererMixin(EntityRendererProvider.Context context) {
+        super(context, new ZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR)), 0.5f);
         this.addLayer(new ZephyrTransparencyLayer(this, new ZephyrModel(context.getModelSet().bakeLayer(AetherModelLayers.ZEPHYR_TRANSPARENCY))));
         this.defaultModel = new ZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR));
         this.oldModel = new ClassicZephyrModel(context.bakeLayer(AetherModelLayers.ZEPHYR_CLASSIC));

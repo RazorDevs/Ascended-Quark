@@ -146,8 +146,7 @@ public class AQPickarangModule extends ZetaModule {
 
     @PlayEvent
     public void onLootTableLoad(ZLootTableLoad event) {
-        RegistryUtil.registerModifiedLootTable(AetherLoot.BRONZE_DUNGEON, valk_pickarang, 5, 1, event);
-        RegistryUtil.registerModifiedLootTable(AetherLoot.SILVER_DUNGEON, phoenix_flamerang, 5, 1, event);
+
     }
 
     @ZetaLoadModule(clientReplacement = true)

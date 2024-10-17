@@ -12,9 +12,12 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraftforge.common.ToolActions;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.razordevs.ascended_quark.blocks.*;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
@@ -22,12 +25,14 @@ import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.VariantLadderBlock;
 import org.violetmoon.zeta.block.ZetaBlock;
 import org.violetmoon.zeta.event.play.loading.ZLootTableLoad;
+import org.violetmoon.zeta.mixin.mixins.AccessorLootTable;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.BooleanSuppliers;
 import org.violetmoon.zeta.util.handler.ToolInteractionHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
@@ -62,15 +67,29 @@ public class RegistryUtil {
         createLeafCarpet(type + "_leaf_carpet", module, context.leaves());
     }
 
-    public static void registerModifiedLootTable(ResourceLocation loot, ItemLike item, int weight, int quality, ZLootTableLoad event) {
+    public static void registerModifiedLootTable(ResourceLocation loot, ItemLike item, int weight, int quality, LootTableLoadEvent event) {
         if(event.getName().equals(loot)){
             LootPoolEntryContainer entry = LootItem.lootTableItem(item)
                     .setWeight(weight)
                     .setQuality(quality)
                     .build();
 
-            event.add(entry);
+            add(event, entry);
         }
+    }
+
+    private static void add(LootTableLoadEvent event, LootPoolEntryContainer entry) {
+        LootTable table = event.getTable();
+        List<LootPool> pools = ((AccessorLootTable)table).zeta$getPools();
+        if (pools != null && !pools.isEmpty()) {
+            LootPool firstPool = (LootPool)pools.get(0);
+            LootPoolEntryContainer[] entries = firstPool.entries;
+            LootPoolEntryContainer[] newEntries = new LootPoolEntryContainer[entries.length + 1];
+            System.arraycopy(entries, 0, newEntries, 0, entries.length);
+            newEntries[entries.length] = entry;
+            firstPool.entries = newEntries;
+        }
+
     }
 
     /**

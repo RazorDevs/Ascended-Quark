@@ -2,7 +2,11 @@ package org.razordevs.ascended_quark.blocks;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -16,6 +20,7 @@ import org.violetmoon.zeta.block.IZetaBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.BooleanSuppliers;
 
+import java.util.List;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
@@ -27,13 +32,10 @@ public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaB
     public CompAQVerticalSlabBlock(String registryName, RegistryObject<? extends ItemLike> parent, Properties properties, ZetaModule module) {
         super((Supplier<Block>) parent, properties);
         this.enabledSupplier = BooleanSuppliers.TRUE;
-        module.zeta.registry.registerBlock(this, registryName, true);
+        module.zeta().registry.registerBlock(this, registryName, true);
         this.module = module;
 
-        if (module.category.isAddon()) {
-            module.zeta.requiredModTooltipHandler.map(this, module.category.requiredMod);
-        }
-        if(module.enabled) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), this, parent, module);
+        if(module.isEnabled()) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), this, parent, module);
     }
 
     public CompAQVerticalSlabBlock(String registryName, Properties properties, ZetaModule module) {
@@ -63,5 +65,12 @@ public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaB
     @Nullable
     public String getItemColorProviderName() {
         return null;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
+//        if (module.category().isAddon())
+//            components.add(module.category().getDisabledTooltip());
+        super.appendHoverText(itemStack, blockGetter, components, tooltipFlag);
     }
 }

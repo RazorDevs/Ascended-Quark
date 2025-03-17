@@ -15,7 +15,7 @@ public class AQGlassPaneBlock extends IronBarsBlock implements FrictionCapped, I
 
     public AQGlassPaneBlock(String name, Properties properties, ZetaModule module) {
         super(properties);
-        module.zeta.registry.registerBlock(this, name, true);
+        module.zeta().registry.registerBlock(this, name, true);
         this.module = module;
     }
 

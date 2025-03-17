@@ -17,7 +17,7 @@ public class DeepAetherVerticalSlabModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        if(this.enabled && ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) {
+        if(this.isEnabled() && ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) {
             new CompAQVerticalSlabBlock("mossy_holystone_tile_vertical_slab", DABlocks.MOSSY_HOLYSTONE_TILE_SLAB, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), this);
             new CompAQVerticalSlabBlock("holystone_tile_vertical_slab", DABlocks.HOLYSTONE_TILE_SLAB, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), this);
             new CompAQVerticalSlabBlock("big_holystone_bricks_vertical_slab", DABlocks.BIG_HOLYSTONE_BRICKS_SLAB, BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(1.0F, 10.0F).requiresCorrectToolForDrops(), this);

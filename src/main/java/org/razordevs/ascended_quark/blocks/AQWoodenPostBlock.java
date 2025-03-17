@@ -54,7 +54,7 @@ public class AQWoodenPostBlock extends ZetaBlock implements SimpleWaterloggedBlo
         registerDefaultState(state);
 
         if (module != null) {
-            module.zeta.renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT);
+            module.zeta().renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT);
         }
     }
 

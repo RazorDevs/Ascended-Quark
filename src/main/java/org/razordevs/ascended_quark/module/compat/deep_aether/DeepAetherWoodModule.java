@@ -19,7 +19,7 @@ public class DeepAetherWoodModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        boolean check = this.enabled && ModList.get().isLoaded(AscendedQuark.DEEP_AETHER);
+        boolean check = this.isEnabled() && ModList.get().isLoaded(AscendedQuark.DEEP_AETHER);
 
         // ROSEROOT
 

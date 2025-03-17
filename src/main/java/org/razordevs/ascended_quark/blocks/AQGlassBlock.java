@@ -15,7 +15,7 @@ public class AQGlassBlock extends GlassBlock implements FrictionCapped, IZetaBlo
 
     public AQGlassBlock(String name, Properties properties, ZetaModule module) {
         super(properties);
-        module.zeta.registry.registerBlock(this, name, true);
+        module.zeta().registry.registerBlock(this, name, true);
         this.module = module;
     }
 

@@ -111,7 +111,7 @@ public class RegistryUtil {
     }
 
     public static void addCreativeModeTab(ResourceKey<CreativeModeTab> tab, ItemLike item, RegistryObject<? extends ItemLike> parent, ZetaModule module) {
-        if(!module.enabled)
+        if(!module.isEnabled())
             return;
 
         boolean flag = false;

@@ -43,7 +43,7 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
 
         @LoadEvent
         public void clientSetup(ZClientSetup event) {
-            if (!enabled)
+            if (!isEnabled())
                 return;
             textures = Multimaps.newListMultimap(new EnumMap<>(VariantTextureType.class), ArrayList::new);
 
@@ -57,7 +57,7 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
 
         @LoadEvent
         public void configChanged(ZConfigChanged event) {
-            isEnabled = this.enabled;
+            isEnabled = this.isEnabled();
         }
 
         @Nullable

@@ -1,6 +1,10 @@
 package org.razordevs.ascended_quark.blocks;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import org.jetbrains.annotations.Nullable;
@@ -13,6 +17,8 @@ import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.registry.CreativeTabManager;
 import org.violetmoon.zeta.util.BooleanSuppliers;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.function.BooleanSupplier;
 
 public class AQVerticalSlabBlock extends VerticalSlabBlock implements IZetaBlock {
@@ -25,9 +31,6 @@ public class AQVerticalSlabBlock extends VerticalSlabBlock implements IZetaBlock
         String resloc = AscendedQuark.ZETA.registryUtil.inherit(parent, (s) -> s.replace("_slab", "_vertical_slab"));
         AscendedQuark.ZETA.registry.registerBlock(this, resloc, true);
         this.module = module;
-        if (module.category.isAddon()) {
-            module.zeta.requiredModTooltipHandler.map(this, module.category.requiredMod);
-        }
 
         if (!(parent instanceof SlabBlock)) {
             throw new IllegalArgumentException("Can't rotate a non-slab block into a vertical slab.");
@@ -50,5 +53,12 @@ public class AQVerticalSlabBlock extends VerticalSlabBlock implements IZetaBlock
 
     public @Nullable ZetaModule getModule() {
         return this.module;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
+//        if (module.category().isAddon() && !Objects.equals(module.category().requiredMod, AscendedQuark.AETHER))
+//            components.add(module.category().getDisabledTooltip());
+        super.appendHoverText(itemStack, blockGetter, components, tooltipFlag);
     }
 }

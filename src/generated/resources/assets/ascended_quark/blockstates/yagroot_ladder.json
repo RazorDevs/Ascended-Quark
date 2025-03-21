@@ -1,19 +1,28 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "ascended_quark:block/yagroot_ladder",
-      "y": 90
+    "facing=east,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    "facing=north": {
-      "model": "ascended_quark:block/yagroot_ladder"
+    "facing=east,waterlogged=true": {
+      "model": "minecraft:block/air"
     },
-    "facing=south": {
-      "model": "ascended_quark:block/yagroot_ladder",
-      "y": 180
+    "facing=north,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    "facing=west": {
-      "model": "ascended_quark:block/yagroot_ladder",
-      "y": 270
+    "facing=north,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "facing=south,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "facing=south,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "facing=west,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "facing=west,waterlogged=true": {
+      "model": "minecraft:block/air"
     }
   }
 }

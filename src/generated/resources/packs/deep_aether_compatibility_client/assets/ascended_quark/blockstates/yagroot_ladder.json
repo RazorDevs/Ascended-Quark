@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "ascended_quark:block/yagroot_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "ascended_quark:block/yagroot_ladder"
+    },
+    "facing=south": {
+      "model": "ascended_quark:block/yagroot_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ascended_quark:block/yagroot_ladder",
+      "y": 270
+    }
+  }
+}

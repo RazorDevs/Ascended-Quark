@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "ascended_quark:block/sunroot_ladder"
-  }
+  "parent": "minecraft:item/air"
 }

@@ -1,16 +1,22 @@
 {
   "variants": {
-    "axis=x": {
-      "model": "ascended_quark:block/hollow_cruderoot_log_horizontal",
-      "x": 90,
-      "y": 90
+    "axis=x,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    "axis=y": {
-      "model": "ascended_quark:block/hollow_cruderoot_log"
+    "axis=x,waterlogged=true": {
+      "model": "minecraft:block/air"
     },
-    "axis=z": {
-      "model": "ascended_quark:block/hollow_cruderoot_log_horizontal",
-      "x": 90
+    "axis=y,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,waterlogged=true": {
+      "model": "minecraft:block/air"
     }
   }
 }

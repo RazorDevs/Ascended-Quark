@@ -5,7 +5,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.block.*;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.Level;
@@ -15,16 +17,19 @@ import org.razordevs.ascended_quark.blocks.AQStoolBlock;
 import org.razordevs.ascended_quark.items.AQSlimeInABucketItem;
 import org.razordevs.ascended_quark.items.AQSwetInABucketItem;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
+import org.violetmoon.zeta.block.IZetaBlock;
+import org.violetmoon.zeta.item.IZetaItem;
 import teamrazor.deepaether.item.gear.skyjade.SkyjadeToolsAxeItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class AQItemModelData extends ItemModelProvider {
 
-    final HashMap<String, Item> itemMap;
-    final HashMap<String, Block> blockMap;
+    protected final HashMap<String, Item> itemMap;
+    protected final HashMap<String, Block> blockMap;
 
     public AQItemModelData(PackOutput output, ExistingFileHelper helper, HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
         super(output, AscendedQuark.MODID, helper);
@@ -42,11 +47,14 @@ public class AQItemModelData extends ItemModelProvider {
         toGenerateBlock.addAll(blockMap.values());
 
         for(Item item : toGenerateBlockItem) {
+            if(Objects.equals(((IZetaItem) (item)).getModule().category().requiredMod, AscendedQuark.DEEP_AETHER)) {
+                this.empty(item);
+                continue;
+            }
             if (item instanceof AQSlimeInABucketItem || item instanceof AQSwetInABucketItem) {
                 continue;
             }
 
-            System.out.println(item);
             if (item instanceof TieredItem) {
                 this.handheldItem(item);
             }
@@ -61,7 +69,10 @@ public class AQItemModelData extends ItemModelProvider {
         this.itemBlockFlatName(blockMap.get("quicksoil_framed_glass_pane"), "quicksoil_framed_glass" );
 
         for(Block block : toGenerateBlock) {
-             if(block instanceof AQHedgeBlock)
+            if(Objects.equals(((IZetaBlock) (block)).getModule().category().requiredMod, AscendedQuark.DEEP_AETHER))
+                this.empty(block.asItem());
+
+            else if(block instanceof AQHedgeBlock)
                  this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID,  "block/" + this.blockName(block) + "_post"));
              else if(block instanceof WallBlock)
                 this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID,  "block/" + this.blockName(block) + "_inventory"));
@@ -76,6 +87,10 @@ public class AQItemModelData extends ItemModelProvider {
                  this.itemBlock(block);
              }
         }
+    }
+
+    public void empty(Item item) {
+        this.withExistingParent(this.itemName(item), "item/air");
     }
 
     public void handheldItem(Item item) {

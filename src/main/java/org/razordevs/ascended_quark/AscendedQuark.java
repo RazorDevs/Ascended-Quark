@@ -4,14 +4,21 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PathPackResources;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,6 +30,9 @@ import org.razordevs.ascended_quark.datagen.AQBlockstateData;
 import org.razordevs.ascended_quark.datagen.AQItemModelData;
 import org.razordevs.ascended_quark.datagen.AQLangData;
 import org.razordevs.ascended_quark.datagen.AQRecipeData;
+import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompRecipeData;
+import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompBlockstateData;
+import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompItemModelData;
 import org.razordevs.ascended_quark.datagen.loot.AQLootTableData;
 import org.razordevs.ascended_quark.datagen.loot.modifiers.AQGlobalLootModifiers;
 import org.razordevs.ascended_quark.datagen.loot.modifiers.AQLootDataProvider;
@@ -35,6 +45,7 @@ import org.violetmoon.zeta.Zeta;
 import org.violetmoon.zeta.multiloader.Env;
 import org.violetmoon.zetaimplforge.ForgeZeta;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
@@ -63,6 +74,7 @@ public class AscendedQuark {
 
         MinecraftForge.EVENT_BUS.addListener(this::missingMappings);
         bus.addListener(this::dataSetup);
+        bus.addListener(this::addAdditionalResourcesPack);
 
         AQGlobalLootModifiers.LOOT_MODIFIERS.register(bus);
 
@@ -97,7 +109,6 @@ public class AscendedQuark {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         // Client Data
         generator.addProvider(event.includeClient(), new AQBlockstateData(output, fileHelper, blockMap));
-        generator.addProvider(event.includeClient(), new AQItemModelData(output, fileHelper, itemMap, blockMap));
         generator.addProvider(event.includeClient(), new AQLangData(output, itemMap, blockMap));
 
         // Server Data
@@ -109,6 +120,19 @@ public class AscendedQuark {
 
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new AQItemTagData(output, lookupProvider, blockTags.contentsGetter(), fileHelper, itemMap, blockMap));
+
+        Path builtinData = output.getOutputFolder().resolve("packs");
+
+
+        DataGenerator.PackGenerator clientPack = generator.new PackGenerator(event.includeClient(), "deep_aether_compatibility_client", new PackOutput(builtinData.resolve("deep_aether_compatibility_client")));
+        clientPack.addProvider(outPut -> new DACompBlockstateData(outPut, fileHelper, blockMap));
+        clientPack.addProvider(outPut -> new DACompItemModelData(outPut,fileHelper, itemMap, blockMap));
+
+        DataGenerator.PackGenerator serverPack = generator.new PackGenerator(event.includeServer(), "deep_aether_compatibility_server", new PackOutput(builtinData.resolve("deep_aether_compatibility_server")));
+        serverPack.addProvider(outPut -> new DACompRecipeData(outPut, itemMap, blockMap));
+
+        generator.addProvider(event.includeClient(), new AQItemModelData(output, fileHelper, itemMap, blockMap));
+
     }
 
     @Deprecated(forRemoval = true)
@@ -138,5 +162,22 @@ public class AscendedQuark {
 
     public static <T> ResourceKey<T> asResourceKey(ResourceKey<? extends Registry<T>> base, String name) {
         return ResourceKey.create(base, asResource(name));
+    }
+
+    public void addAdditionalResourcesPack(AddPackFindersEvent event) {
+        if(ModList.get().isLoaded(DEEP_AETHER)) {
+            if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+                setupCompatPack("deep_aether_compatibility_client", "Deep Aether Compatibility Client", event, PackType.CLIENT_RESOURCES, PackSource.BUILT_IN);
+            } else  if(event.getPackType() == PackType.SERVER_DATA){
+                setupCompatPack("deep_aether_compatibility_server", "Deep Aether Compatibility Server", event, PackType.SERVER_DATA, PackSource.SERVER);
+            }
+        }
+    }
+
+    private static void setupCompatPack(String location, String name, AddPackFindersEvent event, PackType type, PackSource source) {
+        Path resourcePath = ModList.get().getModFileById(AscendedQuark.MODID).getFile().findResource("packs/"+location);
+        Pack pack = Pack.readMetaAndCreate("builtin/"+location, Component.literal(name), true,
+                path -> new PathPackResources(path, resourcePath, true), type, Pack.Position.BOTTOM, source);
+        event.addRepositorySource(consumer -> consumer.accept(pack));
     }
 }

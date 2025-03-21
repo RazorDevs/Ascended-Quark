@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "ascended_quark:block/yagroot_bookshelf"
+      "model": "minecraft:block/air"
     }
   }
 }

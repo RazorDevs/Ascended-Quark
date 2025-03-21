@@ -1,85 +1,1156 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "ascended_quark:block/stripped_conberry_post"
-      },
-      "when": {
-        "axis": "y"
-      }
+  "variants": {
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    {
-      "apply": {
-        "model": "ascended_quark:block/stripped_conberry_post",
-        "x": 90,
-        "y": 90
-      },
-      "when": {
-        "axis": "x"
-      }
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
     },
-    {
-      "apply": {
-        "model": "ascended_quark:block/stripped_conberry_post",
-        "x": 90
-      },
-      "when": {
-        "axis": "z"
-      }
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    {
-      "apply": {
-        "model": "ascended_quark:block/chain_small"
-      },
-      "when": {
-        "chain_down": "true"
-      }
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
     },
-    {
-      "apply": {
-        "model": "ascended_quark:block/chain_small_top"
-      },
-      "when": {
-        "chain_up": "true"
-      }
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    {
-      "apply": {
-        "model": "ascended_quark:block/chain_small_top",
-        "x": 90
-      },
-      "when": {
-        "chain_north": "true"
-      }
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
     },
-    {
-      "apply": {
-        "model": "ascended_quark:block/chain_small",
-        "x": 90
-      },
-      "when": {
-        "chain_south": "true"
-      }
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    {
-      "apply": {
-        "model": "ascended_quark:block/chain_small",
-        "x": 90,
-        "y": 90
-      },
-      "when": {
-        "chain_west": "true"
-      }
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
     },
-    {
-      "apply": {
-        "model": "ascended_quark:block/chain_small_top",
-        "x": 90,
-        "y": 90
-      },
-      "when": {
-        "chain_east": "true"
-      }
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=x,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=y,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=false,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=false,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=false,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=false,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=false,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=false,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "axis=z,chain_down=true,chain_east=true,chain_north=true,chain_south=true,chain_up=true,chain_west=true,waterlogged=true": {
+      "model": "minecraft:block/air"
     }
-  ]
+  }
 }

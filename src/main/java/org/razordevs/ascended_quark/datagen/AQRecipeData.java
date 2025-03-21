@@ -29,8 +29,8 @@ public class AQRecipeData extends RecipeProvider {
     public static final ResourceLocation DEFAULT_FLAG = new ResourceLocation(AscendedQuark.MODID, "flag");
     public static final ResourceLocation QUARK_FLAG = new ResourceLocation(Quark.MOD_ID, "flag");
 
-    private final HashMap<String, Item> itemMap;
-    private final HashMap<String, Block> blockMap;
+    protected final HashMap<String, Item> itemMap;
+    protected final HashMap<String, Block> blockMap;
 
     private static final String DA_WOOD = "deep_aether_wood";
 
@@ -42,43 +42,9 @@ public class AQRecipeData extends RecipeProvider {
 
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+
+        //haha
         skyrootHedge(blockMap.get("decorated_holiday_skyroot_hedge"), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
-
-        woodset("roseroot", DABlocks.ROSEROOT_PLANKS.get(), DABlocks.ROSEROOT_LOG.get(), DABlocks.ROSEROOT_WOOD.get(), DABlocks.STRIPPED_ROSEROOT_WOOD.get(), DABlocks.ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_SLAB.get(), DA_WOOD, consumer);
-        this.hedge(blockMap.get("flowering_roseroot_hedge"), DABlocks.FLOWERING_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get(), DEFAULT_FLAG, DA_WOOD, consumer);
-        this.hedge(blockMap.get("blue_roseroot_hedge"), DABlocks.BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get(), DEFAULT_FLAG, DA_WOOD, consumer);
-        this.hedge(blockMap.get("flowering_blue_roseroot_hedge"), DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get(), DEFAULT_FLAG, DA_WOOD, consumer);
-        this.carpet(blockMap.get("flowering_roseroot_leaf_carpet"), DABlocks.FLOWERING_ROSEROOT_LEAVES.get(), DA_WOOD, consumer);
-        this.carpet(blockMap.get("blue_roseroot_leaf_carpet"), DABlocks.BLUE_ROSEROOT_LEAVES.get(), DA_WOOD, consumer);
-        this.carpet(blockMap.get("flowering_blue_roseroot_leaf_carpet"), DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES.get(), DA_WOOD, consumer);
-
-        woodset("cruderoot", DABlocks.CRUDEROOT_PLANKS.get(), DABlocks.CRUDEROOT_LOG.get(), DABlocks.CRUDEROOT_WOOD.get(), DABlocks.STRIPPED_CRUDEROOT_WOOD.get(), DABlocks.CRUDEROOT_LEAVES.get(), DABlocks.CRUDEROOT_SLAB.get(), DA_WOOD, consumer);
-        woodset("sunroot", DABlocks.SUNROOT_PLANKS.get(), DABlocks.SUNROOT_LOG.get(), DABlocks.SUNROOT_WOOD.get(), DABlocks.STRIPPED_SUNROOT_WOOD.get(), DABlocks.SUNROOT_LEAVES.get(), DABlocks.SUNROOT_SLAB.get(), DA_WOOD, consumer);
-        woodset("yagroot", DABlocks.YAGROOT_PLANKS.get(), DABlocks.YAGROOT_LOG.get(), DABlocks.YAGROOT_WOOD.get(), DABlocks.STRIPPED_YAGROOT_WOOD.get(), DABlocks.YAGROOT_LEAVES.get(), DABlocks.YAGROOT_SLAB.get(), DA_WOOD, consumer);
-        woodset("conberry", DABlocks.CONBERRY_PLANKS.get(), DABlocks.CONBERRY_LOG.get(), DABlocks.CONBERRY_WOOD.get(), DABlocks.STRIPPED_CONBERRY_WOOD.get(), DABlocks.CONBERRY_LEAVES.get(), DABlocks.CONBERRY_SLAB.get(), DA_WOOD, consumer);
-
-        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockMap.get("aether_mud_pillar"))
-                .define('A', DABlocks.AETHER_MUD_BRICKS_SLAB.get())
-                .pattern("A")
-                .pattern("A")
-                .condition(QUARK_FLAG, "more_mud_blocks")
-                .condition(DEFAULT_FLAG, "more_aether_mud_blocks")
-                .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS_SLAB.get()), has(DABlocks.AETHER_MUD_BRICKS_SLAB.get()))
-                .save(consumer);
-
-        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockMap.get("aether_mud_brick_lattice"), 4)
-                .define('A', DABlocks.AETHER_MUD_BRICKS.get())
-                .pattern(" A ")
-                .pattern("A A")
-                .pattern(" A ")
-                .condition(QUARK_FLAG, "more_mud_blocks")
-                .condition(DEFAULT_FLAG, "more_aether_mud_blocks")
-                .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS.get()), has(DABlocks.AETHER_MUD_BRICKS.get()))
-                .save(consumer);
-
-        stonecuttingRecipe(blockMap.get("aether_mud_pillar"), DABlocks.AETHER_MUD_BRICKS.get(), consumer,
-                new Pair<>(QUARK_FLAG, "more_mud_blocks"),
-                new Pair<>(DEFAULT_FLAG, "more_aether_mud_blocks"));
     }
 
     private void woodset(String type, Block planks, Block log, Block wood, Block strippedWood, Block leaves, Block slab, String flag, Consumer<FinishedRecipe> consumer) {

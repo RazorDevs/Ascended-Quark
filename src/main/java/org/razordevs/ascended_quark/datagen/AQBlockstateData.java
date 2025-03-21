@@ -3,6 +3,7 @@ package org.razordevs.ascended_quark.datagen;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
+import joptsimple.util.KeyValuePair;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -21,39 +22,29 @@ import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 import org.violetmoon.quark.content.building.block.WoodPostBlock;
+import org.violetmoon.zeta.block.IZetaBlock;
+import org.violetmoon.zeta.block.ZetaBlock;
+import oshi.util.tuples.Pair;
 import teamrazor.deepaether.init.DABlocks;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class AQBlockstateData extends AetherBlockStateProvider {
+    protected final HashMap<String, Block> blockMap;
+
     public AQBlockstateData(PackOutput output, ExistingFileHelper helper, HashMap<String, Block> blockMap) {
         super(output, AscendedQuark.MODID, helper);
         this.blockMap = blockMap;
     }
 
-    final HashMap<String, Block> blockMap;
     @Override
     public void registerStatesAndModels() {
-        this.woodset("roseroot", DABlocks.ROSEROOT_LOG.get(), DABlocks.STRIPPED_ROSEROOT_LOG.get(), DABlocks.ROSEROOT_PLANKS.get(), DABlocks.ROSEROOT_LEAVES.get());
-        this.leafCarpet("blue_roseroot", DABlocks.BLUE_ROSEROOT_LEAVES.get());
-        this.leafCarpet("flowering_blue_roseroot", DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES.get());
-        this.leafCarpet("flowering_roseroot", DABlocks.FLOWERING_ROSEROOT_LEAVES.get());
-
-        this.hedge("blue_roseroot", DABlocks.BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get());
-        this.hedge("flowering_blue_roseroot", DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get());
-        this.hedge("flowering_roseroot", DABlocks.FLOWERING_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get());
-
-        this.woodset("cruderoot", DABlocks.CRUDEROOT_LOG.get(), DABlocks.STRIPPED_CRUDEROOT_LOG.get(), DABlocks.CRUDEROOT_PLANKS.get(), DABlocks.CRUDEROOT_LEAVES.get());
-        this.woodset("sunroot", DABlocks.SUNROOT_LOG.get(), DABlocks.STRIPPED_SUNROOT_LOG.get(), DABlocks.SUNROOT_PLANKS.get(), DABlocks.SUNROOT_LEAVES.get());
-        this.woodset("yagroot", DABlocks.YAGROOT_LOG.get(), DABlocks.STRIPPED_YAGROOT_LOG.get(), DABlocks.YAGROOT_PLANKS.get(), DABlocks.YAGROOT_LEAVES.get());
-        this.woodset("conberry", DABlocks.CONBERRY_LOG.get(), DABlocks.STRIPPED_CONBERRY_LOG.get(), DABlocks.CONBERRY_PLANKS.get(), DABlocks.CONBERRY_LEAVES.get());
-
         this.verticalPLank("skyroot", AetherBlocks.SKYROOT_PLANKS.get(), "construction/");
         this.pillar((RotatedPillarBlock) blockMap.get("skyroot_stick_block"));
         this.compressed("blue_berry_crate");
-        this.compressed("goldenleaf_berries_crate");
         this.hollowLog("skyroot", AetherBlocks.SKYROOT_LOG.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/");
         this.post("skyroot", AetherBlocks.SKYROOT_LOG.get(), "natural/");
         this.strippedPost("skyroot", AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/");
@@ -83,24 +74,17 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         this.verticalSlab("angelic", AetherBlocks.ANGELIC_STONE.get(), "dungeon/");
         this.verticalSlab("hellfire", AetherBlocks.HELLFIRE_STONE.get(), "dungeon/");
 
-        this.verticalSlab("mossy_holystone_tile", DABlocks.MOSSY_HOLYSTONE_TILES.get());
-        this.verticalSlab("holystone_tile", DABlocks.HOLYSTONE_TILES.get());
-        this.verticalSlab("big_holystone_bricks", DABlocks.BIG_HOLYSTONE_BRICKS.get());
-        this.verticalSlab("aseterite", DABlocks.ASETERITE.get());
-        this.verticalSlab("polished_aseterite", DABlocks.POLISHED_ASETERITE.get());
-        this.verticalSlab("aseterite_bricks", DABlocks.ASETERITE_BRICKS.get());
-        this.verticalSlab("raw_clorite", DABlocks.RAW_CLORITE.get());
-        this.verticalSlab("clorite", DABlocks.CLORITE.get());
-        this.verticalSlab("polished_clorite", DABlocks.POLISHED_CLORITE.get());
-        this.verticalSlab("aether_mud_bricks", DABlocks.AETHER_MUD_BRICKS.get());
-
         this.stoneSet("aether_dirt_bricks");
         this.stoneSet("icestone_bricks");
         this.stoneSet("polished_icestone");
         this.stoneSet("quicksoil_bricks");
 
-        this.blockCutout("aether_mud_brick_lattice");
-        this.pillar((RotatedPillarBlock) blockMap.get("aether_mud_pillar"));
+
+        for (Block block : blockMap.values()) {
+            if(Objects.equals(((IZetaBlock) block).getModule().category().requiredMod, AscendedQuark.DEEP_AETHER)) {
+                this.empty(block);
+            }
+        }
     }
 
     public void woodset(String type, Block log, Block stripped, Block planks, Block leaves) {
@@ -439,6 +423,13 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
     public void slab(Block block, Block baseBlock) {
         this.slabBlock((SlabBlock) block, this.texture(this.name(baseBlock)), this.texture(this.name(baseBlock)));
+    }
+
+    public void empty(Block block) {
+        System.out.println(block.getName());
+            ModelFile file = this.models().getExistingFile(new ResourceLocation("minecraft","block/air"));
+
+            this.getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[]{new ConfiguredModel(file)});
     }
 
     public void verticalSlabBlock(Block block, Block baseBlock) {

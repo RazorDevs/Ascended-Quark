@@ -1,26 +1,34 @@
 {
   "variants": {
-    "type=double": {
-      "model": "deep_aether:block/conberry_planks"
+    "type=double,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    "type=east": {
-      "model": "ascended_quark:block/conberry_vertical_slab",
-      "uvlock": true,
-      "y": 90
+    "type=double,waterlogged=true": {
+      "model": "minecraft:block/air"
     },
-    "type=north": {
-      "model": "ascended_quark:block/conberry_vertical_slab",
-      "uvlock": true
+    "type=east,waterlogged=false": {
+      "model": "minecraft:block/air"
     },
-    "type=south": {
-      "model": "ascended_quark:block/conberry_vertical_slab",
-      "uvlock": true,
-      "y": 180
+    "type=east,waterlogged=true": {
+      "model": "minecraft:block/air"
     },
-    "type=west": {
-      "model": "ascended_quark:block/conberry_vertical_slab",
-      "uvlock": true,
-      "y": 270
+    "type=north,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "type=north,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "type=south,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "type=south,waterlogged=true": {
+      "model": "minecraft:block/air"
+    },
+    "type=west,waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "type=west,waterlogged=true": {
+      "model": "minecraft:block/air"
     }
   }
 }

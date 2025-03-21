@@ -1,16 +1,13 @@
 {
   "variants": {
     "axis=x": {
-      "model": "ascended_quark:block/aether_mud_pillar_horizontal",
-      "x": 90,
-      "y": 90
+      "model": "minecraft:block/air"
     },
     "axis=y": {
-      "model": "ascended_quark:block/aether_mud_pillar"
+      "model": "minecraft:block/air"
     },
     "axis=z": {
-      "model": "ascended_quark:block/aether_mud_pillar_horizontal",
-      "x": 90
+      "model": "minecraft:block/air"
     }
   }
 }

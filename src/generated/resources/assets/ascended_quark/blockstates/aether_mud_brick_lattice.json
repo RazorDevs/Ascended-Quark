@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
-      "model": "ascended_quark:block/aether_mud_brick_lattice"
+    "waterlogged=false": {
+      "model": "minecraft:block/air"
+    },
+    "waterlogged=true": {
+      "model": "minecraft:block/air"
     }
   }
 }

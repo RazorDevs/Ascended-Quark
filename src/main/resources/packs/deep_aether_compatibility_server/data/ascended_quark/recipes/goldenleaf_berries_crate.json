@@ -16,7 +16,7 @@
   "conditions": [
     {
       "type": "ascended_quark:flag",
-      "flag": "goldenleaf_berries_crate.json"
+      "flag": "goldenleaf_berries_crate"
     }
   ]
 }

@@ -10,14 +10,12 @@ import org.violetmoon.zeta.module.ZetaModule;
 import java.util.function.Supplier;
 
 public class LeafCarpetWithParticlesBlock extends AQLeafCarpetBlock  {
-
     private final Supplier<? extends ParticleOptions> particle;
 
     public LeafCarpetWithParticlesBlock(String name, ZetaModule module, Supplier<? extends ParticleOptions> particle) {
         super(name, module);
         this.particle = particle;
     }
-
 
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         super.animateTick(state, level, pos, random);

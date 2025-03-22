@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AQVariantChestRenderer extends VariantChestRenderer {
-    private final Map<Pair<Block, ChestType>, Material> materialMap = new HashMap();
+    private final Map<Pair<Block, ChestType>, Material> materialMap = new HashMap<>();
 
     public AQVariantChestRenderer(BlockEntityRendererProvider.Context context, boolean isTrap) {
         super(context, isTrap);

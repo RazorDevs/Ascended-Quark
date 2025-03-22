@@ -18,7 +18,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
@@ -107,23 +106,23 @@ public class AQHedgeBlock extends ZetaFenceBlock implements IZetaBlock, IZetaBlo
         });
     }
 
-    public boolean connectsTo(BlockState state, boolean isSideSolid, @NotNull Direction direction) {
+    public boolean connectsTo(BlockState state, boolean isSideSolid, Direction direction) {
         return state.is(HedgesModule.hedgesTag);
     }
 
-    public boolean canSustainPlantZeta(@NotNull BlockState state, @NotNull BlockGetter world, @NotNull BlockPos pos, @NotNull Direction facing, @NotNull String plantabletype) {
-        return facing == Direction.UP && !(Boolean)state.getValue(WATERLOGGED) && "plains".equals(plantabletype);
+    public boolean canSustainPlantZeta(BlockState state, BlockGetter world, BlockPos pos, Direction facing, String plantableType) {
+        return facing == Direction.UP && !(Boolean)state.getValue(WATERLOGGED) && "plains".equals(plantableType);
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockGetter iblockreader = context.getLevel();
+        BlockGetter iBlockReader = context.getLevel();
         BlockPos blockpos = context.getClickedPos();
         BlockPos down = blockpos.below();
-        BlockState downState = iblockreader.getBlockState(down);
+        BlockState downState = iBlockReader.getBlockState(down);
         return super.getStateForPlacement(context).setValue(EXTEND, downState.getBlock() instanceof HedgeBlock);
     }
 
-    public @NotNull BlockState updateShape(BlockState stateIn, @NotNull Direction facing, @NotNull BlockState facingState, @NotNull LevelAccessor worldIn, @NotNull BlockPos currentPos, @NotNull BlockPos facingPos) {
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (stateIn.getValue(WATERLOGGED)) {
             worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
@@ -131,7 +130,7 @@ public class AQHedgeBlock extends ZetaFenceBlock implements IZetaBlock, IZetaBlo
         return facing == Direction.DOWN ? stateIn.setValue(EXTEND, facingState.getBlock() instanceof HedgeBlock) : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    protected void createBlockStateDefinition(@NotNull StateDefinition.@NotNull Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(EXTEND);
     }

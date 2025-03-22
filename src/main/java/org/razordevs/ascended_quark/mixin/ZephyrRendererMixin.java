@@ -9,7 +9,6 @@ import com.aetherteam.aether.entity.monster.Zephyr;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import org.spongepowered.asm.mixin.Mixin;
 
@@ -24,7 +23,6 @@ public abstract class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, Ent
     }
 
     @Override
-    @NotNull
     public ResourceLocation getTextureLocation(Zephyr entity) {
         if(AetherConfig.CLIENT.legacy_models.get())
             return this.getOldTexture();

@@ -19,8 +19,6 @@ import org.violetmoon.zeta.module.ZetaModule;
 
 @ZetaLoadModule(category = "aether")
 public class SkyrootStoolModule extends ZetaModule {
-
-
     public static EntityType<AQStool> stoolEntity;
 
     @LoadEvent

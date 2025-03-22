@@ -12,7 +12,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.datagen.builders.recipe.ConditionalShapedRecipeBuilder;
 import org.razordevs.ascended_quark.datagen.builders.recipe.ConditionalShapelessRecipeBuilder;
@@ -40,7 +39,7 @@ public class AQRecipeData extends RecipeProvider {
     }
 
     @Override
-    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
         //haha
         skyrootHedge(blockMap.get("decorated_holiday_skyroot_hedge"), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);

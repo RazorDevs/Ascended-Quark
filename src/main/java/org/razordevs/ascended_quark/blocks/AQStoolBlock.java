@@ -35,8 +35,6 @@ import org.razordevs.ascended_quark.module.SkyrootStoolModule;
 import org.violetmoon.zeta.block.ZetaBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 
-import javax.annotation.Nonnull;
-
 public class AQStoolBlock extends ZetaBlock implements SimpleWaterloggedBlock {
         private static final VoxelShape SHAPE_TOP = Block.box(0F, 1F, 0F, 16F, 9F, 16F);
         private static final VoxelShape SHAPE_LEG = Block.box(0F, 0F, 0F, 4F, 1F, 4F);
@@ -68,22 +66,13 @@ public class AQStoolBlock extends ZetaBlock implements SimpleWaterloggedBlock {
             registerDefaultState(stateDefinition.any().setValue(WATERLOGGED, false).setValue(BIG, false).setValue(SAT_IN, false));
         }
 
-        public void blockClicked(Level world, BlockPos pos) {
-            BlockState state = world.getBlockState(pos);
-            if(!state.getValue(BIG)) {
-                world.setBlockAndUpdate(pos, state.setValue(BIG, true));
-                world.scheduleTick(pos, this, 1);
-            }
-        }
-
         @Override
-        public void tick(@Nonnull BlockState state, @Nonnull ServerLevel worldIn, @Nonnull BlockPos pos, @Nonnull RandomSource rand) {
+        public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
             fixState(worldIn, pos, state);
         }
 
-        @Nonnull
         @Override
-        public InteractionResult use(BlockState state, @Nonnull Level worldIn, @Nonnull BlockPos pos, @Nonnull Player player, @Nonnull InteractionHand handIn, @Nonnull BlockHitResult hit) {
+        public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
             if(state.getValue(SAT_IN) || !worldIn.getBlockState(pos.above()).isAir() || player.getVehicle() != null)
                 return super.use(state, worldIn, pos, player, handIn, hit);
 
@@ -101,12 +90,12 @@ public class AQStoolBlock extends ZetaBlock implements SimpleWaterloggedBlock {
         }
 
         @Override
-        public void fallOn(@Nonnull Level worldIn, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull Entity entityIn, float fallDistance) {
+        public void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) {
             super.fallOn(worldIn, state, pos, entityIn, fallDistance * 0.5F);
         }
 
         @Override
-        public void updateEntityAfterFallOn(@Nonnull BlockGetter worldIn, Entity entityIn) {
+        public void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) {
             if(entityIn.isSuppressingBounce())
                 super.updateEntityAfterFallOn(worldIn, entityIn);
             else
@@ -121,18 +110,16 @@ public class AQStoolBlock extends ZetaBlock implements SimpleWaterloggedBlock {
             }
         }
 
-        @Nonnull
         @Override
-        public VoxelShape getShape(BlockState state, @Nonnull BlockGetter worldIn, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
+        public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
             return state.getValue(BIG) ? SHAPE_BIG : SHAPE;
         }
 
         @Override
-        public boolean propagatesSkylightDown(BlockState state, @Nonnull BlockGetter reader, @Nonnull BlockPos pos) {
+        public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
             return !state.getValue(WATERLOGGED);
         }
 
-        @Nonnull
         @Override
         public FluidState getFluidState(BlockState state) {
             return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
@@ -143,9 +130,8 @@ public class AQStoolBlock extends ZetaBlock implements SimpleWaterloggedBlock {
             return getStateFor(context.getLevel(), context.getClickedPos());
         }
 
-        @Nonnull
         @Override
-        public BlockState updateShape(BlockState state, @Nonnull Direction facing, @Nonnull BlockState facingState, @Nonnull LevelAccessor level, @Nonnull BlockPos pos, @Nonnull BlockPos facingPos) {
+        public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
             if (state.getValue(WATERLOGGED)) {
                 level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
             }
@@ -154,7 +140,7 @@ public class AQStoolBlock extends ZetaBlock implements SimpleWaterloggedBlock {
         }
 
         @Override
-        public void neighborChanged(@Nonnull BlockState state, @Nonnull Level worldIn, @Nonnull BlockPos pos, @Nonnull Block blockIn, @Nonnull BlockPos fromPos, boolean isMoving) {
+        public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
             super.neighborChanged(state, worldIn, pos, blockIn, fromPos, isMoving);
 
             fixState(worldIn, pos, state);
@@ -174,12 +160,12 @@ public class AQStoolBlock extends ZetaBlock implements SimpleWaterloggedBlock {
         }
 
         @Override
-        public boolean hasAnalogOutputSignal(@Nonnull BlockState state) {
+        public boolean hasAnalogOutputSignal(BlockState state) {
             return true;
         }
 
         @Override
-        public int getAnalogOutputSignal(BlockState blockState, @Nonnull Level worldIn, @Nonnull BlockPos pos) {
+        public int getAnalogOutputSignal(BlockState blockState, Level worldIn, BlockPos pos) {
             return blockState.getValue(SAT_IN) ? 15 : 0;
         }
 

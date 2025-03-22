@@ -3,7 +3,6 @@ package org.razordevs.ascended_quark.util;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -12,26 +11,19 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.registries.RegistryObject;
 import org.razordevs.ascended_quark.blocks.*;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.VariantLadderBlock;
 import org.violetmoon.zeta.block.ZetaBlock;
-import org.violetmoon.zeta.mixin.mixins.AccessorLootTable;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.BooleanSuppliers;
 import org.violetmoon.zeta.util.handler.ToolInteractionHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
@@ -66,49 +58,6 @@ public class RegistryUtil {
         createLeafCarpet(type + "_leaf_carpet", module, context.leaves());
     }
 
-    public static void registerModifiedLootTable(ResourceLocation loot, ItemLike item, int weight, int quality, LootTableLoadEvent event) {
-        if(event.getName().equals(loot)){
-            LootPoolEntryContainer entry = LootItem.lootTableItem(item)
-                    .setWeight(weight)
-                    .setQuality(quality)
-                    .build();
-
-            add(event, entry);
-        }
-    }
-
-    private static void add(LootTableLoadEvent event, LootPoolEntryContainer entry) {
-        LootTable table = event.getTable();
-        List<LootPool> pools = ((AccessorLootTable)table).zeta$getPools();
-        if (pools != null && !pools.isEmpty()) {
-            LootPool firstPool = (LootPool)pools.get(0);
-            LootPoolEntryContainer[] entries = firstPool.entries;
-            LootPoolEntryContainer[] newEntries = new LootPoolEntryContainer[entries.length + 1];
-            System.arraycopy(entries, 0, newEntries, 0, entries.length);
-            newEntries[entries.length] = entry;
-            firstPool.entries = newEntries;
-        }
-
-    }
-
-    /**
-     * Adds all variant blocks of a disabled wood type, and won't be added to tabs
-     */
-    public static void registerDisabledWoodsetExtension(String type, ZetaModule module) {
-        new ZetaBlock("vertical_" + type + "_planks", module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS));
-        SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);
-        new AQHedgeBlock(type + "_hedge", module);
-        new AQHollowLogBlock("hollow_" + type + "_log", module);
-        new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true);
-        if(!type.equals("skyroot"))
-            new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD);
-        Block post = new AQWoodenPostBlock(type + "_post", module);
-        Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
-        ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);
-        new CompAQVerticalSlabBlock(type + "_vertical_slab", BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module);
-        new AQLeafCarpetBlock(type + "_leaf_carpet", module);
-    }
-
     public static void addCreativeModeTab(ResourceKey<CreativeModeTab> tab, ItemLike item, RegistryObject<? extends ItemLike> parent, ZetaModule module) {
         if(!module.isEnabled())
             return;
@@ -126,7 +75,6 @@ public class RegistryUtil {
             TABS.add(new TabModel(tab, map));
         }
     }
-
 
     public static void createHedge(String name, ZetaModule module, RegistryObject<? extends Block> fence) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock(name, module), fence, module);

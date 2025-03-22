@@ -21,7 +21,6 @@ import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import org.jetbrains.annotations.NotNull;
 import oshi.util.tuples.Pair;
 
 import javax.annotation.Nullable;
@@ -146,7 +145,6 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
     }
 
     public static class Result extends CraftingRecipeBuilder.CraftingResult {
-        @NotNull
         private final List<Pair<ResourceLocation, String>> condition;
         private final ResourceLocation id;
         private final Item result;

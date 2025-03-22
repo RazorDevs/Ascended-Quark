@@ -7,7 +7,6 @@ import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.resources.language.I18n;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.violetmoon.quark.base.config.QuarkGeneralConfig;
@@ -44,7 +43,6 @@ public class AQButtonHandler {
             }
     }
 
-    @NotNull
     private static Button getButton(AbstractWidget widget) {
         int x = widget.getX();
 

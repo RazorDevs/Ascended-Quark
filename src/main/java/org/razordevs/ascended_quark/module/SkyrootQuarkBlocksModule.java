@@ -47,8 +47,8 @@ import java.util.function.BooleanSupplier;
 @ZetaLoadModule(category = "aether", description = "Enables skyroot woodset blocks for quark blocks, such as skyroot post. Disable if another mod already adds compat blocks. ", antiOverlap = "everycomp")
 public class SkyrootQuarkBlocksModule extends ZetaModule {
 
-    protected static final List<Block> aqRegularChests = new ArrayList();
-    protected static final List<Block> aqTrappedChests = new ArrayList();
+    protected static final List<Block> aqRegularChests = new ArrayList<>();
+    protected static final List<Block> aqTrappedChests = new ArrayList<>();
     public static BlockEntityType<AQVariantChestBlockEntity> aqChestTEType;
     public static BlockEntityType<AQVariantTrappedChestBlockEntity> aqTrappedChestTEType;
 

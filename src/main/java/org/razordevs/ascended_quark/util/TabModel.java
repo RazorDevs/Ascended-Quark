@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class TabModel {
-    private ResourceKey<CreativeModeTab> tab;
+    private final ResourceKey<CreativeModeTab> tab;
     private final HashMap<ItemLike, Supplier<? extends ItemLike>> itemMap = new HashMap<>();
 
     public TabModel(ResourceKey<CreativeModeTab> tab, HashMap<ItemLike, Supplier<? extends ItemLike>> itemMap) {

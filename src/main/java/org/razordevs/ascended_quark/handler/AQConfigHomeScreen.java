@@ -7,7 +7,6 @@ import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.client.renderer.PanoramaRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.proxy.AQClient;
@@ -67,7 +66,7 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
     }
 
     @Override
-    public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
         this.partialTicks = partialTicks;
 
         super.render(guiGraphics, mouseX, mouseY, partialTicks);

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class AQLootDataProvider extends GlobalLootModifierProvider {
 
-    private HashMap<String, Item> itemMap;
+    private final HashMap<String, Item> itemMap;
 
     public AQLootDataProvider(PackOutput output, HashMap<String, Item> itemMap)
     {

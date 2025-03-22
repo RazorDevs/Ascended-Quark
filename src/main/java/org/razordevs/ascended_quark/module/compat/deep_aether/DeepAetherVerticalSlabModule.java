@@ -1,8 +1,11 @@
 package org.razordevs.ascended_quark.module.compat.deep_aether;
 
+import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.fml.ModList;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.CompAQVerticalSlabBlock;
@@ -28,6 +31,8 @@ public class DeepAetherVerticalSlabModule extends ZetaModule {
             new CompAQVerticalSlabBlock("clorite_vertical_slab", DABlocks.CLORITE_SLAB, BlockBehaviour.Properties.copy(Blocks.STONE), this);
             new CompAQVerticalSlabBlock("polished_clorite_vertical_slab", DABlocks.POLISHED_CLORITE_SLAB, BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE), this);
             new CompAQVerticalSlabBlock("aether_mud_bricks_vertical_slab", DABlocks.AETHER_MUD_BRICKS_SLAB, BlockBehaviour.Properties.copy(Blocks.MUD_BRICKS), this);
+
+            new CompAQVerticalSlabBlock("nimbus_vertical_slab", DABlocks.NIMBUS_SLAB, BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops(), this, AetherCreativeTabs.AETHER_DUNGEON_BLOCKS.getKey());
         }
     }
 }

@@ -14,7 +14,7 @@ import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompBlockstateD
 import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompItemModelData;
 import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompRecipeData;
 import org.razordevs.ascended_quark.datagen.compat.deep_aether.tags.DACompBlockTagData;
-import org.razordevs.ascended_quark.datagen.compat.deep_aether.tags.DACompTagData;
+import org.razordevs.ascended_quark.datagen.compat.deep_aether.tags.DACompItemTagData;
 import org.razordevs.ascended_quark.datagen.normal.AQBlockstateData;
 import org.razordevs.ascended_quark.datagen.normal.AQItemModelData;
 import org.razordevs.ascended_quark.datagen.normal.AQLangData;
@@ -127,7 +127,7 @@ public class AQData {
             blockTags = new DACompBlockTagData(outPut, lookupProvider, fileHelper, blockMap);
             return blockTags;
         });
-        serverPack.addProvider(outPut -> new DACompTagData(outPut, lookupProvider, blockTags.contentsGetter(), fileHelper, itemMap, blockMap));
+        serverPack.addProvider(outPut -> new DACompItemTagData(outPut, lookupProvider, blockTags.contentsGetter(), fileHelper, itemMap, blockMap));
         serverPack.addProvider(outPut -> AQLootTableData.create(outPut, blockMap));
     }
 }

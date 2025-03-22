@@ -43,6 +43,7 @@ public class DACompBlockstateData extends AQBlockstateData {
         this.verticalSlab("clorite", DABlocks.CLORITE.get());
         this.verticalSlab("polished_clorite", DABlocks.POLISHED_CLORITE.get());
         this.verticalSlab("aether_mud_bricks", DABlocks.AETHER_MUD_BRICKS.get());
+        this.verticalSlab("nimbus", DABlocks.NIMBUS_STONE.get());
 
         this.blockCutout("aether_mud_brick_lattice");
         this.pillar((RotatedPillarBlock) blockMap.get("aether_mud_pillar"));

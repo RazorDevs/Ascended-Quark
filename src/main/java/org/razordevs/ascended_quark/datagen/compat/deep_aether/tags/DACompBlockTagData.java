@@ -23,8 +23,9 @@ public class DACompBlockTagData extends AQBlockTagProvider {
                 blockMap.get("aether_mud_pillar"),
                 blockMap.get("mossy_holystone_tile_vertical_slab"),
                 blockMap.get("holystone_tile_vertical_slab"),
-                blockMap.get("big_holystone_bricks_vertical_slab")
-        );
+                blockMap.get("big_holystone_bricks_vertical_slab"),
+                blockMap.get("nimbus_vertical_slab")
+                );
 
         tag(BlockTags.MINEABLE_WITH_AXE).add(
                 blockMap.get("goldenleaf_berries_crate")

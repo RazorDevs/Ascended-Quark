@@ -27,13 +27,13 @@ public class DeepAetherWoodModule extends ZetaModule {
         else RegistryUtil.registerDisabledWoodsetExtension("roseroot", this);
 
         Block block = new AQLeafCarpetBlock("flowering_roseroot_leaf_carpet", this);
-        if(check) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block,  DABlocks.FLOWERING_ROSEROOT_LEAVES, this);
+        if(check) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), block,  DABlocks.FLOWERING_ROSEROOT_LEAVES, this);
 
         block = new AQLeafCarpetBlock("blue_roseroot_leaf_carpet", this);
-        if(check) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block,  DABlocks.BLUE_ROSEROOT_LEAVES, this);
+        if(check) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), block,  DABlocks.BLUE_ROSEROOT_LEAVES, this);
 
         block = new AQLeafCarpetBlock("flowering_blue_roseroot_leaf_carpet", this);
-        if(check) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block,  DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES, this);
+        if(check) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), block,  DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES, this);
 
         block = new AQHedgeBlock("flowering_roseroot_hedge", this);
         if(check) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block,  DABlocks.ROSEROOT_FENCE, this);

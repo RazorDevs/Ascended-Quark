@@ -18,7 +18,6 @@ import org.violetmoon.zeta.registry.CreativeTabManager;
 import org.violetmoon.zeta.util.BooleanSuppliers;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.function.BooleanSupplier;
 
 public class AQVerticalSlabBlock extends VerticalSlabBlock implements IZetaBlock {

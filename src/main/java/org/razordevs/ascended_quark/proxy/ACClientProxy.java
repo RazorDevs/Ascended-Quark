@@ -6,9 +6,6 @@ import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.handler.AQButtonHandler;
 import org.razordevs.ascended_quark.handler.AQClientUtil;
 import org.razordevs.ascended_quark.handler.AQConfigHomeScreen;
-import org.violetmoon.quark.base.client.handler.ClientUtil;
-import org.violetmoon.quark.base.client.handler.ModelHandler;
-import org.violetmoon.quark.base.handler.WoodSetHandler;
 
 public class ACClientProxy extends ACCommonProxy {
     public void start() {

@@ -5,14 +5,12 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.client.renderer.PanoramaRenderer;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.proxy.AQClient;
-import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.base.client.config.SocialButton;
 import org.violetmoon.zeta.client.config.screen.ZetaConfigHomeScreen;
 

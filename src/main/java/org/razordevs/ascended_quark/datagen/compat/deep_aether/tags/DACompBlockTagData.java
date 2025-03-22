@@ -3,10 +3,9 @@ package org.razordevs.ascended_quark.datagen.compat.deep_aether.tags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
-
 import org.razordevs.ascended_quark.datagen.provider.tags.AQBlockTagProvider;
 
 import java.util.HashMap;

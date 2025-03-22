@@ -13,7 +13,6 @@ import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.proxy.AQClient;
 import org.violetmoon.quark.base.client.handler.ClientUtil;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 

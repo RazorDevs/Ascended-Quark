@@ -1,16 +1,11 @@
 package org.razordevs.ascended_quark.module;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.item.AetherCreativeTabs;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.fml.ModList;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.blocks.AQVerticalSlabBlock;
 import org.razordevs.ascended_quark.blocks.CompAQVerticalSlabBlock;
 import org.violetmoon.quark.content.building.module.VerticalSlabsModule;
@@ -18,7 +13,6 @@ import org.violetmoon.zeta.event.bus.LoadEvent;
 import org.violetmoon.zeta.event.load.ZRegister;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
-import teamrazor.deepaether.init.DABlocks;
 
 @ZetaLoadModule(category = "aether", name = "Ascended Quark Vertical Slabs")
 public class AQVerticalSlabModule extends ZetaModule {

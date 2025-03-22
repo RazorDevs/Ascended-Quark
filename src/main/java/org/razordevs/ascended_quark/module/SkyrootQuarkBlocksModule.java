@@ -18,13 +18,13 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.blocks.AQTrappedVariantChestBlock;
 import org.razordevs.ascended_quark.blocks.AQVariantChestBlock;
 import org.razordevs.ascended_quark.entity.block.AQVariantChestBlockEntity;
 import org.razordevs.ascended_quark.entity.block.AQVariantTrappedChestBlockEntity;
 import org.razordevs.ascended_quark.entity.render.AQVariantChestRenderer;
 import org.razordevs.ascended_quark.proxy.AQClient;
+import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.util.WoodSetContext;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.mixin.mixins.accessor.AccessorAbstractChestedHorse;
@@ -39,7 +39,9 @@ import org.violetmoon.zeta.event.play.entity.player.ZPlayerInteract;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.function.BooleanSupplier;
 
 @ZetaLoadModule(category = "aether", description = "Enables skyroot woodset blocks for quark blocks, such as skyroot post. Disable if another mod already adds compat blocks. ", antiOverlap = "everycomp")

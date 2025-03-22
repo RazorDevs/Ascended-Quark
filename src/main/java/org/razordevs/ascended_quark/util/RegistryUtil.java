@@ -24,7 +24,6 @@ import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.VariantLadderBlock;
 import org.violetmoon.zeta.block.ZetaBlock;
-import org.violetmoon.zeta.event.play.loading.ZLootTableLoad;
 import org.violetmoon.zeta.mixin.mixins.AccessorLootTable;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.BooleanSuppliers;

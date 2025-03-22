@@ -8,7 +8,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.entity.block.AQVariantChestBlockEntity;
 import org.violetmoon.quark.content.building.block.VariantChestBlock;
-import org.violetmoon.quark.content.building.block.be.VariantChestBlockEntity;
 import org.violetmoon.zeta.module.ZetaModule;
 
 import java.util.function.Supplier;

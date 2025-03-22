@@ -1,13 +1,12 @@
 package org.razordevs.ascended_quark.module.compat.deep_aether;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.ModList;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.blocks.AQLeafCarpetBlock;
-import org.razordevs.ascended_quark.util.WoodSetContext;
 import org.razordevs.ascended_quark.util.RegistryUtil;
+import org.razordevs.ascended_quark.util.WoodSetContext;
 import org.violetmoon.zeta.event.bus.LoadEvent;
 import org.violetmoon.zeta.event.load.ZRegister;
 import org.violetmoon.zeta.module.ZetaLoadModule;

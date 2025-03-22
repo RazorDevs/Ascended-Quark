@@ -1,14 +1,15 @@
 package org.razordevs.ascended_quark.datagen.compat.deep_aether;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.datagen.normal.AQRecipeData;
 import org.razordevs.ascended_quark.datagen.builders.recipe.ConditionalShapedRecipeBuilder;
+import org.razordevs.ascended_quark.datagen.normal.AQRecipeData;
 import org.violetmoon.quark.base.Quark;
 import oshi.util.tuples.Pair;
 import teamrazor.deepaether.init.DABlocks;

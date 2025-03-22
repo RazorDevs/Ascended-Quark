@@ -1,9 +1,6 @@
 package org.razordevs.ascended_quark;
 
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -14,8 +11,6 @@ import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
@@ -27,33 +22,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.ApiStatus;
 import org.razordevs.ascended_quark.datagen.AQData;
-import org.razordevs.ascended_quark.datagen.normal.AQBlockstateData;
-import org.razordevs.ascended_quark.datagen.normal.AQItemModelData;
-import org.razordevs.ascended_quark.datagen.normal.AQLangData;
-import org.razordevs.ascended_quark.datagen.normal.AQRecipeData;
-import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompRecipeData;
-import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompBlockstateData;
-import org.razordevs.ascended_quark.datagen.compat.deep_aether.DACompItemModelData;
-import org.razordevs.ascended_quark.datagen.compat.deep_aether.tags.DACompBlockTagData;
-import org.razordevs.ascended_quark.datagen.compat.deep_aether.tags.DACompTagData;
-import org.razordevs.ascended_quark.datagen.normal.loot.AQLootTableData;
 import org.razordevs.ascended_quark.datagen.builders.loot.modifiers.AQGlobalLootModifiers;
-import org.razordevs.ascended_quark.datagen.builders.loot.modifiers.AQLootDataProvider;
-import org.razordevs.ascended_quark.datagen.provider.tags.AQBlockTagProvider;
-import org.razordevs.ascended_quark.datagen.normal.tags.AQBlockTagData;
-import org.razordevs.ascended_quark.datagen.normal.tags.AQItemTagData;
-import org.razordevs.ascended_quark.mixin.ZetaRegistryAccessor;
 import org.razordevs.ascended_quark.proxy.ACClientProxy;
 import org.razordevs.ascended_quark.proxy.ACCommonProxy;
 import org.violetmoon.zeta.Zeta;
-import org.violetmoon.zeta.module.IDisableable;
 import org.violetmoon.zeta.multiloader.Env;
 import org.violetmoon.zetaimplforge.ForgeZeta;
 
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 @Mod(AscendedQuark.MODID)

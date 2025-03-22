@@ -426,10 +426,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public void empty(Block block) {
-        System.out.println(block.getName());
-            ModelFile file = this.models().getExistingFile(new ResourceLocation("minecraft","block/air"));
-
-            this.getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[]{new ConfiguredModel(file)});
+        this.simpleBlock(block, models().cubeAll(name(block), new ResourceLocation(AscendedQuark.MODID, "block/missing_texture")));
     }
 
     public void verticalSlabBlock(Block block, Block baseBlock) {

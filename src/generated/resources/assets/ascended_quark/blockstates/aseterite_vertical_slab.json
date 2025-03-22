@@ -1,34 +1,7 @@
 {
   "variants": {
-    "type=double,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "type=double,waterlogged=true": {
-      "model": "minecraft:block/air"
-    },
-    "type=east,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "type=east,waterlogged=true": {
-      "model": "minecraft:block/air"
-    },
-    "type=north,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "type=north,waterlogged=true": {
-      "model": "minecraft:block/air"
-    },
-    "type=south,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "type=south,waterlogged=true": {
-      "model": "minecraft:block/air"
-    },
-    "type=west,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "type=west,waterlogged=true": {
-      "model": "minecraft:block/air"
+    "": {
+      "model": "ascended_quark:block/aseterite_vertical_slab"
     }
   }
 }

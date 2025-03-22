@@ -90,7 +90,8 @@ public class AQItemModelData extends ItemModelProvider {
     }
 
     public void empty(Item item) {
-        this.withExistingParent(this.itemName(item), "item/air");
+        this.withExistingParent(this.itemName(item), "item/generated")
+                .texture("layer0", this.modLoc("item/missing_texture"));
     }
 
     public void handheldItem(Item item) {

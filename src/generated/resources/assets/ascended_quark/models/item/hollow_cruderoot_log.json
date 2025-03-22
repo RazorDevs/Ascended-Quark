@@ -1,3 +1,6 @@
 {
-  "parent": "minecraft:item/air"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ascended_quark:item/missing_texture"
+  }
 }

@@ -1,28 +1,7 @@
 {
   "variants": {
-    "facing=east,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "facing=east,waterlogged=true": {
-      "model": "minecraft:block/air"
-    },
-    "facing=north,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "facing=north,waterlogged=true": {
-      "model": "minecraft:block/air"
-    },
-    "facing=south,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "facing=south,waterlogged=true": {
-      "model": "minecraft:block/air"
-    },
-    "facing=west,waterlogged=false": {
-      "model": "minecraft:block/air"
-    },
-    "facing=west,waterlogged=true": {
-      "model": "minecraft:block/air"
+    "": {
+      "model": "ascended_quark:block/conberry_ladder"
     }
   }
 }

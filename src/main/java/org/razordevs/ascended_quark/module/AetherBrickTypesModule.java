@@ -22,8 +22,6 @@ public class AetherBrickTypesModule extends ZetaModule {
     @Config(flag = "aether_dirt_bricks", name = "Enable Aether Dirt Bricks") public boolean aether_dirt_bricks = true;
     @Config(flag = "icestone_bricks", name = "Enable  Polished Icestone and Icestone Bricks") public boolean icestone_bricks = true;
 
-
-
     @LoadEvent
     public void register(ZRegister event) {
         IZetaBlock polished = (IZetaBlock) (new ZetaBlock("polished_icestone", this, BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.CHIME).strength(0.5F).randomTicks().sound(SoundType.GLASS).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());

@@ -24,12 +24,10 @@ import teamrazor.deepaether.init.DABlocks;
 public class MoreAetherMudBlocksModule extends ZetaModule {
     @LoadEvent
     public final void register(ZRegister event) {
-        BlockBehaviour.Properties props = BlockBehaviour.Properties.copy(Blocks.MUD_BRICKS);
-        //RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaBlock("carved_aether_mud_bricks", this, props), DABlocks.AETHER_MUD_BRICKS_STAIRS);
-        Block block = new ZetaPillarBlock("aether_mud_pillar", this, props);
-        if(this.isEnabled() && ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block, DABlocks.AETHER_MUD_BRICKS_STAIRS, this);
-
-        block = new AetherMudBrickLatticeBlock(this, props);
-        if(this.isEnabled() && ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block, DABlocks.AETHER_MUD_BRICKS_STAIRS, this);
+        if(ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) {
+            BlockBehaviour.Properties props = BlockBehaviour.Properties.copy(Blocks.MUD_BRICKS);
+            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaPillarBlock("aether_mud_pillar", this, props), DABlocks.AETHER_MUD_BRICKS_STAIRS, this);
+            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AetherMudBrickLatticeBlock(this, props), DABlocks.AETHER_MUD_BRICKS_STAIRS, this);
+        }
     }
 }

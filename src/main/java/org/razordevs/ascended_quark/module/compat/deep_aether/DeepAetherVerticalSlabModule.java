@@ -17,7 +17,7 @@ public class DeepAetherVerticalSlabModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        if(this.isEnabled() && ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) {
+        if (ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) {
             new CompAQVerticalSlabBlock("mossy_holystone_tile_vertical_slab", DABlocks.MOSSY_HOLYSTONE_TILE_SLAB, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), this);
             new CompAQVerticalSlabBlock("holystone_tile_vertical_slab", DABlocks.HOLYSTONE_TILE_SLAB, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), this);
             new CompAQVerticalSlabBlock("big_holystone_bricks_vertical_slab", DABlocks.BIG_HOLYSTONE_BRICKS_SLAB, BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(1.0F, 10.0F).requiresCorrectToolForDrops(), this);
@@ -28,17 +28,6 @@ public class DeepAetherVerticalSlabModule extends ZetaModule {
             new CompAQVerticalSlabBlock("clorite_vertical_slab", DABlocks.CLORITE_SLAB, BlockBehaviour.Properties.copy(Blocks.STONE), this);
             new CompAQVerticalSlabBlock("polished_clorite_vertical_slab", DABlocks.POLISHED_CLORITE_SLAB, BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE), this);
             new CompAQVerticalSlabBlock("aether_mud_bricks_vertical_slab", DABlocks.AETHER_MUD_BRICKS_SLAB, BlockBehaviour.Properties.copy(Blocks.MUD_BRICKS), this);
-        } else {
-            new CompAQVerticalSlabBlock("mossy_holystone_tile_vertical_slab", BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), this);
-            new CompAQVerticalSlabBlock("holystone_tile_vertical_slab", BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS), this);
-            new CompAQVerticalSlabBlock("big_holystone_bricks_vertical_slab", BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(1.0F, 10.0F).requiresCorrectToolForDrops(), this);
-            new CompAQVerticalSlabBlock("aseterite_vertical_slab", BlockBehaviour.Properties.copy(Blocks.STONE), this);
-            new CompAQVerticalSlabBlock("polished_aseterite_vertical_slab", BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE), this);
-            new CompAQVerticalSlabBlock("aseterite_bricks_vertical_slab", BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS), this);
-            new CompAQVerticalSlabBlock("raw_clorite_vertical_slab", BlockBehaviour.Properties.copy(Blocks.STONE), this);
-            new CompAQVerticalSlabBlock("clorite_vertical_slab", BlockBehaviour.Properties.copy(Blocks.STONE), this);
-            new CompAQVerticalSlabBlock("polished_clorite_vertical_slab", BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE), this);
-            new CompAQVerticalSlabBlock("aether_mud_bricks_vertical_slab", BlockBehaviour.Properties.copy(Blocks.MUD_BRICKS), this);
         }
     }
 }

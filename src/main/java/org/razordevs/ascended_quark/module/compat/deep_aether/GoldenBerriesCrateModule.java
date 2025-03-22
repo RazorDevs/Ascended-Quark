@@ -21,9 +21,8 @@ public class GoldenBerriesCrateModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        if(this.isEnabled() && ModList.get().isLoaded(AscendedQuark.DEEP_AETHER))
+        if(ModList.get().isLoaded(AscendedQuark.DEEP_AETHER))
             CompressedBlockModule.crate("goldenleaf_berries", MapColor.COLOR_YELLOW, true, this);
-        else
-            CompressedBlockModule.disabledCrate("goldenleaf_berries", MapColor.COLOR_YELLOW, true, this);
+
     }
 }

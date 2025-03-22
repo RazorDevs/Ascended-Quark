@@ -66,11 +66,4 @@ public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaB
     public String getItemColorProviderName() {
         return null;
     }
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
-//        if (module.category().isAddon())
-//            components.add(module.category().getDisabledTooltip());
-        super.appendHoverText(itemStack, blockGetter, components, tooltipFlag);
-    }
 }

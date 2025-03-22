@@ -1,29 +1,12 @@
 package org.razordevs.ascended_quark.datagen.compat.deep_aether;
 
-import com.aetherteam.aether.block.AetherBlockStateProperties;
-import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.WallSide;
-import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
-import org.razordevs.ascended_quark.datagen.AQBlockstateData;
-import org.violetmoon.quark.base.Quark;
-import org.violetmoon.quark.content.building.block.HedgeBlock;
-import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
+import org.razordevs.ascended_quark.datagen.normal.AQBlockstateData;
 import teamrazor.deepaether.init.DABlocks;
 
 import java.util.HashMap;
-import java.util.Map;
-
 
 public class DACompBlockstateData extends AQBlockstateData {
     public DACompBlockstateData(PackOutput output, ExistingFileHelper helper, HashMap<String, Block> blockMap) {

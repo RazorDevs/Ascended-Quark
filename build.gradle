@@ -1,9 +1,8 @@
 plugins {
-    id 'eclipse'
     id 'maven-publish'
-    id 'net.neoforged.gradle' version '[6.0.13, 6.2)'
+    id 'net.neoforged.gradle.userdev' version '7.1.2'
     id 'io.github.0ffz.github-packages' version '[1,2)'
-    id 'org.spongepowered.mixin' version '[0.7,0.8)'
+    //id 'org.spongepowered.mixin' version '[0.7,0.8.7)'
 }
 
 version = "${project.mc_version}-${project.mod_version}"
@@ -13,70 +12,54 @@ base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
-    mappings channel: mapping_channel, version: mapping_version
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    runs {
-        configureEach {
-            workingDirectory project.file('run')
+runs {
+    configureEach {
+        workingDirectory project.file('run')
 
-            property 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
 
-            property 'forge.logging.console.level', 'debug'
+        systemProperty 'forge.logging.console.level', 'debug'
 
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
+        modSource project.sourceSets.main
+    }
 
-        client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            property 'forge.enabledGameTestNamespaces', 'ascended_quark'
-        }
+    client {
+        workingDirectory project.file('run')
+        systemProperty 'mixin.env.remapRefMap', 'true'
+        systemProperty 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+    }
 
-        server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            args '--nogui'
-        }
+    server {
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        argument '--nogui'
+    }
 
-        gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
+    gameTestServer {
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+    }
 
-        data {
-            workingDirectory project.file('run-data')
-
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing-mod', 'aether', '--existing-mod', 'quark', '--existing-mod', 'deep_aether'
-        }
+    data {
+        workingDirectory project.file('run-data')
+        arguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    maven { url = 'https://maven.minecraftforge.net/' }
     maven { url = "https://maven.theillusivec4.top/" }
     maven { url = "https://www.cursemaven.com" }
     maven { url = "https://maven.blamejared.com/" }
     maven { url = "https://modmaven.dev" }
-    maven {
-        name = 'GeckoLib'
-        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-    }
-    maven { url = 'https://maven.minecraftforge.net/' }
 
-    maven githubPackage.invoke("The-Aether-Team/Nitrogen")
-    maven githubPackage.invoke("The-Aether-Team/Cumulus")
-    maven githubPackage.invoke("The-Aether-Team/The-Aether")
+    maven { url = "https://packages.aether-mod.net/The-Aether" }
 
     flatDir {
         dir 'libs'
@@ -84,45 +67,46 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.neoforged:forge:${project.mc_version}-${project.neoforge_version}"
+    implementation "net.neoforged:neoforge:${project.neoforge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.2"))
 
     // Aether
-    implementation fg.deobf("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
-    implementation fg.deobf("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
-    implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
+    //implementation ("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
+    implementation ("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
+    implementation ("top.theillusivec4.curios:curios-forge:${project.curios_version}")
+    implementation ("com.aetherteam.aether:aether:${project.aether_version}")
 
     //Deep Aether
-    implementation fg.deobf("curse.maven:deep-aether-852465:${project.deep_aether_version}")
-    implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
+    implementation ("curse.maven:deep-aether-852465:${project.deep_aether_version}")
+    implementation ("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
 
     // Quark
-    implementation fg.deobf("curse.maven:quark-243121:${quark_version}")
-    implementation fg.deobf("curse.maven:zeta-968868:${zeta_version}")
-    //implementation fg.deobf("curse.maven:quark-oddities-301051:3575623")
+    implementation ("curse.maven:quark-243121:${quark_version}")
+    implementation ("curse.maven:zeta-968868:${zeta_version}")
+    //implementation ("curse.maven:quark-oddities-301051:3575623")
 
     // Extra
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    compileOnly ("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    compileOnly ("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+    runtimeOnly ("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 }
 
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes([
-                'Specification-Title'     : mod_id,
-                'Specification-Vendor'    : mod_authors,
-                'Specification-Version'   : '1', // We are version 1 of ourselves
-                'Implementation-Title'    : project.name,
-                'Implementation-Version'  : project.jar.archiveVersion,
-                'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            mc_version              : mc_version,
+            neo_version             : neoforge_version,
+            neoforge_version_range  : neoforge_version_range,
+            mod_id                  : mod_id,
+            mod_name                : mod_name,
+            mod_license             : mod_license,
+            mod_version             : mod_version,
+    ]
+    inputs.properties replaceProperties
 
-    finalizedBy 'reobfJar'
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
 }
 
 processResources {
@@ -146,7 +130,9 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-mixin {
-    config "${project.mod_id}.mixins.json"
-    add sourceSets.main, "${project.mod_id}.refmap.json"
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
 }

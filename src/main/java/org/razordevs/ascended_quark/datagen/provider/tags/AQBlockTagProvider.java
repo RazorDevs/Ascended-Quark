@@ -6,9 +6,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.blocks.AQHollowLogBlock;
@@ -108,17 +108,17 @@ public class AQBlockTagProvider extends BlockTagsProvider {
 
         blocks.forEach(block -> {
             if (block instanceof AQWoodenPostBlock)
-                tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "posts"))).add(block);
+                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "posts"))).add(block);
         });
 
         blocks.forEach(block -> {
             if (block instanceof AQHedgeBlock)
-                tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "hedges"))).add(block);
+                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "hedges"))).add(block);
         });
 
         blocks.forEach(block -> {
             if (block instanceof AQHollowLogBlock)
-                tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "hollow_logs"))).add(block);
+                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "hollow_logs"))).add(block);
         });
 
         blocks.forEach(block -> {
@@ -135,7 +135,7 @@ public class AQBlockTagProvider extends BlockTagsProvider {
 
         blocks.forEach(block -> {
             if (block instanceof LadderBlock) {
-                tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "ladders"))).add(block);
+                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "ladders"))).add(block);
                 tag(BlockTags.FALL_DAMAGE_RESETTING).add(block);
                 tag(BlockTags.CLIMBABLE).add(block);
             }
@@ -143,10 +143,10 @@ public class AQBlockTagProvider extends BlockTagsProvider {
 
         blockMap.keySet().forEach(s -> {
             if (blockMap.get(s) instanceof VerticalSlabBlock block) {
-                tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "vertical_slabs"))).add(block);
+                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "vertical_slabs"))).add(block);
                 for(String string : AQItemTagProvider.Wood) {
                     if(s.contains(string)) {
-                        tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "wooden_vertical_slabs"))).add(block);
+                        tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "wooden_vertical_slabs"))).add(block);
                         break;
                     }
                 }

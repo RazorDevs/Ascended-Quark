@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -28,27 +29,24 @@ public class AmbrosiumLampBlock extends ZetaBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT, 0));
     }
 
-
-    @SuppressWarnings("deprecation")
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        ItemStack itemstack = player.getItemInHand(hand);
-        if (hand == InteractionHand.MAIN_HAND && !isRespawnFuel(itemstack) && isRespawnFuel(player.getItemInHand(InteractionHand.OFF_HAND))) {
-            return InteractionResult.PASS;
-        } else if (isRespawnFuel(itemstack) && canBeCharged(blockState)) {
+    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (hand == InteractionHand.MAIN_HAND && !isRespawnFuel(itemStack) && isRespawnFuel(player.getItemInHand(InteractionHand.OFF_HAND))) {
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        } else if (isRespawnFuel(itemStack) && canBeCharged(blockState)) {
             charge(level, blockPos, blockState);
             if (!player.getAbilities().instabuild) {
-                itemstack.shrink(1);
+                itemStack.shrink(1);
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        } else if (!isRespawnFuel(itemstack) && isOn(blockState) && itemstack.isEmpty()) {
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        } else if (!isRespawnFuel(itemStack) && isOn(blockState) && itemStack.isEmpty()) {
             deplete(level, blockPos, blockState);
             if (!player.getAbilities().instabuild) {
                 player.addItem(new ItemStack(AetherBlocks.AMBROSIUM_BLOCK.get().asItem()));
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     private static boolean isRespawnFuel(ItemStack itemStack) {

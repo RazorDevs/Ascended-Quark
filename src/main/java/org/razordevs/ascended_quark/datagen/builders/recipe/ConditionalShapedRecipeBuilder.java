@@ -1,19 +1,19 @@
 package org.razordevs.ascended_quark.datagen.builders.recipe;
-
+/*
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.recipes.CraftingRecipeBuilder;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -25,9 +25,8 @@ import oshi.util.tuples.Pair;
 
 import javax.annotation.Nullable;
 import java.util.*;
-import java.util.function.Consumer;
 
-public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implements RecipeBuilder {
+public class ConditionalShapedRecipeBuilder extends ShapedRecipeBuilder implements RecipeBuilder {
     private final List<Pair<ResourceLocation, String>> condition = new ArrayList<>();
     private final RecipeCategory category;
     private final Item result;
@@ -40,6 +39,7 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
     private boolean showNotification = true;
 
     public ConditionalShapedRecipeBuilder(RecipeCategory category, ItemLike result, int count) {
+        super(category, result, count);
         this.category = category;
         this.result = result.asItem();
         this.count = count;
@@ -81,7 +81,7 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
         }
     }
 
-    public ConditionalShapedRecipeBuilder unlockedBy(String name, CriterionTriggerInstance triggerInstance) {
+    public ConditionalShapedRecipeBuilder unlockedBy(String name, Criterion triggerInstance) {
         this.advancement.addCriterion(name, triggerInstance);
         return this;
     }
@@ -125,8 +125,6 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
                 throw new IllegalStateException("Ingredients are defined but not used in pattern for recipe " + location);
             } else if (this.rows.size() == 1 && this.rows.get(0).length() == 1) {
                 throw new IllegalStateException("Shaped recipe " + location + " only takes in a single item - should it be a shapeless recipe instead?");
-            } else if (this.advancement.getCriteria().isEmpty()) {
-                throw new IllegalStateException("No way of obtaining recipe " + location);
             }
         }
     }
@@ -138,10 +136,10 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
     }
 
     @Override
-    public void save(Consumer<FinishedRecipe> recipeConsumer, ResourceLocation location) {
+    public void save(RecipeOutput recipeConsumer, ResourceLocation location) {
         this.ensureValid(location);
-        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(location)).rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(location)).requirements(RequirementsStrategy.OR);
-        recipeConsumer.accept(new ConditionalShapedRecipeBuilder.Result(location, this.result, this.count, this.group == null ? "" : this.group, determineBookCategory(this.category), this.rows, this.key, this.advancement, location.withPrefix("recipes/" + this.category.getFolderName() + "/"), this.showNotification, this.condition));
+        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(location)).rewards(net.minecraft.advancements.AdvancementRewards.Builder.recipe(location)).requirements(AdvancementRequirements.Strategy.OR);
+        recipeConsumer.accept(new ConditionalShapedRecipeBuilder.Result(location, this.result, this.count, this.group == null ? "" : this.group, RecipeBuilder.determineBookCategory(this.category), this.rows, this.key, this.advancement, location.withPrefix("recipes/" + this.category.getFolderName() + "/"), this.showNotification, this.condition));
     }
 
     public static class Result extends CraftingRecipeBuilder.CraftingResult {
@@ -250,3 +248,4 @@ public class ConditionalShapedRecipeBuilder extends CraftingRecipeBuilder implem
         }
     }
 }
+*/

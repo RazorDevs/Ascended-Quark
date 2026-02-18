@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
  * @param leaves
  */
 public record WoodSetContext(
-        DeferredHolder<?, ? extends Block> slab, DeferredHolder<?, ? extends Block> planks,
-        DeferredHolder<?, ? extends Block> fence, DeferredHolder<?, ? extends Block> log,
-        DeferredHolder<?, ? extends Block> leaves) {
+        DeferredHolder<Block, ? extends Block> slab, DeferredHolder<Block, ? extends Block> planks,
+        DeferredHolder<Block, ? extends Block> fence, DeferredHolder<Block, ? extends Block> log,
+        DeferredHolder<Block, ? extends Block> leaves) {
 }

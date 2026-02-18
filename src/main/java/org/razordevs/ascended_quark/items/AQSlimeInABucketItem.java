@@ -2,8 +2,10 @@ package org.razordevs.ascended_quark.items;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.aether.item.AetherItems;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -27,9 +29,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.phys.Vec3;
 import org.razordevs.ascended_quark.util.RegistryUtil;
+import org.violetmoon.quark.base.components.QuarkDataComponents;
 import org.violetmoon.zeta.item.ZetaItem;
 import org.violetmoon.zeta.module.ZetaModule;
-import org.violetmoon.zeta.util.ItemNBTHelper;
 
 import javax.annotation.Nonnull;
 
@@ -50,19 +52,19 @@ public class AQSlimeInABucketItem extends ZetaItem {
             int x = Mth.floor(pos.x);
             int z = Mth.floor(pos.z);
             boolean slime = isSlimeChunk(serverLevel, x, z);
-            boolean excited = ItemNBTHelper.getBoolean(stack, TAG_EXCITED, false);
+            boolean excited = stack.set(QuarkDataComponents.EXCITED, false);
             if (excited != slime)
-                ItemNBTHelper.setBoolean(stack, TAG_EXCITED, slime);
+                stack.set(QuarkDataComponents.EXCITED, slime);
         }
     }
 
     @Nonnull
     @Override
     public Component getName(@Nonnull ItemStack stack) {
-        if (stack.hasTag()) {
-            CompoundTag cmp = ItemNBTHelper.getCompound(stack, TAG_ENTITY_DATA, false);
+        if (!stack.getComponents().isEmpty()) {
+            CompoundTag cmp = stack.get(DataComponents.ENTITY_DATA).copyTag();
             if (cmp != null && cmp.contains("CustomName")) {
-                Component custom = Component.Serializer.fromJson(cmp.getString("CustomName"));
+                Component custom = Component.Serializer.fromJson(cmp.getString("CustomName"), Minecraft.getInstance().level.registryAccess());
                 return Component.translatable("item.quark.slime_in_a_bucket.named", custom);
             }
         }
@@ -92,7 +94,7 @@ public class AQSlimeInABucketItem extends ZetaItem {
         if(!worldIn.isClientSide) {
             Slime slime = new Slime(EntityType.SLIME, worldIn);
 
-            CompoundTag data = ItemNBTHelper.getCompound(playerIn.getItemInHand(hand), TAG_ENTITY_DATA, true);
+            CompoundTag data = playerIn.getItemInHand(hand).get(DataComponents.ENTITY_DATA).copyTag();
             if(data != null)
                 slime.load(data);
             else {

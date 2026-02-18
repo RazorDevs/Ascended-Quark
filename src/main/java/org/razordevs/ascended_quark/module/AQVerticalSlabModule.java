@@ -2,6 +2,7 @@ package org.razordevs.ascended_quark.module;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -28,12 +29,6 @@ public class AQVerticalSlabModule extends ZetaModule {
         new CompAQVerticalSlabBlock("holystone_brick_vertical_slab", AetherBlocks.HOLYSTONE_BRICKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM).strength(2.0F, 10.0F).requiresCorrectToolForDrops(), this);
         new CompAQVerticalSlabBlock("aerogel_vertical_slab", AetherBlocks.AEROGEL, BlockBehaviour.Properties.of().mapColor(MapColor.DIAMOND).instrument(NoteBlockInstrument.IRON_XYLOPHONE).strength(1.0F, 2000.0F).sound(SoundType.METAL).noOcclusion().requiresCorrectToolForDrops().isViewBlocking((var1, var2 , var3) -> false), this);
 
-        AscendedQuark.ZETA.variantRegistry.slabs.forEach((b) -> {
-            if (b instanceof VerticalSlabsModule.IVerticalSlabProvider provider) {
-                provider.getVerticalSlab(b, this);
-            } else {
-                new AQVerticalSlabBlock(b, this);
-            }
-        });
+        AscendedQuark.ZETA.variantRegistry.slabs.values().forEach((b) -> new AQVerticalSlabBlock(b, this));
     }
 }

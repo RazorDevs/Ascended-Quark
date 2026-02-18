@@ -12,7 +12,9 @@ import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
@@ -47,7 +49,7 @@ public class AscendedQuark {
     public static ACCommonProxy proxy;
     public static final Zeta ZETA = new ForgeZeta(MODID, LogManager.getLogger("aq-zeta"));
 
-    public AscendedQuark(IEventBus bus) {
+    public AscendedQuark(ModContainer mod, IEventBus bus, Dist dist) {
         instance = this;
         ZETA.start();
 
@@ -59,7 +61,7 @@ public class AscendedQuark {
 
         AQGlobalLootModifiers.LOOT_MODIFIERS.register(bus);
 
-        NeoForge.EVENT_BUS.register(this);
+        //NeoForge.EVENT_BUS.register(this);
     }
 
     public static ResourceLocation asResource(String name) {

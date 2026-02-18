@@ -1,5 +1,5 @@
 package org.razordevs.ascended_quark.datagen.builders.recipe;
-
+/*
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.advancements.Advancement;
@@ -167,3 +167,4 @@ public class ConditionalSingleItemBuilder implements RecipeBuilder {
         }
     }
 }
+*/

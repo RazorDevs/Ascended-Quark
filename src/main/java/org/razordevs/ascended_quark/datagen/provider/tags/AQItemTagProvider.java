@@ -8,8 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
@@ -77,17 +77,17 @@ public class AQItemTagProvider extends ItemTagsProvider {
 
         blocks.forEach(block -> {
             if (block instanceof AQWoodenPostBlock)
-                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "posts"))).add(block.asItem());
+                tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "posts"))).add(block.asItem());
         });
 
         blocks.forEach(block -> {
             if (block instanceof AQHedgeBlock)
-                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "hedges"))).add(block.asItem());
+                tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "hedges"))).add(block.asItem());
         });
 
         blocks.forEach(block -> {
             if (block instanceof AQHollowLogBlock)
-                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "hollow_logs"))).add(block.asItem());
+                tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "hollow_logs"))).add(block.asItem());
         });
 
         blocks.forEach(block -> {
@@ -99,23 +99,23 @@ public class AQItemTagProvider extends ItemTagsProvider {
                     tag(Tags.Items.CHESTS_TRAPPED).add(block.asItem());
                 }
                 else {
-                    tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "revertable_chests"))).add(block.asItem());
-                    tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "boatable_chests"))).add(block.asItem());
+                    tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "revertable_chests"))).add(block.asItem());
+                    tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "boatable_chests"))).add(block.asItem());
                 }
             }
         });
 
         blocks.forEach(block -> {
             if (block instanceof LadderBlock)
-                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "ladders"))).add(block.asItem());
+                tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "ladders"))).add(block.asItem());
         });
 
         blockMap.keySet().forEach(s -> {
             if (blockMap.get(s) instanceof VerticalSlabBlock block) {
-                tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "vertical_slabs"))).add(block.asItem());
+                tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "vertical_slabs"))).add(block.asItem());
                 for(String string : Wood) {
                     if(s.contains(string)) {
-                        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "wooden_vertical_slabs"))).add(block.asItem());
+                        tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "wooden_vertical_slabs"))).add(block.asItem());
                         break;
                     }
                 }

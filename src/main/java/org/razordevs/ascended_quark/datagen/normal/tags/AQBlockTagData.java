@@ -6,7 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.datagen.provider.tags.AQBlockTagProvider;
 import org.violetmoon.quark.base.Quark;
@@ -43,7 +43,7 @@ public class AQBlockTagData extends AQBlockTagProvider {
                 blockMap.get("blue_berry_crate")
         );
 
-        tag(BlockTags.create(new ResourceLocation(Quark.MOD_ID, "stools"))).add(
+        tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "stools"))).add(
                 blockMap.get("skyroot_stool")
         );
 

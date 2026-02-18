@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.proxy.AQClient;
 import org.violetmoon.quark.base.client.handler.ClientUtil;
+import org.violetmoon.quark.catnip.animation.AnimationTickHolder;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,7 +48,7 @@ public class AQButton extends Button {
         if(showBubble && AQGeneralConfig.enableOnboarding) {
             Font font = Minecraft.getInstance().font;
             int cy = getY() - 2;
-            if(AQClient.ticker.total % 20 > 10)
+            if(AnimationTickHolder.getTicks() + Minecraft.getInstance().getTimer().getGameTimeDeltaTicks() % 20 > 10)
                 cy++;
 
             ClientUtil.drawChatBubble(guiGraphics, getX() + 16, cy, font, I18n.get("ascended_quark.misc.configure_ascended_quark_here"), alpha, true);

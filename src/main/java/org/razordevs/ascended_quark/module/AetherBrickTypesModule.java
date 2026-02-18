@@ -26,8 +26,8 @@ public class AetherBrickTypesModule extends ZetaModule {
     public void register(ZRegister event) {
         IZetaBlock polished = (IZetaBlock) (new ZetaBlock("polished_icestone", this, BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.CHIME).strength(0.5F).randomTicks().sound(SoundType.GLASS).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
         IZetaBlock icestone_bricks = (IZetaBlock) (new ZetaBlock("icestone_bricks", this, BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.CHIME).strength(0.5F).randomTicks().sound(SoundType.GLASS).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
-        IZetaBlock quicksoil_bricks = (IZetaBlock) (new ZetaBlock("quicksoil_bricks", this, BlockBehaviour.Properties.copy(Blocks.SANDSTONE).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
-        IZetaBlock aether_dirt_bricks =  (IZetaBlock) (new ZetaBlock("aether_dirt_bricks", this, Block.Properties.copy(Blocks.DIRT).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        IZetaBlock quicksoil_bricks = (IZetaBlock) (new ZetaBlock("quicksoil_bricks", this, BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+        IZetaBlock aether_dirt_bricks =  (IZetaBlock) (new ZetaBlock("aether_dirt_bricks", this, Block.Properties.ofFullCopy(Blocks.DIRT).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
 
 
         ImmutableSet.of(polished, icestone_bricks, quicksoil_bricks, aether_dirt_bricks).forEach((what)

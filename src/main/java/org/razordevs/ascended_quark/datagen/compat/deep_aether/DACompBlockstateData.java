@@ -1,11 +1,11 @@
 package org.razordevs.ascended_quark.datagen.compat.deep_aether;
 
+import io.github.razordevs.deep_aether.init.DABlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.razordevs.ascended_quark.datagen.normal.AQBlockstateData;
-import teamrazor.deepaether.init.DABlocks;
 
 import java.util.HashMap;
 

@@ -1,5 +1,5 @@
 package org.razordevs.ascended_quark.datagen.builders.recipe;
-
+/*
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -201,4 +201,4 @@ public class ConditionalShapelessRecipeBuilder extends CraftingRecipeBuilder imp
             return this.advancementId;
         }
     }
-}
+}*/

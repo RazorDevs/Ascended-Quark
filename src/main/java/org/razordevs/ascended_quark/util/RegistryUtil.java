@@ -76,15 +76,15 @@ public class RegistryUtil {
         }
     }
 
-    public static void createHedge(String name, ZetaModule module, DeferredHolder<?, ? extends Block> fence) {
+    public static void createHedge(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> fence) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock(name, module), fence, module);
     }
 
-    public static void createLeafCarpet(String name, ZetaModule module, DeferredHolder<?, ? extends Block> leaves) {
+    public static void createLeafCarpet(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> leaves) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new AQLeafCarpetBlock(name, module), leaves, module);
     }
 
-    public static void createLeafCarpetParticle(String name, ZetaModule module, DeferredHolder<?, ? extends Block> leaves, Supplier<? extends ParticleOptions> particle) {
+    public static void createLeafCarpetParticle(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> leaves, Supplier<? extends ParticleOptions> particle) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new LeafCarpetWithParticlesBlock(name, module, particle), leaves, module);
     }
 

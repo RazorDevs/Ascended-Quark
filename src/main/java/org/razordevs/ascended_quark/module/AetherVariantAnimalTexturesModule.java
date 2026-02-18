@@ -10,8 +10,8 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimaps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
 import org.violetmoon.zeta.config.Config;
@@ -47,11 +47,11 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
                 return;
             textures = Multimaps.newListMultimap(new EnumMap<>(VariantTextureType.class), ArrayList::new);
 
-            registerTextures(VariantTextureType.PHYG, PHYG_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/phyg/phyg.png"));
-            registerTextures(VariantTextureType.AERBUNNY, AERBUNNY_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/aerbunny/aerbunny.png"));
-            registerTextures(VariantTextureType.ZEPHYR, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr.png"));
-            registerTextures(VariantTextureType.ZEPHYR_LAYER, ZEPHYR_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/zephyr/zephyr_layer.png"));
-            registerTextures(VariantTextureType.COCKATRICE, COCKATRICE_COUNT, new ResourceLocation(Aether.MODID, "textures/entity/mobs/cockatrice/cockatrice.png"));
+            registerTextures(VariantTextureType.PHYG, PHYG_COUNT, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/phyg/phyg.png"));
+            registerTextures(VariantTextureType.AERBUNNY, AERBUNNY_COUNT, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/aerbunny/aerbunny.png"));
+            registerTextures(VariantTextureType.ZEPHYR, ZEPHYR_COUNT, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/zephyr/zephyr.png"));
+            registerTextures(VariantTextureType.ZEPHYR_LAYER, ZEPHYR_COUNT, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/zephyr/zephyr_layer.png"));
+            registerTextures(VariantTextureType.COCKATRICE, COCKATRICE_COUNT, ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/cockatrice/cockatrice.png"));
 
         }
 
@@ -124,7 +124,7 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
         private static void registerTextures(VariantTextureType type, int count, ResourceLocation vanilla) {
             String name = type.name().toLowerCase(Locale.ROOT);
             for (int i = 1; i < count + 1; i++)
-                textures.put(type, new ResourceLocation(AscendedQuark.MODID, String.format("textures/model/entity/variants/%s%d.png", name, i)));
+                textures.put(type, AscendedQuark.asResource(String.format("textures/model/entity/variants/%s%d.png", name, i)));
 
             if (vanilla != null)
                 textures.put(type, vanilla);

@@ -28,12 +28,12 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
         super(type, level);
     }
 
-    public AmbrosiumTorchArrow(Level level, double x, double y, double z) {
-        super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, x, y, z, level);
+    public AmbrosiumTorchArrow(Level level, double x, double y, double z, ItemStack stack, ItemStack torchStack) {
+        super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, x, y, z, level, stack, torchStack);
     }
 
-    public AmbrosiumTorchArrow(Level level, LivingEntity shooter) {
-        super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, shooter, level);
+    public AmbrosiumTorchArrow(Level level, LivingEntity shooter, ItemStack stack, ItemStack torchStack) {
+        super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, shooter, level, stack, torchStack);
     }
 
     @Override
@@ -104,6 +104,11 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
 
     @Override
     protected ItemStack getPickupItem() {
+        return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
+    }
+
+    @Override
+    protected ItemStack getDefaultPickupItem() {
         return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
     }
 }

@@ -32,7 +32,7 @@ public class AQVerticalSlabBlock extends VerticalSlabBlock implements IZetaBlock
             if (parent instanceof ZetaSlabBlock slab) {
                 this.setCondition(slab.parent::isEnabled);
             }
-            CreativeTabManager.addToCreativeTabNextTo(CreativeModeTabs.BUILDING_BLOCKS, this, parent, false);
+            CreativeTabManager.addNextToItem(CreativeModeTabs.BUILDING_BLOCKS, this, parent, false);
         }
     }
 

@@ -100,10 +100,10 @@ public class AQData {
         generator.addProvider(event.includeClient(), new AQItemModelData(output, fileHelper, itemMap, blockMap));
 
         // Server Data
-        generator.addProvider(event.includeServer(), new AQRecipeData(output, itemMap, blockMap));
-        generator.addProvider(event.includeServer(), AQLootTableData.create(output, blockMap));
+        generator.addProvider(event.includeServer(), new AQRecipeData(output, lookupProvider, itemMap, blockMap));
+        generator.addProvider(event.includeServer(), AQLootTableData.create(output, lookupProvider, blockMap));
         blockTags = new AQBlockTagData(output, lookupProvider, fileHelper, blockMap);
-        generator.addProvider(event.includeServer(), new AQLootDataProvider(output, itemMap));
+        generator.addProvider(event.includeServer(), new AQLootDataProvider(output, lookupProvider, itemMap));
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new AQItemTagData(output, lookupProvider, blockTags.contentsGetter(), fileHelper, itemMap, blockMap));
     }
@@ -122,12 +122,12 @@ public class AQData {
 
         // Server Pack Data
         DataGenerator.PackGenerator serverPack = generator.new PackGenerator(event.includeServer(), "deep_aether_compatibility_server", new PackOutput(builtinData.resolve("deep_aether_compatibility_server")));
-        serverPack.addProvider(outPut -> new DACompRecipeData(outPut, itemMap, blockMap));
+        serverPack.addProvider(outPut -> new DACompRecipeData(outPut, lookupProvider, itemMap, blockMap));
         serverPack.addProvider(outPut -> {
             blockTags = new DACompBlockTagData(outPut, lookupProvider, fileHelper, blockMap);
             return blockTags;
         });
         serverPack.addProvider(outPut -> new DACompItemTagData(outPut, lookupProvider, blockTags.contentsGetter(), fileHelper, itemMap, blockMap));
-        serverPack.addProvider(outPut -> AQLootTableData.create(outPut, blockMap));
+        serverPack.addProvider(outPut -> AQLootTableData.create(outPut, lookupProvider, blockMap));
     }
 }

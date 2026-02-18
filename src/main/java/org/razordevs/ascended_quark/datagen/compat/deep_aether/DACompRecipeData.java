@@ -1,33 +1,35 @@
 package org.razordevs.ascended_quark.datagen.compat.deep_aether;
 
+import io.github.razordevs.deep_aether.init.DABlocks;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.razordevs.ascended_quark.datagen.builders.recipe.ConditionalShapedRecipeBuilder;
+//import org.razordevs.ascended_quark.datagen.builders.recipe.ConditionalShapedRecipeBuilder;
 import org.razordevs.ascended_quark.datagen.normal.AQRecipeData;
 import org.violetmoon.quark.base.Quark;
 import oshi.util.tuples.Pair;
-import teamrazor.deepaether.init.DABlocks;
 
 import java.util.HashMap;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class DACompRecipeData extends AQRecipeData {
 
-    public static final ResourceLocation DEFAULT_FLAG = new ResourceLocation(AscendedQuark.MODID, "flag");
-    public static final ResourceLocation QUARK_FLAG = new ResourceLocation(Quark.MOD_ID, "flag");
+    public static final ResourceLocation DEFAULT_FLAG = AscendedQuark.asResource("flag");
+    public static final ResourceLocation QUARK_FLAG = ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "flag");
     private static final String DA_WOOD = "deep_aether_wood";
 
-    public DACompRecipeData(PackOutput output, HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
-        super(output, itemMap, blockMap);
+    public DACompRecipeData(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
+        super(output, provider, itemMap, blockMap);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
         woodset("roseroot", DABlocks.ROSEROOT_PLANKS.get(), DABlocks.ROSEROOT_LOG.get(), DABlocks.ROSEROOT_WOOD.get(), DABlocks.STRIPPED_ROSEROOT_WOOD.get(), DABlocks.ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_SLAB.get(), DA_WOOD, consumer);
         this.hedge(blockMap.get("flowering_roseroot_hedge"), DABlocks.FLOWERING_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get(), DEFAULT_FLAG, DA_WOOD, consumer);
         this.hedge(blockMap.get("blue_roseroot_hedge"), DABlocks.BLUE_ROSEROOT_LEAVES.get(), DABlocks.ROSEROOT_LOG.get(), DEFAULT_FLAG, DA_WOOD, consumer);
@@ -41,24 +43,24 @@ public class DACompRecipeData extends AQRecipeData {
         woodset("yagroot", DABlocks.YAGROOT_PLANKS.get(), DABlocks.YAGROOT_LOG.get(), DABlocks.YAGROOT_WOOD.get(), DABlocks.STRIPPED_YAGROOT_WOOD.get(), DABlocks.YAGROOT_LEAVES.get(), DABlocks.YAGROOT_SLAB.get(), DA_WOOD, consumer);
         woodset("conberry", DABlocks.CONBERRY_PLANKS.get(), DABlocks.CONBERRY_LOG.get(), DABlocks.CONBERRY_WOOD.get(), DABlocks.STRIPPED_CONBERRY_WOOD.get(), DABlocks.CONBERRY_LEAVES.get(), DABlocks.CONBERRY_SLAB.get(), DA_WOOD, consumer);
 
-        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockMap.get("aether_mud_pillar"))
-                .define('A', DABlocks.AETHER_MUD_BRICKS_SLAB.get())
-                .pattern("A")
-                .pattern("A")
-                .condition(QUARK_FLAG, "more_mud_blocks")
-                .condition(DEFAULT_FLAG, "more_aether_mud_blocks")
-                .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS_SLAB.get()), has(DABlocks.AETHER_MUD_BRICKS_SLAB.get()))
-                .save(consumer);
+//        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockMap.get("aether_mud_pillar"))
+//                .define('A', DABlocks.AETHER_MUD_BRICKS_SLAB.get())
+//                .pattern("A")
+//                .pattern("A")
+//                .condition(QUARK_FLAG, "more_mud_blocks")
+//                .condition(DEFAULT_FLAG, "more_aether_mud_blocks")
+//                .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS_SLAB.get()), has(DABlocks.AETHER_MUD_BRICKS_SLAB.get()))
+//                .save(consumer);
 
-        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockMap.get("aether_mud_brick_lattice"), 4)
-                .define('A', DABlocks.AETHER_MUD_BRICKS.get())
-                .pattern(" A ")
-                .pattern("A A")
-                .pattern(" A ")
-                .condition(QUARK_FLAG, "more_mud_blocks")
-                .condition(DEFAULT_FLAG, "more_aether_mud_blocks")
-                .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS.get()), has(DABlocks.AETHER_MUD_BRICKS.get()))
-                .save(consumer);
+//        ConditionalShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockMap.get("aether_mud_brick_lattice"), 4)
+//                .define('A', DABlocks.AETHER_MUD_BRICKS.get())
+//                .pattern(" A ")
+//                .pattern("A A")
+//                .pattern(" A ")
+//                .condition(QUARK_FLAG, "more_mud_blocks")
+//                .condition(DEFAULT_FLAG, "more_aether_mud_blocks")
+//                .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS.get()), has(DABlocks.AETHER_MUD_BRICKS.get()))
+//                .save(consumer);
 
         stonecuttingRecipe(blockMap.get("aether_mud_pillar"), DABlocks.AETHER_MUD_BRICKS.get(), consumer,
                 new Pair<>(QUARK_FLAG, "more_mud_blocks"),

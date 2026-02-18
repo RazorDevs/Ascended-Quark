@@ -72,7 +72,7 @@ public class AQPickarangModule extends ZetaModule {
                 .sized(0.4F, 0.4F)
                 .clientTrackingRange(4)
                 .updateInterval(10)
-                .setCustomClientFactory((t, l) -> entityFactory.create(type.getEntityType(), l))
+                //.setCustomClientFactory((t, l) -> entityFactory.create(type.getEntityType(), l))
                 .build(name);
         Quark.ZETA.registry.register(entityType, name, Registries.ENTITY_TYPE);
 

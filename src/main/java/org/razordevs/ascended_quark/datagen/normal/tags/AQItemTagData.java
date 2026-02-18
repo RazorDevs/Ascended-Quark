@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.datagen.provider.tags.AQItemTagProvider;
 import org.violetmoon.quark.base.Quark;
@@ -21,7 +21,7 @@ public class AQItemTagData extends AQItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(ItemTags.create(new ResourceLocation(Quark.MOD_ID, "stools"))).add(
+        tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "stools"))).add(
                 blockMap.get("skyroot_stool").asItem());
 
         tag(ItemTags.ARROWS).add(

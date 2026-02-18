@@ -3,8 +3,7 @@ package org.razordevs.ascended_quark.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
@@ -13,11 +12,11 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.piston.PistonMovingBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.network.NetworkHooks;
 import org.razordevs.ascended_quark.blocks.AQStoolBlock;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+
 public class AQStool extends Entity {
 
     public AQStool(EntityType<? extends AQStool> entityTypeIn, Level worldIn) {
@@ -72,13 +71,13 @@ public class AQStool extends Entity {
     }
 
     @Override
-    public double getPassengersRidingOffset() {
-        return -0.3;
+    public Vec3 getPassengerRidingPosition(Entity entity) {
+        return new Vec3(entity.position().x, entity.position().y - 0.3f, entity.position().z);
     }
 
     @Override
-    protected void defineSynchedData() {
-        // NO-OP
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+
     }
 
     @Override
@@ -89,11 +88,5 @@ public class AQStool extends Entity {
     @Override
     protected void addAdditionalSaveData(@Nonnull CompoundTag compound) {
         // NO-OP
-    }
-
-    @Nonnull
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

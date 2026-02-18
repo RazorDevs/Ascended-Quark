@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.LadderBlock;
 import net.minecraft.world.level.block.WallBlock;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.datagen.normal.AQItemModelData;
@@ -45,9 +45,9 @@ public class DACompItemModelData extends AQItemModelData {
 
         for(Block block : toGenerateBlock) {
              if(block instanceof AQHedgeBlock)
-                 this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID,  "block/" + this.blockName(block) + "_post"));
+                 this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_post"));
              else if(block instanceof WallBlock)
-                this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID,  "block/" + this.blockName(block) + "_inventory"));
+                this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_inventory"));
 
              else if(block instanceof ChestBlock) {
                  this.itemChest(block);

@@ -1,7 +1,7 @@
 package org.razordevs.ascended_quark.module.compat.deep_aether;
 
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.module.CompressedBlockModule;
 import org.violetmoon.zeta.event.bus.LoadEvent;

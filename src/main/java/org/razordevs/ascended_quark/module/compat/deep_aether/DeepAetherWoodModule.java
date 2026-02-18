@@ -1,7 +1,8 @@
 package org.razordevs.ascended_quark.module.compat.deep_aether;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
-import net.minecraftforge.fml.ModList;
+import io.github.razordevs.deep_aether.init.DABlocks;
+import net.neoforged.fml.ModList;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.blocks.AQLeafCarpetBlock;
@@ -11,7 +12,6 @@ import org.violetmoon.zeta.event.bus.LoadEvent;
 import org.violetmoon.zeta.event.load.ZRegister;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
-import teamrazor.deepaether.init.DABlocks;
 
 @ZetaLoadModule(category = "deep_aether", antiOverlap = {"everycomp"})
 public class DeepAetherWoodModule extends ZetaModule {

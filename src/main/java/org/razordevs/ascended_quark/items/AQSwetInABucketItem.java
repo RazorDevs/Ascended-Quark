@@ -5,8 +5,10 @@ import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.aether.item.AetherItems;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -24,12 +26,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.razordevs.ascended_quark.module.ExtraSlimeAndSwetInABucketModule;
 import org.razordevs.ascended_quark.util.RegistryUtil;
+import org.violetmoon.quark.base.components.QuarkDataComponents;
 import org.violetmoon.zeta.item.ZetaItem;
 import org.violetmoon.zeta.module.ZetaModule;
-import org.violetmoon.zeta.util.ItemNBTHelper;
+
 
 import javax.annotation.Nonnull;
 public class AQSwetInABucketItem extends ZetaItem {
@@ -37,9 +40,9 @@ public class AQSwetInABucketItem extends ZetaItem {
     public static final String TAG_ENTITY_DATA = "slime_nbt";
     public static final String TAG_EXCITED = "excited";
 
-    private final RegistryObject<EntityType<Swet>> bucketEntity;
+    private final DeferredHolder<EntityType<?>, ? extends EntityType<Swet>> bucketEntity;
 
-    public AQSwetInABucketItem(String name, ZetaModule module, RegistryObject<EntityType<Swet>> bucketEntity, boolean isSkyroot) {
+    public AQSwetInABucketItem(String name, ZetaModule module, DeferredHolder<EntityType<?>, ? extends EntityType<Swet>> bucketEntity, boolean isSkyroot) {
         super(name, module, new Item.Properties().stacksTo(1));
         this.bucketEntity = bucketEntity;
         if (isSkyroot)
@@ -52,10 +55,10 @@ public class AQSwetInABucketItem extends ZetaItem {
     @Nonnull
     @Override
     public Component getName(@Nonnull ItemStack stack) {
-        if (stack.hasTag()) {
-            CompoundTag cmp = ItemNBTHelper.getCompound(stack, TAG_ENTITY_DATA, false);
+        if (!stack.getComponents().isEmpty()) {
+            CompoundTag cmp = stack.get(DataComponents.ENTITY_DATA).copyTag();
             if (cmp != null && cmp.contains("CustomName")) {
-                Component custom = Component.Serializer.fromJson(cmp.getString("CustomName"));
+                Component custom = Component.Serializer.fromJson(cmp.getString("CustomName"), Minecraft.getInstance().level.registryAccess());
                 return Component.translatable("item.quark.slime_in_a_bucket.named", custom);
             }
         }
@@ -82,7 +85,7 @@ public class AQSwetInABucketItem extends ZetaItem {
         if(!worldIn.isClientSide) {
             Swet swet = new Swet(this.getBucketEntity(), worldIn);
 
-            CompoundTag data = ItemNBTHelper.getCompound(playerIn.getItemInHand(hand), TAG_ENTITY_DATA, true);
+            CompoundTag data = playerIn.getItemInHand(hand).get(DataComponents.ENTITY_DATA).copyTag();
             if(data != null)
                 swet.load(data);
             else {
@@ -109,10 +112,10 @@ public class AQSwetInABucketItem extends ZetaItem {
     @Override
     public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level world, @Nonnull Entity entity, int itemSlot, boolean isSelected) {
         if (world instanceof ServerLevel) {
-            boolean slime = world.dimensionTypeId() == AetherDimensions.AETHER_DIMENSION_TYPE;
-            boolean excited = ItemNBTHelper.getBoolean(stack, TAG_EXCITED, false);
+            boolean slime = world.dimensionTypeRegistration() == AetherDimensions.AETHER_DIMENSION_TYPE;
+            boolean excited = stack.set(QuarkDataComponents.EXCITED, false);
             if (excited != slime)
-                ItemNBTHelper.setBoolean(stack, TAG_EXCITED, slime);
+                stack.set(QuarkDataComponents.EXCITED, slime);
         }
     }
 }

@@ -5,21 +5,22 @@ import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.Position;
-import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
+import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.entity.AmbrosiumTorchArrow;
 import org.razordevs.ascended_quark.entity.render.AmbrosiumTorchArrowRenderer;
@@ -33,7 +34,7 @@ import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.util.Hint;
 
-@Mod.EventBusSubscriber(modid = AscendedQuark.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = AscendedQuark.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 @ZetaLoadModule(category = "aether")
 public class AmbrosiumTorchArrowModule extends ZetaModule {
 
@@ -45,18 +46,12 @@ public class AmbrosiumTorchArrowModule extends ZetaModule {
 
     @LoadEvent
     public void register(ZRegister register) {
-        ambrosium_torch_arrow = new ZetaArrowItem.Impl("ambrosium_torch_arrow", this, (level, stack, living) -> new AmbrosiumTorchArrow(level, living));
+        ambrosium_torch_arrow = new ZetaArrowItem.Impl("ambrosium_torch_arrow", this, AmbrosiumTorchArrow::new, AmbrosiumTorchArrow::new);
         RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), ambrosium_torch_arrow, AetherItems.ENCHANTED_DART, this);
 
         ambrosiumTorchArrowType = EntityType.Builder.<AmbrosiumTorchArrow>of(AmbrosiumTorchArrow::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("ambrosium_torch_arrow");
         register.getRegistry().register(ambrosiumTorchArrowType, "ambrosium_torch_arrow", Registries.ENTITY_TYPE);
-        DispenserBlock.registerBehavior(ambrosium_torch_arrow, new AbstractProjectileDispenseBehavior() {
-            protected Projectile getProjectile(Level level, Position position, ItemStack itemStack) {
-                AmbrosiumTorchArrow torch_arrow = new AmbrosiumTorchArrow(level, position.x(), position.y(), position.z());
-                torch_arrow.pickup = AbstractArrow.Pickup.ALLOWED;
-                return torch_arrow;
-            }
-        });
+        DispenserBlock.registerBehavior(ambrosium_torch_arrow, new ProjectileDispenseBehavior(ambrosium_torch_arrow));
 
         ambrosiumShardParticle = new SimpleParticleType(true);
         register.getRegistry().register(ambrosiumShardParticle, "ambrosium_shard_particle", Registries.PARTICLE_TYPE);

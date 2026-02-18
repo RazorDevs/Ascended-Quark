@@ -11,6 +11,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.horse.AbstractChestedHorse;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -111,7 +112,7 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
                     held.shrink(1);
                     horse.getPersistentData().put("Quark:DonkChest", copy.save(Minecraft.getInstance().level.registryAccess()));
                     horse.setChest(true);
-                    horse.createInventory();
+                    //horse.createInventory();
                     ((AccessorAbstractChestedHorse)horse).quark$playChestEquipsSound();
                 }
             }
@@ -138,7 +139,7 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
             if (item.getItem().getItem() == Items.CHEST) {
                 ItemStack local = WAIT_TO_REPLACE_CHEST.get();
                 if (local != null && !local.isEmpty()) {
-                    ((ItemEntity)target).setItem(local);
+                    item.setItem(local);
                 }
 
                 WAIT_TO_REPLACE_CHEST.remove();
@@ -151,8 +152,6 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
             clientReplacement = true
     )
     public static class Client extends SkyrootQuarkBlocksModule {
-        public Client() {
-        }
 
         @LoadEvent
         public final void clientSetup(ZClientSetup event) {
@@ -163,14 +162,14 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
             Block b;
             while(var2.hasNext()) {
                 b = var2.next();
-                AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer(b.asItem(), new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState()));
+                AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(), new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState()));
             }
 
             var2 = aqTrappedChests.iterator();
 
             while(var2.hasNext()) {
                 b = var2.next();
-                AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer(b.asItem(), new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState()));
+                AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(), new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState()));
             }
         }
     }

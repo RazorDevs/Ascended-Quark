@@ -1,13 +1,14 @@
 package org.razordevs.ascended_quark.datagen.normal;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.items.AQSlimeInABucketItem;
@@ -51,15 +52,15 @@ public class AQItemModelData extends ItemModelProvider {
         }
 
         toGenerateBlock.remove(blockMap.get("ambrosium_lamp"));
-        this.itemBlock(blockMap.get("ambrosium_lamp"), new ResourceLocation(AscendedQuark.MODID, "block/ambrosium_lamp_0"));
+        this.itemBlock(blockMap.get("ambrosium_lamp"), AscendedQuark.asResource("block/ambrosium_lamp_0"));
         toGenerateBlock.remove(blockMap.get("quicksoil_framed_glass_pane"));
         this.itemBlockFlatName(blockMap.get("quicksoil_framed_glass_pane"), "quicksoil_framed_glass" );
 
         for(Block block : toGenerateBlock) {
             if (block instanceof AQHedgeBlock)
-                this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID, "block/" + this.blockName(block) + "_post"));
+                this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_post"));
             else if (block instanceof WallBlock)
-                this.itemBlock(block, new ResourceLocation(AscendedQuark.MODID, "block/" + this.blockName(block) + "_inventory"));
+                this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_inventory"));
 
             else if (block instanceof ChestBlock) {
                 this.itemChest(block);
@@ -71,8 +72,8 @@ public class AQItemModelData extends ItemModelProvider {
         }
     }
 
-    public void handheldItem(Item item) {
-        this.withExistingParent(this.itemName(item), this.mcLoc("item/handheld"))
+    public ItemModelBuilder handheldItem(Item item) {
+        return this.withExistingParent(this.itemName(item), this.mcLoc("item/handheld"))
                 .texture("layer0", this.modLoc("item/"  + this.itemName(item)));
     }
 
@@ -117,7 +118,7 @@ public class AQItemModelData extends ItemModelProvider {
     }
 
     public String blockName(Block block) {
-        ResourceLocation location = ForgeRegistries.BLOCKS.getKey(block);
+        ResourceLocation location = BuiltInRegistries.BLOCK.getKey(block);
         if (location != null) {
             return location.getPath();
         } else {
@@ -126,7 +127,7 @@ public class AQItemModelData extends ItemModelProvider {
     }
 
     public String itemName(Item item) {
-        ResourceLocation location = ForgeRegistries.ITEMS.getKey(item);
+        ResourceLocation location = BuiltInRegistries.ITEM.getKey(item);
         if (location != null) {
             return location.getPath();
         } else {

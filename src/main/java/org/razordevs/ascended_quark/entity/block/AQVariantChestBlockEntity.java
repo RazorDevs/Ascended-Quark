@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 
 public class AQVariantChestBlockEntity extends ChestBlockEntity {
@@ -17,6 +18,8 @@ public class AQVariantChestBlockEntity extends ChestBlockEntity {
     }
 
     public AABB getRenderBoundingBox() {
-        return new AABB(this.worldPosition.offset(-1, 0, -1), this.worldPosition.offset(2, 2, 2));
+        var offset1 = this.worldPosition.offset(-1, 0, -1);
+        var offset2 = this.worldPosition.offset(2, 2, 2);
+        return new AABB(new Vec3(offset1.getX(), offset1.getY(), offset1.getZ()), new Vec3(offset2.getX(), offset2.getY(), offset2.getZ()));
     }
 }

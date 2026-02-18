@@ -20,7 +20,7 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
 
     //TODO: Better Panorama
 
-    private static final CubeMap CUBE_MAP = new CubeMap(new ResourceLocation(AscendedQuark.MODID, "textures/misc/panorama/panorama"));
+    private static final CubeMap CUBE_MAP = new CubeMap(AscendedQuark.asResource("textures/misc/panorama/panorama"));
     private static final PanoramaRenderer PANORAMA = new PanoramaRenderer(CUBE_MAP);
     private float time;
 
@@ -42,7 +42,7 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
     protected float partialTicks;
 
     @Override
-    public void renderBackground(GuiGraphics guiGraphics) {
+    public void renderBackground(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         time += partialTicks;
 
         Minecraft mc = Minecraft.getInstance();
@@ -55,14 +55,14 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
                 blur = (time / 20F) * 0.75F + 0.1F;
             }
 
-            PANORAMA.render(spin, blur);
+            PANORAMA.render(graphics, this.width, this.height, blur, partialTicks);
         } else
-            super.renderBackground(guiGraphics);
+            super.renderBackground(graphics, mouseX, mouseY, partialTick);
 
         int boxWidth = 400;
-        guiGraphics.fill(width / 2 - boxWidth / 2, 0, width / 2 + boxWidth / 2, this.height, 0x66000000);
-        guiGraphics.fill(width / 2 - boxWidth / 2 - 1, 0, width / 2 - boxWidth / 2, this.height, 0x66999999); // nice
-        guiGraphics.fill(width / 2 + boxWidth / 2, 0, width / 2 + boxWidth / 2 + 1, this.height, 0x66999999);
+        graphics.fill(width / 2 - boxWidth / 2, 0, width / 2 + boxWidth / 2, this.height, 0x66000000);
+        graphics.fill(width / 2 - boxWidth / 2 - 1, 0, width / 2 - boxWidth / 2, this.height, 0x66999999); // nice
+        graphics.fill(width / 2 + boxWidth / 2, 0, width / 2 + boxWidth / 2 + 1, this.height, 0x66999999);
     }
 
     @Override

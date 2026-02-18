@@ -157,20 +157,15 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
         public final void clientSetup(ZClientSetup event) {
             BlockEntityRenderers.register(aqChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, false));
             BlockEntityRenderers.register(aqTrappedChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, true));
-            Iterator<Block> var2 = aqRegularChests.iterator();
-
-            Block b;
-            while(var2.hasNext()) {
-                b = var2.next();
+            /*
+            for(Block b : aqRegularChests){
                 AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(), new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState()));
             }
-
-            var2 = aqTrappedChests.iterator();
-
-            while(var2.hasNext()) {
-                b = var2.next();
+            for(Block b : aqTrappedChests){
                 AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(), new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState()));
             }
+
+             */
         }
     }
 }

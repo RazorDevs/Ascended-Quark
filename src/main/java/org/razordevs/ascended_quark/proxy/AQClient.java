@@ -1,7 +1,6 @@
 package org.razordevs.ascended_quark.proxy;
 
 import org.razordevs.ascended_quark.AscendedQuark;
-import org.violetmoon.zeta.client.ClientTicker;
 import org.violetmoon.zeta.client.ZetaClient;
 import org.violetmoon.zeta.util.ZetaSide;
 import org.violetmoon.zetaimplforge.client.ForgeZetaClient;
@@ -14,6 +13,4 @@ public class AQClient {
     }
 
     public static final ZetaClient ZETA_CLIENT = new ForgeZetaClient(AscendedQuark.ZETA);
-    public static final ClientTicker ticker = ClientTicker.INSTANCE;
-
 }

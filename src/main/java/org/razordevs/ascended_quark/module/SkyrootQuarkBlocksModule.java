@@ -3,6 +3,7 @@ package org.razordevs.ascended_quark.module;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.particle.AetherParticleTypes;
 import com.aetherteam.aether.item.AetherCreativeTabs;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.InteractionResult;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQTrappedVariantChestBlock;
@@ -100,14 +102,14 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
         Player player = event.getEntity();
         ItemStack held = player.getItemInHand(event.getHand());
         if (!held.isEmpty() && target instanceof AbstractChestedHorse horse) {
-            if (!horse.hasChest() && held.getItem() != Items.CHEST && held.is(net.minecraftforge.common.Tags.Items.CHESTS_WOODEN)) {
+            if (!horse.hasChest() && held.getItem() != Items.CHEST && held.is(Tags.Items.CHESTS_WOODEN)) {
                 event.setCanceled(true);
                 event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
                 if (!target.level().isClientSide) {
                     ItemStack copy = held.copy();
                     copy.setCount(1);
                     held.shrink(1);
-                    horse.getPersistentData().put("Quark:DonkChest", copy.serializeNBT());
+                    horse.getPersistentData().put("Quark:DonkChest", copy.save(Minecraft.getInstance().level.registryAccess()));
                     horse.setChest(true);
                     horse.createInventory();
                     ((AccessorAbstractChestedHorse)horse).quark$playChestEquipsSound();
@@ -121,7 +123,7 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
     public void onDeath(ZLivingDeath event) {
         Entity target = event.getEntity();
         if (target instanceof AbstractChestedHorse horse) {
-            ItemStack chest = ItemStack.of(horse.getPersistentData().getCompound("Quark:DonkChest"));
+            ItemStack chest = ItemStack.parse(Minecraft.getInstance().level.registryAccess() , horse.getPersistentData().getCompound("Quark:DonkChest")).get();
             if (!chest.isEmpty() && horse.hasChest()) {
                 WAIT_TO_REPLACE_CHEST.set(chest);
             }

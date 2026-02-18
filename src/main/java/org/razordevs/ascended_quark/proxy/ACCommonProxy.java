@@ -1,14 +1,14 @@
 package org.razordevs.ascended_quark.proxy;
 
 import com.aetherteam.aether.item.AetherItems;
+import io.github.razordevs.deep_aether.init.DABlocks;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.violetmoon.zeta.module.ZetaCategory;
 import org.violetmoon.zetaimplforge.module.ModFileScanDataModuleFinder;
-import teamrazor.deepaether.init.DABlocks;
 
 import java.util.List;
 

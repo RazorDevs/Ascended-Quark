@@ -72,7 +72,7 @@ dependencies {
     implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.2"))
 
     // Aether
-    //implementation ("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
+    implementation ("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
     implementation ("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
     implementation ("top.theillusivec4.curios:curios-forge:${project.curios_version}")
     implementation ("com.aetherteam.aether:aether:${project.aether_version}")

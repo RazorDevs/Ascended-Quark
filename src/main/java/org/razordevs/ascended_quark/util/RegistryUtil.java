@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.razordevs.ascended_quark.blocks.*;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
@@ -45,7 +45,7 @@ public class RegistryUtil {
         SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);
         createHedge(type + "_hedge", module, context.fence());
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), context.log(), module);
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.copy(Blocks.LADDER), true), context.planks(), module);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER), true), context.planks(), module);
         if(!type.equals("skyroot"))
             addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD), context.planks(), module);
 
@@ -53,12 +53,12 @@ public class RegistryUtil {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, context.log(), module);
         Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), stripped, context.log(), module);
-        ToolInteractionHandler.registerInteraction(ToolActions.AXE_STRIP, post, stripped);
+        ToolInteractionHandler.registerInteraction(ItemAbilities.AXE_STRIP, post, stripped);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new CompAQVerticalSlabBlock(type + "_vertical_slab", context.slab(), BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module), context.planks(), module);
         createLeafCarpet(type + "_leaf_carpet", module, context.leaves());
     }
 
-    public static void addCreativeModeTab(ResourceKey<CreativeModeTab> tab, ItemLike item, RegistryObject<? extends ItemLike> parent, ZetaModule module) {
+    public static void addCreativeModeTab(ResourceKey<CreativeModeTab> tab, ItemLike item, DeferredHolder<?, ? extends ItemLike> parent, ZetaModule module) {
         if(!module.isEnabled())
             return;
 
@@ -76,15 +76,15 @@ public class RegistryUtil {
         }
     }
 
-    public static void createHedge(String name, ZetaModule module, RegistryObject<? extends Block> fence) {
+    public static void createHedge(String name, ZetaModule module, DeferredHolder<?, ? extends Block> fence) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock(name, module), fence, module);
     }
 
-    public static void createLeafCarpet(String name, ZetaModule module, RegistryObject<? extends Block> leaves) {
+    public static void createLeafCarpet(String name, ZetaModule module, DeferredHolder<?, ? extends Block> leaves) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new AQLeafCarpetBlock(name, module), leaves, module);
     }
 
-    public static void createLeafCarpetParticle(String name, ZetaModule module, RegistryObject<? extends Block> leaves, Supplier<? extends ParticleOptions> particle) {
+    public static void createLeafCarpetParticle(String name, ZetaModule module, DeferredHolder<?, ? extends Block> leaves, Supplier<? extends ParticleOptions> particle) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new LeafCarpetWithParticlesBlock(name, module, particle), leaves, module);
     }
 

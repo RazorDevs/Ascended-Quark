@@ -7,18 +7,18 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.util.TabModel;
 
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT, modid = AscendedQuark.MODID)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT, modid = AscendedQuark.MODID)
 public class AQTabs {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
@@ -40,6 +40,6 @@ public class AQTabs {
     }
 
     private static void addToTab(Item parent, Item stack, BuildCreativeModeTabContentsEvent event) {
-        event.getEntries().putAfter(new ItemStack(parent), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        event.getParentEntries().add(new ItemStack(stack));
     }
 }

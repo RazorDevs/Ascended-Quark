@@ -30,7 +30,8 @@ public class SkyrootStoolModule extends ZetaModule {
                 .clientTrackingRange(3)
                 .updateInterval(Integer.MAX_VALUE)
                 .setShouldReceiveVelocityUpdates(false)
-                .setCustomClientFactory((spawnEntity, world) -> new AQStool(stoolEntity, world)).build("stool");
+                //.setCustomClientFactory((spawnEntity, world) -> new AQStool(stoolEntity, world))
+                .build("stool");
         AscendedQuark.ZETA.registry.register(stoolEntity, "stool", Registries.ENTITY_TYPE);
     }
 

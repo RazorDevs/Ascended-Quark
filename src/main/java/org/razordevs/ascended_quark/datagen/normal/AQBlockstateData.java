@@ -5,14 +5,19 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.WallSide;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
 import org.violetmoon.quark.base.Quark;
@@ -22,6 +27,8 @@ import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.neoforged.neoforge.client.model.generators.BlockStateProvider.WALL_PROPS;
+
 
 public class AQBlockstateData extends AetherBlockStateProvider {
     protected final HashMap<String, Block> blockMap;
@@ -30,6 +37,8 @@ public class AQBlockstateData extends AetherBlockStateProvider {
         super(output, AscendedQuark.MODID, helper);
         this.blockMap = blockMap;
     }
+
+
 
     @Override
     public void registerStatesAndModels() {
@@ -96,7 +105,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     public void ladder(String type) {
         Block block = blockMap.get(type+"_ladder");
         ResourceLocation location = this.texture(this.name(block));
-        ModelFile ladder = this.models().withExistingParent(this.name(block), this.mcLoc("block/block")).renderType(new ResourceLocation("cutout")).ao(false).texture("particle", location).texture("texture", location).element().from(0.0F, 0.0F, 15.2F).to(16.0F, 16.0F, 15.2F).shade(false).face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#texture").end().face(Direction.SOUTH).uvs(16.0F, 0.0F, 0.0F, 16.0F).texture("#texture").end().end();
+        ModelFile ladder = this.models().withExistingParent(this.name(block), this.mcLoc("block/block")).renderType(ResourceLocation.withDefaultNamespace("cutout")).ao(false).texture("particle", location).texture("texture", location).element().from(0.0F, 0.0F, 15.2F).to(16.0F, 16.0F, 15.2F).shade(false).face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#texture").end().face(Direction.SOUTH).uvs(16.0F, 0.0F, 0.0F, 16.0F).texture("#texture").end().end();
         this.getVariantBuilder(block).forAllStatesExcept((state) -> {
             Direction direction = state.getValue(LadderBlock.FACING);
             return ConfiguredModel.builder().modelFile(ladder).rotationY((int)(direction.toYRot() + 180.0F) % 360).build();
@@ -145,15 +154,15 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public ModelFile postModel(String name, ResourceLocation texture) {
-        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/post"))
+        return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/post"))
                 .texture("texture", texture);
     }
 
     public void postBlock(Block block, ModelFile post) {
         MultiPartBlockStateBuilder builder = this.getMultipartBuilder(block);
 
-        ModelFile small = this.models().getExistingFile(new ResourceLocation(AscendedQuark.MODID, "block/chain_small"));
-        ModelFile small_up = this.models().getExistingFile(new ResourceLocation(AscendedQuark.MODID, "block/chain_small_top"));
+        ModelFile small = this.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(AscendedQuark.MODID, "block/chain_small"));
+        ModelFile small_up = this.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(AscendedQuark.MODID, "block/chain_small_top"));
 
         builder.part().modelFile(post).addModel().condition(AQWoodenPostBlock.AXIS, Direction.Axis.Y);
         builder.part().modelFile(post).rotationY(90).rotationX(90).addModel().condition(AQWoodenPostBlock.AXIS, Direction.Axis.X);
@@ -184,20 +193,20 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public ModelFile hedgePost(String name, ResourceLocation leaves, ResourceLocation log) {
-        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hedge_post"))
+        return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/hedge_post"))
                 .texture("log", log)
                 .texture("leaf", leaves)
                 .renderType("cutout");
     }
 
     public ModelFile hedgeSide(String name, ResourceLocation leaves) {
-        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hedge_side"))
+        return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/hedge_side"))
                 .texture("leaf", leaves)
                 .renderType("cutout");
     }
 
     public ModelFile hedgeExtend(String name, ResourceLocation leaves) {
-        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hedge_extend"))
+        return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/hedge_extend"))
                 .texture("leaf", leaves)
                 .renderType("cutout");
     }
@@ -217,7 +226,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public ModelFile cubeAllTranslucent(Block block) {
-        return this.models().cubeAll(this.name(block), this.texture(this.name(block))).renderType(new ResourceLocation("translucent"));
+        return this.models().cubeAll(this.name(block), this.texture(this.name(block))).renderType(ResourceLocation.withDefaultNamespace("translucent"));
     }
 
     public void blockCutout(String name) {
@@ -226,7 +235,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public ModelFile cubeAllCutout(Block block) {
-        return this.models().cubeAll(this.name(block), this.texture(this.name(block))).renderType(new ResourceLocation("cutout"));
+        return this.models().cubeAll(this.name(block), this.texture(this.name(block))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
     }
 
     public void hollowLog(String type, Block log) {
@@ -251,19 +260,19 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public ModelFile hollowCubeColumn(String name, ResourceLocation side, ResourceLocation end, ResourceLocation inside) {
-        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hollow_log"))
+        return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/hollow_log"))
                 .texture("side", side)
                 .texture("end", end)
                 .texture("inside", inside)
-                .renderType(new ResourceLocation("translucent"));
+                .renderType(ResourceLocation.withDefaultNamespace("translucent"));
     }
 
     public ModelFile cubeColumnHorizontal(String name, ResourceLocation side, ResourceLocation end, ResourceLocation inside) {
-        return this.models().withExistingParent(name, new ResourceLocation(Quark.MOD_ID, "block/hollow_log_horizontal"))
+        return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/hollow_log_horizontal"))
                 .texture("side", side)
                 .texture("end", end)
                 .texture("inside", inside)
-                .renderType(new ResourceLocation("translucent"));
+                .renderType(ResourceLocation.withDefaultNamespace("translucent"));
     }
 
     public void compressed(String type) {
@@ -283,11 +292,11 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public ResourceLocation texture(ResourceLocation name) {
-        return new ResourceLocation(name.getNamespace(), "block/" + name.getPath());
+        return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), "block/" + name.getPath());
     }
 
     public ResourceLocation texture(ResourceLocation name, String location) {
-        return new ResourceLocation(name.getNamespace(), "block/" + location + name.getPath());
+        return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), "block/" + location + name.getPath());
     }
 
 
@@ -358,7 +367,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public ModelFile verticalPLank(String name, ResourceLocation texture) {
-        return this.models().singleTexture(name, new ResourceLocation(Quark.MOD_ID, "block/vertical_planks"), "all", texture);
+        return this.models().singleTexture(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/vertical_planks"), "all", texture);
     }
 
 
@@ -373,11 +382,11 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public ModelFile leafCarpet(String name, ResourceLocation texture) {
-        return this.models().singleTexture(name, new ResourceLocation(Quark.MOD_ID, "block/leaf_carpet"), "all", texture).renderType("cutout");
+        return this.models().singleTexture(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/leaf_carpet"), "all", texture).renderType("cutout");
     }
 
     public ModelFile verticalSlab(String name, ResourceLocation texture) {
-        return this.sideBottomTop(name, new ResourceLocation(Quark.MOD_ID, "block/vertical_slab"), texture);
+        return this.sideBottomTop(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/vertical_slab"), texture);
     }
 
     public ModelFile sideBottomTop(String name, ResourceLocation parent, ResourceLocation location) {
@@ -387,17 +396,17 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
 
     public void pottedPlant(Block block, Block flower) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/"  + this.name(flower))).renderType(new ResourceLocation("cutout"));
+        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/"  + this.name(flower))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
 
     public void pottedPlantFix(Block block, Block flower) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/"  + this.name(flower) + "_pot")).renderType(new ResourceLocation("cutout"));
+        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/"  + this.name(flower) + "_pot")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
 
     public void saplingBlock(Block block) {
-        ModelFile sapling = models().cross(this.name(block), this.texture(this.name(block))).renderType(new ResourceLocation("cutout"));
+        ModelFile sapling = models().cross(this.name(block), this.texture(this.name(block))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
         this.getVariantBuilder(block).forAllStatesExcept(state -> ConfiguredModel.builder().modelFile(sapling).build(), SaplingBlock.STAGE);
     }
 
@@ -418,7 +427,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation doubleslab, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
-        ModelFile vertical_slab = this.models().withExistingParent(this.name(block), new ResourceLocation("quark", "block/vertical_slab"))
+        ModelFile vertical_slab = this.models().withExistingParent(this.name(block), ResourceLocation.fromNamespaceAndPath("quark", "block/vertical_slab"))
                 .texture("bottom", bottom).texture("top", top).texture("side", side);
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(vertical_slab));
     }
@@ -429,7 +438,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public void wallBlockInventory(String name, ResourceLocation texture) {
-        this.models().withExistingParent(name, new ResourceLocation("block/wall_inventory"))
+        this.models().withExistingParent(name, ResourceLocation.withDefaultNamespace("block/wall_inventory"))
                 .texture("wall", texture);
     }
 
@@ -467,7 +476,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     public void logWallBlock(WallBlock block, Block baseBlock, String location, String modid, boolean postUsesTop, ModelFile postBig, ModelFile postShort, ModelFile postTall, ModelFile side, ModelFile sideAlt, ModelFile sideTall, ModelFile sideTallAlt, ModelFile sideShort, ModelFile sideAltShort, ModelFile sideTallShort, ModelFile sideTallAltShort) {
-        this.logWallBlockInternal(block, this.name(block), new ResourceLocation(modid, "block/" + location + this.name(baseBlock)), postUsesTop, postBig, postShort, postTall, side, sideAlt, sideTall, sideTallAlt, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
+        this.logWallBlockInternal(block, this.name(block), ResourceLocation.fromNamespaceAndPath(modid, "block/" + location + this.name(baseBlock)), postUsesTop, postBig, postShort, postTall, side, sideAlt, sideTall, sideTallAlt, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
     }
 
     private void logWallBlockInternal(WallBlock block, String baseName, ResourceLocation texture, boolean postUsesTop, ModelFile postBig, ModelFile postShort, ModelFile postTall, ModelFile side, ModelFile sideAlt, ModelFile sideTall, ModelFile sideTallAlt, ModelFile sideShort, ModelFile sideAltShort, ModelFile sideTallShort, ModelFile sideTallAltShort) {
@@ -540,10 +549,10 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     }
 
     private ResourceLocation key(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block);
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 
     public ResourceLocation extendPrefix(ResourceLocation location, String prefix) {
-        return new ResourceLocation(location.getNamespace(), prefix+location.getPath());
+        return ResourceLocation.fromNamespaceAndPath(location.getNamespace(), prefix+location.getPath());
     }
 }

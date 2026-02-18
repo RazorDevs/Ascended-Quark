@@ -1,7 +1,7 @@
 package org.razordevs.ascended_quark.util;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 /**
  * Record class representing common woodset blocks for
@@ -13,7 +13,8 @@ import net.minecraftforge.registries.RegistryObject;
  * @param log
  * @param leaves
  */
-public record WoodSetContext(RegistryObject<? extends Block> slab, RegistryObject<? extends Block> planks,
-                             RegistryObject<? extends Block> fence, RegistryObject<? extends Block> log,
-                             RegistryObject<? extends Block> leaves) {
+public record WoodSetContext(
+        DeferredHolder<?, ? extends Block> slab, DeferredHolder<?, ? extends Block> planks,
+        DeferredHolder<?, ? extends Block> fence, DeferredHolder<?, ? extends Block> log,
+        DeferredHolder<?, ? extends Block> leaves) {
 }

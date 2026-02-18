@@ -4,6 +4,7 @@ import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherItems;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.advancements.critereon.ItemCustomDataPredicate;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -16,6 +17,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.razordevs.ascended_quark.items.AQSlimeInABucketItem;
 import org.razordevs.ascended_quark.items.AQSwetInABucketItem;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
@@ -39,8 +42,8 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
     public static boolean swets_exited = true;
     @Config(flag = "are_swet_buckets_enabled", name = "Are Swet Buckets Enabled", description = "When disabled, disables all Ascended Quark bucket items except for the Slime in a Skyroot Bucket item. Disable if you find swet buckets unbalanced.")
     public boolean swet_bucket_enabled = true;
-    public static List<Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem>> SLIME_WITH_BUCKET_ITEM = new ArrayList<>();
-    public static List<Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem>> SLIME_WITH_BUCKET_ITEM_SKYROOT = new ArrayList<>();
+    public static List<Pair<DeferredHolder<?, ? extends EntityType<Swet>>, AQSwetInABucketItem>> SLIME_WITH_BUCKET_ITEM = new ArrayList<>();
+    public static List<Pair<DeferredHolder<?, ? extends EntityType<Swet>>, AQSwetInABucketItem>> SLIME_WITH_BUCKET_ITEM_SKYROOT = new ArrayList<>();
     Item slime;
 
     @LoadEvent
@@ -100,7 +103,7 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
 
                         ItemStack outStack = new ItemStack(result.getFirst());
 
-                        CompoundTag cmp = event.getTarget().serializeNBT();
+                        CompoundTag cmp = event.getTarget().getPersistentData();
                         ItemNBTHelper.setCompound(outStack, AQSwetInABucketItem.TAG_ENTITY_DATA, cmp);
 
                         if (stack.getCount() == 1)
@@ -138,7 +141,7 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
             if (stack.getItem() != Items.BUCKET)
                 hand = InteractionHand.OFF_HAND;
 
-            for (Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem> entry : SLIME_WITH_BUCKET_ITEM) {
+            for (Pair<DeferredHolder<?, ? extends EntityType<Swet>>, AQSwetInABucketItem> entry : SLIME_WITH_BUCKET_ITEM) {
                 if (entry.getFirst().get() == swet) {
                     return new Pair<>(entry.getSecond(), hand);
                 }
@@ -147,7 +150,7 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
             if (stack.getItem() != AetherItems.SKYROOT_BUCKET.get())
                 hand = InteractionHand.OFF_HAND;
 
-            for (Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem> entry : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
+            for (Pair<DeferredHolder<?, ? extends EntityType<Swet>>, AQSwetInABucketItem> entry : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
                 if (entry.getFirst().get() == swet) {
                     return new Pair<>(entry.getSecond(), hand);
                 }
@@ -163,18 +166,18 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
         @LoadEvent
         public void clientSetup(ZClientSetup event) {
             event.enqueueWork(() -> {
-                for (Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem> pair : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
+                for (Pair<DeferredHolder<?, ? extends EntityType<Swet>>, AQSwetInABucketItem> pair : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
                     if (!(pair.getSecond() instanceof AQSwetInABucketItem && !swets_exited))
-                        ItemProperties.register(pair.getSecond(), new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, AQSwetInABucketItem.TAG_EXCITED, false) ? 1 : 0);
+                        ItemProperties.register(pair.getSecond(), ResourceLocation.withDefaultNamespace("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, AQSwetInABucketItem.TAG_EXCITED, false) ? 1 : 0);
                 }
 
                 if (swets_exited) {
-                    for (Pair<RegistryObject<EntityType<Swet>>, AQSwetInABucketItem> pair : SLIME_WITH_BUCKET_ITEM) {
-                        ItemProperties.register(pair.getSecond(), new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, AQSwetInABucketItem.TAG_EXCITED, false) ? 1 : 0);
+                    for (Pair<DeferredHolder<?, ? extends EntityType<Swet>>, AQSwetInABucketItem> pair : SLIME_WITH_BUCKET_ITEM) {
+                        ItemProperties.register(pair.getSecond(), ResourceLocation.withDefaultNamespace("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, AQSwetInABucketItem.TAG_EXCITED, false) ? 1 : 0);
                     }
                 }
 
-                ItemProperties.register(slime, new ResourceLocation("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, "excited", false) ? 1.0F : 0.0F);
+                ItemProperties.register(slime, ResourceLocation.withDefaultNamespace("excited"), (stack, world, e, id) -> ItemNBTHelper.getBoolean(stack, "excited", false) ? 1.0F : 0.0F);
             });
         }
     }

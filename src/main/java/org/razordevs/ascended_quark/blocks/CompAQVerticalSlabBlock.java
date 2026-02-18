@@ -6,6 +6,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.Nullable;
 import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
@@ -21,7 +22,7 @@ public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaB
     private BooleanSupplier enabledSupplier;
 
     @SuppressWarnings("unchecked")
-    public CompAQVerticalSlabBlock(String registryName, RegistryObject<? extends ItemLike> parent, Properties properties, ZetaModule module, ResourceKey<CreativeModeTab> tab) {
+    public CompAQVerticalSlabBlock(String registryName, DeferredHolder<?, ? extends ItemLike> parent, Properties properties, ZetaModule module, ResourceKey<CreativeModeTab> tab) {
         super((Supplier<Block>) parent, properties);
         this.enabledSupplier = BooleanSuppliers.TRUE;
         module.zeta().registry.registerBlock(this, registryName, true);
@@ -30,7 +31,7 @@ public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaB
         if(module.isEnabled()) RegistryUtil.addCreativeModeTab(tab, this, parent, module);
     }
 
-    public CompAQVerticalSlabBlock(String registryName, RegistryObject<? extends ItemLike> parent, Properties properties, ZetaModule module) {
+    public CompAQVerticalSlabBlock(String registryName, DeferredHolder<?, ? extends ItemLike> parent, Properties properties, ZetaModule module) {
         this(registryName, parent, properties, module, AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
     }
 

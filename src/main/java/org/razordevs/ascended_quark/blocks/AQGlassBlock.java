@@ -2,14 +2,14 @@ package org.razordevs.ascended_quark.blocks;
 
 import com.aetherteam.aether.block.FrictionCapped;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.GlassBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 import org.jetbrains.annotations.Nullable;
 import org.violetmoon.zeta.block.IZetaBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 
 import java.util.function.BooleanSupplier;
 
-public class AQGlassBlock extends GlassBlock implements FrictionCapped, IZetaBlock {
+public class AQGlassBlock extends TransparentBlock implements FrictionCapped, IZetaBlock {
 
     private final ZetaModule module;
 

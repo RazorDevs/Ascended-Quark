@@ -22,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
@@ -62,9 +63,9 @@ public class AQSlimeInABucketItem extends ZetaItem {
     @Override
     public Component getName(@Nonnull ItemStack stack) {
         if (!stack.getComponents().isEmpty()) {
-            CompoundTag cmp = stack.get(DataComponents.ENTITY_DATA).copyTag();
+            CustomData cmp = stack.get(DataComponents.ENTITY_DATA);
             if (cmp != null && cmp.contains("CustomName")) {
-                Component custom = Component.Serializer.fromJson(cmp.getString("CustomName"), Minecraft.getInstance().level.registryAccess());
+                Component custom = Component.Serializer.fromJson(cmp.copyTag().getString("CustomName"), Minecraft.getInstance().level.registryAccess());
                 return Component.translatable("item.quark.slime_in_a_bucket.named", custom);
             }
         }

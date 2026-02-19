@@ -40,7 +40,12 @@ public class AQTabs {
     }
 
     private static void addToTab(Item parent, Item stack, BuildCreativeModeTabContentsEvent event) {
-        if(event.getParentEntries().contains((new ItemStack(parent))) && !event.getSearchEntries().contains((new ItemStack(stack))))
+
+        if(event.getParentEntries().contains((new ItemStack(parent)))
+                && !event.getParentEntries().contains((new ItemStack(stack)))
+                && !event.getSearchEntries().contains((new ItemStack(stack)))
+        ) {
             event.insertAfter(new ItemStack(parent), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        }
     }
 }

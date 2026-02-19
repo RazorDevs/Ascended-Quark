@@ -100,8 +100,8 @@ dependencies {
     compileOnly("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}")
 
     //Deep Aether
-    implementation ("curse.maven:deep-aether-852465:${project.deep_aether_version}")
-    implementation ("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
+    compileOnly ("curse.maven:deep-aether-852465:${project.deep_aether_version}")
+    compileOnly ("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
 
     // Quark
     implementation ("curse.maven:quark-243121:${quark_version}")
@@ -109,9 +109,9 @@ dependencies {
     //implementation ("curse.maven:quark-oddities-301051:3575623")
 
     // Extra
-    compileOnly ("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    compileOnly ("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    runtimeOnly ("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    //compileOnly ("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    //compileOnly ("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+    //runtimeOnly ("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 }
 
 tasks.withType(ProcessResources).configureEach {

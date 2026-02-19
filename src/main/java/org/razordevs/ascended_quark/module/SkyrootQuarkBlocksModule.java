@@ -39,8 +39,10 @@ import org.violetmoon.zeta.event.load.ZRegister;
 import org.violetmoon.zeta.event.play.entity.ZEntityJoinLevel;
 import org.violetmoon.zeta.event.play.entity.living.ZLivingDeath;
 import org.violetmoon.zeta.event.play.entity.player.ZPlayerInteract;
+import org.violetmoon.zeta.item.ZetaBlockItem;
 import org.violetmoon.zeta.module.ZetaLoadModule;
 import org.violetmoon.zeta.module.ZetaModule;
+import org.violetmoon.zetaimplforge.client.IZetaForgeItemStuff;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -164,7 +166,6 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
             for(Block b : aqTrappedChests){
                 AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(), new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState()));
             }
-
              */
         }
     }

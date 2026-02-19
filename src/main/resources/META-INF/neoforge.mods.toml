@@ -14,6 +14,9 @@ A small mod that aims to bring compatibility between Quark and the Aether mod! (
 logoFile="${mod_id}.png"
 credits="A special thanks goes to the creators behind Quark and the Aether mods!"
 
+[[mixins]]
+config="${mod_id}.mixins.json"
+
 [[dependencies.${mod_id}]]
 modId="neoforge"
 type = "required"

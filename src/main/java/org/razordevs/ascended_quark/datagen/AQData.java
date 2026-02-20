@@ -24,11 +24,13 @@ import org.razordevs.ascended_quark.datagen.normal.tags.AQBlockTagData;
 import org.razordevs.ascended_quark.datagen.normal.tags.AQItemTagData;
 import org.razordevs.ascended_quark.datagen.provider.tags.AQBlockTagProvider;
 import org.razordevs.ascended_quark.mixin.ZetaRegistryAccessor;
+import org.violetmoon.zeta.config.FlagCondition;
 import org.violetmoon.zeta.module.IDisableable;
 
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class AQData {

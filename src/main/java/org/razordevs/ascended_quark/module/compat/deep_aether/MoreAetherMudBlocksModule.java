@@ -16,12 +16,14 @@ import org.violetmoon.zeta.module.ZetaModule;
 
 @ZetaLoadModule(category = "deep_aether")
 public class MoreAetherMudBlocksModule extends ZetaModule {
-    @LoadEvent
-    public final void register(ZRegister event) {
-        if(ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) {
-            BlockBehaviour.Properties props = BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS);
-            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaPillarBlock("aether_mud_pillar", this, props), DABlocks.AETHER_MUD_BRICKS_STAIRS, this);
-            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AetherMudBrickLatticeBlock(this, props), DABlocks.AETHER_MUD_BRICKS_STAIRS, this);
-        }
-    }
+	@LoadEvent
+	public final void register(ZRegister event) {
+		if (ModList.get().isLoaded(AscendedQuark.DEEP_AETHER)) {
+			BlockBehaviour.Properties props = BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS);
+			RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
+					new ZetaPillarBlock("aether_mud_pillar", this, props), DABlocks.AETHER_MUD_BRICKS_STAIRS, this);
+			RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
+					new AetherMudBrickLatticeBlock(this, props), DABlocks.AETHER_MUD_BRICKS_STAIRS, this);
+		}
+	}
 }

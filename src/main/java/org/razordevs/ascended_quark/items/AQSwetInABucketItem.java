@@ -34,89 +34,94 @@ import org.violetmoon.quark.base.components.QuarkDataComponents;
 import org.violetmoon.zeta.item.ZetaItem;
 import org.violetmoon.zeta.module.ZetaModule;
 
-
 import javax.annotation.Nonnull;
 public class AQSwetInABucketItem extends ZetaItem {
 
-    public static final String TAG_ENTITY_DATA = "slime_nbt";
-    public static final String TAG_EXCITED = "excited";
+	public static final String TAG_ENTITY_DATA = "slime_nbt";
+	public static final String TAG_EXCITED = "excited";
 
-    private final DeferredHolder<EntityType<?>, ? extends EntityType<Swet>> bucketEntity;
+	private final DeferredHolder<EntityType<?>, ? extends EntityType<Swet>> bucketEntity;
 
-    public AQSwetInABucketItem(String name, ZetaModule module, DeferredHolder<EntityType<?>, ? extends EntityType<Swet>> bucketEntity, boolean isSkyroot) {
-        super(name, module, new Item.Properties().stacksTo(1));
-        this.bucketEntity = bucketEntity;
-        if (isSkyroot)
-            ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM_SKYROOT.add(new Pair<>(bucketEntity, this));
-        else ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM.add(new Pair<>(bucketEntity, this));
+	public AQSwetInABucketItem(String name, ZetaModule module,
+			DeferredHolder<EntityType<?>, ? extends EntityType<Swet>> bucketEntity, boolean isSkyroot) {
+		super(name, module, new Item.Properties().stacksTo(1));
+		this.bucketEntity = bucketEntity;
+		if (isSkyroot)
+			ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM_SKYROOT.add(new Pair<>(bucketEntity, this));
+		else
+			ExtraSlimeAndSwetInABucketModule.SLIME_WITH_BUCKET_ITEM.add(new Pair<>(bucketEntity, this));
 
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET, module);
-    }
+		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this,
+				AetherItems.SKYROOT_TADPOLE_BUCKET, module);
+	}
 
-    @Nonnull
-    @Override
-    public Component getName(@Nonnull ItemStack stack) {
-        if (!stack.getComponents().isEmpty()) {
-            CustomData cmp = stack.get(DataComponents.ENTITY_DATA);
-            if (cmp != null && cmp.contains("CustomName")) {
-                Component custom = Component.Serializer.fromJson(cmp.copyTag().getString("CustomName"), Minecraft.getInstance().level.registryAccess());
-                return Component.translatable("item.quark.slime_in_a_bucket.named", custom);
-            }
-        }
+	@Nonnull
+	@Override
+	public Component getName(@Nonnull ItemStack stack) {
+		if (!stack.getComponents().isEmpty()) {
+			CustomData cmp = stack.get(DataComponents.ENTITY_DATA);
+			if (cmp != null && cmp.contains("CustomName")) {
+				Component custom = Component.Serializer.fromJson(cmp.copyTag().getString("CustomName"),
+						Minecraft.getInstance().level.registryAccess());
+				return Component.translatable("item.quark.slime_in_a_bucket.named", custom);
+			}
+		}
 
-        return super.getName(stack);
-    }
-    public EntityType<Swet> getBucketEntity() {
-        return bucketEntity.get();
-    }
-    @Nonnull
-    @Override
-    public InteractionResult useOn(UseOnContext context) {
-        BlockPos pos = context.getClickedPos();
-        Direction facing = context.getClickedFace();
-        Level worldIn = context.getLevel();
-        Player playerIn = context.getPlayer();
-        if(playerIn == null) return InteractionResult.FAIL;
-        InteractionHand hand = context.getHand();
+		return super.getName(stack);
+	}
+	public EntityType<Swet> getBucketEntity() {
+		return bucketEntity.get();
+	}
+	@Nonnull
+	@Override
+	public InteractionResult useOn(UseOnContext context) {
+		BlockPos pos = context.getClickedPos();
+		Direction facing = context.getClickedFace();
+		Level worldIn = context.getLevel();
+		Player playerIn = context.getPlayer();
+		if (playerIn == null)
+			return InteractionResult.FAIL;
+		InteractionHand hand = context.getHand();
 
-        double x = pos.getX() + 0.5 + facing.getStepX();
-        double y = pos.getY() + 0.5 + facing.getStepY();
-        double z = pos.getZ() + 0.5 + facing.getStepZ();
+		double x = pos.getX() + 0.5 + facing.getStepX();
+		double y = pos.getY() + 0.5 + facing.getStepY();
+		double z = pos.getZ() + 0.5 + facing.getStepZ();
 
-        if(!worldIn.isClientSide) {
-            Swet swet = new Swet(this.getBucketEntity(), worldIn);
+		if (!worldIn.isClientSide) {
+			Swet swet = new Swet(this.getBucketEntity(), worldIn);
 
-            CompoundTag data = playerIn.getItemInHand(hand).get(DataComponents.ENTITY_DATA).copyTag();
-            if(data != null)
-                swet.load(data);
-            else {
-                swet.getAttribute(Attributes.MAX_HEALTH).setBaseValue(1.0);
-                swet.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
-                swet.setHealth(swet.getMaxHealth());
-            }
+			CompoundTag data = playerIn.getItemInHand(hand).get(DataComponents.ENTITY_DATA).copyTag();
+			if (data != null)
+				swet.load(data);
+			else {
+				swet.getAttribute(Attributes.MAX_HEALTH).setBaseValue(1.0);
+				swet.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
+				swet.setHealth(swet.getMaxHealth());
+			}
 
-            swet.setPos(x, y, z);
+			swet.setPos(x, y, z);
 
-            worldIn.gameEvent(playerIn, GameEvent.ENTITY_PLACE, swet.position());
-            worldIn.addFreshEntity(swet);
-            playerIn.swing(hand);
-        }
+			worldIn.gameEvent(playerIn, GameEvent.ENTITY_PLACE, swet.position());
+			worldIn.addFreshEntity(swet);
+			playerIn.swing(hand);
+		}
 
-        worldIn.playSound(playerIn, pos, SoundEvents.BUCKET_EMPTY, SoundSource.NEUTRAL, 1.0F, 1.0F);
+		worldIn.playSound(playerIn, pos, SoundEvents.BUCKET_EMPTY, SoundSource.NEUTRAL, 1.0F, 1.0F);
 
-        if(!playerIn.getAbilities().instabuild)
-            playerIn.setItemInHand(hand, new ItemStack(Items.BUCKET));
+		if (!playerIn.getAbilities().instabuild)
+			playerIn.setItemInHand(hand, new ItemStack(Items.BUCKET));
 
-        return InteractionResult.SUCCESS;
-    }
+		return InteractionResult.SUCCESS;
+	}
 
-    @Override
-    public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level world, @Nonnull Entity entity, int itemSlot, boolean isSelected) {
-        if (world instanceof ServerLevel) {
-            boolean slime = world.dimensionTypeRegistration() == AetherDimensions.AETHER_DIMENSION_TYPE;
-            boolean excited = stack.set(QuarkDataComponents.EXCITED, false);
-            if (excited != slime)
-                stack.set(QuarkDataComponents.EXCITED, slime);
-        }
-    }
+	@Override
+	public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level world, @Nonnull Entity entity, int itemSlot,
+			boolean isSelected) {
+		if (world instanceof ServerLevel) {
+			boolean slime = world.dimensionTypeRegistration() == AetherDimensions.AETHER_DIMENSION_TYPE;
+			boolean excited = stack.set(QuarkDataComponents.EXCITED, false);
+			if (excited != slime)
+				stack.set(QuarkDataComponents.EXCITED, slime);
+		}
+	}
 }

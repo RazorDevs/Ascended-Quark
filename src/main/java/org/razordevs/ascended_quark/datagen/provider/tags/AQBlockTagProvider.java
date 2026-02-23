@@ -26,137 +26,132 @@ import java.util.concurrent.CompletableFuture;
 
 public class AQBlockTagProvider extends BlockTagsProvider {
 
-    protected final HashMap<String, Block> blockMap;
-    public AQBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper helper, HashMap<String, Block> blockMap) {
-        super(output, registries, AscendedQuark.MODID, helper);
-        this.blockMap = blockMap;
-    }
+	protected final HashMap<String, Block> blockMap;
+	public AQBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries,
+			@Nullable ExistingFileHelper helper, HashMap<String, Block> blockMap) {
+		super(output, registries, AscendedQuark.MODID, helper);
+		this.blockMap = blockMap;
+	}
 
-    private final String[] ShovelBricks = {
-            "aether_dirt_bricks",
-            "quicksoil_bricks"
-    };
+	private final String[] ShovelBricks = {"aether_dirt_bricks", "quicksoil_bricks"};
 
-    private final String[] pickaxeBricks = {
-            "icestone",
-            "aseterite",
-            "aether_mud_bricks",
-            "clorite"
-    };
+	private final String[] pickaxeBricks = {"icestone", "aseterite", "aether_mud_bricks", "clorite"};
 
-    @Nonnull
-    @Override
-    public String getName() {
-        return "Ascended Quark Block Tags";
-    }
+	@Nonnull
+	@Override
+	public String getName() {
+		return "Ascended Quark Block Tags";
+	}
 
-    @Override
-    protected void addTags(HolderLookup.Provider provider) {
-        List<Block> blocks = new ArrayList<>(blockMap.values());
+	@Override
+	protected void addTags(HolderLookup.Provider provider) {
+		List<Block> blocks = new ArrayList<>(blockMap.values());
 
-        IntrinsicTagAppender<Block> tag = this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK);
-        blocks.forEach(tag::add);
+		IntrinsicTagAppender<Block> tag = this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK);
+		blocks.forEach(tag::add);
 
-        blockMap.keySet().forEach(block -> {
-            for(String type : ShovelBricks) {
-                if(block.contains(type)) {
-                    tag(BlockTags.MINEABLE_WITH_SHOVEL).add(blockMap.get(block));
-                    break;
-                }
-            }
-        });
+		blockMap.keySet().forEach(block -> {
+			for (String type : ShovelBricks) {
+				if (block.contains(type)) {
+					tag(BlockTags.MINEABLE_WITH_SHOVEL).add(blockMap.get(block));
+					break;
+				}
+			}
+		});
 
-        blockMap.keySet().forEach(block -> {
-            for(String type : pickaxeBricks) {
-                if(block.contains(type)) {
-                    tag(BlockTags.MINEABLE_WITH_PICKAXE).add(blockMap.get(block));
-                    break;
-                }
-            }
-        });
+		blockMap.keySet().forEach(block -> {
+			for (String type : pickaxeBricks) {
+				if (block.contains(type)) {
+					tag(BlockTags.MINEABLE_WITH_PICKAXE).add(blockMap.get(block));
+					break;
+				}
+			}
+		});
 
-        blockMap.keySet().forEach(block -> {
-            for(String type : AQItemTagProvider.Wood) {
-                if(block.contains(type)) {
-                    tag(BlockTags.MINEABLE_WITH_AXE).add(blockMap.get(block));
-                    break;
-                }
-            }
-        });
+		blockMap.keySet().forEach(block -> {
+			for (String type : AQItemTagProvider.Wood) {
+				if (block.contains(type)) {
+					tag(BlockTags.MINEABLE_WITH_AXE).add(blockMap.get(block));
+					break;
+				}
+			}
+		});
 
-        //tag(BlockTags.MINEABLE_WITH_HOE).add();
-        blockMap.keySet().forEach(block -> {
-            if (block.contains("leaf_carpet")) {
-                tag(BlockTags.MINEABLE_WITH_HOE).add(blockMap.get(block));
-            }
-        });
+		// tag(BlockTags.MINEABLE_WITH_HOE).add();
+		blockMap.keySet().forEach(block -> {
+			if (block.contains("leaf_carpet")) {
+				tag(BlockTags.MINEABLE_WITH_HOE).add(blockMap.get(block));
+			}
+		});
 
-        blocks.forEach(block -> {
-            if (block instanceof SlabBlock)
-                tag(BlockTags.SLABS).add(block);
-        });
+		blocks.forEach(block -> {
+			if (block instanceof SlabBlock)
+				tag(BlockTags.SLABS).add(block);
+		});
 
-        blocks.forEach(block -> {
-            if (block instanceof StairBlock)
-                tag(BlockTags.STAIRS).add(block);
-        });
+		blocks.forEach(block -> {
+			if (block instanceof StairBlock)
+				tag(BlockTags.STAIRS).add(block);
+		});
 
-        blocks.forEach(block -> {
-            if (block instanceof WallBlock)
-                tag(BlockTags.WALLS).add(block);
-        });
+		blocks.forEach(block -> {
+			if (block instanceof WallBlock)
+				tag(BlockTags.WALLS).add(block);
+		});
 
-        blocks.forEach(block -> {
-            if (block instanceof AQWoodenPostBlock)
-                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "posts"))).add(block);
-        });
+		blocks.forEach(block -> {
+			if (block instanceof AQWoodenPostBlock)
+				tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "posts"))).add(block);
+		});
 
-        blocks.forEach(block -> {
-            if (block instanceof AQHedgeBlock)
-                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "hedges"))).add(block);
-        });
+		blocks.forEach(block -> {
+			if (block instanceof AQHedgeBlock)
+				tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "hedges"))).add(block);
+		});
 
-        blocks.forEach(block -> {
-            if (block instanceof AQHollowLogBlock)
-                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "hollow_logs"))).add(block);
-        });
+		blocks.forEach(block -> {
+			if (block instanceof AQHollowLogBlock)
+				tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "hollow_logs"))).add(block);
+		});
 
-        blocks.forEach(block -> {
-            if (block instanceof ChestBlock) {
-                tag(Tags.Blocks.CHESTS_WOODEN).add(block);
-                tag(Tags.Blocks.CHESTS).add(block);
-                tag(BlockTags.GUARDED_BY_PIGLINS).add(block);
+		blocks.forEach(block -> {
+			if (block instanceof ChestBlock) {
+				tag(Tags.Blocks.CHESTS_WOODEN).add(block);
+				tag(Tags.Blocks.CHESTS).add(block);
+				tag(BlockTags.GUARDED_BY_PIGLINS).add(block);
 
-                if((block instanceof AQTrappedVariantChestBlock)) {
-                    tag(Tags.Blocks.CHESTS_TRAPPED).add(block);
-                }
-            }
-        });
+				if ((block instanceof AQTrappedVariantChestBlock)) {
+					tag(Tags.Blocks.CHESTS_TRAPPED).add(block);
+				}
+			}
+		});
 
-        blocks.forEach(block -> {
-            if (block instanceof LadderBlock) {
-                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "ladders"))).add(block);
-                tag(BlockTags.FALL_DAMAGE_RESETTING).add(block);
-                tag(BlockTags.CLIMBABLE).add(block);
-            }
-        });
+		blocks.forEach(block -> {
+			if (block instanceof LadderBlock) {
+				tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "ladders"))).add(block);
+				tag(BlockTags.FALL_DAMAGE_RESETTING).add(block);
+				tag(BlockTags.CLIMBABLE).add(block);
+			}
+		});
 
-        blockMap.keySet().forEach(s -> {
-            if (blockMap.get(s) instanceof VerticalSlabBlock block) {
-                tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "vertical_slabs"))).add(block);
-                for(String string : AQItemTagProvider.Wood) {
-                    if(s.contains(string)) {
-                        tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "wooden_vertical_slabs"))).add(block);
-                        break;
-                    }
-                }
-            }
-        });
+		blockMap.keySet().forEach(s -> {
+			if (blockMap.get(s) instanceof VerticalSlabBlock block) {
+				tag(BlockTags.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "vertical_slabs"))).add(block);
+				for (String string : AQItemTagProvider.Wood) {
+					if (s.contains(string)) {
+						tag(BlockTags
+								.create(ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "wooden_vertical_slabs")))
+								.add(block);
+						break;
+					}
+				}
+			}
+		});
 
-        blockMap.keySet().forEach(s -> {
-            if(s.contains("bookshelf")) {
-                tag(Tags.Blocks.BOOKSHELVES).add(blockMap.get(s));
-            }
-        });
-    }
+		blockMap.keySet().forEach(s -> {
+			if (s.contains("bookshelf")) {
+				tag(Tags.Blocks.BOOKSHELVES).add(blockMap.get(s));
+			}
+		});
+	}
 }

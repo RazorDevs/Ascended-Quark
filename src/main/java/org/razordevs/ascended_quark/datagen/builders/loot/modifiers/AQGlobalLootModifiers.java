@@ -9,8 +9,10 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.razordevs.ascended_quark.AscendedQuark;
 
 public class AQGlobalLootModifiers {
-    public static DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(NeoForgeRegistries.GLOBAL_LOOT_MODIFIER_SERIALIZERS, AscendedQuark.MODID);
+	public static DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister
+			.create(NeoForgeRegistries.GLOBAL_LOOT_MODIFIER_SERIALIZERS, AscendedQuark.MODID);
 
-    public static DeferredHolder<MapCodec<? extends IGlobalLootModifier>, ? extends MapCodec<? extends IGlobalLootModifier>> AETHER_DUNGEON_LOOT_CODEC = LOOT_MODIFIERS.register("pickarang_aether_dungeon_loot", AQDungeonLootModifier.CODEC);
+	public static DeferredHolder<MapCodec<? extends IGlobalLootModifier>, ? extends MapCodec<? extends IGlobalLootModifier>> AETHER_DUNGEON_LOOT_CODEC = LOOT_MODIFIERS
+			.register("pickarang_aether_dungeon_loot", AQDungeonLootModifier.CODEC);
 
 }

@@ -7,10 +7,10 @@ import org.violetmoon.zetaimplforge.client.ForgeZetaClient;
 
 public class AQClient {
 
-    static {
-        if (AscendedQuark.ZETA.side == ZetaSide.SERVER)
-            throw new IllegalAccessError("SOMEONE LOADED AQClient ON THE SERVER!!!! DON'T DO THAT!!!!!!");
-    }
+	static {
+		if (AscendedQuark.ZETA.side == ZetaSide.SERVER)
+			throw new IllegalAccessError("SOMEONE LOADED AQClient ON THE SERVER!!!! DON'T DO THAT!!!!!!");
+	}
 
-    public static final ZetaClient ZETA_CLIENT = new ForgeZetaClient(AscendedQuark.ZETA);
+	public static final ZetaClient ZETA_CLIENT = new ForgeZetaClient(AscendedQuark.ZETA);
 }

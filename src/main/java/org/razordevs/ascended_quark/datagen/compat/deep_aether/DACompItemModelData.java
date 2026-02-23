@@ -21,43 +21,41 @@ import java.util.List;
 
 public class DACompItemModelData extends AQItemModelData {
 
-    public DACompItemModelData(PackOutput output, ExistingFileHelper helper, HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
-        super(output, helper, itemMap, blockMap);
-    }
-    
-    @Override
-    protected void registerModels() {
-        List<Item> toGenerateBlockItem = new ArrayList<>(itemMap.values());
-        List<Block> toGenerateBlock = new ArrayList<>(blockMap.values());
+	public DACompItemModelData(PackOutput output, ExistingFileHelper helper, HashMap<String, Item> itemMap,
+			HashMap<String, Block> blockMap) {
+		super(output, helper, itemMap, blockMap);
+	}
 
-        for(Item item : toGenerateBlockItem) {
-            if (item instanceof AQSlimeInABucketItem || item instanceof AQSwetInABucketItem) {
-                continue;
-            }
+	@Override
+	protected void registerModels() {
+		List<Item> toGenerateBlockItem = new ArrayList<>(itemMap.values());
+		List<Block> toGenerateBlock = new ArrayList<>(blockMap.values());
 
-            if (item instanceof TieredItem) {
-                this.handheldItem(item);
-            }
-            else {
-                this.item(item);
-            }
-        }
+		for (Item item : toGenerateBlockItem) {
+			if (item instanceof AQSlimeInABucketItem || item instanceof AQSwetInABucketItem) {
+				continue;
+			}
 
-        for(Block block : toGenerateBlock) {
-             if(block instanceof AQHedgeBlock)
-                 this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_post"));
-             else if(block instanceof WallBlock)
-                this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_inventory"));
+			if (item instanceof TieredItem) {
+				this.handheldItem(item);
+			} else {
+				this.item(item);
+			}
+		}
 
-             else if(block instanceof ChestBlock) {
-                 this.itemChest(block);
-             }
-             else if(block instanceof LadderBlock) {
-                 this.itemBlockFlat(block);
-             }
-             else {
-                 this.itemBlock(block);
-             }
-        }
-    }
+		for (Block block : toGenerateBlock) {
+			if (block instanceof AQHedgeBlock)
+				this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_post"));
+			else if (block instanceof WallBlock)
+				this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_inventory"));
+
+			else if (block instanceof ChestBlock) {
+				this.itemChest(block);
+			} else if (block instanceof LadderBlock) {
+				this.itemBlockFlat(block);
+			} else {
+				this.itemBlock(block);
+			}
+		}
+	}
 }

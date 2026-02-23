@@ -11,6 +11,6 @@ import java.util.Map;
 @Mixin(ZetaRegistry.class)
 public interface ZetaRegistryAccessor {
 
-    @Accessor(remap = false)
-    Map<Object, ResourceLocation> getInternalNames();
+	@Accessor(remap = false)
+	Map<Object, ResourceLocation> getInternalNames();
 }

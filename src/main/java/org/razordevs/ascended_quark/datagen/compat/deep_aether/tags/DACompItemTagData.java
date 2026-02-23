@@ -13,12 +13,14 @@ import java.util.concurrent.CompletableFuture;
 
 public class DACompItemTagData extends AQItemTagProvider {
 
-    public DACompItemTagData(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider, CompletableFuture<TagLookup<Block>> block, @Nullable ExistingFileHelper existingFileHelper, HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
-        super(packOutput, provider, block, existingFileHelper, itemMap, blockMap);
-    }
+	public DACompItemTagData(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider,
+			CompletableFuture<TagLookup<Block>> block, @Nullable ExistingFileHelper existingFileHelper,
+			HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
+		super(packOutput, provider, block, existingFileHelper, itemMap, blockMap);
+	}
 
-    @Override
-    protected void addTags(HolderLookup.Provider provider) {
-        super.addTags(provider);
-    }
+	@Override
+	protected void addTags(HolderLookup.Provider provider) {
+		super.addTags(provider);
+	}
 }

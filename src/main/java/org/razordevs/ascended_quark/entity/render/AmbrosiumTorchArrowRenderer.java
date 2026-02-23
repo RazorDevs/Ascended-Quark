@@ -8,14 +8,15 @@ import org.razordevs.ascended_quark.entity.AmbrosiumTorchArrow;
 
 public class AmbrosiumTorchArrowRenderer extends ArrowRenderer<AmbrosiumTorchArrow> {
 
-    public static final ResourceLocation TORCH_ARROW_LOCATION = AscendedQuark.asResource("textures/model/entity/ambrosium_torch_arrow.png");
+	public static final ResourceLocation TORCH_ARROW_LOCATION = AscendedQuark
+			.asResource("textures/model/entity/ambrosium_torch_arrow.png");
 
-    public AmbrosiumTorchArrowRenderer(EntityRendererProvider.Context context) {
-        super(context);
-    }
+	public AmbrosiumTorchArrowRenderer(EntityRendererProvider.Context context) {
+		super(context);
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(AmbrosiumTorchArrow torchArrow) {
-        return TORCH_ARROW_LOCATION;
-    }
+	@Override
+	public ResourceLocation getTextureLocation(AmbrosiumTorchArrow torchArrow) {
+		return TORCH_ARROW_LOCATION;
+	}
 }

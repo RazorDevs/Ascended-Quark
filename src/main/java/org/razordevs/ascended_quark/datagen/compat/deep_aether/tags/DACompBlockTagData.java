@@ -12,25 +12,20 @@ import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
 public class DACompBlockTagData extends AQBlockTagProvider {
-    public DACompBlockTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper helper, HashMap<String, Block> blockMap) {
-        super(output, registries, helper, blockMap);
-    }
+	public DACompBlockTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries,
+			@Nullable ExistingFileHelper helper, HashMap<String, Block> blockMap) {
+		super(output, registries, helper, blockMap);
+	}
 
-    @Override
-    protected void addTags(HolderLookup.Provider provider) {
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                blockMap.get("aether_mud_brick_lattice"),
-                blockMap.get("aether_mud_pillar"),
-                blockMap.get("mossy_holystone_tile_vertical_slab"),
-                blockMap.get("holystone_tile_vertical_slab"),
-                blockMap.get("big_holystone_bricks_vertical_slab"),
-                blockMap.get("nimbus_vertical_slab")
-                );
+	@Override
+	protected void addTags(HolderLookup.Provider provider) {
+		tag(BlockTags.MINEABLE_WITH_PICKAXE).add(blockMap.get("aether_mud_brick_lattice"),
+				blockMap.get("aether_mud_pillar"), blockMap.get("mossy_holystone_tile_vertical_slab"),
+				blockMap.get("holystone_tile_vertical_slab"), blockMap.get("big_holystone_bricks_vertical_slab"),
+				blockMap.get("nimbus_vertical_slab"));
 
-        tag(BlockTags.MINEABLE_WITH_AXE).add(
-                blockMap.get("goldenleaf_berries_crate")
-        );
+		tag(BlockTags.MINEABLE_WITH_AXE).add(blockMap.get("goldenleaf_berries_crate"));
 
-        super.addTags(provider);
-    }
+		super.addTags(provider);
+	}
 }

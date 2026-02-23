@@ -18,19 +18,31 @@ import org.violetmoon.zeta.module.ZetaModule;
 
 @ZetaLoadModule(category = "aether")
 public class AetherBrickTypesModule extends ZetaModule {
-    @Config(flag = "quicksoil_bricks", name = "Enable Quicksoil Bricks") public boolean quicksoil_bricks = true;
-    @Config(flag = "aether_dirt_bricks", name = "Enable Aether Dirt Bricks") public boolean aether_dirt_bricks = true;
-    @Config(flag = "icestone_bricks", name = "Enable  Polished Icestone and Icestone Bricks") public boolean icestone_bricks = true;
+	@Config(flag = "quicksoil_bricks", name = "Enable Quicksoil Bricks")
+	public boolean quicksoil_bricks = true;
+	@Config(flag = "aether_dirt_bricks", name = "Enable Aether Dirt Bricks")
+	public boolean aether_dirt_bricks = true;
+	@Config(flag = "icestone_bricks", name = "Enable  Polished Icestone and Icestone Bricks")
+	public boolean icestone_bricks = true;
 
-    @LoadEvent
-    public void register(ZRegister event) {
-        IZetaBlock polished = (IZetaBlock) (new ZetaBlock("polished_icestone", this, BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.CHIME).strength(0.5F).randomTicks().sound(SoundType.GLASS).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
-        IZetaBlock icestone_bricks = (IZetaBlock) (new ZetaBlock("icestone_bricks", this, BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.CHIME).strength(0.5F).randomTicks().sound(SoundType.GLASS).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
-        IZetaBlock quicksoil_bricks = (IZetaBlock) (new ZetaBlock("quicksoil_bricks", this, BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
-        IZetaBlock aether_dirt_bricks =  (IZetaBlock) (new ZetaBlock("aether_dirt_bricks", this, Block.Properties.ofFullCopy(Blocks.DIRT).requiresCorrectToolForDrops())).setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+	@LoadEvent
+	public void register(ZRegister event) {
+		IZetaBlock polished = (IZetaBlock) (new ZetaBlock("polished_icestone", this,
+				BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.CHIME)
+						.strength(0.5F).randomTicks().sound(SoundType.GLASS).requiresCorrectToolForDrops()))
+				.setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+		IZetaBlock icestone_bricks = (IZetaBlock) (new ZetaBlock("icestone_bricks", this,
+				BlockBehaviour.Properties.of().mapColor(MapColor.ICE).instrument(NoteBlockInstrument.CHIME)
+						.strength(0.5F).randomTicks().sound(SoundType.GLASS).requiresCorrectToolForDrops()))
+				.setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+		IZetaBlock quicksoil_bricks = (IZetaBlock) (new ZetaBlock("quicksoil_bricks", this,
+				BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).requiresCorrectToolForDrops()))
+				.setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+		IZetaBlock aether_dirt_bricks = (IZetaBlock) (new ZetaBlock("aether_dirt_bricks", this,
+				Block.Properties.ofFullCopy(Blocks.DIRT).requiresCorrectToolForDrops()))
+				.setCreativeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
 
-
-        ImmutableSet.of(polished, icestone_bricks, quicksoil_bricks, aether_dirt_bricks).forEach((what)
-                -> event.getVariantRegistry().addSlabStairsWall(what, AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey()));
-    }
+		ImmutableSet.of(polished, icestone_bricks, quicksoil_bricks, aether_dirt_bricks).forEach((what) -> event
+				.getVariantRegistry().addSlabStairsWall(what, AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey()));
+	}
 }

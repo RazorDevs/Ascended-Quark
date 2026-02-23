@@ -12,10 +12,10 @@ import org.violetmoon.zeta.module.ZetaModule;
 @ZetaLoadModule(category = "deep_aether")
 public class GoldenBerriesCrateModule extends ZetaModule {
 
-    @LoadEvent
-    public void register(ZRegister register) {
-        if(ModList.get().isLoaded(AscendedQuark.DEEP_AETHER))
-            CompressedBlockModule.crate("goldenleaf_berries", MapColor.COLOR_YELLOW, true, this);
+	@LoadEvent
+	public void register(ZRegister register) {
+		if (ModList.get().isLoaded(AscendedQuark.DEEP_AETHER))
+			CompressedBlockModule.crate("goldenleaf_berries", MapColor.COLOR_YELLOW, true, this);
 
-    }
+	}
 }

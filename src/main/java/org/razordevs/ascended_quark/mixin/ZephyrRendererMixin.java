@@ -13,24 +13,27 @@ import org.razordevs.ascended_quark.module.AetherVariantAnimalTexturesModule;
 import org.spongepowered.asm.mixin.Mixin;
 
 /**
- * Do NOT edit this mixin or ZephyrLayerMixin.
- * Variable names need to be the same as the original for stuff to work.
+ * Do NOT edit this mixin or ZephyrLayerMixin. Variable names need to be the
+ * same as the original for stuff to work.
  */
 @Mixin(value = ZephyrRenderer.class)
-public abstract class ZephyrRendererMixin extends MultiModelRenderer<Zephyr, EntityModel<Zephyr>, ZephyrModel, ClassicZephyrModel> {
-    public ZephyrRendererMixin(EntityRendererProvider.Context context, ZephyrModel defaultModel, float shadowRadius) {
-        super(context, defaultModel, shadowRadius);
-    }
+public abstract class ZephyrRendererMixin
+		extends
+			MultiModelRenderer<Zephyr, EntityModel<Zephyr>, ZephyrModel, ClassicZephyrModel> {
+	public ZephyrRendererMixin(EntityRendererProvider.Context context, ZephyrModel defaultModel, float shadowRadius) {
+		super(context, defaultModel, shadowRadius);
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(Zephyr entity) {
-        if(AetherConfig.CLIENT.legacy_models.get())
-            return this.getOldTexture();
-        else {
-            ResourceLocation resourceLocation = AetherVariantAnimalTexturesModule.Client.getZephyrTexture(entity);
-            if(resourceLocation != null)
-                return resourceLocation;
-            else return this.getDefaultTexture();
-        }
-    }
+	@Override
+	public ResourceLocation getTextureLocation(Zephyr entity) {
+		if (AetherConfig.CLIENT.legacy_models.get())
+			return this.getOldTexture();
+		else {
+			ResourceLocation resourceLocation = AetherVariantAnimalTexturesModule.Client.getZephyrTexture(entity);
+			if (resourceLocation != null)
+				return resourceLocation;
+			else
+				return this.getDefaultTexture();
+		}
+	}
 }

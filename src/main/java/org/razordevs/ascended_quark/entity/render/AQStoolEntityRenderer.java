@@ -10,21 +10,22 @@ import org.violetmoon.quark.content.building.client.render.entity.StoolEntityRen
 import javax.annotation.Nonnull;
 
 /**
- *  CODE COPY - {@link StoolEntityRenderer}
+ * CODE COPY - {@link StoolEntityRenderer}
  */
 public class AQStoolEntityRenderer extends EntityRenderer<AQStool> {
 
 	public AQStoolEntityRenderer(EntityRendererProvider.Context context) {
-            super(context);
-        }
-        @Nonnull
-        @Override
-        public ResourceLocation getTextureLocation(@Nonnull AQStool entity) {
-            return null;
-        }
+		super(context);
+	}
+	@Nonnull
+	@Override
+	public ResourceLocation getTextureLocation(@Nonnull AQStool entity) {
+		return null;
+	}
 
-        @Override
-        public boolean shouldRender(@Nonnull AQStool livingEntityIn, @Nonnull Frustum camera, double camX, double camY, double camZ) {
-            return false;
-        }
-    }
+	@Override
+	public boolean shouldRender(@Nonnull AQStool livingEntityIn, @Nonnull Frustum camera, double camX, double camY,
+			double camZ) {
+		return false;
+	}
+}

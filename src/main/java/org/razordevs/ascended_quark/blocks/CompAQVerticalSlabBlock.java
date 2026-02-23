@@ -17,45 +17,46 @@ import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
 public class CompAQVerticalSlabBlock extends VerticalSlabBlock implements IZetaBlock {
-    private final ZetaModule module;
-    private BooleanSupplier enabledSupplier;
+	private final ZetaModule module;
+	private BooleanSupplier enabledSupplier;
 
-    @SuppressWarnings("unchecked")
-    public CompAQVerticalSlabBlock(String registryName, DeferredHolder<?, ? extends ItemLike> parent, Properties properties, ZetaModule module, ResourceKey<CreativeModeTab> tab) {
-        super((Supplier<Block>) parent, properties);
-        this.enabledSupplier = BooleanSuppliers.TRUE;
-        module.zeta().registry.registerBlock(this, registryName, true);
-        this.module = module;
+	@SuppressWarnings("unchecked")
+	public CompAQVerticalSlabBlock(String registryName, DeferredHolder<?, ? extends ItemLike> parent,
+			Properties properties, ZetaModule module, ResourceKey<CreativeModeTab> tab) {
+		super((Supplier<Block>) parent, properties);
+		this.enabledSupplier = BooleanSuppliers.TRUE;
+		module.zeta().registry.registerBlock(this, registryName, true);
+		this.module = module;
 
-        if(module.isEnabled()) RegistryUtil.addCreativeModeTab(tab, this, parent, module);
-    }
+		if (module.isEnabled())
+			RegistryUtil.addCreativeModeTab(tab, this, parent, module);
+	}
 
-    public CompAQVerticalSlabBlock(String registryName, DeferredHolder<?, ? extends ItemLike> parent, Properties properties, ZetaModule module) {
-        this(registryName, parent, properties, module, AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
-    }
+	public CompAQVerticalSlabBlock(String registryName, DeferredHolder<?, ? extends ItemLike> parent,
+			Properties properties, ZetaModule module) {
+		this(registryName, parent, properties, module, AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey());
+	}
 
-    public CompAQVerticalSlabBlock setCondition(BooleanSupplier enabledSupplier) {
-        this.enabledSupplier = enabledSupplier;
-        return this;
-    }
+	public CompAQVerticalSlabBlock setCondition(BooleanSupplier enabledSupplier) {
+		this.enabledSupplier = enabledSupplier;
+		return this;
+	}
 
-    public boolean doesConditionApply() {
-        return this.enabledSupplier.getAsBoolean();
-    }
+	public boolean doesConditionApply() {
+		return this.enabledSupplier.getAsBoolean();
+	}
 
-    public @Nullable ZetaModule getModule() {
-        return this.module;
-    }
+	public @Nullable ZetaModule getModule() {
+		return this.module;
+	}
 
-    @Override
-    @Nullable
-    public String getBlockColorProviderName() {
-        return null;
-    }
+	@Override
+	@Nullable public String getBlockColorProviderName() {
+		return null;
+	}
 
-    @Override
-    @Nullable
-    public String getItemColorProviderName() {
-        return null;
-    }
+	@Override
+	@Nullable public String getItemColorProviderName() {
+		return null;
+	}
 }

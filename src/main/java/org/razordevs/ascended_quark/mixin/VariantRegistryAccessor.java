@@ -7,6 +7,6 @@ import org.violetmoon.zeta.registry.VariantRegistry;
 
 @Mixin(VariantRegistry.class)
 public interface VariantRegistryAccessor {
-    @Accessor(remap = false)
-    Zeta getZeta();
+	@Accessor(remap = false)
+	Zeta getZeta();
 }

@@ -18,49 +18,54 @@ import java.util.function.Supplier;
 
 public class AQDungeonLootModifier extends LootModifier {
 
-    public static final Supplier<MapCodec<AQDungeonLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.mapCodec(inst -> codecStart(inst)
-            .and(WeightedEntry.Wrapper.codec(ItemStack.CODEC).listOf().fieldOf("items").forGetter(m -> m.items))
-            .and(Codec.INT.fieldOf("totalWeight").forGetter(m -> m.totalWeight))
-            .and(Codec.FLOAT.fieldOf("chanceToSpawn").forGetter(m -> m.chance))
-            .apply(inst, AQDungeonLootModifier::new)));
+	public static final Supplier<MapCodec<AQDungeonLootModifier>> CODEC = Suppliers
+			.memoize(() -> RecordCodecBuilder.mapCodec(inst -> codecStart(inst)
+					.and(WeightedEntry.Wrapper.codec(ItemStack.CODEC).listOf().fieldOf("items").forGetter(m -> m.items))
+					.and(Codec.INT.fieldOf("totalWeight").forGetter(m -> m.totalWeight))
+					.and(Codec.FLOAT.fieldOf("chanceToSpawn").forGetter(m -> m.chance))
+					.apply(inst, AQDungeonLootModifier::new)));
 
-    public final List<WeightedEntry.Wrapper<ItemStack>> items;
-    public final int totalWeight;
-    public final float chance;
+	public final List<WeightedEntry.Wrapper<ItemStack>> items;
+	public final int totalWeight;
+	public final float chance;
 
-    public AQDungeonLootModifier(final LootItemCondition[] conditionsIn, List<WeightedEntry.Wrapper<ItemStack>> items, int totalWeight, float chance) {
-        super(conditionsIn);
-        this.items = items.stream().map(wrapper -> WeightedEntry.wrap(wrapper.data().copy(), wrapper.getWeight().asInt())).toList();
-        this.totalWeight = totalWeight;
-        this.chance = chance;
-    }
+	public AQDungeonLootModifier(final LootItemCondition[] conditionsIn, List<WeightedEntry.Wrapper<ItemStack>> items,
+			int totalWeight, float chance) {
+		super(conditionsIn);
+		this.items = items.stream()
+				.map(wrapper -> WeightedEntry.wrap(wrapper.data().copy(), wrapper.getWeight().asInt())).toList();
+		this.totalWeight = totalWeight;
+		this.chance = chance;
+	}
 
-    @Override
-    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+	@Override
+	protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 
-        // size of the loots
-        int size = generatedLoot.size();
+		// size of the loots
+		int size = generatedLoot.size();
 
-        // is the loot full?
-        boolean isFull = size == 27;
+		// is the loot full?
+		boolean isFull = size == 27;
 
-        // size diff for when it's not full
-        int sizeDiff = 27-size;
+		// size diff for when it's not full
+		int sizeDiff = 27 - size;
 
-        // if the loot is not full, for each slot remaining, have x chance to add one of our item in the empty slots
-        if(!isFull) {
-            for(int i = 0; i<= sizeDiff; i++) {
-                if(context.getRandom().nextFloat() > chance) {
-                    WeightedRandom.getRandomItem(context.getRandom(), this.items, totalWeight).ifPresent(e -> generatedLoot.add(e.data()));
-                }
-            }
-        }
+		// if the loot is not full, for each slot remaining, have x chance to add one of
+		// our item in the empty slots
+		if (!isFull) {
+			for (int i = 0; i <= sizeDiff; i++) {
+				if (context.getRandom().nextFloat() > chance) {
+					WeightedRandom.getRandomItem(context.getRandom(), this.items, totalWeight)
+							.ifPresent(e -> generatedLoot.add(e.data()));
+				}
+			}
+		}
 
-        return generatedLoot;
-    }
+		return generatedLoot;
+	}
 
-    @Override
-    public MapCodec<? extends IGlobalLootModifier> codec() {
-        return CODEC.get();
-    }
+	@Override
+	public MapCodec<? extends IGlobalLootModifier> codec() {
+		return CODEC.get();
+	}
 }

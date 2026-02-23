@@ -19,34 +19,25 @@ import java.util.concurrent.CompletableFuture;
 
 public class AQLootDataProvider extends GlobalLootModifierProvider {
 
-    private final HashMap<String, Item> itemMap;
+	private final HashMap<String, Item> itemMap;
 
-    public AQLootDataProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, HashMap<String, Item> itemMap)
-    {
-        super(output, provider, AscendedQuark.MODID);
-        this.itemMap = itemMap;
-    }
+	public AQLootDataProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider,
+			HashMap<String, Item> itemMap) {
+		super(output, provider, AscendedQuark.MODID);
+		this.itemMap = itemMap;
+	}
 
-    @Override
-    protected void start() {
-        add("pickarang_bronze_loot_modifiers", new AQDungeonLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON.location()).build() },
-                List.of(
-                        WeightedEntry.wrap(new ItemStack(AQPickarangModule.valk_pickarang.asItem()), 1)
-                ),
-                110,
-                0.01f
-        ));
+	@Override
+	protected void start() {
+		add("pickarang_bronze_loot_modifiers", new AQDungeonLootModifier(
+				new LootItemCondition[]{LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON.location()).build()},
+				List.of(WeightedEntry.wrap(new ItemStack(AQPickarangModule.valk_pickarang.asItem()), 1)), 110, 0.01f));
 
-        add("pickarang_silver_loot_modifiers", new AQDungeonLootModifier(
-                new LootItemCondition[] { LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON.location()).build() },
-                List.of(
-                        WeightedEntry.wrap(new ItemStack(AQPickarangModule.valk_pickarang.asItem()), 1),
-                        WeightedEntry.wrap(new ItemStack(AQPickarangModule.phoenix_flamerang.asItem()), 1)
+		add("pickarang_silver_loot_modifiers", new AQDungeonLootModifier(
+				new LootItemCondition[]{LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON.location()).build()},
+				List.of(WeightedEntry.wrap(new ItemStack(AQPickarangModule.valk_pickarang.asItem()), 1),
+						WeightedEntry.wrap(new ItemStack(AQPickarangModule.phoenix_flamerang.asItem()), 1)
 
-                ),
-                110,
-                0.01f
-        ));
-    }
+				), 110, 0.01f));
+	}
 }

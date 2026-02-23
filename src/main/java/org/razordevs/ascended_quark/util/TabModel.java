@@ -8,23 +8,23 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class TabModel {
-    private final ResourceKey<CreativeModeTab> tab;
-    private final HashMap<ItemLike, Supplier<? extends ItemLike>> itemMap = new HashMap<>();
+	private final ResourceKey<CreativeModeTab> tab;
+	private final HashMap<ItemLike, Supplier<? extends ItemLike>> itemMap = new HashMap<>();
 
-    public TabModel(ResourceKey<CreativeModeTab> tab, HashMap<ItemLike, Supplier<? extends ItemLike>> itemMap) {
-        this.tab = tab;
-        this.itemMap.putAll(itemMap);
-    }
+	public TabModel(ResourceKey<CreativeModeTab> tab, HashMap<ItemLike, Supplier<? extends ItemLike>> itemMap) {
+		this.tab = tab;
+		this.itemMap.putAll(itemMap);
+	}
 
-    public ResourceKey<CreativeModeTab> getTab() {
-        return tab;
-    }
+	public ResourceKey<CreativeModeTab> getTab() {
+		return tab;
+	}
 
-    public HashMap<ItemLike, Supplier<? extends ItemLike>> getItemMap() {
-        return itemMap;
-    }
+	public HashMap<ItemLike, Supplier<? extends ItemLike>> getItemMap() {
+		return itemMap;
+	}
 
-    public void add(ItemLike item, Supplier<? extends ItemLike> supplier) {
-        itemMap.put(item, supplier);
-    }
+	public void add(ItemLike item, Supplier<? extends ItemLike> supplier) {
+		itemMap.put(item, supplier);
+	}
 }

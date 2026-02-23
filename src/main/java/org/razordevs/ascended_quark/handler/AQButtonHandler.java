@@ -19,61 +19,58 @@ import java.util.stream.Collectors;
 
 public class AQButtonHandler {
 
-    @PlayEvent
-    public static void onGuiInit(ZScreen.Init.Post event) {
-        if(!AQGeneralConfig.enableAQButton)
-            return;
+	@PlayEvent
+	public static void onGuiInit(ZScreen.Init.Post event) {
+		if (!AQGeneralConfig.enableAQButton)
+			return;
 
-        Set<String> targetButtonTranslationKeys = getTargetButtons(event.getScreen());
-        if(targetButtonTranslationKeys == null || targetButtonTranslationKeys.isEmpty())
-            return;
+		Set<String> targetButtonTranslationKeys = getTargetButtons(event.getScreen());
+		if (targetButtonTranslationKeys == null || targetButtonTranslationKeys.isEmpty())
+			return;
 
-        Set<String> targetButtonNames = targetButtonTranslationKeys.stream()
-                .map(I18n::get)
-                .collect(Collectors.toSet());
+		Set<String> targetButtonNames = targetButtonTranslationKeys.stream().map(I18n::get).collect(Collectors.toSet());
 
-        List<GuiEventListener> listeners = event.getListenersList();
-        for(GuiEventListener listener : listeners)
-            if(listener instanceof AbstractWidget widget) {
-                if(targetButtonNames.contains(widget.getMessage().getString())) {
-                    Button aqButton = getButton(widget);
-                    event.addListener(aqButton);
-                    return;
-                }
-            }
-    }
+		List<GuiEventListener> listeners = event.getListenersList();
+		for (GuiEventListener listener : listeners)
+			if (listener instanceof AbstractWidget widget) {
+				if (targetButtonNames.contains(widget.getMessage().getString())) {
+					Button aqButton = getButton(widget);
+					event.addListener(aqButton);
+					return;
+				}
+			}
+	}
 
-    private static Button getButton(AbstractWidget widget) {
-        int x = widget.getX();
+	private static Button getButton(AbstractWidget widget) {
+		int x = widget.getX();
 
-        if(AQGeneralConfig.aqButtonOnRight)
-            if(QuarkGeneralConfig.qButtonOnRight && QuarkGeneralConfig.enableQButton)
-                x += widget.getWidth() + 28;
-            else
-                x += widget.getWidth() + 4;
-        else
-            if(QuarkGeneralConfig.qButtonOnRight || !QuarkGeneralConfig.enableQButton)
-                x -= 24;
-            else
-                x -= 48;
+		if (AQGeneralConfig.aqButtonOnRight)
+			if (QuarkGeneralConfig.qButtonOnRight && QuarkGeneralConfig.enableQButton)
+				x += widget.getWidth() + 28;
+			else
+				x += widget.getWidth() + 4;
+		else if (QuarkGeneralConfig.qButtonOnRight || !QuarkGeneralConfig.enableQButton)
+			x -= 24;
+		else
+			x -= 48;
 
-        return new AQButton(x, widget.getY());
-    }
+		return new AQButton(x, widget.getY());
+	}
 
-    private static @Nullable Set<String> getTargetButtons(Screen gui) {
-        if(gui instanceof TitleScreen)
-            if(AQGeneralConfig.aqButtonOnRight)
-                return Set.of("menu.online"); // Minecraft Realms
-            else
-                return Set.of("fml.menu.mods.title", "fml.menu.mods"); // Mods (idk which one is used)
+	private static @Nullable Set<String> getTargetButtons(Screen gui) {
+		if (gui instanceof TitleScreen)
+			if (AQGeneralConfig.aqButtonOnRight)
+				return Set.of("menu.online"); // Minecraft Realms
+			else
+				return Set.of("fml.menu.mods.title", "fml.menu.mods"); // Mods (idk which one is used)
 
-        if(gui instanceof PauseScreen)
-            if(AQGeneralConfig.aqButtonOnRight)
-                return Set.of("menu.shareToLan", "menu.playerReporting"); // Open to LAN, Player Reporting
-            else
-                return Set.of("menu.options"); // Options...
+		if (gui instanceof PauseScreen)
+			if (AQGeneralConfig.aqButtonOnRight)
+				return Set.of("menu.shareToLan", "menu.playerReporting"); // Open to LAN, Player Reporting
+			else
+				return Set.of("menu.options"); // Options...
 
-        return null;
-    }
+		return null;
+	}
 
 }

@@ -19,14 +19,17 @@ import org.violetmoon.zeta.module.ZetaModule;
 
 @ZetaLoadModule(category = "aether")
 public class HolystoneFurnaceModule extends ZetaModule {
-    public static BlockEntityType<HolystoneFurnaceBlockEntity> blockEntityType;
+	public static BlockEntityType<HolystoneFurnaceBlockEntity> blockEntityType;
 
-    @LoadEvent
-    public void register(ZRegister register) {
-        Block furnace = new AQVariantFurnaceBlock("holystone", this, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F).requiresCorrectToolForDrops().lightLevel(RegistryUtil.litBlockEmission(13)));
-        blockEntityType = BlockEntityType.Builder.of(HolystoneFurnaceBlockEntity::new, furnace).build(null);
-        AscendedQuark.ZETA.registry.register(blockEntityType, "variant_furnace", Registries.BLOCK_ENTITY_TYPE);
+	@LoadEvent
+	public void register(ZRegister register) {
+		Block furnace = new AQVariantFurnaceBlock("holystone", this,
+				BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM)
+						.strength(0.5F).requiresCorrectToolForDrops().lightLevel(RegistryUtil.litBlockEmission(13)));
+		blockEntityType = BlockEntityType.Builder.of(HolystoneFurnaceBlockEntity::new, furnace).build(null);
+		AscendedQuark.ZETA.registry.register(blockEntityType, "variant_furnace", Registries.BLOCK_ENTITY_TYPE);
 
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), furnace, AetherBlocks.ALTAR, this);
-    }
+		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), furnace,
+				AetherBlocks.ALTAR, this);
+	}
 }

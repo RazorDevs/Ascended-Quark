@@ -11,12 +11,12 @@ import org.violetmoon.zeta.module.ZetaModule;
 
 public class AQLeafCarpetBlock extends LeafCarpetBlock {
 
-    public AQLeafCarpetBlock(String name, @Nullable ZetaModule module) {
-        super(name, Blocks.OAK_LEAVES, module);
-    }
+	public AQLeafCarpetBlock(String name, @Nullable ZetaModule module) {
+		super(name, Blocks.OAK_LEAVES, module);
+	}
 
-    @Override
-    public Block setCreativeTab(ResourceKey<CreativeModeTab> tab, ItemLike parent, boolean behindParent) {
-        return this;
-    }
+	@Override
+	public Block setCreativeTab(ResourceKey<CreativeModeTab> tab, ItemLike parent, boolean behindParent) {
+		return this;
+	}
 }

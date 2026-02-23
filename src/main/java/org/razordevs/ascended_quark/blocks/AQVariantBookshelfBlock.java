@@ -10,12 +10,12 @@ import org.violetmoon.quark.content.building.block.VariantBookshelfBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 
 public class AQVariantBookshelfBlock extends VariantBookshelfBlock {
-    public AQVariantBookshelfBlock(String type, @Nullable ZetaModule module, boolean flammable, SoundType sound) {
-        super(type, module, flammable, sound);
-    }
+	public AQVariantBookshelfBlock(String type, @Nullable ZetaModule module, boolean flammable, SoundType sound) {
+		super(type, module, flammable, sound);
+	}
 
-    @Override
-    public Block setCreativeTab(ResourceKey<CreativeModeTab> tab, ItemLike parent, boolean behindParent) {
-        return this;
-    }
+	@Override
+	public Block setCreativeTab(ResourceKey<CreativeModeTab> tab, ItemLike parent, boolean behindParent) {
+		return this;
+	}
 }

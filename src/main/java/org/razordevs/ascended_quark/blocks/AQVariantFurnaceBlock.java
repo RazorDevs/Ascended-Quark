@@ -16,20 +16,21 @@ import org.violetmoon.quark.content.building.block.VariantFurnaceBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 
 public class AQVariantFurnaceBlock extends VariantFurnaceBlock {
-    public AQVariantFurnaceBlock(String type, ZetaModule module, Properties props) {
-        super(type, module, props);
-    }
+	public AQVariantFurnaceBlock(String type, ZetaModule module, Properties props) {
+		super(type, module, props);
+	}
 
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new HolystoneFurnaceBlockEntity(pos, state);
-    }
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new HolystoneFurnaceBlockEntity(pos, state);
+	}
 
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> beType) {
-        return createFurnaceTicker(world, beType, HolystoneFurnaceModule.blockEntityType);
-    }
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state,
+			BlockEntityType<T> beType) {
+		return createFurnaceTicker(world, beType, HolystoneFurnaceModule.blockEntityType);
+	}
 
-    @Override
-    public Block setCreativeTab(ResourceKey<CreativeModeTab> tab, ItemLike parent, boolean behindParent) {
-        return this;
-    }
+	@Override
+	public Block setCreativeTab(ResourceKey<CreativeModeTab> tab, ItemLike parent, boolean behindParent) {
+		return this;
+	}
 }

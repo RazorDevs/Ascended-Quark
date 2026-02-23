@@ -11,30 +11,29 @@ import java.util.function.BooleanSupplier;
 
 public class AQGlassPaneBlock extends IronBarsBlock implements FrictionCapped, IZetaBlock {
 
-    private final ZetaModule module;
+	private final ZetaModule module;
 
-    public AQGlassPaneBlock(String name, Properties properties, ZetaModule module) {
-        super(properties);
-        module.zeta().registry.registerBlock(this, name, true);
-        this.module = module;
-    }
+	public AQGlassPaneBlock(String name, Properties properties, ZetaModule module) {
+		super(properties);
+		module.zeta().registry.registerBlock(this, name, true);
+		this.module = module;
+	}
 
-    @SuppressWarnings("InfiniteRecursion")
-    @Override
-    public float getCappedFriction(@Nullable Entity entity, float defaultFriction) {
-        return this.getCappedFriction(entity, super.getFriction());
-    }
+	@SuppressWarnings("InfiniteRecursion")
+	@Override
+	public float getCappedFriction(@Nullable Entity entity, float defaultFriction) {
+		return this.getCappedFriction(entity, super.getFriction());
+	}
 
-    public ZetaModule getModule() {
-        return this.module;
-    }
+	public ZetaModule getModule() {
+		return this.module;
+	}
 
-    public IZetaBlock setCondition(BooleanSupplier condition) {
-        return this;
-    }
+	public IZetaBlock setCondition(BooleanSupplier condition) {
+		return this;
+	}
 
-    public boolean doesConditionApply() {
-        return true;
-    }
+	public boolean doesConditionApply() {
+		return true;
+	}
 }
-

@@ -22,61 +22,65 @@ import org.violetmoon.zeta.block.ZetaBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 
 public class AmbrosiumLampBlock extends ZetaBlock {
-    public static final IntegerProperty LIGHT = BlockStateProperties.RESPAWN_ANCHOR_CHARGES;
+	public static final IntegerProperty LIGHT = BlockStateProperties.RESPAWN_ANCHOR_CHARGES;
 
-    public AmbrosiumLampBlock(String regname, @Nullable ZetaModule module, Properties properties) {
-        super(regname, module, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT, 0));
-    }
+	public AmbrosiumLampBlock(String regname, @Nullable ZetaModule module, Properties properties) {
+		super(regname, module, properties);
+		this.registerDefaultState(this.stateDefinition.any().setValue(LIGHT, 0));
+	}
 
-    @Override
-    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (hand == InteractionHand.MAIN_HAND && !isRespawnFuel(itemStack) && isRespawnFuel(player.getItemInHand(InteractionHand.OFF_HAND))) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        } else if (isRespawnFuel(itemStack) && canBeCharged(blockState)) {
-            charge(level, blockPos, blockState);
-            if (!player.getAbilities().instabuild) {
-                itemStack.shrink(1);
-            }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
-        } else if (!isRespawnFuel(itemStack) && isOn(blockState) && itemStack.isEmpty()) {
-            deplete(level, blockPos, blockState);
-            if (!player.getAbilities().instabuild) {
-                player.addItem(new ItemStack(AetherBlocks.AMBROSIUM_BLOCK.get().asItem()));
-            }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
-        }
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level,
+			BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+		if (hand == InteractionHand.MAIN_HAND && !isRespawnFuel(itemStack)
+				&& isRespawnFuel(player.getItemInHand(InteractionHand.OFF_HAND))) {
+			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		} else if (isRespawnFuel(itemStack) && canBeCharged(blockState)) {
+			charge(level, blockPos, blockState);
+			if (!player.getAbilities().instabuild) {
+				itemStack.shrink(1);
+			}
+			return ItemInteractionResult.sidedSuccess(level.isClientSide);
+		} else if (!isRespawnFuel(itemStack) && isOn(blockState) && itemStack.isEmpty()) {
+			deplete(level, blockPos, blockState);
+			if (!player.getAbilities().instabuild) {
+				player.addItem(new ItemStack(AetherBlocks.AMBROSIUM_BLOCK.get().asItem()));
+			}
+			return ItemInteractionResult.sidedSuccess(level.isClientSide);
+		}
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+	}
 
-    private static boolean isRespawnFuel(ItemStack itemStack) {
-        return itemStack.is(AetherBlocks.AMBROSIUM_BLOCK.get().asItem());
-    }
+	private static boolean isRespawnFuel(ItemStack itemStack) {
+		return itemStack.is(AetherBlocks.AMBROSIUM_BLOCK.get().asItem());
+	}
 
-    private static boolean canBeCharged(BlockState value) {
-        return value.getValue(LIGHT) < 4;
-    }
+	private static boolean canBeCharged(BlockState value) {
+		return value.getValue(LIGHT) < 4;
+	}
 
-    public static void charge(Level level, BlockPos blockPos, BlockState blockState) {
-        level.setBlock(blockPos, blockState.setValue(LIGHT, blockState.getValue(LIGHT) + 1), 3);
-        level.playSound(null, (double)blockPos.getX() + 0.5D, (double)blockPos.getY() + 0.5D, (double)blockPos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
-    }
+	public static void charge(Level level, BlockPos blockPos, BlockState blockState) {
+		level.setBlock(blockPos, blockState.setValue(LIGHT, blockState.getValue(LIGHT) + 1), 3);
+		level.playSound(null, (double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D,
+				(double) blockPos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
+	}
 
-    public static void deplete(Level level, BlockPos blockPos, BlockState blockState) {
-        if(blockState.getValue(LIGHT) > 0)
-            level.setBlock(blockPos, blockState.setValue(LIGHT, blockState.getValue(LIGHT) - 1), 3);
-        level.playSound(null, (double)blockPos.getX() + 0.5D, (double)blockPos.getY() + 0.5D, (double)blockPos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
-    }
+	public static void deplete(Level level, BlockPos blockPos, BlockState blockState) {
+		if (blockState.getValue(LIGHT) > 0)
+			level.setBlock(blockPos, blockState.setValue(LIGHT, blockState.getValue(LIGHT) - 1), 3);
+		level.playSound(null, (double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.5D,
+				(double) blockPos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
+	}
 
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> add) {
-        add.add(LIGHT);
-    }
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> add) {
+		add.add(LIGHT);
+	}
 
-    private static boolean isOn(BlockState value) {
-        return value.getValue(LIGHT) > 0;
-    }
+	private static boolean isOn(BlockState value) {
+		return value.getValue(LIGHT) > 0;
+	}
 
-    public static int getScaledChargeLevel(BlockState blockState, int i) {
-        return Mth.floor((float)(blockState.getValue(LIGHT)) / 4.0F * (float)i);
-    }
+	public static int getScaledChargeLevel(BlockState blockState, int i) {
+		return Mth.floor((float) (blockState.getValue(LIGHT)) / 4.0F * (float) i);
+	}
 }

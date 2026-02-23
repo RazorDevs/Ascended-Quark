@@ -13,14 +13,14 @@ import org.violetmoon.zeta.util.MiscUtil;
 
 public class AQHollowLogBlock extends HollowPillarBlock {
 
-    public AQHollowLogBlock(String name, @Nullable ZetaModule module) {
-        super(name, module, MiscUtil.copyPropertySafe(Blocks.OAK_LOG).isSuffocating((s, g, p) -> false).noOcclusion());
-        if (module != null) {
-            module.zeta().renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT_MIPPED);
-        }
-    }
-    @Override
-    public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return true;
-    }
+	public AQHollowLogBlock(String name, @Nullable ZetaModule module) {
+		super(name, module, MiscUtil.copyPropertySafe(Blocks.OAK_LOG).isSuffocating((s, g, p) -> false).noOcclusion());
+		if (module != null) {
+			module.zeta().renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT_MIPPED);
+		}
+	}
+	@Override
+	public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+		return true;
+	}
 }

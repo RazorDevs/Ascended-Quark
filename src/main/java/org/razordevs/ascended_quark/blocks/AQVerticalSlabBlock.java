@@ -16,36 +16,36 @@ import org.violetmoon.zeta.util.BooleanSuppliers;
 import java.util.function.BooleanSupplier;
 
 public class AQVerticalSlabBlock extends VerticalSlabBlock implements IZetaBlock {
-    private final ZetaModule module;
-    private BooleanSupplier enabledSupplier;
+	private final ZetaModule module;
+	private BooleanSupplier enabledSupplier;
 
-    public AQVerticalSlabBlock(Block parent, ZetaModule module) {
-        super(()->parent, BlockPropertyUtil.copyPropertySafe(parent));
-        this.enabledSupplier = BooleanSuppliers.TRUE;
-        String resloc = AscendedQuark.ZETA.registryUtil.inherit(parent, (s) -> s.replace("_slab", "_vertical_slab"));
-        AscendedQuark.ZETA.registry.registerBlock(this, resloc, true);
-        this.module = module;
+	public AQVerticalSlabBlock(Block parent, ZetaModule module) {
+		super(() -> parent, BlockPropertyUtil.copyPropertySafe(parent));
+		this.enabledSupplier = BooleanSuppliers.TRUE;
+		String resloc = AscendedQuark.ZETA.registryUtil.inherit(parent, (s) -> s.replace("_slab", "_vertical_slab"));
+		AscendedQuark.ZETA.registry.registerBlock(this, resloc, true);
+		this.module = module;
 
-        if (!(parent instanceof SlabBlock)) {
-            throw new IllegalArgumentException("Can't rotate a non-slab block into a vertical slab.");
-        } else {
-            if (parent instanceof ZetaSlabBlock slab) {
-                this.setCondition(slab.parent::isEnabled);
-            }
-            CreativeTabManager.addNextToItem(CreativeModeTabs.BUILDING_BLOCKS, this, parent, false);
-        }
-    }
+		if (!(parent instanceof SlabBlock)) {
+			throw new IllegalArgumentException("Can't rotate a non-slab block into a vertical slab.");
+		} else {
+			if (parent instanceof ZetaSlabBlock slab) {
+				this.setCondition(slab.parent::isEnabled);
+			}
+			CreativeTabManager.addNextToItem(CreativeModeTabs.BUILDING_BLOCKS, this, parent, false);
+		}
+	}
 
-    public AQVerticalSlabBlock setCondition(BooleanSupplier enabledSupplier) {
-        this.enabledSupplier = enabledSupplier;
-        return this;
-    }
+	public AQVerticalSlabBlock setCondition(BooleanSupplier enabledSupplier) {
+		this.enabledSupplier = enabledSupplier;
+		return this;
+	}
 
-    public boolean doesConditionApply() {
-        return this.enabledSupplier.getAsBoolean();
-    }
+	public boolean doesConditionApply() {
+		return this.enabledSupplier.getAsBoolean();
+	}
 
-    public @Nullable ZetaModule getModule() {
-        return this.module;
-    }
+	public @Nullable ZetaModule getModule() {
+		return this.module;
+	}
 }

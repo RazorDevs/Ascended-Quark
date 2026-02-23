@@ -33,112 +33,118 @@ import java.util.function.BooleanSupplier;
 @ZetaLoadModule(category = "aether")
 public class AQPickarangModule extends ZetaModule {
 
-    @Config(flag = "phoenix_flamerang")
-    public static boolean enableFlamerang = true;
+	@Config(flag = "phoenix_flamerang")
+	public static boolean enableFlamerang = true;
 
-    @Hint
-    public static Item valk_pickarang;
-    @Hint("flamerang")
-    public static Item phoenix_flamerang;
+	@Hint
+	public static Item valk_pickarang;
+	@Hint("flamerang")
+	public static Item phoenix_flamerang;
 
-    private static final List<PickarangType<?>> knownTypes = new ArrayList<>();
-    private static boolean isEnabled;
+	private static final List<PickarangType<?>> knownTypes = new ArrayList<>();
+	private static boolean isEnabled;
 
-    private static String loot(ResourceLocation lootLoc, int defaultWeight) {
-        return lootLoc.toString() + "," + defaultWeight;
-    }
+	private static String loot(ResourceLocation lootLoc, int defaultWeight) {
+		return lootLoc.toString() + "," + defaultWeight;
+	}
 
-//    @Config(description = "Format is lootTable,weight. i.e. \"aether:chests/bronze_dungeon,30\"")
-//    public static List<String> lootTables = Lists.newArrayList(
-//            loot(AetherLoot.BRONZE_DUNGEON, 5),
-//            loot(AetherLoot.SILVER_DUNGEON, 10)
-//    );
+	// @Config(description = "Format is lootTable,weight. i.e.
+	// \"aether:chests/bronze_dungeon,30\"")
+	// public static List<String> lootTables = Lists.newArrayList(
+	// loot(AetherLoot.BRONZE_DUNGEON, 5),
+	// loot(AetherLoot.SILVER_DUNGEON, 10)
+	// );
 
-//    private static final Object2IntMap<ResourceLocation> lootTableWeights = new Object2IntArrayMap<>();
+	// private static final Object2IntMap<ResourceLocation> lootTableWeights = new
+	// Object2IntArrayMap<>();
 
+	@LoadEvent
+	public final void register(ZRegister event) {
+		valk_pickarang = makePickarang(PickarangModule.pickarangType, "valkyrie_pickarang", Pickarang::new,
+				Pickarang::new, BooleanSuppliers.TRUE)
+				.setCreativeTab(CreativeModeTabs.TOOLS_AND_UTILITIES, Items.DIAMOND_HOE, false);
+		phoenix_flamerang = makePickarang(PickarangModule.flamerangType, "phoenix_flamerang", Flamerang::new,
+				Flamerang::new, () -> enableFlamerang)
+				.setCreativeTab(CreativeModeTabs.TOOLS_AND_UTILITIES, Items.NETHERITE_HOE, false);
+	}
 
-    @LoadEvent
-    public final void register(ZRegister event) {
-        valk_pickarang = makePickarang(PickarangModule.pickarangType, "valkyrie_pickarang", Pickarang::new, Pickarang::new, BooleanSuppliers.TRUE).setCreativeTab(CreativeModeTabs.TOOLS_AND_UTILITIES, Items.DIAMOND_HOE, false);
-        phoenix_flamerang = makePickarang(PickarangModule.flamerangType, "phoenix_flamerang", Flamerang::new, Flamerang::new, () -> enableFlamerang).setCreativeTab(CreativeModeTabs.TOOLS_AND_UTILITIES, Items.NETHERITE_HOE, false);
-    }
+	private <T extends AbstractPickarang<T>> PickarangItem makePickarang(PickarangType<T> type, String name,
+			EntityType.EntityFactory<T> entityFactory, PickarangType.PickarangConstructor<T> thrownFactory,
+			BooleanSupplier condition) {
 
-    private <T extends AbstractPickarang<T>> PickarangItem makePickarang(PickarangType<T> type, String name,
-                                                                         EntityType.EntityFactory<T> entityFactory,
-                                                                         PickarangType.PickarangConstructor<T> thrownFactory,
-                                                                         BooleanSupplier condition) {
+		EntityType<T> entityType = EntityType.Builder.of(entityFactory, MobCategory.MISC).sized(0.4F, 0.4F)
+				.clientTrackingRange(4).updateInterval(10)
+				// .setCustomClientFactory((t, l) -> entityFactory.create(type.getEntityType(),
+				// l))
+				.build(name);
+		Quark.ZETA.registry.register(entityType, name, Registries.ENTITY_TYPE);
 
-        EntityType<T> entityType = EntityType.Builder.of(entityFactory, MobCategory.MISC)
-                .sized(0.4F, 0.4F)
-                .clientTrackingRange(4)
-                .updateInterval(10)
-                //.setCustomClientFactory((t, l) -> entityFactory.create(type.getEntityType(), l))
-                .build(name);
-        Quark.ZETA.registry.register(entityType, name, Registries.ENTITY_TYPE);
+		knownTypes.add(type);
+		type.setEntityType(entityType, thrownFactory);
+		return (PickarangItem) new PickarangItem(name, this, propertiesFor(type.durability, type.isFireResistant()),
+				type).setCondition(condition);
+	}
 
-        knownTypes.add(type);
-        type.setEntityType(entityType, thrownFactory);
-        return (PickarangItem) new PickarangItem(name, this, propertiesFor(type.durability, type.isFireResistant()), type).setCondition(condition);
-    }
+	private Item.Properties propertiesFor(int durability, boolean fireResist) {
+		Item.Properties properties = new Item.Properties().stacksTo(1);
 
-    private Item.Properties propertiesFor(int durability, boolean fireResist) {
-        Item.Properties properties = new Item.Properties()
-                .stacksTo(1);
+		if (durability > 0)
+			properties.durability(durability);
 
-        if (durability > 0)
-            properties.durability(durability);
+		if (fireResist)
+			properties.fireResistant();
 
-        if (fireResist)
-            properties.fireResistant();
+		return properties;
+	}
 
-        return properties;
-    }
+	// @LoadEvent
+	// public final void configChanged(ZConfigChanged event) {
+	// // Pass over to a static reference for easier computing the coremod hook
+	// isEnabled = this.enabled;
+	// lootTableWeights.clear();
+	// for(String table : lootTables) {
+	// String[] split = table.split(",");
+	// if(split.length == 2) {
+	// int weight;
+	// ResourceLocation loc = new ResourceLocation(split[0]);
+	// try {
+	// weight = Integer.parseInt(split[1]);
+	// } catch (NumberFormatException e) {
+	// continue;
+	// }
+	// if(weight > 0)
+	// lootTableWeights.put(loc, weight);
+	// }
+	// }
+	// }
 
-//    @LoadEvent
-//    public final void configChanged(ZConfigChanged event) {
-//        // Pass over to a static reference for easier computing the coremod hook
-//        isEnabled = this.enabled;
-//        lootTableWeights.clear();
-//        for(String table : lootTables) {
-//            String[] split = table.split(",");
-//            if(split.length == 2) {
-//                int weight;
-//                ResourceLocation loc = new ResourceLocation(split[0]);
-//                try {
-//                    weight = Integer.parseInt(split[1]);
-//                } catch (NumberFormatException e) {
-//                    continue;
-//                }
-//                if(weight > 0)
-//                    lootTableWeights.put(loc, weight);
-//            }
-//        }
-//    }
+	public static boolean getIsFireResistant(boolean vanillaVal, Entity entity) {
+		if (!isEnabled || vanillaVal)
+			return vanillaVal;
 
-    public static boolean getIsFireResistant(boolean vanillaVal, Entity entity) {
-        if (!isEnabled || vanillaVal)
-            return vanillaVal;
+		Entity riding = entity.getVehicle();
+		if (riding instanceof AbstractPickarang<?> pick)
+			return pick.getPickarangType().isFireResistant();
 
-        Entity riding = entity.getVehicle();
-        if (riding instanceof AbstractPickarang<?> pick)
-            return pick.getPickarangType().isFireResistant();
+		return false;
+	}
 
-        return false;
-    }
+	/*
+	 * This doesn't work, as it empties the current loot table and just puts in the
+	 * pickarang instead of adding it
+	 * 
+	 * @PlayEvent public void onLootTableLoad(ZLootTableLoad event) {
+	 * RegistryUtil.registerModifiedLootTable(AetherLoot.BRONZE_DUNGEON,
+	 * AQPickarangModule.valk_pickarang, 5, 1, event);
+	 * RegistryUtil.registerModifiedLootTable(AetherLoot.SILVER_DUNGEON,
+	 * AQPickarangModule.phoenix_flamerang, 5, 1, event); }
+	 */
 
-    /* This doesn't work, as it empties the current loot table and just puts in the pickarang instead of adding it
-    @PlayEvent
-    public void onLootTableLoad(ZLootTableLoad event) {
-        RegistryUtil.registerModifiedLootTable(AetherLoot.BRONZE_DUNGEON, AQPickarangModule.valk_pickarang, 5, 1, event);
-        RegistryUtil.registerModifiedLootTable(AetherLoot.SILVER_DUNGEON, AQPickarangModule.phoenix_flamerang, 5, 1, event);
-    }
-     */
-
-    @ZetaLoadModule(clientReplacement = true)
-    public static class Client extends AQPickarangModule {
-        @LoadEvent
-        public final void clientSetup(ZClientSetup event) {
-            knownTypes.forEach(t -> EntityRenderers.register(t.getEntityType(), PickarangRenderer::new));
-        }
-    }
+	@ZetaLoadModule(clientReplacement = true)
+	public static class Client extends AQPickarangModule {
+		@LoadEvent
+		public final void clientSetup(ZClientSetup event) {
+			knownTypes.forEach(t -> EntityRenderers.register(t.getEntityType(), PickarangRenderer::new));
+		}
+	}
 }

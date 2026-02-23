@@ -24,26 +24,30 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = ZephyrTransparencyLayer.class)
 public abstract class ZephyrLayerMixin extends RenderLayer<Zephyr, EntityModel<Zephyr>> {
 
-    @Shadow(remap = false) @Final private ZephyrModel transparency;
+	@Shadow(remap = false)
+	@Final
+	private ZephyrModel transparency;
 
-    public ZephyrLayerMixin(RenderLayerParent<Zephyr, EntityModel<Zephyr>> p_117346_) {
-        super(p_117346_);
-    }
+	public ZephyrLayerMixin(RenderLayerParent<Zephyr, EntityModel<Zephyr>> p_117346_) {
+		super(p_117346_);
+	}
 
+	@Inject(at = @At("HEAD"), method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILcom/aetherteam/aether/entity/monster/Zephyr;FFFFFF)V", remap = false)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Zephyr zephyr, float limbSwing,
+			float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch,
+			CallbackInfo ci) {
+		ResourceLocation location = AetherVariantAnimalTexturesModule.Client.getZephyrLayerTexture(zephyr);
 
-    @Inject(at = @At("HEAD"), method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILcom/aetherteam/aether/entity/monster/Zephyr;FFFFFF)V", remap = false)
-    public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Zephyr zephyr, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo ci) {
-        ResourceLocation location = AetherVariantAnimalTexturesModule.Client.getZephyrLayerTexture(zephyr);
+		if (!AetherConfig.CLIENT.legacy_models.get() && location != null) {
+			if (this.getParentModel() instanceof ZephyrModel && !zephyr.isInvisible()) {
+				this.getParentModel().copyPropertiesTo(this.transparency);
+				this.transparency.prepareMobModel(zephyr, limbSwing, limbSwingAmount, partialTicks);
+				this.transparency.setupAnim(zephyr, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+				VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(location));
+				this.transparency.renderToBuffer(poseStack, consumer, packedLight,
+						LivingEntityRenderer.getOverlayCoords(zephyr, 0.0F));
+			}
+		}
 
-        if(!AetherConfig.CLIENT.legacy_models.get() && location != null) {
-            if (this.getParentModel() instanceof ZephyrModel && !zephyr.isInvisible()) {
-                this.getParentModel().copyPropertiesTo(this.transparency);
-                this.transparency.prepareMobModel(zephyr, limbSwing, limbSwingAmount, partialTicks);
-                this.transparency.setupAnim(zephyr, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-                VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(location));
-                this.transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(zephyr, 0.0F));
-            }
-        }
-
-    }
+	}
 }

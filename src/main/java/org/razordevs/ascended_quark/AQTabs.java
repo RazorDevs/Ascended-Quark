@@ -20,32 +20,32 @@ import java.util.function.Supplier;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT, modid = AscendedQuark.MODID)
 public class AQTabs {
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
-        ResourceKey<CreativeModeTab> tab = event.getTabKey();
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
+		ResourceKey<CreativeModeTab> tab = event.getTabKey();
 
-        // Applies generated items to their respective CreativeTab
-        for(TabModel tm : RegistryUtil.TABS) {
-            if (tm.getTab().equals(tab)){
-                // If the iterated tab is the current one, get all the items and their parents
-                // for registration
-                HashMap<ItemLike, Supplier<? extends ItemLike>> map = tm.getItemMap();
+		// Applies generated items to their respective CreativeTab
+		for (TabModel tm : RegistryUtil.TABS) {
+			if (tm.getTab().equals(tab)) {
+				// If the iterated tab is the current one, get all the items and their parents
+				// for registration
+				HashMap<ItemLike, Supplier<? extends ItemLike>> map = tm.getItemMap();
 
-                // For each item register it after their parent
-                for (ItemLike item : map.keySet()) {
-                    addToTab(map.get(item).get().asItem(), item.asItem(), event);
-                }
-            }
-        }
-    }
+				// For each item register it after their parent
+				for (ItemLike item : map.keySet()) {
+					addToTab(map.get(item).get().asItem(), item.asItem(), event);
+				}
+			}
+		}
+	}
 
-    private static void addToTab(Item parent, Item stack, BuildCreativeModeTabContentsEvent event) {
+	private static void addToTab(Item parent, Item stack, BuildCreativeModeTabContentsEvent event) {
 
-        if(event.getParentEntries().contains((new ItemStack(parent)))
-                && !event.getParentEntries().contains((new ItemStack(stack)))
-                && !event.getSearchEntries().contains((new ItemStack(stack)))
-        ) {
-            event.insertAfter(new ItemStack(parent), new ItemStack(stack), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-        }
-    }
+		if (event.getParentEntries().contains((new ItemStack(parent)))
+				&& !event.getParentEntries().contains((new ItemStack(stack)))
+				&& !event.getSearchEntries().contains((new ItemStack(stack)))) {
+			event.insertAfter(new ItemStack(parent), new ItemStack(stack),
+					CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+		}
+	}
 }

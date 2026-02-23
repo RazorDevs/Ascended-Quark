@@ -12,11 +12,12 @@ import org.violetmoon.zeta.module.ZetaModule;
 import java.util.function.Supplier;
 
 public class AQTrappedVariantChestBlock extends VariantTrappedChestBlock {
-    public AQTrappedVariantChestBlock(String type, ZetaModule module, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier, Properties props) {
-        super(type, module, supplier, props);
-    }
+	public AQTrappedVariantChestBlock(String type, ZetaModule module,
+			Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier, Properties props) {
+		super(type, module, supplier, props);
+	}
 
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new AQVariantTrappedChestBlockEntity(pos, state);
-    }
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new AQVariantTrappedChestBlockEntity(pos, state);
+	}
 }

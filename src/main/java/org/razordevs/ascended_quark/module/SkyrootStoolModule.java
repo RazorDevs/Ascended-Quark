@@ -19,24 +19,23 @@ import org.violetmoon.zeta.module.ZetaModule;
 
 @ZetaLoadModule(category = "aether")
 public class SkyrootStoolModule extends ZetaModule {
-    public static EntityType<AQStool> stoolEntity;
+	public static EntityType<AQStool> stoolEntity;
 
-    @LoadEvent
-    public void register(ZRegister register) {
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQStoolBlock("skyroot_stool", this), AetherBlocks.SKYROOT_PLANKS, this);
+	@LoadEvent
+	public void register(ZRegister register) {
+		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
+				new AQStoolBlock("skyroot_stool", this), AetherBlocks.SKYROOT_PLANKS, this);
 
-        stoolEntity = EntityType.Builder.of(AQStool::new, MobCategory.MISC)
-                .sized(0.375F, 0.5F)
-                .clientTrackingRange(3)
-                .updateInterval(Integer.MAX_VALUE)
-                .setShouldReceiveVelocityUpdates(false)
-                //.setCustomClientFactory((spawnEntity, world) -> new AQStool(stoolEntity, world))
-                .build("stool");
-        AscendedQuark.ZETA.registry.register(stoolEntity, "stool", Registries.ENTITY_TYPE);
-    }
+		stoolEntity = EntityType.Builder.of(AQStool::new, MobCategory.MISC).sized(0.375F, 0.5F).clientTrackingRange(3)
+				.updateInterval(Integer.MAX_VALUE).setShouldReceiveVelocityUpdates(false)
+				// .setCustomClientFactory((spawnEntity, world) -> new AQStool(stoolEntity,
+				// world))
+				.build("stool");
+		AscendedQuark.ZETA.registry.register(stoolEntity, "stool", Registries.ENTITY_TYPE);
+	}
 
-    @LoadEvent
-    public final void clientSetup(ZClientSetup event) {
-        EntityRenderers.register(stoolEntity, AQStoolEntityRenderer::new);
-    }
+	@LoadEvent
+	public final void clientSetup(ZClientSetup event) {
+		EntityRenderers.register(stoolEntity, AQStoolEntityRenderer::new);
+	}
 }

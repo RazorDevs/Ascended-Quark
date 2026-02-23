@@ -24,32 +24,40 @@ import java.util.function.BooleanSupplier;
 @ZetaLoadModule(category = "aether")
 public class CompressedBlockModule extends ZetaModule {
 
-    private static final List<Block> compostable = Lists.newArrayList();
+	private static final List<Block> compostable = Lists.newArrayList();
 
-    @LoadEvent
-    public void register(ZRegister register) {
-        crate("blue_berry", MapColor.COLOR_BLUE, true, this);
-        pillar("skyroot_stick", MapColor.WOOD, false, () -> CompressedBlocksModule.enableStickBlock, 300, this);
-    }
+	@LoadEvent
+	public void register(ZRegister register) {
+		crate("blue_berry", MapColor.COLOR_BLUE, true, this);
+		pillar("skyroot_stick", MapColor.WOOD, false, () -> CompressedBlocksModule.enableStickBlock, 300, this);
+	}
 
-    @LoadEvent
-    public void loadComplete(ZLoadComplete event) {
-        event.enqueueWork(() -> {
-            for (Block block : compostable) {
-                ComposterBlock.COMPOSTABLES.put(block.asItem(), 1.0F);
-            }
-        });
-    }
+	@LoadEvent
+	public void loadComplete(ZLoadComplete event) {
+		event.enqueueWork(() -> {
+			for (Block block : compostable) {
+				ComposterBlock.COMPOSTABLES.put(block.asItem(), 1.0F);
+			}
+		});
+	}
 
-    public static void crate(String name, MapColor color, boolean compost, ZetaModule module) {
-        Block block = (new ZetaFlammableBlock(name + "_crate", module, 150, BlockBehaviour.Properties.of().mapColor(color).ignitedByLava().strength(1.5F).sound(SoundType.WOOD)));
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block, AetherBlocks.SKYROOT_PLANKS, module);
-        if (compost) compostable.add(block);
-    }
+	public static void crate(String name, MapColor color, boolean compost, ZetaModule module) {
+		Block block = (new ZetaFlammableBlock(name + "_crate", module, 150,
+				BlockBehaviour.Properties.of().mapColor(color).ignitedByLava().strength(1.5F).sound(SoundType.WOOD)));
+		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block,
+				AetherBlocks.SKYROOT_PLANKS, module);
+		if (compost)
+			compostable.add(block);
+	}
 
-    private static void pillar(String name, MapColor color, boolean compost, BooleanSupplier cond, int flammability, ZetaModule module) {
-        Block block = (new ZetaFlammablePillarBlock(name + "_block", module, flammability, BlockBehaviour.Properties.of().mapColor(color).ignitedByLava().strength(0.5F).sound(SoundType.WOOD))).setCondition(cond);
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block, AetherBlocks.SKYROOT_PLANKS, module);
-        if (compost) compostable.add(block);
-    }
+	private static void pillar(String name, MapColor color, boolean compost, BooleanSupplier cond, int flammability,
+			ZetaModule module) {
+		Block block = (new ZetaFlammablePillarBlock(name + "_block", module, flammability,
+				BlockBehaviour.Properties.of().mapColor(color).ignitedByLava().strength(0.5F).sound(SoundType.WOOD)))
+				.setCondition(cond);
+		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), block,
+				AetherBlocks.SKYROOT_PLANKS, module);
+		if (compost)
+			compostable.add(block);
+	}
 }

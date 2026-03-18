@@ -12,7 +12,11 @@ import java.util.function.Supplier;
 
 public class ACClientProxy extends ACCommonProxy {
     public void start() {
-        AscendedQuark.ZETA.loadBus
+        AscendedQuark.ZETA.playBus
+                .subscribe(AQClientUtil.class);
+
+
+        AscendedQuark.ZETA.playBus
                 .subscribe(AQButtonHandler.class)
                 .subscribe(AQClientUtil.class);
 

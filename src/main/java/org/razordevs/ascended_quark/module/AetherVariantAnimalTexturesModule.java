@@ -124,7 +124,7 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
         private static void registerTextures(VariantTextureType type, int count, ResourceLocation vanilla) {
             String name = type.name().toLowerCase(Locale.ROOT);
             for (int i = 1; i < count + 1; i++)
-                textures.put(type, AscendedQuark.asResource(String.format("textures/model/entity/variants/%s%d.png", name, i)));
+                textures.put(type, AscendedQuark.getResource(String.format("textures/model/entity/variants/%s%d.png", name, i)));
 
             if (vanilla != null)
                 textures.put(type, vanilla);

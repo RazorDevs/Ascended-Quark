@@ -102,6 +102,7 @@ public class AQLangData extends NitrogenLanguageProvider {
         this.add(AscendedQuark.MODID + ".category.general", "General Settings");
         this.add(AscendedQuark.MODID + ".gui.config.social.discord", "RazorDevs Discord");
         this.add(AscendedQuark.MODID + ".gui.config.social.website", "RazorDevs Website");
+        this.add(AscendedQuark.MODID + ".gui.config.social.bluesky", "RazorDevs Bluesky");
     }
 
     private void addLadderLore(Block block) {

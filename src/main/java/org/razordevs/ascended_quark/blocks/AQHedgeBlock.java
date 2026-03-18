@@ -18,6 +18,8 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.util.TriState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
@@ -26,6 +28,7 @@ import org.violetmoon.zeta.block.IZetaBlock;
 import org.violetmoon.zeta.block.ZetaFenceBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.registry.IZetaBlockColorProvider;
+import org.violetmoon.zeta.registry.RenderLayerRegistry;
 
 public class AQHedgeBlock extends ZetaFenceBlock implements IZetaBlock, IZetaBlockColorProvider {
     private static final VoxelShape WOOD_SHAPE = box(6.0, 0.0, 6.0, 10.0, 15.0, 10.0);
@@ -35,15 +38,20 @@ public class AQHedgeBlock extends ZetaFenceBlock implements IZetaBlock, IZetaBlo
     private static final VoxelShape EAST_SHAPE = box(14.0, 1.0, 2.0, 16.0, 16.0, 14.0);
     private static final VoxelShape WEST_SHAPE = box(0.0, 1.0, 2.0, 2.0, 16.0, 14.0);
     private static final VoxelShape EXTEND_SHAPE = box(2.0, 0.0, 2.0, 14.0, 1.0, 14.0);
+
     private final Object2IntMap<BlockState> hedgeStateToIndex;
     private final VoxelShape[] hedgeShapes;
+
     public static final BooleanProperty EXTEND = BooleanProperty.create("extend");
 
     public AQHedgeBlock(String regname, @Nullable ZetaModule module) {
         super(regname, module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_FENCE));
+
         this.hedgeStateToIndex = new Object2IntOpenHashMap<>();
         this.registerDefaultState(this.defaultBlockState().setValue(EXTEND, false));
         this.hedgeShapes = this.cacheHedgeShapes(this.stateDefinition.getPossibleStates());
+
+        module.zeta().renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT);
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
@@ -110,8 +118,9 @@ public class AQHedgeBlock extends ZetaFenceBlock implements IZetaBlock, IZetaBlo
         return state.is(HedgesModule.hedgesTag);
     }
 
-    public boolean canSustainPlantZeta(BlockState state, BlockGetter world, BlockPos pos, Direction facing, String plantableType) {
-        return facing == Direction.UP && !(Boolean)state.getValue(WATERLOGGED) && "plains".equals(plantableType);
+    @Override
+    public TriState canSustainPlantZeta(BlockState state, BlockGetter level, BlockPos soilPosition, Direction facing, BlockState plant) {
+        return (facing == Direction.UP && !state.getValue(WATERLOGGED)) ? TriState.TRUE : TriState.FALSE;
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -119,15 +128,21 @@ public class AQHedgeBlock extends ZetaFenceBlock implements IZetaBlock, IZetaBlo
         BlockPos blockpos = context.getClickedPos();
         BlockPos down = blockpos.below();
         BlockState downState = iBlockReader.getBlockState(down);
-        return super.getStateForPlacement(context).setValue(EXTEND, downState.getBlock() instanceof HedgeBlock);
+        return super.getStateForPlacement(context)
+                .setValue(EXTEND, downState.getBlock() instanceof HedgeBlock);
     }
 
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (stateIn.getValue(WATERLOGGED)) {
+    @NotNull
+    @Override
+    public BlockState updateShape(BlockState stateIn, @NotNull Direction facing, @NotNull BlockState facingState, @NotNull LevelAccessor worldIn, @NotNull BlockPos currentPos, @NotNull BlockPos facingPos) {
+        if(stateIn.getValue(WATERLOGGED)) {
             worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
 
-        return facing == Direction.DOWN ? stateIn.setValue(EXTEND, facingState.getBlock() instanceof HedgeBlock) : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        if(facing == Direction.DOWN)
+            return stateIn.setValue(EXTEND, facingState.getBlock() instanceof HedgeBlock);
+
+        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

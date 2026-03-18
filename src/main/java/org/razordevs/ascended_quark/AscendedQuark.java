@@ -10,19 +10,14 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.ApiStatus;
 import org.razordevs.ascended_quark.datagen.AQData;
 import org.razordevs.ascended_quark.datagen.builders.loot.modifiers.AQGlobalLootModifiers;
 import org.razordevs.ascended_quark.proxy.ACClientProxy;
@@ -33,7 +28,6 @@ import org.violetmoon.zetaimplforge.ForgeZeta;
 
 import java.nio.file.Path;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Mod(AscendedQuark.MODID)
 public class AscendedQuark {
@@ -64,12 +58,12 @@ public class AscendedQuark {
         //NeoForge.EVENT_BUS.register(this);
     }
 
-    public static ResourceLocation asResource(String name) {
+    public static ResourceLocation getResource(String name) {
         return ResourceLocation.fromNamespaceAndPath(MODID, name);
     }
 
     public static <T> ResourceKey<T> asResourceKey(ResourceKey<? extends Registry<T>> base, String name) {
-        return ResourceKey.create(base, asResource(name));
+        return ResourceKey.create(base, getResource(name));
     }
 
     public void addAdditionalResourcesPack(AddPackFindersEvent event) {

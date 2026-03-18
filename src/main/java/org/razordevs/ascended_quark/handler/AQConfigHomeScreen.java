@@ -6,7 +6,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.client.renderer.PanoramaRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.proxy.AQClient;
@@ -20,7 +19,7 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
 
     //TODO: Better Panorama
 
-    private static final CubeMap CUBE_MAP = new CubeMap(AscendedQuark.asResource("textures/misc/panorama/panorama"));
+    private static final CubeMap CUBE_MAP = new CubeMap(AscendedQuark.getResource("textures/misc/panorama/panorama"));
     private static final PanoramaRenderer PANORAMA = new PanoramaRenderer(CUBE_MAP);
     private float time;
 
@@ -34,8 +33,9 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
 
         List<Integer> socialButtonPlacements = centeredRow(width / 2, 20, 5, 5);
         Iterator<Integer> iter = socialButtonPlacements.iterator();
-        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.discord"), 0x7289da, 1, "https://discord.gg/Y6fabygHRk"));
-        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.website"), 0x7289da, 2, "https://razordevs.github.io/"));
+        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.discord"), 0x7289da, 2, "https://discord.gg/Y6fabygHRk"));
+        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.website"), 0x7289da, 3, "https://razordevs.github.io/"));
+        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.bluesky"), 0x7289da, 4, "https://bsky.app/profile/razordevs.bsky.social"));
     }
 
     //annoyingly it's not passed to renderBackground

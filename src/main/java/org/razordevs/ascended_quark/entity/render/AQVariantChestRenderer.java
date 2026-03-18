@@ -3,7 +3,6 @@ package org.razordevs.ascended_quark.entity.render;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.Material;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.properties.ChestType;
@@ -38,7 +37,7 @@ public class AQVariantChestRenderer extends VariantChestRenderer {
                     tex.append(this.choose(type, "normal", "left", "right"));
                 }
 
-                return new Material(Sheets.CHEST_SHEET, AscendedQuark.asResource(tex.toString()));
+                return new Material(Sheets.CHEST_SHEET, AscendedQuark.getResource(tex.toString()));
             } else {
                 return null;
             }

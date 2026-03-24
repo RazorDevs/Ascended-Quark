@@ -62,10 +62,6 @@ public class AscendedQuark {
         return ResourceLocation.fromNamespaceAndPath(MODID, name);
     }
 
-    public static <T> ResourceKey<T> asResourceKey(ResourceKey<? extends Registry<T>> base, String name) {
-        return ResourceKey.create(base, getResource(name));
-    }
-
     public void addAdditionalResourcesPack(AddPackFindersEvent event) {
         if(ModList.get().isLoaded(DEEP_AETHER)) {
             if (event.getPackType() == PackType.CLIENT_RESOURCES) {

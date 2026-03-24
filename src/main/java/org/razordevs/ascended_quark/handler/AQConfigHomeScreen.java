@@ -33,8 +33,8 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
 
         List<Integer> socialButtonPlacements = centeredRow(width / 2, 20, 5, 5);
         Iterator<Integer> iter = socialButtonPlacements.iterator();
-        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.discord"), 0x7289da, 2, "https://discord.gg/Y6fabygHRk"));
-        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.website"), 0x7289da, 3, "https://razordevs.github.io/"));
+        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.discord"), 0x7289da, 1, "https://discord.gg/Y6fabygHRk"));
+        addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.website"), 0x7289da, 2, "https://razordevs.github.io/"));
         addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.bluesky"), 0x7289da, 4, "https://bsky.app/profile/razordevs.bsky.social"));
     }
 

@@ -277,7 +277,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
     public void compressed(String type) {
         Block block = blockMap.get(type);
-        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), AscendedQuark.asResource("block/crate_bottom"), this.extend(this.texture(this.name(block)), "_top"));
+        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), AscendedQuark.getResource("block/crate_bottom"), this.extend(this.texture(this.name(block)), "_top"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(compressed));
     }
 

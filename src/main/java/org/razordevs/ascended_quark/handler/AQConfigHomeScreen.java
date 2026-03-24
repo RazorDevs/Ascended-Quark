@@ -1,11 +1,15 @@
 package org.razordevs.ascended_quark.handler;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.client.renderer.PanoramaRenderer;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
+import org.apache.commons.lang3.text.WordUtils;
 import org.razordevs.ascended_quark.AQGeneralConfig;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.proxy.AQClient;
@@ -38,7 +42,6 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
         addRenderableWidget(new SocialButton(iter.next(), height - 55, Component.translatable("ascended_quark.gui.config.social.bluesky"), 0x7289da, 4, "https://bsky.app/profile/razordevs.bsky.social"));
     }
 
-    //annoyingly it's not passed to renderBackground
     protected float partialTicks;
 
     @Override
@@ -68,8 +71,12 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
         this.partialTicks = partialTicks;
+        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
+        for (Renderable renderable : this.renderables) {
+            renderable.render(guiGraphics, mouseX, mouseY, partialTicks);
+        }
 
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        guiGraphics.drawCenteredString(this.font, ChatFormatting.BOLD + I18n.get("zeta.gui.config.header", WordUtils.capitalizeFully(this.z.modid.replaceAll("_", " "))), this.width / 2, 15, 4775356);
     }
 
 }

@@ -3,6 +3,7 @@ package org.razordevs.ascended_quark.entity;
 import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -18,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.razordevs.ascended_quark.module.AmbrosiumTorchArrowModule;
 import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.tools.module.TorchArrowModule;
@@ -34,6 +36,11 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
 
     public AmbrosiumTorchArrow(Level level, LivingEntity shooter, ItemStack stack, ItemStack torchStack) {
         super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, shooter, level, stack, torchStack);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
     }
 
     @Override
@@ -103,12 +110,12 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
     }
 
     @Override
-    protected ItemStack getPickupItem() {
+    protected @NotNull ItemStack getPickupItem() {
         return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
     }
 
     @Override
-    protected ItemStack getDefaultPickupItem() {
+    protected @NotNull ItemStack getDefaultPickupItem() {
         return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
     }
 }

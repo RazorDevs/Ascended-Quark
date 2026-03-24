@@ -15,6 +15,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,6 +23,7 @@ import org.razordevs.ascended_quark.datagen.AQData;
 import org.razordevs.ascended_quark.datagen.builders.loot.modifiers.AQGlobalLootModifiers;
 import org.razordevs.ascended_quark.proxy.ACClientProxy;
 import org.razordevs.ascended_quark.proxy.ACCommonProxy;
+import org.razordevs.ascended_quark.proxy.AQClient;
 import org.violetmoon.zeta.Zeta;
 import org.violetmoon.zeta.multiloader.Env;
 import org.violetmoon.zetaimplforge.ForgeZeta;
@@ -51,11 +53,10 @@ public class AscendedQuark {
         proxy.start();
 
         bus.addListener(AQData::dataSetup);
+        bus.addListener(AQClient::registerParticleFactories);
         bus.addListener(this::addAdditionalResourcesPack);
 
         AQGlobalLootModifiers.LOOT_MODIFIERS.register(bus);
-
-        //NeoForge.EVENT_BUS.register(this);
     }
 
     public static ResourceLocation getResource(String name) {

@@ -18,7 +18,7 @@ import org.razordevs.ascended_quark.util.TabModel;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT, modid = AscendedQuark.MODID)
+@EventBusSubscriber(value = Dist.CLIENT, modid = AscendedQuark.MODID)
 public class AQTabs {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {

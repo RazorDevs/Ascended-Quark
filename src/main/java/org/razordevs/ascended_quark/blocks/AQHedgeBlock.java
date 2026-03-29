@@ -18,6 +18,8 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.util.TriState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
@@ -26,125 +28,133 @@ import org.violetmoon.zeta.block.IZetaBlock;
 import org.violetmoon.zeta.block.ZetaFenceBlock;
 import org.violetmoon.zeta.module.ZetaModule;
 import org.violetmoon.zeta.registry.IZetaBlockColorProvider;
+import org.violetmoon.zeta.registry.RenderLayerRegistry;
 
 public class AQHedgeBlock extends ZetaFenceBlock implements IZetaBlock, IZetaBlockColorProvider {
-	private static final VoxelShape WOOD_SHAPE = box(6.0, 0.0, 6.0, 10.0, 15.0, 10.0);
-	private static final VoxelShape HEDGE_CENTER_SHAPE = box(2.0, 1.0, 2.0, 14.0, 16.0, 14.0);
-	private static final VoxelShape NORTH_SHAPE = box(2.0, 1.0, 0.0, 14.0, 16.0, 2.0);
-	private static final VoxelShape SOUTH_SHAPE = box(2.0, 1.0, 14.0, 14.0, 16.0, 15.0);
-	private static final VoxelShape EAST_SHAPE = box(14.0, 1.0, 2.0, 16.0, 16.0, 14.0);
-	private static final VoxelShape WEST_SHAPE = box(0.0, 1.0, 2.0, 2.0, 16.0, 14.0);
-	private static final VoxelShape EXTEND_SHAPE = box(2.0, 0.0, 2.0, 14.0, 1.0, 14.0);
-	private final Object2IntMap<BlockState> hedgeStateToIndex;
-	private final VoxelShape[] hedgeShapes;
-	public static final BooleanProperty EXTEND = BooleanProperty.create("extend");
+    private static final VoxelShape WOOD_SHAPE = box(6.0, 0.0, 6.0, 10.0, 15.0, 10.0);
+    private static final VoxelShape HEDGE_CENTER_SHAPE = box(2.0, 1.0, 2.0, 14.0, 16.0, 14.0);
+    private static final VoxelShape NORTH_SHAPE = box(2.0, 1.0, 0.0, 14.0, 16.0, 2.0);
+    private static final VoxelShape SOUTH_SHAPE = box(2.0, 1.0, 14.0, 14.0, 16.0, 15.0);
+    private static final VoxelShape EAST_SHAPE = box(14.0, 1.0, 2.0, 16.0, 16.0, 14.0);
+    private static final VoxelShape WEST_SHAPE = box(0.0, 1.0, 2.0, 2.0, 16.0, 14.0);
+    private static final VoxelShape EXTEND_SHAPE = box(2.0, 0.0, 2.0, 14.0, 1.0, 14.0);
 
-	public AQHedgeBlock(String regname, @Nullable ZetaModule module) {
-		super(regname, module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_FENCE));
-		this.hedgeStateToIndex = new Object2IntOpenHashMap<>();
-		this.registerDefaultState(this.defaultBlockState().setValue(EXTEND, false));
-		this.hedgeShapes = this.cacheHedgeShapes(this.stateDefinition.getPossibleStates());
-	}
+    private final Object2IntMap<BlockState> hedgeStateToIndex;
+    private final VoxelShape[] hedgeShapes;
 
-	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-		return this.hedgeShapes[this.getHedgeAABBIndex(state)];
-	}
+    public static final BooleanProperty EXTEND = BooleanProperty.create("extend");
 
-	private VoxelShape[] cacheHedgeShapes(ImmutableList<BlockState> possibleStates) {
-		VoxelShape[] shapes = new VoxelShape[possibleStates.size()];
+    public AQHedgeBlock(String regname, @Nullable ZetaModule module) {
+        super(regname, module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_FENCE));
 
-		for (int i = 0; i < shapes.length; ++i) {
-			BlockState state = possibleStates.get(i);
-			int realIndex = this.getHedgeAABBIndex(state);
-			VoxelShape finishedShape = Shapes.or(state.getValue(EXTEND) ? EXTEND_SHAPE : WOOD_SHAPE,
-					HEDGE_CENTER_SHAPE);
-			if (state.getValue(FenceBlock.NORTH)) {
-				finishedShape = Shapes.or(finishedShape, NORTH_SHAPE);
-			}
+        this.hedgeStateToIndex = new Object2IntOpenHashMap<>();
+        this.registerDefaultState(this.defaultBlockState().setValue(EXTEND, false));
+        this.hedgeShapes = this.cacheHedgeShapes(this.stateDefinition.getPossibleStates());
 
-			if (state.getValue(FenceBlock.SOUTH)) {
-				finishedShape = Shapes.or(finishedShape, SOUTH_SHAPE);
-			}
+        module.zeta().renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT);
+    }
 
-			if (state.getValue(FenceBlock.EAST)) {
-				finishedShape = Shapes.or(finishedShape, EAST_SHAPE);
-			}
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        return this.hedgeShapes[this.getHedgeAABBIndex(state)];
+    }
 
-			if (state.getValue(FenceBlock.WEST)) {
-				finishedShape = Shapes.or(finishedShape, WEST_SHAPE);
-			}
+    private VoxelShape[] cacheHedgeShapes(ImmutableList<BlockState> possibleStates) {
+        VoxelShape[] shapes = new VoxelShape[possibleStates.size()];
 
-			shapes[realIndex] = finishedShape;
-		}
+        for(int i = 0; i < shapes.length; ++i) {
+            BlockState state = possibleStates.get(i);
+            int realIndex = this.getHedgeAABBIndex(state);
+            VoxelShape finishedShape = Shapes.or(state.getValue(EXTEND) ? EXTEND_SHAPE : WOOD_SHAPE, HEDGE_CENTER_SHAPE);
+            if (state.getValue(FenceBlock.NORTH)) {
+                finishedShape = Shapes.or(finishedShape, NORTH_SHAPE);
+            }
 
-		return shapes;
-	}
+            if (state.getValue(FenceBlock.SOUTH)) {
+                finishedShape = Shapes.or(finishedShape, SOUTH_SHAPE);
+            }
 
-	protected int getHedgeAABBIndex(BlockState curr) {
-		return this.hedgeStateToIndex.computeIntIfAbsent(curr, (state) -> {
-			int i = 0;
-			if (state.getValue(FenceBlock.NORTH)) {
-				i |= 1;
-			}
+            if (state.getValue(FenceBlock.EAST)) {
+                finishedShape = Shapes.or(finishedShape, EAST_SHAPE);
+            }
 
-			if (state.getValue(FenceBlock.SOUTH)) {
-				i |= 2;
-			}
+            if (state.getValue(FenceBlock.WEST)) {
+                finishedShape = Shapes.or(finishedShape, WEST_SHAPE);
+            }
 
-			if (state.getValue(FenceBlock.EAST)) {
-				i |= 4;
-			}
+            shapes[realIndex] = finishedShape;
+        }
 
-			if (state.getValue(FenceBlock.WEST)) {
-				i |= 8;
-			}
+        return shapes;
+    }
 
-			if (state.getValue(EXTEND)) {
-				i |= 16;
-			}
+    protected int getHedgeAABBIndex(BlockState curr) {
+        return this.hedgeStateToIndex.computeIntIfAbsent(curr, (state) -> {
+            int i = 0;
+            if (state.getValue(FenceBlock.NORTH)) {
+                i |= 1;
+            }
 
-			return i;
-		});
-	}
+            if (state.getValue(FenceBlock.SOUTH)) {
+                i |= 2;
+            }
 
-	public boolean connectsTo(BlockState state, boolean isSideSolid, Direction direction) {
-		return state.is(HedgesModule.hedgesTag);
-	}
+            if (state.getValue(FenceBlock.EAST)) {
+                i |= 4;
+            }
 
-	public boolean canSustainPlantZeta(BlockState state, BlockGetter world, BlockPos pos, Direction facing,
-			String plantableType) {
-		return facing == Direction.UP && !(Boolean) state.getValue(WATERLOGGED) && "plains".equals(plantableType);
-	}
+            if (state.getValue(FenceBlock.WEST)) {
+                i |= 8;
+            }
 
-	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		BlockGetter iBlockReader = context.getLevel();
-		BlockPos blockpos = context.getClickedPos();
-		BlockPos down = blockpos.below();
-		BlockState downState = iBlockReader.getBlockState(down);
-		return super.getStateForPlacement(context).setValue(EXTEND, downState.getBlock() instanceof HedgeBlock);
-	}
+            if (state.getValue(EXTEND)) {
+                i |= 16;
+            }
 
-	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn,
-			BlockPos currentPos, BlockPos facingPos) {
-		if (stateIn.getValue(WATERLOGGED)) {
-			worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
-		}
+            return i;
+        });
+    }
 
-		return facing == Direction.DOWN
-				? stateIn.setValue(EXTEND, facingState.getBlock() instanceof HedgeBlock)
-				: super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-	}
+    public boolean connectsTo(BlockState state, boolean isSideSolid, Direction direction) {
+        return state.is(HedgesModule.hedgesTag);
+    }
 
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		super.createBlockStateDefinition(builder);
-		builder.add(EXTEND);
-	}
+    @Override
+    public TriState canSustainPlantZeta(BlockState state, BlockGetter level, BlockPos soilPosition, Direction facing, BlockState plant) {
+        return (facing == Direction.UP && !state.getValue(WATERLOGGED)) ? TriState.TRUE : TriState.FALSE;
+    }
 
-	public @Nullable String getBlockColorProviderName() {
-		return "hedge";
-	}
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockGetter iBlockReader = context.getLevel();
+        BlockPos blockpos = context.getClickedPos();
+        BlockPos down = blockpos.below();
+        BlockState downState = iBlockReader.getBlockState(down);
+        return super.getStateForPlacement(context)
+                .setValue(EXTEND, downState.getBlock() instanceof HedgeBlock);
+    }
 
-	public @Nullable String getItemColorProviderName() {
-		return "hedge";
-	}
+    @NotNull
+    @Override
+    public BlockState updateShape(BlockState stateIn, @NotNull Direction facing, @NotNull BlockState facingState, @NotNull LevelAccessor worldIn, @NotNull BlockPos currentPos, @NotNull BlockPos facingPos) {
+        if(stateIn.getValue(WATERLOGGED)) {
+            worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
+        }
+
+        if(facing == Direction.DOWN)
+            return stateIn.setValue(EXTEND, facingState.getBlock() instanceof HedgeBlock);
+
+        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    }
+
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(EXTEND);
+    }
+
+    public @Nullable String getBlockColorProviderName() {
+        return "hedge";
+    }
+
+    public @Nullable String getItemColorProviderName() {
+        return "hedge";
+    }
 }

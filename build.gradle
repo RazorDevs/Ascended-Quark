@@ -101,7 +101,7 @@ dependencies {
 
     //Deep Aether
     compileOnly ("curse.maven:deep-aether-852465:${project.deep_aether_version}")
-    compileOnly ("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
+    //implementation ("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
 
     // Quark
     implementation ("curse.maven:quark-243121:${quark_version}")
@@ -112,6 +112,7 @@ dependencies {
     //compileOnly ("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
     //compileOnly ("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
     //runtimeOnly ("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    runtimeOnly "curse.maven:spark-361579:6225208"
 }
 
 tasks.withType(ProcessResources).configureEach {

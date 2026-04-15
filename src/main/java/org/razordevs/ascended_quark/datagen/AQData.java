@@ -1,5 +1,6 @@
 package org.razordevs.ascended_quark.datagen;
 
+import com.google.common.collect.ForwardingMapEntry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -23,43 +24,47 @@ import org.razordevs.ascended_quark.datagen.normal.loot.AQLootTableData;
 import org.razordevs.ascended_quark.datagen.normal.tags.AQBlockTagData;
 import org.razordevs.ascended_quark.datagen.normal.tags.AQItemTagData;
 import org.razordevs.ascended_quark.datagen.provider.tags.AQBlockTagProvider;
-import org.razordevs.ascended_quark.mixin.ZetaRegistryAccessor;
-import org.violetmoon.zeta.config.FlagCondition;
 import org.violetmoon.zeta.module.IDisableable;
 
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class AQData {
     private static AQBlockTagProvider blockTags;
 
     public static void dataSetup(GatherDataEvent event) {
-        ZetaRegistryAccessor accessor = (ZetaRegistryAccessor) AscendedQuark.ZETA.registry;
+        var names = AscendedQuark.ZETA.registry.internalNames;
 
         HashMap<String, Block> fullBlockMap = new HashMap<>();
         HashMap<String, Item> fullItemBlockMap = new HashMap<>();
         HashMap<String, Item> fullItemMap = new HashMap<>();
 
-        for (Object value : accessor.getInternalNames().keySet()) {
-            ResourceLocation location = accessor.getInternalNames().get(value);
-            if (value instanceof Block block)
-                fullBlockMap.put(location.getPath(), block);
-            else if(value instanceof Item item)
-                fullItemBlockMap.put(location.getPath(), item);
-        }
+        names.keySet().stream()
+            .filter(e -> e instanceof Block)
+            .forEach(e ->
+                fullBlockMap.put(names.get(e).getPath(), (Block) e)
+            );
 
-        fullItemBlockMap.forEach((s, item) -> {
-            if(!fullBlockMap.containsKey(s))
-                fullItemMap.put(s, item);
-        });
+        names.keySet().stream()
+            .filter(e -> e instanceof Item)
+            .forEach(e ->
+                fullItemBlockMap.put(names.get(e).getPath(), (Item) e)
+            );
+
+        fullItemBlockMap.keySet().stream()
+            .filter(Predicate.not(fullBlockMap::containsKey))
+            .forEach(e -> fullItemMap.put(e, fullItemBlockMap.get(e)));
         fullItemBlockMap.clear();
 
         //Separates the Block and Item Maps in order to generate different maps
         HashMap<String, Item> normalItemMap = new HashMap<>();
         HashMap<String, Item> deepAetherItemMap = new HashMap<>();
+
         fullItemMap.forEach(
                 (s, item) -> {
                     if (Objects.equals(((IDisableable<?>) item).getModule().category().requiredMod, AscendedQuark.DEEP_AETHER)) {
@@ -73,6 +78,7 @@ public class AQData {
 
         HashMap<String, Block> normalBlockMap = new HashMap<>();
         HashMap<String, Block> deepAetherBlockMap = new HashMap<>();
+
         fullBlockMap.forEach(
                 (s, block) -> {
                     if (Objects.equals(((IDisableable<?>) block).getModule().category().requiredMod, AscendedQuark.DEEP_AETHER)) {
@@ -89,6 +95,8 @@ public class AQData {
 
         createNormalPack(event, normalBlockMap, normalItemMap);
         createDeepAetherPack(event, deepAetherBlockMap, deepAetherItemMap);
+
+
     }
 
     private static void createNormalPack(GatherDataEvent event, HashMap<String, Block> blockMap, HashMap<String, Item> itemMap) {

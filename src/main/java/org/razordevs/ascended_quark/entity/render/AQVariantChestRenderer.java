@@ -37,7 +37,7 @@ public class AQVariantChestRenderer extends VariantChestRenderer {
                     tex.append(this.choose(type, "normal", "left", "right"));
                 }
 
-                return new Material(Sheets.CHEST_SHEET, AscendedQuark.getResource(tex.toString()));
+                return new Material(Sheets.CHEST_SHEET, AscendedQuark.asResource(tex.toString()));
             } else {
                 return null;
             }

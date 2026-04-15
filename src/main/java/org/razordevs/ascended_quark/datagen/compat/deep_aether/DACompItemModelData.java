@@ -44,9 +44,9 @@ public class DACompItemModelData extends AQItemModelData {
 
         for(Block block : toGenerateBlock) {
              if(block instanceof AQHedgeBlock)
-                 this.itemBlock(block, AscendedQuark.getResource("block/" + this.blockName(block) + "_post"));
+                 this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_post"));
              else if(block instanceof WallBlock)
-                this.itemBlock(block, AscendedQuark.getResource("block/" + this.blockName(block) + "_inventory"));
+                this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_inventory"));
 
              else if(block instanceof ChestBlock) {
                  this.itemChest(block);

@@ -5,6 +5,7 @@ import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -36,86 +37,22 @@ import org.violetmoon.zeta.module.ZetaModule;
 
 import javax.annotation.Nonnull;
 
-public class AQSlimeInABucketItem extends ZetaItem {
+public class AQSlimeInABucketItem extends AQEntityInABucketItem {
 
-    public static final String TAG_ENTITY_DATA = "slime_nbt";
-    public static final String TAG_EXCITED = "excited";
     public AQSlimeInABucketItem(String name, ZetaModule module) {
-        super(name, module, new Item.Properties().stacksTo(1));
+        super(name, module, new Item.Properties().stacksTo(1), EntityType.SLIME);
 
         RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET, module);
     }
 
     @Override
-    public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level world, @Nonnull Entity entity, int itemSlot, boolean isSelected) {
-        if (world instanceof ServerLevel serverLevel) {
-            Vec3 pos = entity.position();
-            int x = Mth.floor(pos.x);
-            int z = Mth.floor(pos.z);
-            boolean slime = isSlimeChunk(serverLevel, x, z);
-            boolean excited = stack.set(QuarkDataComponents.EXCITED, false);
-            if (excited != slime)
-                stack.set(QuarkDataComponents.EXCITED, slime);
-        }
-    }
-
-    @Nonnull
-    @Override
-    public Component getName(@Nonnull ItemStack stack) {
-        if (!stack.getComponents().isEmpty()) {
-            CustomData cmp = stack.get(DataComponents.ENTITY_DATA);
-            if (cmp != null && cmp.contains("CustomName")) {
-                Component custom = Component.Serializer.fromJson(cmp.copyTag().getString("CustomName"), Minecraft.getInstance().level.registryAccess());
-                return Component.translatable("item.quark.slime_in_a_bucket.named", custom);
-            }
-        }
-
-        return super.getName(stack);
-    }
-
-    public static boolean isSlimeChunk(ServerLevel world, int x, int z) {
+    public boolean getsExcited(ServerLevel world, int x, int z) {
         ChunkPos chunkpos = new ChunkPos(new BlockPos(x, 0, z));
         return WorldgenRandom.seedSlimeChunk(chunkpos.x, chunkpos.z, world.getSeed(), 987234911L).nextInt(10) == 0;
     }
 
-    @Nonnull
     @Override
-    public InteractionResult useOn(UseOnContext context) {
-        BlockPos pos = context.getClickedPos();
-        Direction facing = context.getClickedFace();
-        Level worldIn = context.getLevel();
-        Player playerIn = context.getPlayer();
-        if(playerIn == null) return InteractionResult.FAIL;
-        InteractionHand hand = context.getHand();
-
-        double x = pos.getX() + 0.5 + facing.getStepX();
-        double y = pos.getY() + 0.5 + facing.getStepY();
-        double z = pos.getZ() + 0.5 + facing.getStepZ();
-
-        if(!worldIn.isClientSide) {
-            Slime slime = new Slime(EntityType.SLIME, worldIn);
-
-            CompoundTag data = playerIn.getItemInHand(hand).get(DataComponents.ENTITY_DATA).copyTag();
-            if(data != null)
-                slime.load(data);
-            else {
-                slime.getAttribute(Attributes.MAX_HEALTH).setBaseValue(1.0);
-                slime.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
-                slime.setHealth(slime.getMaxHealth());
-            }
-
-            slime.setPos(x, y, z);
-
-            worldIn.gameEvent(playerIn, GameEvent.ENTITY_PLACE, slime.position());
-            worldIn.addFreshEntity(slime);
-            playerIn.swing(hand);
-        }
-
-        worldIn.playSound(playerIn, pos, SoundEvents.BUCKET_EMPTY, SoundSource.NEUTRAL, 1.0F, 1.0F);
-
-        if(!playerIn.getAbilities().instabuild)
-            playerIn.setItemInHand(hand, new ItemStack(Items.BUCKET));
-
-        return InteractionResult.SUCCESS;
+    public Slime getNewSlimeInstance(EntityType<? extends Slime> type, Level level) {
+        return new Slime(type, level);
     }
 }

@@ -4,11 +4,9 @@ import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.item.AetherItems;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.advancements.critereon.ItemCustomDataPredicate;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
@@ -21,6 +19,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.razordevs.ascended_quark.items.AQSlimeInABucketItem;
 import org.razordevs.ascended_quark.items.AQSwetInABucketItem;
+import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.base.components.QuarkDataComponents;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
 import org.violetmoon.zeta.config.Config;
@@ -42,8 +41,9 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
     public static boolean swets_exited = true;
     @Config(flag = "are_swet_buckets_enabled", name = "Are Swet Buckets Enabled", description = "When disabled, disables all Ascended Quark bucket items except for the Slime in a Skyroot Bucket item. Disable if you find swet buckets unbalanced.")
     public boolean swet_bucket_enabled = true;
-    public static List<Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem>> SLIME_WITH_BUCKET_ITEM = new ArrayList<>();
-    public static List<Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem>> SLIME_WITH_BUCKET_ITEM_SKYROOT = new ArrayList<>();
+
+    public static List<Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem>> SWET_WITH_BUCKET_ITEM = new ArrayList<>();
+    public static List<Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem>> SWET_WITH_BUCKET_ITEM_SKYROOT = new ArrayList<>();
     Item slime;
 
     @LoadEvent
@@ -76,9 +76,9 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
                     if (!event.getLevel().isClientSide) {
 
                         ItemStack outStack = new ItemStack(slime);
-
-                        CompoundTag cmp = event.getTarget().getPersistentData();
-                        outStack.set(DataComponents.ENTITY_DATA, CustomData.of(cmp));
+                        CompoundTag cmp = new CompoundTag();
+                        event.getTarget().save(cmp);
+                        outStack.set(QuarkDataComponents.SLIME_NBT, CustomData.of(cmp));
 
                         if (stack.getCount() == 1)
                             player.setItemInHand(hand, outStack);
@@ -92,19 +92,19 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
 
                         event.getLevel().gameEvent(player, GameEvent.ENTITY_INTERACT, event.getTarget().position());
                         event.getTarget().discard();
-                    } else player.swing(hand);
+                    }
 
                     event.setCanceled(true);
-                    event.setCancellationResult(InteractionResult.SUCCESS);
+                    event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
                 }
                 else if (result != null) {
                     InteractionHand hand = result.getSecond();
                     if (!event.getLevel().isClientSide) {
 
                         ItemStack outStack = new ItemStack(result.getFirst());
-
-                        CompoundTag cmp = event.getTarget().getPersistentData();
-                        outStack.set(DataComponents.ENTITY_DATA, CustomData.of(cmp));
+                        CompoundTag cmp = new CompoundTag();
+                        event.getTarget().save(cmp);
+                        outStack.set(QuarkDataComponents.SLIME_NBT, CustomData.of(cmp));
 
                         if (stack.getCount() == 1)
                             player.setItemInHand(hand, outStack);
@@ -118,11 +118,10 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
 
                         event.getLevel().gameEvent(player, GameEvent.ENTITY_INTERACT, event.getTarget().position());
                         event.getTarget().discard();
-                    } else player.swing(hand);
+                    }
 
                     event.setCanceled(true);
-                    event.setCancellationResult(InteractionResult.SUCCESS);
-
+                    event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
                 }
             }
         }
@@ -141,7 +140,7 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
             if (stack.getItem() != Items.BUCKET)
                 hand = InteractionHand.OFF_HAND;
 
-            for (Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem> entry : SLIME_WITH_BUCKET_ITEM) {
+            for (Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem> entry : SWET_WITH_BUCKET_ITEM) {
                 if (entry.getFirst().get() == swet) {
                     return new Pair<>(entry.getSecond(), hand);
                 }
@@ -150,7 +149,7 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
             if (stack.getItem() != AetherItems.SKYROOT_BUCKET.get())
                 hand = InteractionHand.OFF_HAND;
 
-            for (Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem> entry : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
+            for (Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem> entry : SWET_WITH_BUCKET_ITEM_SKYROOT) {
                 if (entry.getFirst().get() == swet) {
                     return new Pair<>(entry.getSecond(), hand);
                 }
@@ -162,22 +161,22 @@ public class ExtraSlimeAndSwetInABucketModule extends ZetaModule {
 
     @ZetaLoadModule(clientReplacement = true)
     public static class Client extends ExtraSlimeAndSwetInABucketModule {
-
         @LoadEvent
         public void clientSetup(ZClientSetup event) {
             event.enqueueWork(() -> {
-                for (Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem> pair : SLIME_WITH_BUCKET_ITEM_SKYROOT) {
+                for (Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem> pair : SWET_WITH_BUCKET_ITEM_SKYROOT) {
                     if (!(pair.getSecond() instanceof AQSwetInABucketItem && !swets_exited))
-                        ItemProperties.register(pair.getSecond(), ResourceLocation.withDefaultNamespace("excited"), (stack, world, e, id) -> stack.set(QuarkDataComponents.EXCITED, false) ? 1 : 0);
+                        ItemProperties.register(pair.getSecond(), Quark.asResource("excited"), (stack, world, e, id) -> Boolean.TRUE.equals(stack.get(QuarkDataComponents.EXCITED)) ? 1 : 0);
                 }
 
                 if (swets_exited) {
-                    for (Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem> pair : SLIME_WITH_BUCKET_ITEM) {
-                        ItemProperties.register(pair.getSecond(), ResourceLocation.withDefaultNamespace("excited"), (stack, world, e, id) -> stack.set(QuarkDataComponents.EXCITED, false) ? 1 : 0);
+                    for (Pair<DeferredHolder<EntityType<?>, ? extends EntityType<Swet>>, AQSwetInABucketItem> pair : SWET_WITH_BUCKET_ITEM) {
+                        ItemProperties.register(pair.getSecond(), Quark.asResource("excited"), (stack, world, e, id) -> Boolean.TRUE.equals(stack.get(QuarkDataComponents.EXCITED)) ? 1 : 0);
                     }
                 }
 
-                ItemProperties.register(slime, ResourceLocation.withDefaultNamespace("excited"), (stack, world, e, id) -> stack.set(QuarkDataComponents.EXCITED, false) ? 1.0F : 0.0F);
+                ItemProperties.register(slime, Quark.asResource("excited"),
+                        (stack, world, e, id) -> Boolean.TRUE.equals(stack.get(QuarkDataComponents.EXCITED)) ? 1 : 0);
             });
         }
     }

@@ -5,7 +5,6 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
@@ -17,7 +16,6 @@ import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
 import org.violetmoon.quark.base.Quark;
@@ -26,8 +24,6 @@ import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static net.neoforged.neoforge.client.model.generators.BlockStateProvider.WALL_PROPS;
 
 
 public class AQBlockstateData extends AetherBlockStateProvider {
@@ -277,7 +273,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
     public void compressed(String type) {
         Block block = blockMap.get(type);
-        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), AscendedQuark.getResource("block/crate_bottom"), this.extend(this.texture(this.name(block)), "_top"));
+        ModelFile compressed = this.cubeBottomTop(this.name(block), this.texture(this.name(block)), AscendedQuark.asResource("block/crate_bottom"), this.extend(this.texture(this.name(block)), "_top"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(compressed));
     }
 

@@ -109,9 +109,7 @@ dependencies {
     //implementation ("curse.maven:quark-oddities-301051:3575623")
 
     // Extra
-    //compileOnly ("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    //compileOnly ("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    //runtimeOnly ("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    runtimeOnly "curse.maven:jei-238222:7420587"
     runtimeOnly "curse.maven:spark-361579:6225208"
 }
 

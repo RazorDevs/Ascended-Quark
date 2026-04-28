@@ -67,11 +67,6 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
         RegistryUtil.createLeafCarpetParticle("crystal_fruit_leaf_carpet", this, AetherBlocks.CRYSTAL_FRUIT_LEAVES, AetherParticleTypes.CRYSTAL_LEAVES);
         RegistryUtil.createLeafCarpetParticle("holiday_leaf_carpet", this, AetherBlocks.HOLIDAY_LEAVES, AetherParticleTypes.HOLIDAY_LEAVES);
         RegistryUtil.createLeafCarpetParticle("decorated_holiday_leaf_carpet", this, AetherBlocks.DECORATED_HOLIDAY_LEAVES, AetherParticleTypes.HOLIDAY_LEAVES);
-        RegistryUtil.createHedge("golden_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-        RegistryUtil.createHedge("crystal_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-        RegistryUtil.createHedge("crystal_fruit_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-        RegistryUtil.createHedge("holiday_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-        RegistryUtil.createHedge("decorated_holiday_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
     }
 
     public static void makeChestBlocks(ZetaModule module, String name, Block base, @Nullable SoundType sound, BooleanSupplier condition) {

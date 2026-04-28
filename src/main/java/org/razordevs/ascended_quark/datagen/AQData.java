@@ -94,7 +94,7 @@ public class AQData {
         generator.addProvider(event.includeClient(), new AQLangData(event.getGenerator().getPackOutput(), fullItemMap, fullBlockMap));
 
         createNormalPack(event, normalBlockMap, normalItemMap);
-        createDeepAetherPack(event, deepAetherBlockMap, deepAetherItemMap);
+        //createDeepAetherPack(event, deepAetherBlockMap, deepAetherItemMap);
 
 
     }

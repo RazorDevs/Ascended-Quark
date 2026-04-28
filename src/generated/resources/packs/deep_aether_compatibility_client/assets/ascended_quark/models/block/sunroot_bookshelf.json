@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "deep_aether:block/sunroot_planks",
-    "side": "ascended_quark:block/sunroot_bookshelf",
-    "top": "deep_aether:block/sunroot_planks"
-  }
-}

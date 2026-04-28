@@ -43,7 +43,7 @@ public class RegistryUtil {
     public static void registerWoodsetExtension(String type, ZetaModule module, WoodSetContext context) {
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaBlock("vertical_" + type + "_planks", module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS)), context.planks(), module);
         SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);
-        createHedge(type + "_hedge", module, context.fence());
+        createHedge(type + "_hedge", module, context.fence(), context.leaves());
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), context.log(), module);
         addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER), true), context.planks(), module);
         if(!type.equals("skyroot"))
@@ -76,8 +76,8 @@ public class RegistryUtil {
         }
     }
 
-    public static void createHedge(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> fence) {
-        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock(name, module), fence, module);
+    public static void createHedge(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> fence, DeferredHolder<Block, ? extends Block> leaf) {
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock(name, module, leaf), fence, module);
     }
 
     public static void createLeafCarpet(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> leaves) {

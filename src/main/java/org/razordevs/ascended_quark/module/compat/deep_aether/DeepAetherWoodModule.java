@@ -23,9 +23,9 @@ public class DeepAetherWoodModule extends ZetaModule {
             RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new AQLeafCarpetBlock("blue_roseroot_leaf_carpet", this),  DABlocks.BLUE_ROSEROOT_LEAVES, this);
             RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new AQLeafCarpetBlock("flowering_blue_roseroot_leaf_carpet", this),  DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES, this);
 
-            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock("flowering_roseroot_hedge", this),  DABlocks.ROSEROOT_FENCE, this);
-            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock("blue_roseroot_hedge", this),  DABlocks.ROSEROOT_FENCE, this);
-            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock("flowering_blue_roseroot_hedge", this),  DABlocks.ROSEROOT_FENCE, this);
+            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock("flowering_roseroot_hedge", this, DABlocks.FLOWERING_ROSEROOT_LEAVES),  DABlocks.ROSEROOT_FENCE, this);
+            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock("blue_roseroot_hedge", this, DABlocks.BLUE_ROSEROOT_LEAVES),  DABlocks.ROSEROOT_FENCE, this);
+            RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock("flowering_blue_roseroot_hedge", this, DABlocks.FLOWERING_BLUE_ROSEROOT_LEAVES),  DABlocks.ROSEROOT_FENCE, this);
 
             RegistryUtil.registerWoodsetExtension("roseroot", this, new WoodSetContext(DABlocks.ROSEROOT_SLAB, DABlocks.ROSEROOT_PLANKS, DABlocks.ROSEROOT_FENCE, DABlocks.ROSEROOT_LOG, DABlocks.ROSEROOT_LEAVES));
             RegistryUtil.registerWoodsetExtension("yagroot", this, new WoodSetContext(DABlocks.YAGROOT_SLAB, DABlocks.YAGROOT_PLANKS, DABlocks.YAGROOT_FENCE, DABlocks.YAGROOT_LOG, DABlocks.YAGROOT_LEAVES));

@@ -17,6 +17,7 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.blocks.AQWoodenPostBlock;
 import org.violetmoon.quark.base.Quark;
 import org.violetmoon.quark.content.building.block.HedgeBlock;
@@ -111,15 +112,15 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     public void chest(String type, Block planks, String location) {
         Block block = blockMap.get(type+"_chest");
         Block trapped = blockMap.get(type+"_trapped_chest");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.chest(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
-        this.getVariantBuilder(trapped).partialState().addModels(new ConfiguredModel(this.chest(this.name(trapped), this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
+        //this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.chest(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
+        //this.getVariantBuilder(trapped).partialState().addModels(new ConfiguredModel(this.chest(this.name(trapped), this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
     }
 
     public void chest(String type, Block planks) {
         Block block = blockMap.get(type+"_chest");
         Block trapped = blockMap.get(type+"_trapped_chest");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.chest(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
-        this.getVariantBuilder(trapped).partialState().addModels(new ConfiguredModel(this.chest(this.name(trapped), this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
+        //this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.chest(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
+        //this.getVariantBuilder(trapped).partialState().addModels(new ConfiguredModel(this.chest(this.name(trapped), this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
     }
 
     public ModelFile chest(String name, ResourceLocation particle) {
@@ -191,33 +192,28 @@ public class AQBlockstateData extends AetherBlockStateProvider {
     public ModelFile hedgePost(String name, ResourceLocation leaves, ResourceLocation log) {
         return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/hedge_post"))
                 .texture("log", log)
-                .texture("leaf", leaves)
-                .renderType("cutout");
+                .texture("leaf", leaves);
     }
 
     public ModelFile hedgeSide(String name, ResourceLocation leaves) {
         return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/hedge_side"))
-                .texture("leaf", leaves)
-                .renderType("cutout");
+                .texture("leaf", leaves);
     }
 
     public ModelFile hedgeExtend(String name, ResourceLocation leaves) {
         return this.models().withExistingParent(name, ResourceLocation.fromNamespaceAndPath(Quark.MOD_ID, "block/hedge_extend"))
-                .texture("leaf", leaves)
-                .renderType("cutout");
+                .texture("leaf", leaves);
     }
 
     public void fourWayBlockExtended(Block block, ModelFile post, ModelFile side, ModelFile extend) {
         MultiPartBlockStateBuilder builder = this.getMultipartBuilder(block);
-        builder.part().modelFile(post).addModel().condition(HedgeBlock.EXTEND, true);
-        builder.part().modelFile(extend).addModel().condition(HedgeBlock.EXTEND, false);
+        builder.part().modelFile(post).addModel().condition(AQHedgeBlock.EXTEND, false);
+        builder.part().modelFile(extend).addModel().condition(AQHedgeBlock.EXTEND, true);
 
-        PipeBlock.PROPERTY_BY_DIRECTION.entrySet().forEach((e) -> {
-            Direction dir = e.getKey();
+        PipeBlock.PROPERTY_BY_DIRECTION.forEach((dir, value) -> {
             if (dir.getAxis().isHorizontal()) {
-                builder.part().modelFile(side).rotationY(((int)dir.toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), true);
+                builder.part().modelFile(side).rotationY(((int) dir.toYRot() + 180) % 360).uvLock(true).addModel().condition(value, true);
             }
-
         });
     }
 

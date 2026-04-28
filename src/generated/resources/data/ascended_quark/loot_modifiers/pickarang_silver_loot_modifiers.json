@@ -3,28 +3,22 @@
   "chanceToSpawn": 0.01,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "aether:chests/dungeon/silver/silver_dungeon"
     }
   ],
   "items": [
     {
       "data": {
-        "Count": 1,
-        "id": "ascended_quark:valkyrie_pickarang",
-        "tag": {
-          "Damage": 0
-        }
+        "count": 1,
+        "id": "ascended_quark:valkyrie_pickarang"
       },
       "weight": 1
     },
     {
       "data": {
-        "Count": 1,
-        "id": "ascended_quark:phoenix_flamerang",
-        "tag": {
-          "Damage": 0
-        }
+        "count": 1,
+        "id": "ascended_quark:phoenix_flamerang"
       },
       "weight": 1
     }

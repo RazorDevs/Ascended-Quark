@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "hollow_logs"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "skyroot_quark_blocks"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "aether:skyroot_log"
+    }
+  },
+  "pattern": [
+    " A ",
+    "A A",
+    " A "
+  ],
+  "result": {
+    "count": 4,
+    "id": "ascended_quark:hollow_skyroot_log"
+  }
+}

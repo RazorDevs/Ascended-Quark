@@ -21,32 +21,48 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class AQRecipeData extends RecipeProvider {
-    protected final HashMap<String, Item> itemMap;
-    protected final HashMap<String, Block> blockMap;
+    protected final HashMap<String, Item> aqItems;
+    protected final HashMap<String, Block> aqBlocks;
 
-    public AQRecipeData(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, HashMap<String, Item> itemMap, HashMap<String, Block> blockMap) {
+    public AQRecipeData(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, HashMap<String, Item> aqItems, HashMap<String, Block> aqBlocks) {
         super(output, provider);
-        this.itemMap = itemMap;
-        this.blockMap = blockMap;
+        this.aqItems = aqItems;
+        this.aqBlocks = aqBlocks;
     }
 
     @Override
     protected void buildRecipes(RecipeOutput consumer) {
-        skyrootHedge(blockMap.get("decorated_holiday_skyroot_hedge"), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
+        this.woodset("skyroot", AetherBlocks.SKYROOT_PLANKS.get(),
+                AetherBlocks.SKYROOT_LOG.get(), AetherBlocks.SKYROOT_WOOD.get(),
+                AetherBlocks.STRIPPED_SKYROOT_WOOD.get(), AetherBlocks.SKYROOT_LEAVES.get(),
+                AetherBlocks.SKYROOT_SLAB.get(), "skyroot_quark_blocks", consumer);
+
+        this.skyrootHedge(aqBlocks.get("holiday_skyroot_hedge"), AetherBlocks.HOLIDAY_LEAVES.get(), consumer);
+        this.skyrootHedge(aqBlocks.get("decorated_holiday_skyroot_hedge"), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), consumer);
+        this.skyrootHedge(aqBlocks.get("golden_skyroot_hedge"), AetherBlocks.GOLDEN_OAK_LEAVES.get(), consumer);
+
+        this.carpet(aqBlocks.get("holiday_leaf_carpet"), AetherBlocks.HOLIDAY_LEAVES.get(), "skyroot_quark_blocks", consumer);
+        this.carpet(aqBlocks.get("decorated_holiday_leaf_carpet"), AetherBlocks.DECORATED_HOLIDAY_LEAVES.get(), "skyroot_quark_blocks", consumer);
+        this.carpet(aqBlocks.get("golden_oak_leaf_carpet"), AetherBlocks.GOLDEN_OAK_LEAVES.get(), "skyroot_quark_blocks", consumer);
+
+        this.verticalSlab(aqBlocks.get("icestone_vertical_slab"), AetherBlocks.ICESTONE_SLAB.get(), consumer);
+        this.verticalSlab(aqBlocks.get("icestone_bricks_vertical_slab"), aqBlocks.get("icestone_bricks_slab"), consumer);
+        this.verticalSlab(aqBlocks.get("angelic_vertical_slab"), AetherBlocks.ANGELIC_SLAB.get(), consumer);
+        this.verticalSlab(aqBlocks.get("hellfire_vertical_slab"), AetherBlocks.HELLFIRE_SLAB.get(), consumer);
     }
 
     protected void woodset(String type, Block planks, Block log, Block wood, Block strippedWood, Block leaves, Block slab, String flag, RecipeOutput consumer) {
-        this.verticalPlanks(blockMap.get("vertical_" + type + "_planks"), planks, flag, consumer);
-        this.hedge(blockMap.get(type+"_hedge"), leaves, log, flag, consumer);
-        this.verticalSlab(blockMap.get(type + "_vertical_slab"), slab, flag, consumer);
-        this.carpet(blockMap.get(type + "_leaf_carpet"), leaves, flag, consumer);
-        this.post(blockMap.get(type + "_post"), wood, flag, consumer);
-        this.post(blockMap.get("stripped_" + type + "_post"), strippedWood, flag, consumer);
-        this.chest(blockMap.get(type+"_chest"), planks, flag, consumer);
-        this.chest(blockMap.get(type+"_trapped_chest"), planks, flag, consumer);
-        this.hollowLog(blockMap.get("hollow_" + type + "_log"), log, flag, consumer);
-        this.ladder(blockMap.get(type + "_ladder"), planks, flag, consumer);
-        this.bookshelf(blockMap.get(type + "_bookshelf"), planks, flag, consumer);
+        this.verticalPlanks(aqBlocks.get("vertical_" + type + "_planks"), planks, flag, consumer);
+        this.hedge(aqBlocks.get(type+"_hedge"), leaves, log, flag, consumer);
+        this.verticalSlab(aqBlocks.get(type + "_vertical_slab"), slab, flag, consumer);
+        this.carpet(aqBlocks.get(type + "_leaf_carpet"), leaves, flag, consumer);
+        this.post(aqBlocks.get(type + "_post"), wood, flag, consumer);
+        this.post(aqBlocks.get("stripped_" + type + "_post"), strippedWood, flag, consumer);
+        //this.chest(blockMap.get(type+"_chest"), planks, flag, consumer);
+        //this.chest(blockMap.get(type+"_trapped_chest"), planks, flag, consumer);
+        this.hollowLog(aqBlocks.get("hollow_" + type + "_log"), log, flag, consumer);
+        this.ladder(aqBlocks.get(type + "_ladder"), planks, flag, consumer);
+        //this.bookshelf(blockMap.get(type + "_bookshelf"), planks, flag, consumer);
     }
 
     private void bookshelf(Block bookshelf, Block planks, String flag, RecipeOutput consumer) {
@@ -80,6 +96,16 @@ public class AQRecipeData extends RecipeProvider {
                     )
             );
         verticalSlabRevert(vertical, slab, consumer, flag);
+    }
+
+    void verticalSlab(Block vertical, Block slab, RecipeOutput consumer) {
+        verticalSlabBuilder(vertical, Ingredient.of(slab)).unlockedBy(getHasName(slab), has(slab))
+                .save(consumer
+                        .withConditions(
+                                zetaCond("vertical_slabs")
+                        )
+                );
+        verticalSlabRevert(vertical, slab, consumer);
     }
 
     protected static RecipeBuilder verticalSlabBuilder(ItemLike itemLike, Ingredient ingredient) {
@@ -197,11 +223,20 @@ public class AQRecipeData extends RecipeProvider {
     }
 
     void verticalSlabRevert(Block slab, Block reverted, RecipeOutput consumer, String flag) {
-        verticalSlabRevertBuilder(reverted, Ingredient.of(slab), flag).unlockedBy(getHasName(slab), has(slab))
+        verticalSlabRevertBuilder(reverted, Ingredient.of(slab)).unlockedBy(getHasName(slab), has(slab))
                 .save(consumer
                         .withConditions(
                                 zetaCond("vertical_slabs"),
                                 zetaCond(flag)
+                        ), getItemName(reverted) + "_from_" + getItemName(slab)
+                );
+    }
+
+    void verticalSlabRevert(Block slab, Block reverted, RecipeOutput consumer) {
+        verticalSlabRevertBuilder(reverted, Ingredient.of(slab)).unlockedBy(getHasName(slab), has(slab))
+                .save(consumer
+                        .withConditions(
+                                zetaCond("vertical_slabs")
                         ), getItemName(reverted) + "_from_" + getItemName(slab)
                 );
     }
@@ -243,7 +278,7 @@ public class AQRecipeData extends RecipeProvider {
     void skyrootHedge(ItemLike hedge, ItemLike leaves, RecipeOutput consumer) {
         hedge(hedge, leaves, AetherTags.Items.SKYROOT_LOGS, "skyroot_quark_blocks", consumer);
     }
-    protected static RecipeBuilder verticalSlabRevertBuilder(ItemLike itemLike, Ingredient ingredient, String flag) {
+    protected static RecipeBuilder verticalSlabRevertBuilder(ItemLike itemLike, Ingredient ingredient) {
         return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, itemLike)
         .requires(ingredient);
     }

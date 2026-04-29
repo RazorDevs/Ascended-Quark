@@ -39,11 +39,6 @@ public class AmbrosiumTorchArrow extends AbstractArrow {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-        super.defineSynchedData(builder);
-    }
-
-    @Override
     public void tick() {
         super.tick();
 

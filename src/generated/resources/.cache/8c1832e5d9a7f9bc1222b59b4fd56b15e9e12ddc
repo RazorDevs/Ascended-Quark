@@ -1,12 +1,12 @@
-// 1.21.1	2026-04-28T10:52:33.7812821	Ascended Quark Block Tags
-e80ab2d5b5edeb38d6cff74c9383b185659750e1 data/aether/tags/block/treated_as_aether_block.json
+// 1.21.1	2026-04-29T12:04:09.8385639	Ascended Quark Block Tags
+d04c155839615c402f77653223567eaa8f7aa7b2 data/aether/tags/block/treated_as_aether_block.json
 28740717edd1e6546056eb280f5881a7284258d8 data/c/tags/block/chests.json
 4b05c0cceaf514bf65a62e41eafcf7c873eb7bcb data/c/tags/block/chests/trapped.json
 28740717edd1e6546056eb280f5881a7284258d8 data/c/tags/block/chests/wooden.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/minecraft/tags/block/climbable.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/minecraft/tags/block/fall_damage_resetting.json
 28740717edd1e6546056eb280f5881a7284258d8 data/minecraft/tags/block/guarded_by_piglins.json
-980e8d9e4351dca68cff8c608327a10ae39d13e9 data/minecraft/tags/block/mineable/axe.json
+514672420a877447463b21f829111aa369365d13 data/minecraft/tags/block/mineable/axe.json
 484bfa81bdf5137588afca92370302523fd2a630 data/minecraft/tags/block/mineable/hoe.json
 06533d5856e324700ecd20ce271ef5cd140e37cb data/minecraft/tags/block/mineable/pickaxe.json
 818d4b6e371a687009ff964fc8717b6802f8e6c6 data/minecraft/tags/block/mineable/shovel.json
@@ -18,5 +18,5 @@ b23f2aa8c33badeff892cfefeabbb5481e9f8340 data/quark/tags/block/hollow_logs.json
 6d7c17aac8581c6b129aeacea915d30351c46f30 data/quark/tags/block/ladders.json
 98a7f19ca49a00749ccbf6b3ba1034eeabadb85f data/quark/tags/block/posts.json
 9b05a108aee814b70443eb720ce75ecad104361a data/quark/tags/block/stools.json
-81386886cd7ea4cc6f86464b75ac3d7d9e8e2fcd data/quark/tags/block/vertical_slabs.json
+070df668a7073a2de1f887dae75e1d0785ad1487 data/quark/tags/block/vertical_slabs.json
 8eee2e0972ac1c8c9ab3ba21e589276400821fcb data/quark/tags/block/wooden_vertical_slabs.json

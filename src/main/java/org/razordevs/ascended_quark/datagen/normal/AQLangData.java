@@ -39,7 +39,7 @@ public class AQLangData extends NitrogenLanguageProvider {
                 newString = newString.replace("bricks_", "brick_");
 
             Block block = blockMap.get(string);
-            this.add(block, this.getName(newString));
+            this.add(block, this.getName(newString.replace("ascended_quark:", "")));
 
             items.remove(block.asItem());
 
@@ -66,7 +66,7 @@ public class AQLangData extends NitrogenLanguageProvider {
 
         for (Item item : items)
         {
-            this.add(item, this.getName(item.toString()));
+            this.add(item, this.getName(item.toString().replace("ascended_quark:", "")));
         }
 
         this.add("lore.item.ascended_quark.ambrosium_torch_arrow", "An arrow tied to an Ambrosium Torch. It imbues the healing properties of Ambrosium, and places the torch on impact.");

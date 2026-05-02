@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "vertical_slabs"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_holystone_brick_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "aether:holystone_brick_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:holystone_brick_vertical_slab_from_holystone_brick_slab_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_holystone_brick_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:holystone_brick_vertical_slab_from_holystone_brick_slab_stonecutting"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
-// 1.21.1	2026-04-28T10:52:33.7692254	Ascended Quark Item Tags
+// 1.21.1	2026-04-30T12:45:13.6720519	Ascended Quark Item Tags
 9a00690582d0d658a96be3b0752ae32397a588e1 data/aether/tags/item/planks_crafting.json
-30d5091729fe3f48a14c559f80fa9f91a5ff77ea data/aether/tags/item/treated_as_aether_item.json
+92936274ba1487752f98bd090a25f4af08c29e05 data/aether/tags/item/treated_as_aether_item.json
 28740717edd1e6546056eb280f5881a7284258d8 data/c/tags/item/chests.json
 4b05c0cceaf514bf65a62e41eafcf7c873eb7bcb data/c/tags/item/chests/trapped.json
 28740717edd1e6546056eb280f5881a7284258d8 data/c/tags/item/chests/wooden.json

@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "vertical_slabs"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "skyroot_quark_blocks"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_skyroot_vertical_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ascended_quark:skyroot_vertical_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:skyroot_slab_from_skyroot_vertical_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_skyroot_vertical_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:skyroot_slab_from_skyroot_vertical_slab"
+    ]
+  }
+}

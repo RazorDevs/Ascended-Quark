@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "hollow_logs"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "skyroot_quark_blocks"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_skyroot_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "aether:skyroot_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:hollow_skyroot_log"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_skyroot_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:hollow_skyroot_log"
+    ]
+  }
+}

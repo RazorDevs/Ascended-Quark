@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "wooden_posts"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "skyroot_quark_blocks"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_skyroot_wood": {
+      "conditions": {
+        "items": [
+          {
+            "items": "aether:stripped_skyroot_wood"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:stripped_skyroot_post"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stripped_skyroot_wood"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:stripped_skyroot_post"
+    ]
+  }
+}

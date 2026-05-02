@@ -95,8 +95,6 @@ public class AQData {
 
         createNormalPack(event, normalBlockMap, normalItemMap);
         //createDeepAetherPack(event, deepAetherBlockMap, deepAetherItemMap);
-
-
     }
 
     private static void createNormalPack(GatherDataEvent event, HashMap<String, Block> blockMap, HashMap<String, Item> itemMap) {

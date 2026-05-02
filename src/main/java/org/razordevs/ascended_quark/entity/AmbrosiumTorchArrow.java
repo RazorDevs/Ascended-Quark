@@ -26,91 +26,93 @@ import org.violetmoon.quark.content.tools.module.TorchArrowModule;
 
 public class AmbrosiumTorchArrow extends AbstractArrow {
 
-    public AmbrosiumTorchArrow(EntityType<AmbrosiumTorchArrow> type, Level level) {
-        super(type, level);
-    }
+	public AmbrosiumTorchArrow(EntityType<AmbrosiumTorchArrow> type, Level level) {
+		super(type, level);
+	}
 
-    public AmbrosiumTorchArrow(Level level, double x, double y, double z, ItemStack stack, ItemStack torchStack) {
-        super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, x, y, z, level, stack, torchStack);
-    }
+	public AmbrosiumTorchArrow(Level level, double x, double y, double z, ItemStack stack, ItemStack torchStack) {
+		super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, x, y, z, level, stack, torchStack);
+	}
 
-    public AmbrosiumTorchArrow(Level level, LivingEntity shooter, ItemStack stack, ItemStack torchStack) {
-        super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, shooter, level, stack, torchStack);
-    }
+	public AmbrosiumTorchArrow(Level level, LivingEntity shooter, ItemStack stack, ItemStack torchStack) {
+		super(AmbrosiumTorchArrowModule.ambrosiumTorchArrowType, shooter, level, stack, torchStack);
+	}
 
-    @Override
-    public void tick() {
-        super.tick();
+	@Override
+	public void tick() {
+		super.tick();
 
-        if(!inGround && level().isClientSide && tickCount > 2) {
-            Vec3 motion = getDeltaMovement();
-            double rs = 0.03;
-            double ms = 0.08;
-            double sprd = 0.1;
+		if (!inGround && level().isClientSide && tickCount > 2) {
+			Vec3 motion = getDeltaMovement();
+			double rs = 0.03;
+			double ms = 0.08;
+			double sprd = 0.1;
 
-            int parts = 6;
-            for(int i = 0; i < parts; i++) {
-                double px = getX() - motion.x * ((float) i / parts) + (Math.random() - 0.5) * sprd;
-                double py = getY() - motion.y * ((float) i / parts) + (Math.random() - 0.5) * sprd;
-                double pz = getZ() - motion.z * ((float) i / parts) + (Math.random() - 0.5) * sprd;
+			int parts = 6;
+			for (int i = 0; i < parts; i++) {
+				double px = getX() - motion.x * ((float) i / parts) + (Math.random() - 0.5) * sprd;
+				double py = getY() - motion.y * ((float) i / parts) + (Math.random() - 0.5) * sprd;
+				double pz = getZ() - motion.z * ((float) i / parts) + (Math.random() - 0.5) * sprd;
 
-                double mx = (Math.random() - 0.5) * rs - motion.x * ms;
-                double my = (Math.random() - 0.5) * rs - motion.y * ms;
-                double mz = (Math.random() - 0.5) * rs - motion.z * ms;
-                level().addParticle(AmbrosiumTorchArrowModule.ambrosiumShardParticle, px, py, pz, mx, my, mz);
-            }
-        }
-    }
+				double mx = (Math.random() - 0.5) * rs - motion.x * ms;
+				double my = (Math.random() - 0.5) * rs - motion.y * ms;
+				double mz = (Math.random() - 0.5) * rs - motion.z * ms;
+				level().addParticle(AmbrosiumTorchArrowModule.ambrosiumShardParticle, px, py, pz, mx, my, mz);
+			}
+		}
+	}
 
-    @Override
-    protected void onHitBlock(BlockHitResult result) {
-        if (!this.level().isClientSide) {
-            BlockPos pos = result.getBlockPos();
-            Direction direction = result.getDirection();
-            BlockPos finalPos = pos.relative(direction);
-            BlockState state = this.level().getBlockState(finalPos);
-            if ((state.isAir() || state.canBeReplaced()) && direction != Direction.DOWN) {
-                Entity var7 = this.getOwner();
-                if (var7 instanceof Player p) {
-                    if (!Quark.FLAN_INTEGRATION.canPlace(p, finalPos)) {
-                        return;
-                    }
-                }
+	@Override
+	protected void onHitBlock(BlockHitResult result) {
+		if (!this.level().isClientSide) {
+			BlockPos pos = result.getBlockPos();
+			Direction direction = result.getDirection();
+			BlockPos finalPos = pos.relative(direction);
+			BlockState state = this.level().getBlockState(finalPos);
+			if ((state.isAir() || state.canBeReplaced()) && direction != Direction.DOWN) {
+				Entity var7 = this.getOwner();
+				if (var7 instanceof Player p) {
+					if (!Quark.FLAN_INTEGRATION.canPlace(p, finalPos)) {
+						return;
+					}
+				}
 
-                BlockState setState;
-                if (direction == Direction.UP) {
-                    setState = AetherBlocks.AMBROSIUM_TORCH.get().defaultBlockState();
-                } else {
-                    setState =  AetherBlocks.AMBROSIUM_WALL_TORCH.get().defaultBlockState().setValue(WallTorchBlock.FACING, direction);
-                }
+				BlockState setState;
+				if (direction == Direction.UP) {
+					setState = AetherBlocks.AMBROSIUM_TORCH.get().defaultBlockState();
+				} else {
+					setState = AetherBlocks.AMBROSIUM_WALL_TORCH.get().defaultBlockState()
+							.setValue(WallTorchBlock.FACING, direction);
+				}
 
-                if (setState.canSurvive(this.level(), finalPos)) {
-                    this.level().setBlock(finalPos, setState, 2);
-                    this.playSound(setState.getSoundType().getPlaceSound());
-                    this.discard();
-                    return;
-                }
-            }
-        }
+				if (setState.canSurvive(this.level(), finalPos)) {
+					this.level().setBlock(finalPos, setState, 2);
+					this.playSound(setState.getSoundType().getPlaceSound());
+					this.discard();
+					return;
+				}
+			}
+		}
 
-        super.onHitBlock(result);
-    }
+		super.onHitBlock(result);
+	}
 
+	@Override
+	protected void onHitEntity(EntityHitResult result) {
+		if (result.getEntity() instanceof LivingEntity entity)
+			entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1));
+		super.onHitEntity(result);
+	}
 
-    @Override
-    protected void onHitEntity(EntityHitResult result) {
-            if(result.getEntity() instanceof LivingEntity entity)
-                entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1));
-            super.onHitEntity(result);
-    }
+	@Override
+	protected @NotNull ItemStack getPickupItem() {
+		return new ItemStack(
+				TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
+	}
 
-    @Override
-    protected @NotNull ItemStack getPickupItem() {
-        return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
-    }
-
-    @Override
-    protected @NotNull ItemStack getDefaultPickupItem() {
-        return new ItemStack(TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
-    }
+	@Override
+	protected @NotNull ItemStack getDefaultPickupItem() {
+		return new ItemStack(
+				TorchArrowModule.extinguishOnMiss ? Items.ARROW : AmbrosiumTorchArrowModule.ambrosium_torch_arrow);
+	}
 }

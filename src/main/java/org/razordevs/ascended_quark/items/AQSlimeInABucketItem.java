@@ -39,20 +39,21 @@ import javax.annotation.Nonnull;
 
 public class AQSlimeInABucketItem extends AQEntityInABucketItem {
 
-    public AQSlimeInABucketItem(String name, ZetaModule module) {
-        super(name, module, new Item.Properties().stacksTo(1), EntityType.SLIME);
+	public AQSlimeInABucketItem(String name, ZetaModule module) {
+		super(name, module, new Item.Properties().stacksTo(1), EntityType.SLIME);
 
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET, module);
-    }
+		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this,
+				AetherItems.SKYROOT_TADPOLE_BUCKET, module);
+	}
 
-    @Override
-    public boolean getsExcited(ServerLevel world, int x, int z) {
-        ChunkPos chunkpos = new ChunkPos(new BlockPos(x, 0, z));
-        return WorldgenRandom.seedSlimeChunk(chunkpos.x, chunkpos.z, world.getSeed(), 987234911L).nextInt(10) == 0;
-    }
+	@Override
+	public boolean getsExcited(ServerLevel world, int x, int z) {
+		ChunkPos chunkpos = new ChunkPos(new BlockPos(x, 0, z));
+		return WorldgenRandom.seedSlimeChunk(chunkpos.x, chunkpos.z, world.getSeed(), 987234911L).nextInt(10) == 0;
+	}
 
-    @Override
-    public Slime getNewSlimeInstance(EntityType<? extends Slime> type, Level level) {
-        return new Slime(type, level);
-    }
+	@Override
+	public Slime getNewSlimeInstance(EntityType<? extends Slime> type, Level level) {
+		return new Slime(type, level);
+	}
 }

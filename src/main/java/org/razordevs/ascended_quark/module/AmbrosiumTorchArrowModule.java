@@ -32,37 +32,34 @@ import org.violetmoon.zeta.util.Hint;
 @ZetaLoadModule(category = "aether")
 public class AmbrosiumTorchArrowModule extends ZetaModule {
 
-    public static EntityType<AmbrosiumTorchArrow> ambrosiumTorchArrowType;
-    public static SimpleParticleType ambrosiumShardParticle;
+	public static EntityType<AmbrosiumTorchArrow> ambrosiumTorchArrowType;
+	public static SimpleParticleType ambrosiumShardParticle;
 
-    @Hint
-    public static ArrowItem ambrosium_torch_arrow;
+	@Hint
+	public static ArrowItem ambrosium_torch_arrow;
 
-    @LoadEvent
-    public final void register(ZRegister register) {
-        ambrosium_torch_arrow = new ZetaArrowItem.Impl("ambrosium_torch_arrow", this, AmbrosiumTorchArrow::new, AmbrosiumTorchArrow::new);
+	@LoadEvent
+	public final void register(ZRegister register) {
+		ambrosium_torch_arrow = new ZetaArrowItem.Impl("ambrosium_torch_arrow", this, AmbrosiumTorchArrow::new,
+				AmbrosiumTorchArrow::new);
 
-        ambrosiumTorchArrowType = EntityType.Builder.<AmbrosiumTorchArrow>of(AmbrosiumTorchArrow::new, MobCategory.MISC)
-                .sized(0.5F, 0.5F)
-                .clientTrackingRange(4)
-                .updateInterval(20)
-                .build("ambrosium_torch_arrow");
+		ambrosiumTorchArrowType = EntityType.Builder.<AmbrosiumTorchArrow>of(AmbrosiumTorchArrow::new, MobCategory.MISC)
+				.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("ambrosium_torch_arrow");
 
-        register.getRegistry().register(ambrosiumTorchArrowType, "ambrosium_torch_arrow", Registries.ENTITY_TYPE);
-        DispenserBlock.registerBehavior(ambrosium_torch_arrow, new ProjectileDispenseBehavior(ambrosium_torch_arrow));
+		register.getRegistry().register(ambrosiumTorchArrowType, "ambrosium_torch_arrow", Registries.ENTITY_TYPE);
+		DispenserBlock.registerBehavior(ambrosium_torch_arrow, new ProjectileDispenseBehavior(ambrosium_torch_arrow));
 
-        ambrosiumShardParticle = new SimpleParticleType(true);
-        register.getRegistry().register(ambrosiumShardParticle, "ambrosium_shard_particle", Registries.PARTICLE_TYPE);
-    }
+		ambrosiumShardParticle = new SimpleParticleType(true);
+		register.getRegistry().register(ambrosiumShardParticle, "ambrosium_shard_particle", Registries.PARTICLE_TYPE);
+	}
 
-    @ZetaLoadModule(clientReplacement = true)
-    public static class Client extends AmbrosiumTorchArrowModule {
+	@ZetaLoadModule(clientReplacement = true)
+	public static class Client extends AmbrosiumTorchArrowModule {
 
-        @LoadEvent
-        public final void clientSetup(ZClientSetup event) {
-            EntityRenderers.register(ambrosiumTorchArrowType, AmbrosiumTorchArrowRenderer::new);
-        }
-    }
-
+		@LoadEvent
+		public final void clientSetup(ZClientSetup event) {
+			EntityRenderers.register(ambrosiumTorchArrowType, AmbrosiumTorchArrowRenderer::new);
+		}
+	}
 
 }

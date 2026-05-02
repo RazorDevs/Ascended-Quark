@@ -17,25 +17,26 @@ import org.violetmoon.zeta.module.ZetaModule;
 
 public class AQSwetInABucketItem extends AQEntityInABucketItem {
 
-    public AQSwetInABucketItem(String name, ZetaModule module, DeferredHolder<EntityType<?>, EntityType<Swet>> bucketEntity, boolean isSkyroot) {
-        super(name, module, new Item.Properties().stacksTo(1), bucketEntity);
-        if (isSkyroot)
-            ExtraSlimeAndSwetInABucketModule.SWET_WITH_BUCKET_ITEM_SKYROOT.add(new Pair<>(bucketEntity, this));
-        else
-            ExtraSlimeAndSwetInABucketModule.SWET_WITH_BUCKET_ITEM.add(new Pair<>(bucketEntity, this));
+	public AQSwetInABucketItem(String name, ZetaModule module,
+			DeferredHolder<EntityType<?>, EntityType<Swet>> bucketEntity, boolean isSkyroot) {
+		super(name, module, new Item.Properties().stacksTo(1), bucketEntity);
+		if (isSkyroot)
+			ExtraSlimeAndSwetInABucketModule.SWET_WITH_BUCKET_ITEM_SKYROOT.add(new Pair<>(bucketEntity, this));
+		else
+			ExtraSlimeAndSwetInABucketModule.SWET_WITH_BUCKET_ITEM.add(new Pair<>(bucketEntity, this));
 
-        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this, AetherItems.SKYROOT_TADPOLE_BUCKET, module);
-    }
+		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.getKey(), this,
+				AetherItems.SKYROOT_TADPOLE_BUCKET, module);
+	}
 
+	@Override
+	public boolean getsExcited(ServerLevel world, int x, int z) {
+		return world.dimensionTypeRegistration() == AetherDimensions.AETHER_DIMENSION_TYPE;
+	}
 
-    @Override
-    public boolean getsExcited(ServerLevel world, int x, int z) {
-        return world.dimensionTypeRegistration() == AetherDimensions.AETHER_DIMENSION_TYPE;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public Slime getNewSlimeInstance(EntityType<? extends Slime> type, Level level) {
-        return new Swet((EntityType<? extends Swet>) type, level);
-    }
+	@Override
+	@SuppressWarnings("unchecked")
+	public Slime getNewSlimeInstance(EntityType<? extends Slime> type, Level level) {
+		return new Swet((EntityType<? extends Swet>) type, level);
+	}
 }

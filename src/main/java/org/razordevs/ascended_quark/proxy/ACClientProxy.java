@@ -11,19 +11,15 @@ import org.razordevs.ascended_quark.handler.AQConfigHomeScreen;
 import java.util.function.Supplier;
 
 public class ACClientProxy extends ACCommonProxy {
-    public void start() {
-        AscendedQuark.ZETA.playBus
-                .subscribe(AQClientUtil.class);
+	public void start() {
+		AscendedQuark.ZETA.playBus.subscribe(AQClientUtil.class);
 
+		AscendedQuark.ZETA.playBus.subscribe(AQButtonHandler.class).subscribe(AQClientUtil.class);
 
-        AscendedQuark.ZETA.playBus
-                .subscribe(AQButtonHandler.class)
-                .subscribe(AQClientUtil.class);
+		super.start();
 
-        super.start();
-
-        Supplier<IConfigScreenFactory> configScreen = () ->
-                (mc, previousScreen) -> new AQConfigHomeScreen(previousScreen);
-        ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, configScreen);
-    }
+		Supplier<IConfigScreenFactory> configScreen = () -> (mc,
+				previousScreen) -> new AQConfigHomeScreen(previousScreen);
+		ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, configScreen);
+	}
 }

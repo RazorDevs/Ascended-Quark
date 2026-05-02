@@ -24,35 +24,40 @@ import java.util.List;
 
 @ZetaLoadModule(category = "aether")
 public class AQHedgesModule extends ZetaModule {
-    public static TagKey<Block> hedgesTag;
-    public static List<AQHedgeBlock> hedges = new ArrayList<>();
+	public static TagKey<Block> hedgesTag;
+	public static List<AQHedgeBlock> hedges = new ArrayList<>();
 
-    @LoadEvent
-    public final void register(ZRegister event) {
-        RegistryUtil.createHedge("golden_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE, AetherBlocks.GOLDEN_OAK_LEAVES);
-        RegistryUtil.createHedge("crystal_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE, AetherBlocks.CRYSTAL_LEAVES);
-        RegistryUtil.createHedge("crystal_fruit_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE, AetherBlocks.CRYSTAL_FRUIT_LEAVES);
-        RegistryUtil.createHedge("holiday_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE, AetherBlocks.HOLIDAY_LEAVES);
-        RegistryUtil.createHedge("decorated_holiday_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE, AetherBlocks.DECORATED_HOLIDAY_LEAVES);
-    }
+	@LoadEvent
+	public final void register(ZRegister event) {
+		RegistryUtil.createHedge("golden_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE,
+				AetherBlocks.GOLDEN_OAK_LEAVES);
+		RegistryUtil.createHedge("crystal_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE,
+				AetherBlocks.CRYSTAL_LEAVES);
+		RegistryUtil.createHedge("crystal_fruit_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE,
+				AetherBlocks.CRYSTAL_FRUIT_LEAVES);
+		RegistryUtil.createHedge("holiday_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE,
+				AetherBlocks.HOLIDAY_LEAVES);
+		RegistryUtil.createHedge("decorated_holiday_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE,
+				AetherBlocks.DECORATED_HOLIDAY_LEAVES);
+	}
 
-    @LoadEvent
-    public final void setup(ZCommonSetup event) {
-        hedgesTag = Quark.asTagKey(Registries.BLOCK,"hedges");
-    }
+	@LoadEvent
+	public final void setup(ZCommonSetup event) {
+		hedgesTag = Quark.asTagKey(Registries.BLOCK, "hedges");
+	}
 
-    @ZetaLoadModule(clientReplacement = true)
-    public static class Client extends AQHedgesModule {
+	@ZetaLoadModule(clientReplacement = true)
+	public static class Client extends AQHedgesModule {
 
-        @LoadEvent
-        public void blockColorProviders(ZAddBlockColorHandlers event) {
-            event.registerNamed(zeta(), b -> new AlikeColorHandler((AQHedgeBlock) b, AQHedgeBlock::getLeaf), "hedge");
-        }
+		@LoadEvent
+		public void blockColorProviders(ZAddBlockColorHandlers event) {
+			event.registerNamed(zeta(), b -> new AlikeColorHandler((AQHedgeBlock) b, AQHedgeBlock::getLeaf), "hedge");
+		}
 
-        @LoadEvent
-        public void itemColorProviders(ZAddItemColorHandlers event) {
-            event.registerNamed(zeta(), i -> new AlikeColorHandler(i, AQHedgeBlock::getLeaf), "hedge");
-        }
+		@LoadEvent
+		public void itemColorProviders(ZAddItemColorHandlers event) {
+			event.registerNamed(zeta(), i -> new AlikeColorHandler(i, AQHedgeBlock::getLeaf), "hedge");
+		}
 
-    }
+	}
 }

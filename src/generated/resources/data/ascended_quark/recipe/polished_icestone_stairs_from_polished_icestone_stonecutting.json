@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "polished_icestone"
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "ascended_quark:polished_icestone"
+  },
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:polished_icestone_stairs"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "quicksoil_bricks"
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "ascended_quark:quicksoil_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:quicksoil_bricks_stairs"
+  }
+}

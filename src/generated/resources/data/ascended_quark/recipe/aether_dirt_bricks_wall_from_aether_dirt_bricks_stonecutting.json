@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "aether_dirt_bricks"
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "ascended_quark:aether_dirt_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:aether_dirt_bricks_wall"
+  }
+}

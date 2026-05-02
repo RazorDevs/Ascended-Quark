@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "stools"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "skyroot_stool"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "aether:skyroot_slab"
+    },
+    "B": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:skyroot_stool"
+  }
+}

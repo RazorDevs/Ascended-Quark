@@ -6,9 +6,11 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.nitrogen.data.providers.NitrogenRecipeProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -17,6 +19,8 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.internal.NeoForgeBlockTagsProvider;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.violetmoon.zeta.config.FlagCondition;
 
@@ -59,24 +63,92 @@ public class AQRecipeData extends NitrogenRecipeProvider {
 		this.carpet(aqBlocks.get("golden_oak_leaf_carpet"), AetherBlocks.GOLDEN_OAK_LEAVES.get(),
 				"skyroot_quark_blocks", consumer);
 
-		// VERTICAL SLABS
-		// Why didn't I do it like this before?
-		aqBlocks.keySet().stream().filter(s -> s.contains("vertical_slab") && !s.contains("skyroot")).forEach((key) -> {
-			String stripKey = key.replace("_vertical", "");
-			var res = AetherBlocks.BLOCKS.getRegistry().get()
-					.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
-			this.verticalSlab(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), consumer);
-			// this.stonecuttingRecipe(aqBlocks.get(key), !cut.equals(Blocks.AIR) ? cut :
-			// aqItems.get(cutKey), 2, consumer, zetaFlag("vertical_slabs"));
-		});
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, aqBlocks.get("skyroot_stool"), 1)
+                .define('A', AetherBlocks.SKYROOT_SLAB.asItem())
+                .define('B', ItemTags.WOOL)
+                .pattern("BBB")
+                .pattern("AAA")
+                .unlockedBy(getHasName(AetherBlocks.SKYROOT_SLAB.asItem()), has(AetherBlocks.SKYROOT_SLAB.asItem()))
+                .save(consumer.withConditions(zetaFlag("stools"), zetaFlag("skyroot_stool")));
 
-		aqBlocks.keySet().stream().filter(s -> s.contains("_stone") || s.contains("_brick")).forEach((key) -> {
-			var res = AetherBlocks.BLOCKS.getRegistry().get()
-					.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, key));
-			this.stonecuttingRecipe(aqBlocks.get(key.replace("_stone", "_vertical_slab")),
-					!res.equals(Blocks.AIR) ? res : aqBlocks.get(res), 2, consumer, zetaFlag("vertical_slabs"));
-		});
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, aqBlocks.get("holystone_furnace"), 1)
+                .define('A', AetherBlocks.HOLYSTONE.asItem())
+                .pattern("AAA")
+                .pattern("A A")
+                .pattern("AAA")
+                .unlockedBy(getHasName(AetherBlocks.HOLYSTONE.asItem()), has(AetherBlocks.HOLYSTONE.asItem()))
+                .save(consumer.withConditions(zetaFlag("variant_furnaces")));
 
+        // VERTICAL SLABS
+        // Why didn't I do it like this before?
+        aqBlocks.keySet().stream().filter(s -> s.contains("vertical_slab") && !s.contains("skyroot")).forEach((key) -> {
+            String stripKey = key.replace("_vertical", "");
+            var res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
+
+            this.verticalSlab(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), consumer);
+            try {
+                stripKey = stripKey.replace("_slab", "");
+                res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
+                this.stonecuttingRecipe(aqBlocks.get(key),
+                        !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), 2, consumer, zetaFlag("vertical_slabs"));
+            } catch (Exception ignored) {
+                stripKey = stripKey.concat("_stone");
+                res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
+                this.stonecuttingRecipe(aqBlocks.get(key),
+                        !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), 2, consumer, zetaFlag("vertical_slabs"));
+            }
+        });
+
+        /*
+        BuiltInRegistries.BLOCK.stream()
+                .map(Block::getDescriptionId)
+                .map(s -> s.replace("block." + Aether.MODID + ".", ""))
+                .filter(AQRecipeData::checkValidStonecutting)
+                    .forEach(block -> {
+
+                    });
+
+        aqBlocks.keySet().stream().filter(AQRecipeData::checkValidStonecutting).forEach((key) -> {
+            var res = AetherBlocks.BLOCKS.getRegistry().get()
+                    .get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, key));
+
+            if(key.contains("_stone")) {
+                this.stonecuttingRecipe(aqBlocks.get(key.replace("_stone", "_vertical_slab")),
+                        !res.equals(Blocks.AIR) ? res : aqBlocks.get(key), 2, consumer, zetaFlag("vertical_slabs"));
+            } else {
+                this.stonecuttingRecipe(aqBlocks.get(key.concat("_vertical_slab")),
+                        !res.equals(Blocks.AIR) ? res : aqBlocks.get(key), 2, consumer, zetaFlag("vertical_slabs"));
+            }
+        });*/
+
+        // SLABS
+        aqBlocks.keySet().stream().filter(s -> s.contains("_slab") && !s.contains("skyroot") && !s.contains("vertical")).forEach((key) -> {
+            String stripKey = key.replace("_slab", "");
+            var res = AetherBlocks.BLOCKS.getRegistry().get()
+                    .get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
+            this.slab(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), consumer);
+            this.stonecuttingRecipe(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), 2, consumer, zetaFlag(stripKey));
+        });
+
+        // STAIRS
+        aqBlocks.keySet().stream().filter(s -> s.contains("stairs") && !s.contains("skyroot")).forEach((key) -> {
+            String stripKey = key.replace("_stairs", "");
+            var res = AetherBlocks.BLOCKS.getRegistry().get()
+                    .get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
+            this.stairs(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), consumer);
+            this.stonecuttingRecipe(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), consumer, zetaFlag(stripKey));
+        });
+
+        // WALLS
+        aqBlocks.keySet().stream().filter(s -> s.contains("wall")).forEach((key) -> {
+            String stripKey = key.replace("_wall", "");
+            var res = AetherBlocks.BLOCKS.getRegistry().get()
+                    .get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
+            this.wall(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), consumer);
+            this.stonecuttingRecipe(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), consumer, zetaFlag(stripKey));
+        });
+
+        // FULL BLOCKS
 		this.fullBlock(RecipeCategory.BUILDING_BLOCKS, aqBlocks.get("skyroot_stick_block"), 1,
 				AetherItems.SKYROOT_STICK.get()).save(consumer.withConditions(zetaFlag("stick_block")));
 
@@ -254,6 +326,10 @@ public class AQRecipeData extends NitrogenRecipeProvider {
 				.unlockedBy(getHasName(ingredient), has(ingredient)).save(consumer.withConditions(condition),
 						name(getConversionRecipeName(item, ingredient) + "_stonecutting"));
 	}
+
+    private static boolean checkValidStonecutting(String s) {
+        return (s.contains("stone") || s.contains("_bricks")) && !s.contains("_wall") && !s.contains("_stairs") && !s.contains("_slab") && !s.contains("_furnace");
+    }
 
 	public static FlagCondition zetaFlag(String flag) {
 		return new FlagCondition(flag, Optional.empty());

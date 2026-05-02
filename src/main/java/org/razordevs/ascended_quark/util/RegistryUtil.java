@@ -28,82 +28,68 @@ import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 /**
- * Zeta's module system is run before modded stuff is registered, causing a lot
- * of issues when adding compatibility.
+ * Zeta's module system is run before modded stuff is registered,
+ * causing a lot of issues when adding compatibility.
  * <p>
- * This class is meant to fix this by delaying the work, using an Array as a
- * temporary storage and adding the items later through tabs.
+ * This class is meant to fix this by delaying the work, using an Array as a temporary
+ * storage and adding the items later through tabs.
  */
 public class RegistryUtil {
-	public static ArrayList<TabModel> TABS = new ArrayList<>();
+    public static ArrayList<TabModel> TABS = new ArrayList<>();
 
-	/**
-	 * Adds all variant blocks of a wood type
-	 */
-	public static void registerWoodsetExtension(String type, ZetaModule module, WoodSetContext context) {
-		addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
-				new ZetaBlock("vertical_" + type + "_planks", module,
-						BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS)),
-				context.planks(), module);
-		SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);
-		createHedge(type + "_hedge", module, context.fence());
-		addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
-				new AQHollowLogBlock("hollow_" + type + "_log", module), context.log(), module);
-		addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
-				new VariantLadderBlock(type, module, BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER), true),
-				context.planks(), module);
-		if (!type.equals("skyroot"))
-			addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
-					new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD), context.planks(), module);
+    /**
+     * Adds all variant blocks of a wood type
+     */
+    public static void registerWoodsetExtension(String type, ZetaModule module, WoodSetContext context) {
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new ZetaBlock("vertical_" + type + "_planks", module, BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS)), context.planks(), module);
+        SkyrootQuarkBlocksModule.makeChestBlocks(module, type, Blocks.CHEST, SoundType.WOOD, BooleanSuppliers.TRUE);
+        createHedge(type + "_hedge", module, context.fence(), context.leaves());
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHollowLogBlock("hollow_" + type + "_log", module), context.log(), module);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new VariantLadderBlock(type, module, BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER), true), context.planks(), module);
+        if(!type.equals("skyroot"))
+            addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD), context.planks(), module);
 
-		Block post = new AQWoodenPostBlock(type + "_post", module);
-		addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, context.log(), module);
-		Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
-		addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), stripped, context.log(), module);
-		ToolInteractionHandler.registerInteraction(ItemAbilities.AXE_STRIP, post, stripped);
-		addCreativeModeTab(
-				AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new CompAQVerticalSlabBlock(type + "_vertical_slab",
-						context.slab(), BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module),
-				context.planks(), module);
-		createLeafCarpet(type + "_leaf_carpet", module, context.leaves());
-	}
+        Block post = new AQWoodenPostBlock(type + "_post", module);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), post, context.log(), module);
+        Block stripped = new AQWoodenPostBlock("stripped_" + type + "_post", module);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), stripped, context.log(), module);
+        ToolInteractionHandler.registerInteraction(ItemAbilities.AXE_STRIP, post, stripped);
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new CompAQVerticalSlabBlock(type + "_vertical_slab", context.slab(), BlockPropertyUtil.copyPropertySafe(Blocks.OAK_PLANKS), module), context.planks(), module);
+        createLeafCarpet(type + "_leaf_carpet", module, context.leaves());
+    }
 
-	public static void addCreativeModeTab(ResourceKey<CreativeModeTab> tab, ItemLike item,
-			DeferredHolder<?, ? extends ItemLike> parent, ZetaModule module) {
-		if (!module.isEnabled())
-			return;
+    public static void addCreativeModeTab(ResourceKey<CreativeModeTab> tab, ItemLike item, DeferredHolder<?, ? extends ItemLike> parent, ZetaModule module) {
+        if(!module.isEnabled())
+            return;
 
-		boolean flag = false;
-		for (TabModel tm : TABS) {
-			if (tm.getTab().equals(tab)) {
-				tm.add(item, parent);
-				flag = true;
-			}
-		}
-		if (!flag) {
-			HashMap<ItemLike, Supplier<? extends ItemLike>> map = new HashMap<>();
-			map.put(item, parent);
-			TABS.add(new TabModel(tab, map));
-		}
-	}
+        boolean flag = false;
+        for(TabModel tm : TABS){
+            if(tm.getTab().equals(tab)){
+                tm.add(item, parent);
+                flag = true;
+            }
+        }
+        if(!flag){
+            HashMap<ItemLike, Supplier<? extends ItemLike>> map = new HashMap<>();
+            map.put(item, parent);
+            TABS.add(new TabModel(tab, map));
+        }
+    }
 
-	public static void createHedge(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> fence) {
-		addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock(name, module), fence,
-				module);
-	}
+    public static void createHedge(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> fence, DeferredHolder<Block, ? extends Block> leaf) {
+        addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(), new AQHedgeBlock(name, module, leaf), fence, module);
+    }
 
-	public static void createLeafCarpet(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> leaves) {
-		addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new AQLeafCarpetBlock(name, module),
-				leaves, module);
-	}
+    public static void createLeafCarpet(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> leaves) {
+        addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new AQLeafCarpetBlock(name, module), leaves, module);
+    }
 
-	public static void createLeafCarpetParticle(String name, ZetaModule module,
-			DeferredHolder<Block, ? extends Block> leaves, Supplier<? extends ParticleOptions> particle) {
-		addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(),
-				new LeafCarpetWithParticlesBlock(name, module, particle), leaves, module);
-	}
+    public static void createLeafCarpetParticle(String name, ZetaModule module, DeferredHolder<Block, ? extends Block> leaves, Supplier<? extends ParticleOptions> particle) {
+        addCreativeModeTab(AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey(), new LeafCarpetWithParticlesBlock(name, module, particle), leaves, module);
+    }
 
-	public static ToIntFunction<BlockState> litBlockEmission(int emission) {
-		return (state) -> state.getValue(BlockStateProperties.LIT) ? emission : 0;
-	}
+    public static ToIntFunction<BlockState> litBlockEmission(int emission) {
+        return (state) -> state.getValue(BlockStateProperties.LIT) ? emission : 0;
+    }
 }
+

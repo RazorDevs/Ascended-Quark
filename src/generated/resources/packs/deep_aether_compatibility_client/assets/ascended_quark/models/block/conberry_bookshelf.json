@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "deep_aether:block/conberry_planks",
-    "side": "ascended_quark:block/conberry_bookshelf",
-    "top": "deep_aether:block/conberry_planks"
-  }
-}

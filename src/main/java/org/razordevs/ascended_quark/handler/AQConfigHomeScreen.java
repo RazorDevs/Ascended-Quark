@@ -23,7 +23,7 @@ public class AQConfigHomeScreen extends ZetaConfigHomeScreen {
 
     //TODO: Better Panorama
 
-    private static final CubeMap CUBE_MAP = new CubeMap(AscendedQuark.getResource("textures/misc/panorama/panorama"));
+    private static final CubeMap CUBE_MAP = new CubeMap(AscendedQuark.asResource("textures/misc/panorama/panorama"));
     private static final PanoramaRenderer PANORAMA = new PanoramaRenderer(CUBE_MAP);
     private float time;
 

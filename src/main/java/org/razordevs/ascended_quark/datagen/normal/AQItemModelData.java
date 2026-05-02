@@ -52,15 +52,15 @@ public class AQItemModelData extends ItemModelProvider {
         }
 
         toGenerateBlock.remove(blockMap.get("ambrosium_lamp"));
-        this.itemBlock(blockMap.get("ambrosium_lamp"), AscendedQuark.getResource("block/ambrosium_lamp_0"));
+        this.itemBlock(blockMap.get("ambrosium_lamp"), AscendedQuark.asResource("block/ambrosium_lamp_0"));
         toGenerateBlock.remove(blockMap.get("quicksoil_framed_glass_pane"));
         this.itemBlockFlatName(blockMap.get("quicksoil_framed_glass_pane"), "quicksoil_framed_glass" );
 
         for(Block block : toGenerateBlock) {
             if (block instanceof AQHedgeBlock)
-                this.itemBlock(block, AscendedQuark.getResource("block/" + this.blockName(block) + "_post"));
+                this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_post"));
             else if (block instanceof WallBlock)
-                this.itemBlock(block, AscendedQuark.getResource("block/" + this.blockName(block) + "_inventory"));
+                this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_inventory"));
 
             else if (block instanceof ChestBlock) {
                 this.itemChest(block);

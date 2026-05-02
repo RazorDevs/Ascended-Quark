@@ -13,84 +13,85 @@ import net.minecraft.world.level.block.piston.PistonMovingBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.razordevs.ascended_quark.blocks.AQStoolBlock;
+import org.violetmoon.quark.mixin.mixins.accessor.AccessorPistonMovingBlockEntity;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
 public class AQStool extends Entity {
 
-	public AQStool(EntityType<? extends AQStool> entityTypeIn, Level worldIn) {
-		super(entityTypeIn, worldIn);
-	}
+    public AQStool(EntityType<? extends AQStool> entityTypeIn, Level worldIn) {
+        super(entityTypeIn, worldIn);
+    }
 
-	@Override
-	public void tick() {
-		super.tick();
+    @Override
+    public void tick() {
+        super.tick();
 
-		List<Entity> passengers = getPassengers();
-		boolean dead = passengers.isEmpty();
+        List<Entity> passengers = getPassengers();
+        boolean dead = passengers.isEmpty();
 
-		BlockPos pos = blockPosition();
-		BlockState state = level().getBlockState(pos);
+        BlockPos pos = blockPosition();
+        BlockState state = level().getBlockState(pos);
 
-		if (!dead) {
-			if (!(state.getBlock() instanceof AQStoolBlock)) {
-				PistonMovingBlockEntity piston = null;
-				boolean didOffset = false;
+        if(!dead) {
+            if(!(state.getBlock() instanceof AQStoolBlock)) {
+                PistonMovingBlockEntity piston = null;
+                boolean didOffset = false;
 
-				BlockEntity tile = level().getBlockEntity(pos);
-				if (tile instanceof PistonMovingBlockEntity pistonBE
-						&& pistonBE.getMovedState().getBlock() instanceof AQStoolBlock)
-					piston = pistonBE;
-				else
-					for (Direction d : Direction.values()) {
-						BlockPos offPos = pos.relative(d);
-						tile = level().getBlockEntity(offPos);
+                BlockEntity tile = level().getBlockEntity(pos);
+                if(tile instanceof PistonMovingBlockEntity pistonBE && pistonBE.getMovedState().getBlock() instanceof AQStoolBlock)
+                    piston = pistonBE;
+                else
+                    for(Direction d : Direction.values()) {
+                        BlockPos offPos = pos.relative(d);
+                        tile = level().getBlockEntity(offPos);
 
-						if (tile instanceof PistonMovingBlockEntity pistonBE
-								&& pistonBE.getMovedState().getBlock() instanceof AQStoolBlock) {
-							piston = pistonBE;
-							break;
-						}
-					}
+                        if(tile instanceof PistonMovingBlockEntity pistonBE && pistonBE.getMovedState().getBlock() instanceof AQStoolBlock) {
+                            piston = pistonBE;
+                            break;
+                        }
+                    }
 
-				if (piston != null) {
-					Direction dir = piston.getMovementDirection();
-					move(MoverType.PISTON, new Vec3((float) dir.getStepX() * 0.33, (float) dir.getStepY() * 0.33,
-							(float) dir.getStepZ() * 0.33));
+                if(piston != null) {
+                    boolean lmfao = noPhysics;
+                    noPhysics = false;
+                    Direction dir = piston.getMovementDirection();
+                    AccessorPistonMovingBlockEntity.getMoveEntityByPiston(dir, this, piston.getProgress(0.98f), dir);
+                    noPhysics = lmfao;
 
-					didOffset = true;
-				}
+                    didOffset = true;
+                }
 
-				dead = !didOffset;
-			}
-		}
+                dead = !didOffset;
+            }
+        }
 
-		if (dead && !level().isClientSide) {
-			removeAfterChangingDimensions();
+        if(dead && !level().isClientSide) {
+            removeAfterChangingDimensions();
 
-			if (state.getBlock() instanceof AQStoolBlock)
-				level().setBlockAndUpdate(pos, state.setValue(AQStoolBlock.SAT_IN, false));
-		}
-	}
+            if(state.getBlock() instanceof AQStoolBlock)
+                level().setBlockAndUpdate(pos, state.setValue(AQStoolBlock.SAT_IN, false));
+        }
+    }
 
-	@Override
-	public Vec3 getPassengerRidingPosition(Entity entity) {
-		return new Vec3(entity.position().x, entity.position().y - 0.3f, entity.position().z);
-	}
+    @Override
+    public Vec3 getPassengerRidingPosition(Entity entity) {
+        return super.getPassengerRidingPosition(entity).subtract(0, 0.5, 0);
+    }
 
-	@Override
-	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
 
-	}
+    }
 
-	@Override
-	protected void readAdditionalSaveData(@Nonnull CompoundTag compound) {
-		// NO-OP
-	}
+    @Override
+    protected void readAdditionalSaveData(@Nonnull CompoundTag compound) {
+        // NO-OP
+    }
 
-	@Override
-	protected void addAdditionalSaveData(@Nonnull CompoundTag compound) {
-		// NO-OP
-	}
+    @Override
+    protected void addAdditionalSaveData(@Nonnull CompoundTag compound) {
+        // NO-OP
+    }
 }

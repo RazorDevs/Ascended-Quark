@@ -6,7 +6,7 @@
   "overrides": [
     {
       "predicate": {
-        "excited": 1
+        "quark:excited": 1
       },
       "model": "ascended_quark:item/golden_swet_in_a_bucket_excited"
     }

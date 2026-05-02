@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-22T09:18:00.234033182	Item Models: ascended_quark
+// 1.21.1	2026-04-28T10:11:17.8357934	Item Models: ascended_quark
 ac6cc442ad1688515a1e6ecea181ad01d1b15ef2 assets/ascended_quark/models/item/aerogel_vertical_slab.json
 865c07dce7c0bcdcd091057b1eceebe058ce1dfc assets/ascended_quark/models/item/aether_dirt_bricks.json
 3b8d00c3908ee166dfb41b4555672b26578243bd assets/ascended_quark/models/item/aether_dirt_bricks_slab.json
@@ -52,8 +52,8 @@ fff34b5d7a22239f88c6b359eb34f5051698252c assets/ascended_quark/models/item/skyro
 a3c6ef8bbb8557ff62cdedb4ab1af484e28053d8 assets/ascended_quark/models/item/skyroot_post.json
 a3a425b9583ca495862377fd55dcb290aadea7fb assets/ascended_quark/models/item/skyroot_stick_block.json
 9bcdbdc2faeb0ad4e23a337e6b39ca3e4a25f5f2 assets/ascended_quark/models/item/skyroot_stool.json
-f6caba399494a58683561699d72ad1cc86e3d339 assets/ascended_quark/models/item/skyroot_trapped_chest.json
 496f386f0b149598e34a60e1ba4f6ff9fff80167 assets/ascended_quark/models/item/skyroot_vertical_slab.json
 33da2591ace87a9a01b5826f1c6b99a27a9d6545 assets/ascended_quark/models/item/stripped_skyroot_post.json
+f6caba399494a58683561699d72ad1cc86e3d339 assets/ascended_quark/models/item/trapped_skyroot_chest.json
 d829a1d4af94261ecd564873cd4da6f8e777bcce assets/ascended_quark/models/item/valkyrie_pickarang.json
 dd221724972db10ed9ce9a91bc648090130dac90 assets/ascended_quark/models/item/vertical_skyroot_planks.json

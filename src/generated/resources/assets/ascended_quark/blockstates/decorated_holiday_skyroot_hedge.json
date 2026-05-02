@@ -5,7 +5,7 @@
         "model": "ascended_quark:block/decorated_holiday_skyroot_hedge_post"
       },
       "when": {
-        "extend": "true"
+        "extend": "false"
       }
     },
     {
@@ -13,7 +13,7 @@
         "model": "ascended_quark:block/decorated_holiday_skyroot_hedge_extend"
       },
       "when": {
-        "extend": "false"
+        "extend": "true"
       }
     },
     {

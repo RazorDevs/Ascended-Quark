@@ -52,137 +52,116 @@ import java.util.function.BooleanSupplier;
 @ZetaLoadModule(category = "aether", description = "Enables skyroot woodset blocks for quark blocks, such as skyroot post. Disable if another mod already adds compat blocks. ", antiOverlap = "everycomp")
 public class SkyrootQuarkBlocksModule extends ZetaModule {
 
-	protected static final List<Block> aqRegularChests = new ArrayList<>();
-	protected static final List<Block> aqTrappedChests = new ArrayList<>();
-	public static BlockEntityType<AQVariantChestBlockEntity> aqChestTEType;
-	public static BlockEntityType<AQVariantTrappedChestBlockEntity> aqTrappedChestTEType;
+    protected static final List<Block> aqRegularChests = new ArrayList<>();
+    protected static final List<Block> aqTrappedChests = new ArrayList<>();
+    public static BlockEntityType<AQVariantChestBlockEntity> aqChestTEType;
+    public static BlockEntityType<AQVariantTrappedChestBlockEntity> aqTrappedChestTEType;
 
-	private static final ThreadLocal<ItemStack> WAIT_TO_REPLACE_CHEST = new ThreadLocal<>();
+    private static final ThreadLocal<ItemStack> WAIT_TO_REPLACE_CHEST = new ThreadLocal<>();
 
-	@LoadEvent
-	public void register(ZRegister register) {
-		RegistryUtil.registerWoodsetExtension("skyroot", this,
-				new WoodSetContext(AetherBlocks.SKYROOT_SLAB, AetherBlocks.SKYROOT_PLANKS, AetherBlocks.SKYROOT_FENCE,
-						AetherBlocks.SKYROOT_LOG, AetherBlocks.SKYROOT_LEAVES));
-		RegistryUtil.createLeafCarpetParticle("golden_oak_leaf_carpet", this, AetherBlocks.GOLDEN_OAK_LEAVES,
-				AetherParticleTypes.GOLDEN_OAK_LEAVES);
-		RegistryUtil.createLeafCarpetParticle("crystal_leaf_carpet", this, AetherBlocks.CRYSTAL_LEAVES,
-				AetherParticleTypes.CRYSTAL_LEAVES);
-		RegistryUtil.createLeafCarpetParticle("crystal_fruit_leaf_carpet", this, AetherBlocks.CRYSTAL_FRUIT_LEAVES,
-				AetherParticleTypes.CRYSTAL_LEAVES);
-		RegistryUtil.createLeafCarpetParticle("holiday_leaf_carpet", this, AetherBlocks.HOLIDAY_LEAVES,
-				AetherParticleTypes.HOLIDAY_LEAVES);
-		RegistryUtil.createLeafCarpetParticle("decorated_holiday_leaf_carpet", this,
-				AetherBlocks.DECORATED_HOLIDAY_LEAVES, AetherParticleTypes.HOLIDAY_LEAVES);
-		RegistryUtil.createHedge("golden_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-		RegistryUtil.createHedge("crystal_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-		RegistryUtil.createHedge("crystal_fruit_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-		RegistryUtil.createHedge("holiday_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-		RegistryUtil.createHedge("decorated_holiday_skyroot_hedge", this, AetherBlocks.SKYROOT_FENCE);
-	}
+    @LoadEvent
+    public void register(ZRegister register) {
+        RegistryUtil.registerWoodsetExtension("skyroot", this, new WoodSetContext(AetherBlocks.SKYROOT_SLAB, AetherBlocks.SKYROOT_PLANKS, AetherBlocks.SKYROOT_FENCE, AetherBlocks.SKYROOT_LOG, AetherBlocks.SKYROOT_LEAVES));
+        RegistryUtil.createLeafCarpetParticle("golden_oak_leaf_carpet", this, AetherBlocks.GOLDEN_OAK_LEAVES, AetherParticleTypes.GOLDEN_OAK_LEAVES);
+        RegistryUtil.createLeafCarpetParticle("crystal_leaf_carpet", this, AetherBlocks.CRYSTAL_LEAVES, AetherParticleTypes.CRYSTAL_LEAVES);
+        RegistryUtil.createLeafCarpetParticle("crystal_fruit_leaf_carpet", this, AetherBlocks.CRYSTAL_FRUIT_LEAVES, AetherParticleTypes.CRYSTAL_LEAVES);
+        RegistryUtil.createLeafCarpetParticle("holiday_leaf_carpet", this, AetherBlocks.HOLIDAY_LEAVES, AetherParticleTypes.HOLIDAY_LEAVES);
+        RegistryUtil.createLeafCarpetParticle("decorated_holiday_leaf_carpet", this, AetherBlocks.DECORATED_HOLIDAY_LEAVES, AetherParticleTypes.HOLIDAY_LEAVES);
+    }
 
-	public static void makeChestBlocks(ZetaModule module, String name, Block base, @Nullable SoundType sound,
-			BooleanSupplier condition) {
-		BlockBehaviour.Properties props = BlockPropertyUtil.copyPropertySafe(base);
-		if (sound != null) {
-			props = props.sound(sound);
-		}
+    public static void makeChestBlocks(ZetaModule module, String name, Block base, @Nullable SoundType sound, BooleanSupplier condition) {
+        BlockBehaviour.Properties props = BlockPropertyUtil.copyPropertySafe(base);
+        if (sound != null) {
+            props = props.sound(sound);
+        }
 
-		AQVariantChestBlock regularChest = (AQVariantChestBlock) (new AQVariantChestBlock(name, module,
-				() -> aqChestTEType, props)).setCondition(condition);
-		aqRegularChests.add(regularChest);
+        AQVariantChestBlock regularChest = (AQVariantChestBlock) (new AQVariantChestBlock(name, module, () -> aqChestTEType, props)).setCondition(condition);
+        aqRegularChests.add(regularChest);
 
-		AQTrappedVariantChestBlock trappedChest = (AQTrappedVariantChestBlock) (new AQTrappedVariantChestBlock(name,
-				module, () -> aqTrappedChestTEType, props)).setCondition(condition);
-		aqTrappedChests.add(trappedChest);
+        AQTrappedVariantChestBlock trappedChest = (AQTrappedVariantChestBlock) (new AQTrappedVariantChestBlock(name, module, () -> aqTrappedChestTEType, props)).setCondition(condition);
+        aqTrappedChests.add(trappedChest);
 
-		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), regularChest,
-				AetherBlocks.CHEST_MIMIC, module);
-		RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), trappedChest,
-				AetherBlocks.CHEST_MIMIC, module);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), regularChest, AetherBlocks.CHEST_MIMIC, module);
+        RegistryUtil.addCreativeModeTab(AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.getKey(), trappedChest, AetherBlocks.CHEST_MIMIC, module);
 
-	}
+    }
 
-	@LoadEvent
-	public void postRegister(ZRegister.Post e) {
-		aqChestTEType = BlockEntityType.Builder
-				.of(AQVariantChestBlockEntity::new, aqRegularChests.toArray(new Block[0])).build(null);
-		aqTrappedChestTEType = BlockEntityType.Builder
-				.of(AQVariantTrappedChestBlockEntity::new, aqTrappedChests.toArray(new Block[0])).build(null);
-		AscendedQuark.ZETA.registry.register(aqChestTEType, "skyroot_chest", Registries.BLOCK_ENTITY_TYPE);
-		AscendedQuark.ZETA.registry.register(aqTrappedChestTEType, "skyroot_trapped_chest",
-				Registries.BLOCK_ENTITY_TYPE);
-	}
+    @LoadEvent
+    public void postRegister(ZRegister.Post e) {
+        aqChestTEType = BlockEntityType.Builder.of(AQVariantChestBlockEntity::new, aqRegularChests.toArray(new Block[0])).build(null);
+        aqTrappedChestTEType = BlockEntityType.Builder.of(AQVariantTrappedChestBlockEntity::new, aqTrappedChests.toArray(new Block[0])).build(null);
+        AscendedQuark.ZETA.registry.register(aqChestTEType, "skyroot_chest", Registries.BLOCK_ENTITY_TYPE);
+        AscendedQuark.ZETA.registry.register(aqTrappedChestTEType, "skyroot_trapped_chest", Registries.BLOCK_ENTITY_TYPE);
+    }
 
-	@PlayEvent
-	public void onClickEntity(ZPlayerInteract.EntityInteractSpecific event) {
-		Entity target = event.getTarget();
-		Player player = event.getEntity();
-		ItemStack held = player.getItemInHand(event.getHand());
-		if (!held.isEmpty() && target instanceof AbstractChestedHorse horse) {
-			if (!horse.hasChest() && held.getItem() != Items.CHEST && held.is(Tags.Items.CHESTS_WOODEN)) {
-				event.setCanceled(true);
-				event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
-				if (!target.level().isClientSide) {
-					ItemStack copy = held.copy();
-					copy.setCount(1);
-					held.shrink(1);
-					horse.getPersistentData().put("Quark:DonkChest",
-							copy.save(Minecraft.getInstance().level.registryAccess()));
-					horse.setChest(true);
-					// horse.createInventory();
-					((AccessorAbstractChestedHorse) horse).quark$playChestEquipsSound();
-				}
-			}
-		}
+    @PlayEvent
+    public void onClickEntity(ZPlayerInteract.EntityInteractSpecific event) {
+        Entity target = event.getTarget();
+        Player player = event.getEntity();
+        ItemStack held = player.getItemInHand(event.getHand());
+        if (!held.isEmpty() && target instanceof AbstractChestedHorse horse) {
+            if (!horse.hasChest() && held.getItem() != Items.CHEST && held.is(Tags.Items.CHESTS_WOODEN)) {
+                event.setCanceled(true);
+                event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
+                if (!target.level().isClientSide) {
+                    ItemStack copy = held.copy();
+                    copy.setCount(1);
+                    held.shrink(1);
+                    horse.getPersistentData().put("Quark:DonkChest", copy.save(Minecraft.getInstance().level.registryAccess()));
+                    horse.setChest(true);
+                    //horse.createInventory();
+                    ((AccessorAbstractChestedHorse)horse).quark$playChestEquipsSound();
+                }
+            }
+        }
 
-	}
+    }
 
-	@PlayEvent
-	public void onDeath(ZLivingDeath event) {
-		Entity target = event.getEntity();
-		if (target instanceof AbstractChestedHorse horse) {
-			ItemStack chest = ItemStack.parse(Minecraft.getInstance().level.registryAccess(),
-					horse.getPersistentData().getCompound("Quark:DonkChest")).get();
-			if (!chest.isEmpty() && horse.hasChest()) {
-				WAIT_TO_REPLACE_CHEST.set(chest);
-			}
-		}
+    @PlayEvent
+    public void onDeath(ZLivingDeath event) {
+        Entity target = event.getEntity();
+        if (target instanceof AbstractChestedHorse horse) {
+            ItemStack chest = ItemStack.parse(Minecraft.getInstance().level.registryAccess() , horse.getPersistentData().getCompound("Quark:DonkChest")).get();
+            if (!chest.isEmpty() && horse.hasChest()) {
+                WAIT_TO_REPLACE_CHEST.set(chest);
+            }
+        }
 
-	}
+    }
 
-	@PlayEvent
-	public void onEntityJoinWorld(ZEntityJoinLevel event) {
-		Entity target = event.getEntity();
-		if (target instanceof ItemEntity item) {
-			if (item.getItem().getItem() == Items.CHEST) {
-				ItemStack local = WAIT_TO_REPLACE_CHEST.get();
-				if (local != null && !local.isEmpty()) {
-					item.setItem(local);
-				}
+    @PlayEvent
+    public void onEntityJoinWorld(ZEntityJoinLevel event) {
+        Entity target = event.getEntity();
+        if (target instanceof ItemEntity item) {
+            if (item.getItem().getItem() == Items.CHEST) {
+                ItemStack local = WAIT_TO_REPLACE_CHEST.get();
+                if (local != null && !local.isEmpty()) {
+                    item.setItem(local);
+                }
 
-				WAIT_TO_REPLACE_CHEST.remove();
-			}
-		}
+                WAIT_TO_REPLACE_CHEST.remove();
+            }
+        }
 
-	}
+    }
 
-	@ZetaLoadModule(clientReplacement = true)
-	public static class Client extends SkyrootQuarkBlocksModule {
+    @ZetaLoadModule(
+            clientReplacement = true
+    )
+    public static class Client extends SkyrootQuarkBlocksModule {
 
-		@LoadEvent
-		public final void clientSetup(ZClientSetup event) {
-			BlockEntityRenderers.register(aqChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, false));
-			BlockEntityRenderers.register(aqTrappedChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, true));
-			/*
-			 * for(Block b : aqRegularChests){
-			 * AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(),
-			 * new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState())); }
-			 * for(Block b : aqTrappedChests){
-			 * AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(),
-			 * new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState()));
-			 * }
-			 */
-		}
-	}
+        @LoadEvent
+        public final void clientSetup(ZClientSetup event) {
+            BlockEntityRenderers.register(aqChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, false));
+            BlockEntityRenderers.register(aqTrappedChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, true));
+            /*
+            for(Block b : aqRegularChests){
+                AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(), new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState()));
+            }
+            for(Block b : aqTrappedChests){
+                AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(), new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState()));
+            }
+             */
+        }
+    }
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "quark:block/vertical_slab",
-  "textures": {
-    "bottom": "deep_aether:block/aseterite",
-    "side": "deep_aether:block/aseterite",
-    "top": "deep_aether:block/aseterite"
-  }
-}

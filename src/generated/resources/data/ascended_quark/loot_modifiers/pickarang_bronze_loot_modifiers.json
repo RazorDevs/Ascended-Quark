@@ -3,18 +3,15 @@
   "chanceToSpawn": 0.01,
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "aether:chests/dungeon/bronze/bronze_dungeon"
     }
   ],
   "items": [
     {
       "data": {
-        "Count": 1,
-        "id": "ascended_quark:valkyrie_pickarang",
-        "tag": {
-          "Damage": 0
-        }
+        "count": 1,
+        "id": "ascended_quark:valkyrie_pickarang"
       },
       "weight": 1
     }

@@ -2,16 +2,16 @@
   "neoforge:conditions": [
     {
       "type": "zeta:flag",
-      "flag": "vertical_slabs"
+      "flag": "blue_berry_crate"
     }
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_icestone_bricks_vertical_slab": {
+    "has_blue_berry": {
       "conditions": {
         "items": [
           {
-            "items": "ascended_quark:icestone_bricks_vertical_slab"
+            "items": "aether:blue_berry"
           }
         ]
       },
@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:icestone_bricks_slab_from_icestone_bricks_vertical_slab"
+        "recipe": "ascended_quark:blue_berry_crate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -27,12 +27,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_icestone_bricks_vertical_slab"
+      "has_blue_berry"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:icestone_bricks_slab_from_icestone_bricks_vertical_slab"
+      "ascended_quark:blue_berry_crate"
     ]
   }
 }

@@ -7,11 +7,11 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hellfire_vertical_slab": {
+    "has_polished_icestone_slab": {
       "conditions": {
         "items": [
           {
-            "items": "ascended_quark:hellfire_vertical_slab"
+            "items": "ascended_quark:polished_icestone_slab"
           }
         ]
       },
@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:hellfire_slab_from_hellfire_vertical_slab"
+        "recipe": "ascended_quark:polished_icestone_vertical_slab_from_polished_icestone_slab_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -27,12 +27,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_hellfire_vertical_slab"
+      "has_polished_icestone_slab"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:hellfire_slab_from_hellfire_vertical_slab"
+      "ascended_quark:polished_icestone_vertical_slab_from_polished_icestone_slab_stonecutting"
     ]
   }
 }

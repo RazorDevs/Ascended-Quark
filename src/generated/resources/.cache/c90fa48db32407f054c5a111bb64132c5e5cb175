@@ -1,6 +1,6 @@
-// 1.21.1	2026-04-29T12:04:09.820571	Ascended Quark Item Tags
+// 1.21.1	2026-04-30T12:45:13.6720519	Ascended Quark Item Tags
 9a00690582d0d658a96be3b0752ae32397a588e1 data/aether/tags/item/planks_crafting.json
-5c2e601bce89990d5cb95ef97cf9c6605223024a data/aether/tags/item/treated_as_aether_item.json
+92936274ba1487752f98bd090a25f4af08c29e05 data/aether/tags/item/treated_as_aether_item.json
 28740717edd1e6546056eb280f5881a7284258d8 data/c/tags/item/chests.json
 4b05c0cceaf514bf65a62e41eafcf7c873eb7bcb data/c/tags/item/chests/trapped.json
 28740717edd1e6546056eb280f5881a7284258d8 data/c/tags/item/chests/wooden.json
@@ -15,5 +15,5 @@ b23f2aa8c33badeff892cfefeabbb5481e9f8340 data/quark/tags/item/hollow_logs.json
 98a7f19ca49a00749ccbf6b3ba1034eeabadb85f data/quark/tags/item/posts.json
 089ae256b4e6eab481e02b9b2dc6d693afcaab62 data/quark/tags/item/revertable_chests.json
 9b05a108aee814b70443eb720ce75ecad104361a data/quark/tags/item/stools.json
-070df668a7073a2de1f887dae75e1d0785ad1487 data/quark/tags/item/vertical_slabs.json
+81386886cd7ea4cc6f86464b75ac3d7d9e8e2fcd data/quark/tags/item/vertical_slabs.json
 8eee2e0972ac1c8c9ab3ba21e589276400821fcb data/quark/tags/item/wooden_vertical_slabs.json

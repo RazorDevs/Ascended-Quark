@@ -44,8 +44,8 @@ public class DACompRecipeData extends AQRecipeData {
                 .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS_SLAB.get()), has(DABlocks.AETHER_MUD_BRICKS_SLAB.get()))
                 .save(consumer
                         .withConditions(
-                                zetaCond("more_mud_blocks"),
-                                zetaCond("more_aether_mud_blocks")
+                                zetaFlag("more_mud_blocks"),
+                                zetaFlag("more_aether_mud_blocks")
                         )
                 );
 
@@ -57,14 +57,14 @@ public class DACompRecipeData extends AQRecipeData {
                 .unlockedBy(getHasName(DABlocks.AETHER_MUD_BRICKS.get()), has(DABlocks.AETHER_MUD_BRICKS.get()))
                 .save(consumer
                         .withConditions(
-                                zetaCond("more_mud_blocks"),
-                                zetaCond("more_aether_mud_blocks")
+                                zetaFlag("more_mud_blocks"),
+                                zetaFlag("more_aether_mud_blocks")
                         )
                 );
 
         stonecuttingRecipe(aqBlocks.get("aether_mud_pillar"), DABlocks.AETHER_MUD_BRICKS.get(), consumer,
-                zetaCond("more_mud_blocks"),
-                zetaCond("more_aether_mud_blocks")
+                zetaFlag("more_mud_blocks"),
+                zetaFlag("more_aether_mud_blocks")
         );
     }
 }

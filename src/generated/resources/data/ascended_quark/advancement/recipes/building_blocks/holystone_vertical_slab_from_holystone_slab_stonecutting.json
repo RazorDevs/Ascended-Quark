@@ -7,11 +7,11 @@
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_icestone_vertical_slab": {
+    "has_holystone_slab": {
       "conditions": {
         "items": [
           {
-            "items": "ascended_quark:icestone_vertical_slab"
+            "items": "aether:holystone_slab"
           }
         ]
       },
@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:icestone_slab_from_icestone_vertical_slab"
+        "recipe": "ascended_quark:holystone_vertical_slab_from_holystone_slab_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -27,12 +27,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_icestone_vertical_slab"
+      "has_holystone_slab"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:icestone_slab_from_icestone_vertical_slab"
+      "ascended_quark:holystone_vertical_slab_from_holystone_slab_stonecutting"
     ]
   }
 }

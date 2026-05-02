@@ -3,19 +3,15 @@
     {
       "type": "zeta:flag",
       "flag": "vertical_slabs"
-    },
-    {
-      "type": "zeta:flag",
-      "flag": "skyroot_quark_blocks"
     }
   ],
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_skyroot_vertical_slab": {
+    "has_hellfire_slab": {
       "conditions": {
         "items": [
           {
-            "items": "ascended_quark:skyroot_vertical_slab"
+            "items": "aether:hellfire_slab"
           }
         ]
       },
@@ -23,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:skyroot_slab_from_skyroot_vertical_slab"
+        "recipe": "ascended_quark:hellfire_vertical_slab_from_hellfire_slab_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -31,12 +27,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_skyroot_vertical_slab"
+      "has_hellfire_slab"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:skyroot_slab_from_skyroot_vertical_slab"
+      "ascended_quark:hellfire_vertical_slab_from_hellfire_slab_stonecutting"
     ]
   }
 }

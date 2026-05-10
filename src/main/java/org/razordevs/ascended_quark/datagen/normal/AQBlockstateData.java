@@ -115,24 +115,24 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
 	public void chest(String type, Block planks, String location) {
 		Block block = blockMap.get(type + "_chest");
-		Block trapped = blockMap.get(type + "_trapped_chest");
-		// this.getVariantBuilder(block).partialState().addModels(new
-		// ConfiguredModel(this.chest(this.name(block),
-		// this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
-		// this.getVariantBuilder(trapped).partialState().addModels(new
-		// ConfiguredModel(this.chest(this.name(trapped),
-		// this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
+		Block trapped = blockMap.get("trapped_" + type + "_chest");
+		this.getVariantBuilder(block).partialState().addModels(new
+		 ConfiguredModel(this.chest(this.name(block),
+		 this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
+		 this.getVariantBuilder(trapped).partialState().addModels(new
+		 ConfiguredModel(this.chest(this.name(trapped),
+		 this.texture(BuiltInRegistries.BLOCK.getKey(planks), location))));
 	}
 
 	public void chest(String type, Block planks) {
 		Block block = blockMap.get(type + "_chest");
 		Block trapped = blockMap.get(type + "_trapped_chest");
-		// this.getVariantBuilder(block).partialState().addModels(new
-		// ConfiguredModel(this.chest(this.name(block),
-		// this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
-		// this.getVariantBuilder(trapped).partialState().addModels(new
-		// ConfiguredModel(this.chest(this.name(trapped),
-		// this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
+		 this.getVariantBuilder(block).partialState().addModels(new
+		 ConfiguredModel(this.chest(this.name(block),
+		 this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
+		 this.getVariantBuilder(trapped).partialState().addModels(new
+		 ConfiguredModel(this.chest(this.name(trapped),
+		 this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
 	}
 
 	public ModelFile chest(String name, ResourceLocation particle) {

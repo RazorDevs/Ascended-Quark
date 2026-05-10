@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "variant_chests"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "skyroot_quark_blocks"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:tripwire_hook"
+    },
+    {
+      "item": "ascended_quark:skyroot_chest"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:trapped_skyroot_chest"
+  }
+}

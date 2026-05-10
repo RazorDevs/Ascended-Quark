@@ -4,6 +4,7 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.particle.AetherParticleTypes;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.InteractionResult;
@@ -33,6 +34,8 @@ import org.violetmoon.quark.base.util.BlockPropertyUtil;
 import org.violetmoon.quark.mixin.mixins.accessor.AccessorAbstractChestedHorse;
 import org.violetmoon.zeta.client.SimpleWithoutLevelRenderer;
 import org.violetmoon.zeta.client.event.load.ZClientSetup;
+import org.violetmoon.zeta.client.event.load.ZRegisterClientExtension;
+import org.violetmoon.zeta.client.extensions.IZetaClientItemExtensions;
 import org.violetmoon.zeta.event.bus.LoadEvent;
 import org.violetmoon.zeta.event.bus.PlayEvent;
 import org.violetmoon.zeta.event.load.ZRegister;
@@ -169,15 +172,27 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
 		public final void clientSetup(ZClientSetup event) {
 			BlockEntityRenderers.register(aqChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, false));
 			BlockEntityRenderers.register(aqTrappedChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, true));
-			/*
-			 * for(Block b : aqRegularChests){
-			 * AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(),
-			 * new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState())); }
-			 * for(Block b : aqTrappedChests){
-			 * AQClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer((Item) b.asItem(),
-			 * new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState()));
-			 * }
-			 */
 		}
+
+        @LoadEvent
+        public void setItemExtensions(ZRegisterClientExtension event) {
+            for (Block b : aqRegularChests) {
+                event.registerItem(new IZetaClientItemExtensions() {
+                    @Override
+                    public BlockEntityWithoutLevelRenderer getBEWLR() {
+                        return new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState());
+                    }
+                }, b.asItem());
+            }
+
+            for (Block b : aqTrappedChests) {
+                event.registerItem(new IZetaClientItemExtensions() {
+                    @Override
+                    public BlockEntityWithoutLevelRenderer getBEWLR() {
+                        return new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState());
+                    }
+                }, b.asItem());
+            }
+        }
 	}
 }

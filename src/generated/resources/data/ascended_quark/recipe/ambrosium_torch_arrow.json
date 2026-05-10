@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "ambrosium_torch_arrow"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:arrow"
+    },
+    {
+      "item": "aether:ambrosium_torch"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:ambrosium_torch_arrow"
+  }
+}

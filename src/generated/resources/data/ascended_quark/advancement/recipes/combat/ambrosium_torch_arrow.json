@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "ambrosium_torch_arrow"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ambrosium_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "aether:ambrosium_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:ambrosium_torch_arrow"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ambrosium_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:ambrosium_torch_arrow"
+    ]
+  }
+}

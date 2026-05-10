@@ -10,22 +10,22 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.internal.NeoForgeBlockTagsProvider;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.violetmoon.zeta.config.FlagCondition;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 public class AQRecipeData extends NitrogenRecipeProvider {
@@ -43,7 +43,8 @@ public class AQRecipeData extends NitrogenRecipeProvider {
 	protected void buildRecipes(RecipeOutput consumer) {
 		this.woodset("skyroot", AetherBlocks.SKYROOT_PLANKS.get(), AetherBlocks.SKYROOT_LOG.get(),
 				AetherBlocks.SKYROOT_WOOD.get(), AetherBlocks.STRIPPED_SKYROOT_WOOD.get(),
-				AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_SLAB.get(), "skyroot_quark_blocks", consumer);
+				AetherBlocks.SKYROOT_LEAVES.get(), AetherBlocks.SKYROOT_SLAB.get(),
+                "skyroot_quark_blocks", consumer);
 
 		this.skyrootHedge(aqBlocks.get("crystal_skyroot_hedge"), AetherBlocks.CRYSTAL_LEAVES.get(), consumer);
 		this.skyrootHedge(aqBlocks.get("crystal_fruit_skyroot_hedge"), AetherBlocks.CRYSTAL_FRUIT_LEAVES.get(),
@@ -71,6 +72,16 @@ public class AQRecipeData extends NitrogenRecipeProvider {
                 .unlockedBy(getHasName(AetherBlocks.SKYROOT_SLAB.asItem()), has(AetherBlocks.SKYROOT_SLAB.asItem()))
                 .save(consumer.withConditions(zetaFlag("stools"), zetaFlag("skyroot_stool")));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, aqBlocks.get("ambrosium_lamp"), 1)
+                .define('A', AetherBlocks.HOLYSTONE_BRICKS.asItem())
+                .define('B', AetherBlocks.QUICKSOIL_GLASS)
+                .define('C', AetherBlocks.AMBROSIUM_TORCH.asItem())
+                .pattern("AAA")
+                .pattern("BCB")
+                .pattern("AAA")
+                .unlockedBy(getHasName(AetherBlocks.HOLYSTONE.asItem()), has(AetherBlocks.HOLYSTONE.asItem()))
+                .save(consumer.withConditions(zetaFlag("ambrosium_lamp")));
+
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, aqBlocks.get("holystone_furnace"), 1)
                 .define('A', AetherBlocks.HOLYSTONE.asItem())
                 .pattern("AAA")
@@ -79,47 +90,74 @@ public class AQRecipeData extends NitrogenRecipeProvider {
                 .unlockedBy(getHasName(AetherBlocks.HOLYSTONE.asItem()), has(AetherBlocks.HOLYSTONE.asItem()))
                 .save(consumer.withConditions(zetaFlag("variant_furnaces")));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, aqBlocks.get("quicksoil_framed_glass"), 4)
+                .define('A', AetherBlocks.QUICKSOIL_GLASS.asItem())
+                .define('B', AetherItems.ZANITE_GEMSTONE.asItem())
+                .pattern("BAB")
+                .pattern("AAA")
+                .pattern("BAB")
+                .unlockedBy(getHasName(AetherBlocks.QUICKSOIL_GLASS.asItem()), has(AetherBlocks.QUICKSOIL_GLASS.asItem()))
+                .save(consumer.withConditions(zetaFlag("framed_glassS")));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, aqBlocks.get("aether_dirt_bricks"), 4)
+                .define('A', AetherBlocks.AETHER_DIRT.asItem())
+                .define('B', AetherBlocks.HOLYSTONE.asItem())
+                .pattern("BA")
+                .pattern("AA")
+                .unlockedBy(getHasName(AetherBlocks.HOLYSTONE.asItem()), has(AetherBlocks.HOLYSTONE.asItem()))
+                .save(consumer.withConditions(zetaFlag("aether_dirt_bricks")));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, aqItems.get("ambrosium_torch_arrow"), 1)
+                .requires(Items.ARROW)
+                .requires(AetherBlocks.AMBROSIUM_TORCH.asItem())
+                .unlockedBy(getHasName(AetherItems.AMBROSIUM_SHARD.asItem()), has(AetherItems.AMBROSIUM_SHARD.asItem()))
+                .save(consumer.withConditions(zetaFlag("ambrosium_torch_arrow")));
+
         // VERTICAL SLABS
         // Why didn't I do it like this before?
         aqBlocks.keySet().stream().filter(s -> s.contains("vertical_slab") && !s.contains("skyroot")).forEach((key) -> {
             String stripKey = key.replace("_vertical", "");
             var res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
-
             this.verticalSlab(aqBlocks.get(key), !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), consumer);
+
+            stripKey = stripKey.replace("_slab", "");
+            List<String> keySet = List.of(stripKey,
+                        stripKey.concat("_stone"),
+                        stripKey.replace("_brick", "_bricks")
+                    );
+
+            for (var curKey : keySet) {
+                try {
+                    res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, curKey));
+                    this.stonecuttingRecipe(aqBlocks.get(key),
+                            !res.equals(Blocks.AIR) ? res : aqBlocks.get(curKey), 2, consumer, zetaFlag("vertical_slabs"));
+                } catch (Exception ignored) {}
+            }
+
+            /*
             try {
                 stripKey = stripKey.replace("_slab", "");
                 res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
                 this.stonecuttingRecipe(aqBlocks.get(key),
                         !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), 2, consumer, zetaFlag("vertical_slabs"));
             } catch (Exception ignored) {
-                stripKey = stripKey.concat("_stone");
-                res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
-                this.stonecuttingRecipe(aqBlocks.get(key),
-                        !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), 2, consumer, zetaFlag("vertical_slabs"));
-            }
+                try {
+                    stripKey = stripKey.concat("_stone");
+
+                    res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
+                    this.stonecuttingRecipe(aqBlocks.get(key),
+                            !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), 2, consumer, zetaFlag("vertical_slabs"));
+                } catch (Exception ignored2) {
+                    stripKey = stripKey.replace("_stone", "");
+                    if (!stripKey.contains("_bricks") && stripKey.contains("_brick"))
+                        stripKey = stripKey.replace("_brick", "_bricks");
+                    res = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, stripKey));
+                    this.stonecuttingRecipe(aqBlocks.get(key),
+                            !res.equals(Blocks.AIR) ? res : aqBlocks.get(stripKey), 2, consumer, zetaFlag("vertical_slabs"));
+                }
+            }*/
         });
 
-        /*
-        BuiltInRegistries.BLOCK.stream()
-                .map(Block::getDescriptionId)
-                .map(s -> s.replace("block." + Aether.MODID + ".", ""))
-                .filter(AQRecipeData::checkValidStonecutting)
-                    .forEach(block -> {
-
-                    });
-
-        aqBlocks.keySet().stream().filter(AQRecipeData::checkValidStonecutting).forEach((key) -> {
-            var res = AetherBlocks.BLOCKS.getRegistry().get()
-                    .get(ResourceLocation.fromNamespaceAndPath(Aether.MODID, key));
-
-            if(key.contains("_stone")) {
-                this.stonecuttingRecipe(aqBlocks.get(key.replace("_stone", "_vertical_slab")),
-                        !res.equals(Blocks.AIR) ? res : aqBlocks.get(key), 2, consumer, zetaFlag("vertical_slabs"));
-            } else {
-                this.stonecuttingRecipe(aqBlocks.get(key.concat("_vertical_slab")),
-                        !res.equals(Blocks.AIR) ? res : aqBlocks.get(key), 2, consumer, zetaFlag("vertical_slabs"));
-            }
-        });*/
 
         // SLABS
         aqBlocks.keySet().stream().filter(s -> s.contains("_slab") && !s.contains("skyroot") && !s.contains("vertical")).forEach((key) -> {
@@ -164,8 +202,8 @@ public class AQRecipeData extends NitrogenRecipeProvider {
 		this.carpet(aqBlocks.get(type + "_leaf_carpet"), leaves, flag, consumer);
 		this.post(aqBlocks.get(type + "_post"), wood, flag, consumer);
 		this.post(aqBlocks.get("stripped_" + type + "_post"), strippedWood, flag, consumer);
-		// this.chest(blockMap.get(type+"_chest"), planks, flag, consumer);
-		// this.chest(blockMap.get(type+"_trapped_chest"), planks, flag, consumer);
+		this.chest(aqBlocks.get(type +"_chest"), planks, flag, consumer);
+		this.trappedChest(aqBlocks.get("trapped_" + type +"_chest"), aqBlocks.get(type +"_chest"), flag, consumer);
 		this.hollowLog(aqBlocks.get("hollow_" + type + "_log"), log, flag, consumer);
 		this.ladder(aqBlocks.get(type + "_ladder"), planks, flag, consumer);
 		// this.bookshelf(blockMap.get(type + "_bookshelf"), planks, flag, consumer);
@@ -241,12 +279,22 @@ public class AQRecipeData extends NitrogenRecipeProvider {
 	}
 
 	void chest(ItemLike chest, ItemLike planks, String flag, RecipeOutput consumer) {
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chest).define('A', planks).pattern("AAA")
-				.pattern("A A").pattern("AAA").unlockedBy(getHasName(planks), has(planks))
-				.save(consumer.withConditions(zetaFlag("variant_chests"), zetaFlag(flag)));
-	}
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chest)
+                .define('A', planks).pattern("AAA")
+                .pattern("A A").pattern("AAA")
+                .unlockedBy(getHasName(planks), has(planks))
+                .save(consumer.withConditions(zetaFlag("variant_chests"), zetaFlag(flag)));
+    }
 
-	void hollowLog(ItemLike hollowLog, ItemLike log, String flag, RecipeOutput consumer) {
+    void trappedChest(ItemLike trappedChest, ItemLike chest, String flag, RecipeOutput consumer) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, trappedChest)
+                .requires(Items.TRIPWIRE_HOOK.asItem())
+                .requires(chest)
+                .unlockedBy(getHasName(chest), has(chest))
+                .save(consumer.withConditions(zetaFlag("variant_chests"), zetaFlag(flag)));
+    }
+
+    void hollowLog(ItemLike hollowLog, ItemLike log, String flag, RecipeOutput consumer) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, hollowLog, 4).define('A', log).pattern(" A ")
 				.pattern("A A").pattern(" A ").unlockedBy(getHasName(log), has(log))
 				.save(consumer.withConditions(zetaFlag("hollow_logs"), zetaFlag(flag)));

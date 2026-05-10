@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "aether_dirt_bricks"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "aether:aether_dirt"
+    },
+    "B": {
+      "item": "aether:holystone"
+    }
+  },
+  "pattern": [
+    "BA",
+    "AA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "ascended_quark:aether_dirt_bricks"
+  }
+}

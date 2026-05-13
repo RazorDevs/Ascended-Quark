@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "zanite_button"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "tag": "minecraft:wooden_buttons"
+    },
+    {
+      "item": "aether:zanite_gemstone"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:zanite_button"
+  }
+}

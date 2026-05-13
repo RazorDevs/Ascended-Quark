@@ -102,6 +102,10 @@ public class AQLangData extends NitrogenLanguageProvider {
 		this.add("lore.block.ascended_quark.skyroot_stick_block",
 				"Cool looking pillar to store your sticks, or to integrate them into your builds!");
 		this.add("ascended_quark.misc.configure_ascended_quark_here", "Configure Ascended Quark Here!");
+		this.add("lore.block.ascended_quark.zanite_button",
+				"A handy (heavier) button for your needs! It works like a weighted pressure plate.)");
+		this.add("lore.block.ascended_quark.zanite_rod",
+				"This useful rod lets you break blocks if moved with a piston. Smart huh?");
 
 		addBricksLore(blockMap.get("quicksoil_bricks"));
 		addBricksLore(blockMap.get("aether_dirt_bricks"));

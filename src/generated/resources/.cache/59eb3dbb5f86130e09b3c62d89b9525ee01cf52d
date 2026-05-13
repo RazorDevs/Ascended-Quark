@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-28T00:56:23.6224643	Loot Tables
+// 1.21.1	2026-05-13T11:57:05.3364525	Loot Tables
 112053608140a8fb75880798c332367da62a5af0 data/ascended_quark/loot_table/blocks/aerogel_vertical_slab.json
 709d6f0ae0aee41e40fb353f88ddb3f224baa063 data/ascended_quark/loot_table/blocks/aether_dirt_bricks.json
 1195ffef3771f33633d8ef68a86ffb96053f6281 data/ascended_quark/loot_table/blocks/aether_dirt_bricks_slab.json
@@ -53,3 +53,5 @@ f802e10f1ae45b26ddb390f67f52d225074eeebc data/ascended_quark/loot_table/blocks/s
 19ceec4524860ad2e37ec7db0382119975517c3b data/ascended_quark/loot_table/blocks/stripped_skyroot_post.json
 8c38528021ea11d5e023940159e2e309829373f7 data/ascended_quark/loot_table/blocks/trapped_skyroot_chest.json
 ab265172b7973a6e21eadf1a1cd24cc3c0934397 data/ascended_quark/loot_table/blocks/vertical_skyroot_planks.json
+9af0115a18f6725a36a6ac20c3b86a0dc7db28cc data/ascended_quark/loot_table/blocks/zanite_button.json
+fe8df4b2387013ba8c9822d7f47811c2e46dafb7 data/ascended_quark/loot_table/blocks/zanite_rod.json

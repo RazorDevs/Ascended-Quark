@@ -113,6 +113,20 @@ public class AQRecipeData extends NitrogenRecipeProvider {
                 .unlockedBy(getHasName(AetherItems.AMBROSIUM_SHARD.asItem()), has(AetherItems.AMBROSIUM_SHARD.asItem()))
                 .save(consumer.withConditions(zetaFlag("ambrosium_torch_arrow")));
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, aqBlocks.get("zanite_rod"), 1)
+				.define('O', AetherItems.ZANITE_GEMSTONE.asItem())
+				.pattern("O")
+				.pattern("O")
+				.pattern("O")
+				.unlockedBy(getHasName(AetherItems.ZANITE_GEMSTONE.asItem()), has(AetherItems.ZANITE_GEMSTONE.asItem()))
+				.save(consumer);
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, aqBlocks.get("zanite_button"), 1)
+				.requires(ItemTags.WOODEN_BUTTONS)
+				.requires(AetherItems.ZANITE_GEMSTONE.asItem())
+				.unlockedBy(getHasName(AetherItems.ZANITE_GEMSTONE.asItem()), has(AetherItems.ZANITE_GEMSTONE.asItem()))
+				.save(consumer.withConditions(zetaFlag("zanite_button")));
+
         // VERTICAL SLABS
         // Why didn't I do it like this before?
         aqBlocks.keySet().stream().filter(s -> s.contains("vertical_slab") && !s.contains("skyroot")).forEach((key) -> {

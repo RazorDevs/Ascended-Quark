@@ -13,6 +13,7 @@ import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.items.AQSlimeInABucketItem;
 import org.razordevs.ascended_quark.items.AQSwetInABucketItem;
+import org.violetmoon.zeta.block.ZetaButtonBlock;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,6 +55,7 @@ public class AQItemModelData extends ItemModelProvider {
 		this.itemBlock(blockMap.get("ambrosium_lamp"), AscendedQuark.asResource("block/ambrosium_lamp_0"));
 		toGenerateBlock.remove(blockMap.get("quicksoil_framed_glass_pane"));
 		this.itemBlockFlatName(blockMap.get("quicksoil_framed_glass_pane"), "quicksoil_framed_glass");
+		toGenerateBlock.remove(blockMap.get("zanite_button"));
 
 		for (Block block : toGenerateBlock) {
 			if (block instanceof AQHedgeBlock)

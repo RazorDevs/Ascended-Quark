@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "ascended_quark:item/slime_in_a_skyroot_bucket_excited"
+    "layer0": "ascended_quark:item/slime_in_a_skyroot_bucket"
   },
   "overrides": [
     {

@@ -66,16 +66,16 @@ public abstract class AQEntityInABucketItem extends ZetaItem {
 
 	@NotNull @Override
 	public Component getName(@NotNull ItemStack stack) {
-		if (stack.has(QuarkDataComponents.SLIME_NBT)) {
+		if(stack.has(QuarkDataComponents.SLIME_NBT)) {
 			CompoundTag cmp = stack.get(QuarkDataComponents.SLIME_NBT).copyTag();
-			if (cmp != null && cmp.contains("CustomName")) {
+			if(cmp != null && cmp.contains("CustomName")) {
 				Component custom = Component.Serializer.fromJson(cmp.getString("CustomName"), RegistryAccess.EMPTY);
 				return Component.translatable("item.quark.slime_in_a_bucket.named", custom);
 			}
 		}
-
 		return super.getName(stack);
 	}
+
 
 	public abstract boolean getsExcited(ServerLevel world, int x, int z);
 

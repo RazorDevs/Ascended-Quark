@@ -31,7 +31,7 @@ public class AQSwetInABucketItem extends AQEntityInABucketItem {
 
 	@Override
 	public boolean getsExcited(ServerLevel world, int x, int z) {
-		return world.dimensionTypeRegistration() == AetherDimensions.AETHER_DIMENSION_TYPE;
+		return world.dimension().equals(AetherDimensions.AETHER_LEVEL);
 	}
 
 	@Override

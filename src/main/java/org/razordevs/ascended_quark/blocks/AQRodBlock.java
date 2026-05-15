@@ -29,62 +29,61 @@ import java.util.function.BooleanSupplier;
 
 public class AQRodBlock extends EndRodBlock implements ICollateralMover, IZetaBlock {
 
-    private final ZetaModule module;
-    private BooleanSupplier enabledSupplier = BooleanSuppliers.TRUE;
+	private final ZetaModule module;
+	private BooleanSupplier enabledSupplier = BooleanSuppliers.TRUE;
 
-    public static final BooleanProperty CONNECTED = BooleanProperty.create("connected");
+	public static final BooleanProperty CONNECTED = BooleanProperty.create("connected");
 
-    public AQRodBlock(String name, ZetaModule module) {
-        super(Block.Properties.of()
-                .mapColor(DyeColor.GRAY)
-                .strength(5F, 10F)
-                .sound(SoundType.METAL)
-                .noOcclusion()
-                .forceSolidOn());
+	public AQRodBlock(String name, ZetaModule module) {
+		super(Block.Properties.of().mapColor(DyeColor.GRAY).strength(5F, 10F).sound(SoundType.METAL).noOcclusion()
+				.forceSolidOn());
 
-        module.zeta().registry.registerBlock(this, name, true);
-        module.zeta().renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT);
+		module.zeta().registry.registerBlock(this, name, true);
+		module.zeta().renderLayerRegistry.put(this, RenderLayerRegistry.Layer.CUTOUT);
 
-        this.module = module;
-    }
+		this.module = module;
+	}
 
-    @Nullable
-    @Override
-    public ZetaModule getModule() {
-        return module;
-    }
+	@Nullable @Override
+	public ZetaModule getModule() {
+		return module;
+	}
 
-    @Override
-    public AQRodBlock setCondition(BooleanSupplier enabledSupplier) {
-        this.enabledSupplier = enabledSupplier;
-        return this;
-    }
+	@Override
+	public AQRodBlock setCondition(BooleanSupplier enabledSupplier) {
+		this.enabledSupplier = enabledSupplier;
+		return this;
+	}
 
-    @Override
-    public boolean doesConditionApply() {
-        return enabledSupplier.getAsBoolean();
-    }
+	@Override
+	public boolean doesConditionApply() {
+		return enabledSupplier.getAsBoolean();
+	}
 
-    @Override
-    protected void createBlockStateDefinition(@NotNull Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(CONNECTED);
-    }
+	@Override
+	protected void createBlockStateDefinition(@NotNull Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
+		builder.add(CONNECTED);
+	}
 
-    @Override
-    public boolean isCollateralMover(Level world, BlockPos source, Direction moveDirection, BlockPos pos) {
-        return moveDirection == world.getBlockState(pos).getValue(FACING) &&
-                !world.getBlockState(pos.relative(moveDirection)).is(IronRodModule.ironRodImmuneTag);
-    }
+	@Override
+	public boolean isCollateralMover(Level world, BlockPos source, Direction moveDirection, BlockPos pos) {
+		return moveDirection == world.getBlockState(pos).getValue(FACING)
+				&& !world.getBlockState(pos.relative(moveDirection)).is(IronRodModule.ironRodImmuneTag);
+	}
 
-    @Override
-    public MoveResult getCollateralMovement(Level world, BlockPos source, Direction moveDirection, Direction side, BlockPos pos) {
-        return side == moveDirection && !world.getBlockState(pos.relative(side)).is(IronRodModule.ironRodImmuneTag) ? MoveResult.BREAK : MoveResult.SKIP;
-    }
+	@Override
+	public MoveResult getCollateralMovement(Level world, BlockPos source, Direction moveDirection, Direction side,
+			BlockPos pos) {
+		return side == moveDirection && !world.getBlockState(pos.relative(side)).is(IronRodModule.ironRodImmuneTag)
+				? MoveResult.BREAK
+				: MoveResult.SKIP;
+	}
 
-    @Override
-    public void animateTick(@NotNull BlockState stateIn, @NotNull Level worldIn, @NotNull BlockPos pos, @NotNull RandomSource rand) {
-        // NO-OP
-    }
+	@Override
+	public void animateTick(@NotNull BlockState stateIn, @NotNull Level worldIn, @NotNull BlockPos pos,
+			@NotNull RandomSource rand) {
+		// NO-OP
+	}
 
 }

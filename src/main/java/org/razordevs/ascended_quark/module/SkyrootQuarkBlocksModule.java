@@ -174,25 +174,25 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
 			BlockEntityRenderers.register(aqTrappedChestTEType, (ctx) -> new AQVariantChestRenderer(ctx, true));
 		}
 
-        @LoadEvent
-        public void setItemExtensions(ZRegisterClientExtension event) {
-            for (Block b : aqRegularChests) {
-                event.registerItem(new IZetaClientItemExtensions() {
-                    @Override
-                    public BlockEntityWithoutLevelRenderer getBEWLR() {
-                        return new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState());
-                    }
-                }, b.asItem());
-            }
+		@LoadEvent
+		public void setItemExtensions(ZRegisterClientExtension event) {
+			for (Block b : aqRegularChests) {
+				event.registerItem(new IZetaClientItemExtensions() {
+					@Override
+					public BlockEntityWithoutLevelRenderer getBEWLR() {
+						return new SimpleWithoutLevelRenderer(aqChestTEType, b.defaultBlockState());
+					}
+				}, b.asItem());
+			}
 
-            for (Block b : aqTrappedChests) {
-                event.registerItem(new IZetaClientItemExtensions() {
-                    @Override
-                    public BlockEntityWithoutLevelRenderer getBEWLR() {
-                        return new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState());
-                    }
-                }, b.asItem());
-            }
-        }
+			for (Block b : aqTrappedChests) {
+				event.registerItem(new IZetaClientItemExtensions() {
+					@Override
+					public BlockEntityWithoutLevelRenderer getBEWLR() {
+						return new SimpleWithoutLevelRenderer(aqTrappedChestTEType, b.defaultBlockState());
+					}
+				}, b.asItem());
+			}
+		}
 	}
 }

@@ -95,8 +95,8 @@ public class AQLangData extends NitrogenLanguageProvider {
 				"A thin decorative variant of Quicksoil Framed Glass. Great for some more rustic or medieval builds.");
 		this.add("lore.block.ascended_quark.skyroot_chest",
 				"A nice looking chest made out of Skyroot. Perfect blend for your storage room.");
-        this.add("lore.block.ascended_quark.trapped_skyroot_chest",
-                "A nice looking chest made out of Skyroot... or not?");
+		this.add("lore.block.ascended_quark.trapped_skyroot_chest",
+				"A nice looking chest made out of Skyroot... or not?");
 		this.add("lore.block.ascended_quark.skyroot_stool",
 				"Stools can be created the same way you'd make a Bed, but using slabs instead of full wood blocks. As you can expect, you can sit on them!");
 		this.add("lore.block.ascended_quark.skyroot_stick_block",

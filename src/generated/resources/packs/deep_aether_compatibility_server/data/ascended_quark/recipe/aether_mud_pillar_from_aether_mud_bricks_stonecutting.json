@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "more_mud_blocks"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "more_aether_mud_blocks"
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "deep_aether:aether_mud_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:aether_mud_pillar"
+  }
+}

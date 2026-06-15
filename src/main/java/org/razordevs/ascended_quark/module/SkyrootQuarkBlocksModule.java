@@ -108,7 +108,7 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
 		aqTrappedChestTEType = BlockEntityType.Builder
 				.of(AQVariantTrappedChestBlockEntity::new, aqTrappedChests.toArray(new Block[0])).build(null);
 		AscendedQuark.ZETA.registry.register(aqChestTEType, "skyroot_chest", Registries.BLOCK_ENTITY_TYPE);
-		AscendedQuark.ZETA.registry.register(aqTrappedChestTEType, "skyroot_trapped_chest",
+		AscendedQuark.ZETA.registry.register(aqTrappedChestTEType, "trapped_skyroot_chest",
 				Registries.BLOCK_ENTITY_TYPE);
 	}
 

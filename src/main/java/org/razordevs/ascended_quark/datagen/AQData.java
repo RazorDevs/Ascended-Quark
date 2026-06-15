@@ -84,7 +84,7 @@ public class AQData {
 				new AQLangData(event.getGenerator().getPackOutput(), fullItemMap, fullBlockMap));
 
 		createNormalPack(event, normalBlockMap, normalItemMap);
-		// createDeepAetherPack(event, deepAetherBlockMap, deepAetherItemMap);
+		createDeepAetherPack(event, deepAetherBlockMap, deepAetherItemMap);
 	}
 
 	private static void createNormalPack(GatherDataEvent event, HashMap<String, Block> blockMap,

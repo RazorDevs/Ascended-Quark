@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "deep_aether:block/roseroot_planks",
+    "side": "ascended_quark:block/roseroot_bookshelf",
+    "top": "deep_aether:block/roseroot_planks"
+  }
+}

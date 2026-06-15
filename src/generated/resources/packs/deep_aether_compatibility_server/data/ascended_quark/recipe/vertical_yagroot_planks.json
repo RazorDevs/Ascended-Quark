@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "vertical_planks"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "deep_aether_wood"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "deep_aether:yagroot_planks"
+    }
+  },
+  "pattern": [
+    "A",
+    "A",
+    "A"
+  ],
+  "result": {
+    "count": 3,
+    "id": "ascended_quark:vertical_yagroot_planks"
+  }
+}

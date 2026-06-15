@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "hollow_logs"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "deep_aether_wood"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "deep_aether:sunroot_log"
+    }
+  },
+  "pattern": [
+    " A ",
+    "A A",
+    " A "
+  ],
+  "result": {
+    "count": 4,
+    "id": "ascended_quark:hollow_sunroot_log"
+  }
+}

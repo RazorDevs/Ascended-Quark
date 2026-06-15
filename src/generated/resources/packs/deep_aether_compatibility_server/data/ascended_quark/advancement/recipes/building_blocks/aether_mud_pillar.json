@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "more_mud_blocks"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "more_aether_mud_blocks"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aether_mud_bricks_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deep_aether:aether_mud_bricks_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:aether_mud_pillar"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_aether_mud_bricks_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:aether_mud_pillar"
+    ]
+  }
+}

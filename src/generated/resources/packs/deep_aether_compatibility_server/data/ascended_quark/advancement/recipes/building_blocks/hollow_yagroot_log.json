@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "hollow_logs"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "deep_aether_wood"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:hollow_yagroot_log"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yagroot_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "deep_aether:yagroot_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_yagroot_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:hollow_yagroot_log"
+    ]
+  }
+}

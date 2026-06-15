@@ -28,8 +28,8 @@ public abstract class ZephyrLayerMixin extends RenderLayer<Zephyr, EntityModel<Z
 	@Final
 	private ZephyrModel transparency;
 
-	public ZephyrLayerMixin(RenderLayerParent<Zephyr, EntityModel<Zephyr>> p_117346_) {
-		super(p_117346_);
+	public ZephyrLayerMixin(RenderLayerParent<Zephyr, EntityModel<Zephyr>> parent) {
+		super(parent);
 	}
 
 	@Inject(at = @At("HEAD"), method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILcom/aetherteam/aether/entity/monster/Zephyr;FFFFFF)V", remap = false)

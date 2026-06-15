@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "variant_chests"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "deep_aether_wood"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:tripwire_hook"
+    },
+    {
+      "item": "ascended_quark:roseroot_chest"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "ascended_quark:trapped_roseroot_chest"
+  }
+}

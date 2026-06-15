@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "vertical_slabs"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "deep_aether_wood"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_conberry_vertical_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ascended_quark:conberry_vertical_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ascended_quark:conberry_slab_from_conberry_vertical_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_conberry_vertical_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ascended_quark:conberry_slab_from_conberry_vertical_slab"
+    ]
+  }
+}

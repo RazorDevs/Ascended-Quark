@@ -124,7 +124,7 @@ public class AQBlockstateData extends AetherBlockStateProvider {
 
 	public void chest(String type, Block planks) {
 		Block block = blockMap.get(type + "_chest");
-		Block trapped = blockMap.get(type + "_trapped_chest");
+		Block trapped = blockMap.get("trapped_" + type + "_chest");
 		this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(
 				this.chest(this.name(block), this.texture(BuiltInRegistries.BLOCK.getKey(planks)))));
 		this.getVariantBuilder(trapped).partialState().addModels(new ConfiguredModel(

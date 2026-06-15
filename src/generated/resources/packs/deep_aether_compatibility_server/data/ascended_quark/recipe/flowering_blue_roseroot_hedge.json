@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "hedges"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "deep_aether_wood"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "deep_aether:roseroot_log"
+    },
+    "B": {
+      "item": "deep_aether:flowering_blue_roseroot_leaves"
+    }
+  },
+  "pattern": [
+    "B",
+    "A"
+  ],
+  "result": {
+    "count": 2,
+    "id": "ascended_quark:flowering_blue_roseroot_hedge"
+  }
+}

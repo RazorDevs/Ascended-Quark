@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "more_mud_blocks"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "more_aether_mud_blocks"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "deep_aether:aether_mud_bricks"
+    }
+  },
+  "pattern": [
+    " A ",
+    "A A",
+    " A "
+  ],
+  "result": {
+    "count": 4,
+    "id": "ascended_quark:aether_mud_brick_lattice"
+  }
+}

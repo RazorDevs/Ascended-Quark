@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "zeta:flag",
+      "flag": "variant_ladders"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "deep_aether_wood"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "-": {
+      "item": "aether:skyroot_stick"
+    },
+    "A": {
+      "item": "deep_aether:sunroot_planks"
+    }
+  },
+  "pattern": [
+    "- -",
+    "-A-",
+    "- -"
+  ],
+  "result": {
+    "count": 4,
+    "id": "ascended_quark:sunroot_ladder"
+  }
+}

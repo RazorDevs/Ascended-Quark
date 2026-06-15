@@ -52,6 +52,7 @@ public class RegistryUtil {
 		addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
 				new VariantLadderBlock(type, module, BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER), true),
 				context.planks(), module);
+
 		if (!type.equals("skyroot"))
 			addCreativeModeTab(AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey(),
 					new AQVariantBookshelfBlock(type, module, true, SoundType.WOOD), context.planks(), module);

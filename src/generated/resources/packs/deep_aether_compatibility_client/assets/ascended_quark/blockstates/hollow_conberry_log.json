@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ascended_quark:block/hollow_conberry_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ascended_quark:block/hollow_conberry_log"
+    },
+    "axis=z": {
+      "model": "ascended_quark:block/hollow_conberry_log_horizontal",
+      "x": 90
+    }
+  }
+}

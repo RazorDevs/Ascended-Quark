@@ -41,6 +41,7 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
 	@Config
 	public static boolean enableCockatrice = true;
 	private static boolean isEnabled;
+
 	@ZetaLoadModule(clientReplacement = true)
 	public static class Client extends AetherVariantAnimalTexturesModule {
 
@@ -68,53 +69,45 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
 			isEnabled = this.isEnabled();
 		}
 
-		@Nullable @OnlyIn(Dist.CLIENT)
-		public static ResourceLocation getPhygTexture(Phyg entity) {
+		@Nullable public static ResourceLocation getPhygTexture(Phyg entity) {
 			if (!isEnabled || !enablePhyg)
 				return null;
 			return getTextureOrShiny(entity, VariantTextureType.PHYG);
 		}
 
-		@Nullable @OnlyIn(Dist.CLIENT)
-		public static ResourceLocation getAerbunnyTexture(Aerbunny entity) {
+		@Nullable public static ResourceLocation getAerbunnyTexture(Aerbunny entity) {
 			if (!isEnabled || !enableAerbunny)
 				return null;
 			return getTextureOrShiny(entity, VariantTextureType.AERBUNNY);
 		}
 
-		@Nullable @OnlyIn(Dist.CLIENT)
-		public static ResourceLocation getZephyrTexture(Zephyr entity) {
+		@Nullable public static ResourceLocation getZephyrTexture(Zephyr entity) {
 			if (!isEnabled || !enableZephyr)
 				return null;
 			return getTextureOrShiny(entity, VariantTextureType.ZEPHYR);
 		}
 
-		@Nullable @OnlyIn(Dist.CLIENT)
-		public static ResourceLocation getZephyrLayerTexture(Zephyr entity) {
+		@Nullable public static ResourceLocation getZephyrLayerTexture(Zephyr entity) {
 			if (!isEnabled || !enableZephyr)
 				return null;
 			return getTextureOrShiny(entity, VariantTextureType.ZEPHYR_LAYER);
 		}
 
-		@Nullable @OnlyIn(Dist.CLIENT)
-		public static ResourceLocation getCockatriceTexture(Cockatrice entity) {
+		@Nullable public static ResourceLocation getCockatriceTexture(Cockatrice entity) {
 			if (!isEnabled || !enableCockatrice || AetherConfig.CLIENT.legacy_models.get())
 				return null;
 			return getTextureOrShiny(entity, VariantTextureType.COCKATRICE);
 		}
 
-		@OnlyIn(Dist.CLIENT)
 		public static ResourceLocation getTextureOrShiny(Entity e, VariantTextureType type) {
 			return getTextureOrShiny(e, type, () -> getRandomTexture(e, type));
 		}
 
-		@OnlyIn(Dist.CLIENT)
 		public static ResourceLocation getTextureOrShiny(Entity e, VariantTextureType type,
 				Supplier<ResourceLocation> nonShiny) {
 			return nonShiny.get();
 		}
 
-		@OnlyIn(Dist.CLIENT)
 		private static ResourceLocation getRandomTexture(Entity e, VariantTextureType type) {
 			List<ResourceLocation> styles = textures.get(type);
 
@@ -124,7 +117,6 @@ public class AetherVariantAnimalTexturesModule extends ZetaModule {
 			return styles.get(choice);
 		}
 
-		@OnlyIn(Dist.CLIENT)
 		private static void registerTextures(VariantTextureType type, int count, ResourceLocation vanilla) {
 			String name = type.name().toLowerCase(Locale.ROOT);
 			for (int i = 1; i < count + 1; i++)

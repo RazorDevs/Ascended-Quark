@@ -110,7 +110,7 @@ dependencies {
     compileOnly("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}")
 
     //Deep Aether
-    implementation ("curse.maven:deep-aether-852465:${project.deep_aether_version}")
+    compileOnly ("curse.maven:deep-aether-852465:${project.deep_aether_version}")
     //implementation ("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
 
     // Quark

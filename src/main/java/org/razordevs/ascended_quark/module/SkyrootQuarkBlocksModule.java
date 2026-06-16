@@ -6,6 +6,7 @@ import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -50,6 +51,7 @@ import org.violetmoon.zetaimplforge.client.IZetaForgeItemStuff;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.function.BooleanSupplier;
 
 @ZetaLoadModule(category = "aether", description = "Enables skyroot woodset blocks for quark blocks, such as skyroot post. Disable if another mod already adds compat blocks. ", antiOverlap = "everycomp")
@@ -112,58 +114,57 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
 				Registries.BLOCK_ENTITY_TYPE);
 	}
 
-	@PlayEvent
-	public void onClickEntity(ZPlayerInteract.EntityInteractSpecific event) {
-		Entity target = event.getTarget();
-		Player player = event.getEntity();
-		ItemStack held = player.getItemInHand(event.getHand());
-		if (!held.isEmpty() && target instanceof AbstractChestedHorse horse) {
-			if (!horse.hasChest() && held.getItem() != Items.CHEST && held.is(Tags.Items.CHESTS_WOODEN)) {
-				event.setCanceled(true);
-				event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
-				if (!target.level().isClientSide) {
-					ItemStack copy = held.copy();
-					copy.setCount(1);
-					held.shrink(1);
-					horse.getPersistentData().put("Quark:DonkChest",
-							copy.save(Minecraft.getInstance().level.registryAccess()));
-					horse.setChest(true);
-					// horse.createInventory();
-					((AccessorAbstractChestedHorse) horse).quark$playChestEquipsSound();
-				}
-			}
-		}
+    private static final String DONK_CHEST = "Quark:DonkChest";
 
-	}
+    @PlayEvent
+    public void onClickEntity(ZPlayerInteract.EntityInteractSpecific event) {
+        Entity target = event.getTarget();
+        Player player = event.getEntity();
+        ItemStack held = player.getItemInHand(event.getHand());
 
-	@PlayEvent
-	public void onDeath(ZLivingDeath event) {
-		Entity target = event.getEntity();
-		if (target instanceof AbstractChestedHorse horse) {
-			ItemStack chest = ItemStack.parse(Minecraft.getInstance().level.registryAccess(),
-					horse.getPersistentData().getCompound("Quark:DonkChest")).get();
-			if (!chest.isEmpty() && horse.hasChest()) {
-				WAIT_TO_REPLACE_CHEST.set(chest);
-			}
-		}
+        if(!held.isEmpty() && target instanceof AbstractChestedHorse horse) {
 
-	}
+            if(!horse.hasChest() && held.getItem() != Items.CHEST) {
+                if(held.is(Tags.Items.CHESTS_WOODEN)) {
+                    event.setCanceled(true);
+                    event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
 
-	@PlayEvent
-	public void onEntityJoinWorld(ZEntityJoinLevel event) {
-		Entity target = event.getEntity();
-		if (target instanceof ItemEntity item) {
-			if (item.getItem().getItem() == Items.CHEST) {
-				ItemStack local = WAIT_TO_REPLACE_CHEST.get();
-				if (local != null && !local.isEmpty()) {
-					item.setItem(local);
-				}
+                    if(!target.level().isClientSide) {
+                        ItemStack copy = held.copy();
+                        copy.setCount(1);
+                        held.shrink(1);
 
-				WAIT_TO_REPLACE_CHEST.remove();
-			}
-		}
+                        horse.getPersistentData().put(DONK_CHEST, copy.save(player.level().registryAccess()));
 
-	}
+                        horse.setChest(true);
+                        horse.createInventory();
+                        ((AccessorAbstractChestedHorse) horse).quark$playChestEquipsSound();
+                    }
+                }
+            }
+        }
+    }
+
+    @PlayEvent
+    public void onDeath(ZLivingDeath event) {
+        Entity target = event.getEntity();
+        if(target instanceof AbstractChestedHorse horse) {
+            ItemStack chest = ItemStack.parseOptional(target.level().registryAccess(), horse.getPersistentData().getCompound(DONK_CHEST));
+            if(!chest.isEmpty() && horse.hasChest())
+                WAIT_TO_REPLACE_CHEST.set(chest);
+        }
+    }
+
+    @PlayEvent
+    public void onEntityJoinWorld(ZEntityJoinLevel event) {
+        Entity target = event.getEntity();
+        if(target instanceof ItemEntity item && item.getItem().getItem() == Items.CHEST) {
+            ItemStack local = WAIT_TO_REPLACE_CHEST.get();
+            if(local != null && !local.isEmpty())
+                item.setItem(local);
+            WAIT_TO_REPLACE_CHEST.remove();
+        }
+    }
 
 	@ZetaLoadModule(clientReplacement = true)
 	public static class Client extends SkyrootQuarkBlocksModule {

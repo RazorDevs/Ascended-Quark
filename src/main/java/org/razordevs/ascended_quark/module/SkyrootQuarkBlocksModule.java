@@ -114,57 +114,58 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
 				Registries.BLOCK_ENTITY_TYPE);
 	}
 
-    private static final String DONK_CHEST = "Quark:DonkChest";
+	private static final String DONK_CHEST = "Quark:DonkChest";
 
-    @PlayEvent
-    public void onClickEntity(ZPlayerInteract.EntityInteractSpecific event) {
-        Entity target = event.getTarget();
-        Player player = event.getEntity();
-        ItemStack held = player.getItemInHand(event.getHand());
+	@PlayEvent
+	public void onClickEntity(ZPlayerInteract.EntityInteractSpecific event) {
+		Entity target = event.getTarget();
+		Player player = event.getEntity();
+		ItemStack held = player.getItemInHand(event.getHand());
 
-        if(!held.isEmpty() && target instanceof AbstractChestedHorse horse) {
+		if (!held.isEmpty() && target instanceof AbstractChestedHorse horse) {
 
-            if(!horse.hasChest() && held.getItem() != Items.CHEST) {
-                if(held.is(Tags.Items.CHESTS_WOODEN)) {
-                    event.setCanceled(true);
-                    event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
+			if (!horse.hasChest() && held.getItem() != Items.CHEST) {
+				if (held.is(Tags.Items.CHESTS_WOODEN)) {
+					event.setCanceled(true);
+					event.setCancellationResult(InteractionResult.sidedSuccess(player.level().isClientSide));
 
-                    if(!target.level().isClientSide) {
-                        ItemStack copy = held.copy();
-                        copy.setCount(1);
-                        held.shrink(1);
+					if (!target.level().isClientSide) {
+						ItemStack copy = held.copy();
+						copy.setCount(1);
+						held.shrink(1);
 
-                        horse.getPersistentData().put(DONK_CHEST, copy.save(player.level().registryAccess()));
+						horse.getPersistentData().put(DONK_CHEST, copy.save(player.level().registryAccess()));
 
-                        horse.setChest(true);
-                        horse.createInventory();
-                        ((AccessorAbstractChestedHorse) horse).quark$playChestEquipsSound();
-                    }
-                }
-            }
-        }
-    }
+						horse.setChest(true);
+						horse.createInventory();
+						((AccessorAbstractChestedHorse) horse).quark$playChestEquipsSound();
+					}
+				}
+			}
+		}
+	}
 
-    @PlayEvent
-    public void onDeath(ZLivingDeath event) {
-        Entity target = event.getEntity();
-        if(target instanceof AbstractChestedHorse horse) {
-            ItemStack chest = ItemStack.parseOptional(target.level().registryAccess(), horse.getPersistentData().getCompound(DONK_CHEST));
-            if(!chest.isEmpty() && horse.hasChest())
-                WAIT_TO_REPLACE_CHEST.set(chest);
-        }
-    }
+	@PlayEvent
+	public void onDeath(ZLivingDeath event) {
+		Entity target = event.getEntity();
+		if (target instanceof AbstractChestedHorse horse) {
+			ItemStack chest = ItemStack.parseOptional(target.level().registryAccess(),
+					horse.getPersistentData().getCompound(DONK_CHEST));
+			if (!chest.isEmpty() && horse.hasChest())
+				WAIT_TO_REPLACE_CHEST.set(chest);
+		}
+	}
 
-    @PlayEvent
-    public void onEntityJoinWorld(ZEntityJoinLevel event) {
-        Entity target = event.getEntity();
-        if(target instanceof ItemEntity item && item.getItem().getItem() == Items.CHEST) {
-            ItemStack local = WAIT_TO_REPLACE_CHEST.get();
-            if(local != null && !local.isEmpty())
-                item.setItem(local);
-            WAIT_TO_REPLACE_CHEST.remove();
-        }
-    }
+	@PlayEvent
+	public void onEntityJoinWorld(ZEntityJoinLevel event) {
+		Entity target = event.getEntity();
+		if (target instanceof ItemEntity item && item.getItem().getItem() == Items.CHEST) {
+			ItemStack local = WAIT_TO_REPLACE_CHEST.get();
+			if (local != null && !local.isEmpty())
+				item.setItem(local);
+			WAIT_TO_REPLACE_CHEST.remove();
+		}
+	}
 
 	@ZetaLoadModule(clientReplacement = true)
 	public static class Client extends SkyrootQuarkBlocksModule {

@@ -26,7 +26,6 @@ import org.razordevs.ascended_quark.datagen.normal.tags.AQItemTagData;
 import org.razordevs.ascended_quark.datagen.provider.tags.AQBlockTagProvider;
 import org.violetmoon.zeta.module.IDisableable;
 
-import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -112,21 +111,17 @@ public class AQData {
 			HashMap<String, Item> itemMap) {
 		DataGenerator generator = event.getGenerator();
 		ExistingFileHelper fileHelper = event.getExistingFileHelper();
-		PackOutput output = generator.getPackOutput();
 		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
 		// Client Pack Data
-		Path builtinData = output.getOutputFolder().resolve("packs");
-		DataGenerator.PackGenerator clientPack = generator.new PackGenerator(event.includeClient(),
-				"deep_aether_compatibility_client",
-				new PackOutput(builtinData.resolve("deep_aether_compatibility_client")));
+		DataGenerator.PackGenerator clientPack = generator.getPackGenerator(event.includeClient(),
+				"deep_aether_compatibility_client", "packs/deep_aether_compatibility_client");
 		clientPack.addProvider(outPut -> new DACompBlockstateData(outPut, fileHelper, blockMap));
 		clientPack.addProvider(outPut -> new DACompItemModelData(outPut, fileHelper, itemMap, blockMap));
 
 		// Server Pack Data
-		DataGenerator.PackGenerator serverPack = generator.new PackGenerator(event.includeServer(),
-				"deep_aether_compatibility_server",
-				new PackOutput(builtinData.resolve("deep_aether_compatibility_server")));
+		DataGenerator.PackGenerator serverPack = generator.getPackGenerator(event.includeServer(),
+				"deep_aether_compatibility_server", "packs/deep_aether_compatibility_server");
 		serverPack.addProvider(outPut -> new DACompRecipeData(outPut, lookupProvider, itemMap, blockMap));
 		serverPack.addProvider(outPut -> {
 			blockTags = new DACompBlockTagData(outPut, lookupProvider, fileHelper, blockMap);

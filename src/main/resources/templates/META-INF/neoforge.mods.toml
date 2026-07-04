@@ -1,0 +1,68 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license = "${mod_license}"
+issueTrackerURL="https://github.com/RazorDevs/Ascended-Quark/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''
+A small mod that aims to bring compatibility between Quark and the Aether mod! (And Addons too!)
+'''
+logoFile="${mod_id}.png"
+credits="A special thanks goes to the creators behind Quark and the Aether mods!"
+accessTransformers=""
+
+[[mixins]]
+config="${mod_id}.mixins.json"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type = "required"
+versionRange="[${neoforge_version},)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type = "required"
+versionRange="[1.21.1]"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="aether"
+type = "required"
+versionRange="[1.5.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="quark"
+type = "required"
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="terrablender"
+type = "optional"
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="aeroblender"
+type = "optional"
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="deep_aether"
+type = "optional"
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"

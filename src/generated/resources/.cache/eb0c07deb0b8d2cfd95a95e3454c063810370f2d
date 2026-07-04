@@ -1,4 +1,4 @@
-// 1.21.1	2026-05-13T11:26:41.095786	Item Models: ascended_quark
+// 1.21.1	2026-07-04T16:47:20.0574904	Item Models: ascended_quark
 ac6cc442ad1688515a1e6ecea181ad01d1b15ef2 assets/ascended_quark/models/item/aerogel_vertical_slab.json
 865c07dce7c0bcdcd091057b1eceebe058ce1dfc assets/ascended_quark/models/item/aether_dirt_bricks.json
 3b8d00c3908ee166dfb41b4555672b26578243bd assets/ascended_quark/models/item/aether_dirt_bricks_slab.json
@@ -45,7 +45,7 @@ bba48457d11442d003d82a23c4a57b89809e0075 assets/ascended_quark/models/item/quick
 db3e87a2f7673d322205331450f28f28219412f5 assets/ascended_quark/models/item/quicksoil_framed_glass.json
 46e9db7f6d7504d80fd7897113aea75d4177dc42 assets/ascended_quark/models/item/quicksoil_framed_glass_pane.json
 cffe3863060477946d9b59a924f430b7e06faf6f assets/ascended_quark/models/item/quicksoil_glass_shard.json
-f6caba399494a58683561699d72ad1cc86e3d339 assets/ascended_quark/models/item/skyroot_chest.json
+c1e25ef057a23a771472511c5ecd8cd5f146b44d assets/ascended_quark/models/item/skyroot_chest.json
 55bdf1611bff76f20301e3f62a8bdc44d16a86e4 assets/ascended_quark/models/item/skyroot_hedge.json
 08fbd1c08a2eb932d3bd9fc72d55e2cd917bbbbc assets/ascended_quark/models/item/skyroot_ladder.json
 fff34b5d7a22239f88c6b359eb34f5051698252c assets/ascended_quark/models/item/skyroot_leaf_carpet.json
@@ -54,7 +54,7 @@ a3a425b9583ca495862377fd55dcb290aadea7fb assets/ascended_quark/models/item/skyro
 9bcdbdc2faeb0ad4e23a337e6b39ca3e4a25f5f2 assets/ascended_quark/models/item/skyroot_stool.json
 496f386f0b149598e34a60e1ba4f6ff9fff80167 assets/ascended_quark/models/item/skyroot_vertical_slab.json
 33da2591ace87a9a01b5826f1c6b99a27a9d6545 assets/ascended_quark/models/item/stripped_skyroot_post.json
-f6caba399494a58683561699d72ad1cc86e3d339 assets/ascended_quark/models/item/trapped_skyroot_chest.json
+c1e25ef057a23a771472511c5ecd8cd5f146b44d assets/ascended_quark/models/item/trapped_skyroot_chest.json
 d829a1d4af94261ecd564873cd4da6f8e777bcce assets/ascended_quark/models/item/valkyrie_pickarang.json
 dd221724972db10ed9ce9a91bc648090130dac90 assets/ascended_quark/models/item/vertical_skyroot_planks.json
 f3b0a67a55efc7c6ba6f993131cb922aa9e937d5 assets/ascended_quark/models/item/zanite_rod.json

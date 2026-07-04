@@ -30,7 +30,7 @@ public class AQOBEIntegration {
         boolean isTrap = block instanceof TrappedChestBlock;
 
         if (!(block instanceof VariantChestsModule.IVariantChest v)) return null;
-        //apply the texture naming convention
+
         StringBuilder tex = new StringBuilder(v.getTextureFolder())
                 .append('/')
                 .append(v.getTexturePath())

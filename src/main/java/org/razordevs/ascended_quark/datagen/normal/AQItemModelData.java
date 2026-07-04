@@ -64,7 +64,7 @@ public class AQItemModelData extends ItemModelProvider {
 				this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_inventory"));
 
 			else if (block instanceof ChestBlock) {
-				this.itemChest(block);
+                this.itemChest(block, AscendedQuark.AETHER, "block/construction/");
 			} else if (block instanceof LadderBlock) {
 				this.itemBlockFlat(block);
 			} else {
@@ -89,6 +89,13 @@ public class AQItemModelData extends ItemModelProvider {
 	public void itemChest(Block block) {
 		this.withExistingParent(this.blockName(block), this.mcLoc("item/" + this.blockName(Blocks.CHEST)));
 	}
+
+    public void itemChest(Block block, String id, String prefix) {
+        String plankName = this.blockName(block).replace("trapped_", "").replace("_chest", "_planks");
+        ResourceLocation plankRes = ResourceLocation.fromNamespaceAndPath(id, prefix + plankName);
+        this.withExistingParent(this.blockName(block), this.mcLoc("item/" + this.blockName(Blocks.CHEST)))
+                .texture("particle", plankRes);
+    }
 
 	public void item(Item item) {
 		this.withExistingParent(this.itemName(item), mcLoc("item/generated")).texture("layer0",

@@ -1,6 +1,6 @@
-// 1.21.1	2026-06-15T12:30:21.7933899	deep_aether_compatibility_server/Ascended Quark Item Tags
+// 1.21.1	2026-07-04T16:48:59.9910473	deep_aether_compatibility_server/Ascended Quark Item Tags
 68e2d92187b350f7a906b5f6acd1b9158571f0e5 packs/deep_aether_compatibility_server/data/aether/tags/item/planks_crafting.json
-fe380871fc078c5042d3d63b5bf2779bfe095a02 packs/deep_aether_compatibility_server/data/aether/tags/item/treated_as_aether_item.json
+202be853a0c299057a4fb35dd474c64a67406cf9 packs/deep_aether_compatibility_server/data/aether/tags/item/treated_as_aether_item.json
 907b062d07426e7e40e94d989f537a95e0464688 packs/deep_aether_compatibility_server/data/c/tags/item/bookshelves.json
 1336c7a6deefbcd5f5492570975cb90ad72627b9 packs/deep_aether_compatibility_server/data/c/tags/item/chests.json
 af49ab057f1320cbc73512c5607ef76b1c8bc539 packs/deep_aether_compatibility_server/data/c/tags/item/chests/trapped.json
@@ -9,7 +9,7 @@ af49ab057f1320cbc73512c5607ef76b1c8bc539 packs/deep_aether_compatibility_server/
 52fe82697aa9d04bc4fcc2bfbe96fa54016964f3 packs/deep_aether_compatibility_server/data/quark/tags/item/hedges.json
 ad3794c5b28f265c16e05eee8c837dc4e558017e packs/deep_aether_compatibility_server/data/quark/tags/item/hollow_logs.json
 f71f62095fff03a196493fc98aacabe749cac6c9 packs/deep_aether_compatibility_server/data/quark/tags/item/ladders.json
-e68c7801089a0a84f867b8872f97f151b8bd6d36 packs/deep_aether_compatibility_server/data/quark/tags/item/posts.json
+d2867879567b30bd30f5bf839de891b7c9564ab7 packs/deep_aether_compatibility_server/data/quark/tags/item/posts.json
 405339f5bb13ddd3d4bc5ba26a8ac54baf1c302b packs/deep_aether_compatibility_server/data/quark/tags/item/revertable_chests.json
 42d3e572be1be656bee8e95c185d2d25a3561427 packs/deep_aether_compatibility_server/data/quark/tags/item/vertical_slabs.json
 4bdceb0bc2d717c5abf8fb53c0251ac83ede4271 packs/deep_aether_compatibility_server/data/quark/tags/item/wooden_vertical_slabs.json

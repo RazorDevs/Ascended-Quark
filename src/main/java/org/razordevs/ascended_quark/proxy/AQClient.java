@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import org.razordevs.ascended_quark.AscendedQuark;
+import org.razordevs.ascended_quark.integration.AQHMIIntegration;
 import org.razordevs.ascended_quark.integration.AQOBEIntegration;
 import org.razordevs.ascended_quark.module.AmbrosiumTorchArrowModule;
 import org.razordevs.ascended_quark.particle.AmbrosiumShardParticle;
@@ -20,6 +21,10 @@ public class AQClient {
 
         if(AscendedQuark.ZETA.isModLoaded("obe")) {
             AQOBEIntegration.init();
+        }
+
+        if (AscendedQuark.ZETA.isModLoaded("holdmyitemsnf")) {
+            AQHMIIntegration.init();
         }
 	}
 

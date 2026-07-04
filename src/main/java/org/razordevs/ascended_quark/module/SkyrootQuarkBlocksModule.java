@@ -28,6 +28,7 @@ import org.razordevs.ascended_quark.blocks.AQVariantChestBlock;
 import org.razordevs.ascended_quark.entity.block.AQVariantChestBlockEntity;
 import org.razordevs.ascended_quark.entity.block.AQVariantTrappedChestBlockEntity;
 import org.razordevs.ascended_quark.entity.render.AQVariantChestRenderer;
+import org.razordevs.ascended_quark.module.compat.deep_aether.DeepAetherWoodModule;
 import org.razordevs.ascended_quark.proxy.AQClient;
 import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.util.WoodSetContext;
@@ -105,14 +106,16 @@ public class SkyrootQuarkBlocksModule extends ZetaModule {
 
 	@LoadEvent
 	public void postRegister(ZRegister.Post e) {
-		aqChestTEType = BlockEntityType.Builder
-				.of(AQVariantChestBlockEntity::new, aqRegularChests.toArray(new Block[0])).build(null);
-		aqTrappedChestTEType = BlockEntityType.Builder
-				.of(AQVariantTrappedChestBlockEntity::new, aqTrappedChests.toArray(new Block[0])).build(null);
+        aqChestTEType = BlockEntityType.Builder
+                .of(AQVariantChestBlockEntity::new, aqRegularChests.toArray(new Block[0])).build(null);
+        aqTrappedChestTEType = BlockEntityType.Builder
+                .of(AQVariantTrappedChestBlockEntity::new, aqTrappedChests.toArray(new Block[0])).build(null);
+
 		AscendedQuark.ZETA.registry.register(aqChestTEType, "skyroot_chest", Registries.BLOCK_ENTITY_TYPE);
 		AscendedQuark.ZETA.registry.register(aqTrappedChestTEType, "trapped_skyroot_chest",
 				Registries.BLOCK_ENTITY_TYPE);
 	}
+
 
 	private static final String DONK_CHEST = "Quark:DonkChest";
 

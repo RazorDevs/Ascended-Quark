@@ -49,7 +49,7 @@ public class DACompItemModelData extends AQItemModelData {
 				this.itemBlock(block, AscendedQuark.asResource("block/" + this.blockName(block) + "_inventory"));
 
 			else if (block instanceof ChestBlock) {
-				this.itemChest(block);
+				this.itemChest(block, AscendedQuark.DEEP_AETHER, "block/");
 			} else if (block instanceof LadderBlock) {
 				this.itemBlockFlat(block);
 			} else {

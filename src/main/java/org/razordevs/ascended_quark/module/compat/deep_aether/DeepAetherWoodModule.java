@@ -2,10 +2,16 @@ package org.razordevs.ascended_quark.module.compat.deep_aether;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import io.github.razordevs.deep_aether.init.DABlocks;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.fml.ModList;
 import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.AQHedgeBlock;
 import org.razordevs.ascended_quark.blocks.AQLeafCarpetBlock;
+import org.razordevs.ascended_quark.entity.block.AQVariantChestBlockEntity;
+import org.razordevs.ascended_quark.entity.block.AQVariantTrappedChestBlockEntity;
+import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 import org.razordevs.ascended_quark.util.RegistryUtil;
 import org.razordevs.ascended_quark.util.WoodSetContext;
 import org.violetmoon.zeta.event.bus.LoadEvent;

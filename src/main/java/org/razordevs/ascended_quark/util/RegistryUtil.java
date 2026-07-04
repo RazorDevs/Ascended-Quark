@@ -2,6 +2,7 @@ package org.razordevs.ascended_quark.util;
 
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import org.razordevs.ascended_quark.AscendedQuark;
 import org.razordevs.ascended_quark.blocks.*;
 import org.razordevs.ascended_quark.module.SkyrootQuarkBlocksModule;
 import org.violetmoon.quark.base.util.BlockPropertyUtil;

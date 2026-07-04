@@ -118,7 +118,7 @@ dependencies {
     compileOnly("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}")
 
     //Deep Aether
-    compileOnly ("curse.maven:deep-aether-852465:${project.deep_aether_version}")
+    implementation ("curse.maven:deep-aether-852465:${project.deep_aether_version}")
     //implementation ("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
 
     // Quark
@@ -127,9 +127,10 @@ dependencies {
     //implementation ("curse.maven:quark-oddities-301051:3575623")
 
     // Extra
-    implementation "curse.maven:obe-1575743:8342450"
+    compileOnly "curse.maven:obe-1575743:8342450"
     runtimeOnly "curse.maven:jei-238222:7420587"
     runtimeOnly "curse.maven:spark-361579:6225208"
+    implementation "curse.maven:hold-my-items-reforged-1246920:6608571"
 }
 
 tasks.withType(ProcessResources).configureEach {

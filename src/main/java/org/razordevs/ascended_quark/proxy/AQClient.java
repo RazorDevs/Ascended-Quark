@@ -18,14 +18,13 @@ public class AQClient {
 		if (AscendedQuark.ZETA.side == ZetaSide.SERVER)
 			throw new IllegalAccessError("SOMEONE LOADED AQClient ON THE SERVER!!!! DON'T DO THAT!!!!!!");
 
+		if (AscendedQuark.ZETA.isModLoaded("obe")) {
+			AQOBEIntegration.init();
+		}
 
-        if(AscendedQuark.ZETA.isModLoaded("obe")) {
-            AQOBEIntegration.init();
-        }
-
-        if (AscendedQuark.ZETA.isModLoaded("holdmyitemsnf")) {
-            AQHMIIntegration.init();
-        }
+		if (AscendedQuark.ZETA.isModLoaded("holdmyitemsnf")) {
+			AQHMIIntegration.init();
+		}
 	}
 
 	public static final ZetaClient ZETA_CLIENT = new ForgeZetaClient(AscendedQuark.ZETA);

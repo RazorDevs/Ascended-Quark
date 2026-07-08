@@ -16,29 +16,29 @@ import org.violetmoon.quark.content.building.client.render.be.VariantChestRender
 import org.violetmoon.quark.content.building.module.VariantChestsModule;
 
 public class AQOBEIntegration {
-    public static void init(){
-        RegistryApi.registerBlockEntityType(SkyrootQuarkBlocksModule.aqChestTEType, "chest");
-        RegistryApi.registerBlockEntityType(SkyrootQuarkBlocksModule.aqTrappedChestTEType, "chest");
+	public static void init() {
+		RegistryApi.registerBlockEntityType(SkyrootQuarkBlocksModule.aqChestTEType, "chest");
+		RegistryApi.registerBlockEntityType(SkyrootQuarkBlocksModule.aqTrappedChestTEType, "chest");
 
-        RegistryApi.registerMaterialProvider(SkyrootQuarkBlocksModule.aqChestTEType, AQOBEIntegration::getVariantChestMaterial);
-        RegistryApi.registerMaterialProvider(SkyrootQuarkBlocksModule.aqTrappedChestTEType, AQOBEIntegration::getVariantChestMaterial);
-    }
+		RegistryApi.registerMaterialProvider(SkyrootQuarkBlocksModule.aqChestTEType,
+				AQOBEIntegration::getVariantChestMaterial);
+		RegistryApi.registerMaterialProvider(SkyrootQuarkBlocksModule.aqTrappedChestTEType,
+				AQOBEIntegration::getVariantChestMaterial);
+	}
 
-    public static ResourceLocation getVariantChestMaterial(BlockState state) {
-        Block block = state.getBlock();
-        ChestType chestType = BackportUtil.getValueOrElse(state, ChestBlock.TYPE, ChestType.SINGLE);
-        boolean isTrap = block instanceof TrappedChestBlock;
+	public static ResourceLocation getVariantChestMaterial(BlockState state) {
+		Block block = state.getBlock();
+		ChestType chestType = BackportUtil.getValueOrElse(state, ChestBlock.TYPE, ChestType.SINGLE);
+		boolean isTrap = block instanceof TrappedChestBlock;
 
-        if (!(block instanceof VariantChestsModule.IVariantChest v)) return null;
+		if (!(block instanceof VariantChestsModule.IVariantChest v))
+			return null;
 
-        StringBuilder tex = new StringBuilder(v.getTextureFolder())
-                .append('/')
-                .append(v.getTexturePath())
-                .append('/');
-        if (isTrap)
-            tex.append(VariantChestRenderer.choose(chestType, "trap", "trap_left", "trap_right"));
-        else
-            tex.append(VariantChestRenderer.choose(chestType, "normal", "left", "right"));
-        return new Material(Sheets.CHEST_SHEET, AscendedQuark.asResource(tex.toString())).texture();
-    }
+		StringBuilder tex = new StringBuilder(v.getTextureFolder()).append('/').append(v.getTexturePath()).append('/');
+		if (isTrap)
+			tex.append(VariantChestRenderer.choose(chestType, "trap", "trap_left", "trap_right"));
+		else
+			tex.append(VariantChestRenderer.choose(chestType, "normal", "left", "right"));
+		return new Material(Sheets.CHEST_SHEET, AscendedQuark.asResource(tex.toString())).texture();
+	}
 }

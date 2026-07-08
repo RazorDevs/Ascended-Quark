@@ -1,6 +1,6 @@
-// 1.21.1	2026-07-04T16:48:59.9910473	deep_aether_compatibility_server/Ascended Quark Item Tags
+// 1.21.1	2026-07-04T16:55:48.5235314	deep_aether_compatibility_server/Ascended Quark Item Tags
 68e2d92187b350f7a906b5f6acd1b9158571f0e5 packs/deep_aether_compatibility_server/data/aether/tags/item/planks_crafting.json
-202be853a0c299057a4fb35dd474c64a67406cf9 packs/deep_aether_compatibility_server/data/aether/tags/item/treated_as_aether_item.json
+2d93bb80888da143ee55442c83b48cc43d16bb81 packs/deep_aether_compatibility_server/data/aether/tags/item/treated_as_aether_item.json
 907b062d07426e7e40e94d989f537a95e0464688 packs/deep_aether_compatibility_server/data/c/tags/item/bookshelves.json
 1336c7a6deefbcd5f5492570975cb90ad72627b9 packs/deep_aether_compatibility_server/data/c/tags/item/chests.json
 af49ab057f1320cbc73512c5607ef76b1c8bc539 packs/deep_aether_compatibility_server/data/c/tags/item/chests/trapped.json
